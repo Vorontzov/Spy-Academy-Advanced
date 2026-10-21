@@ -13,7 +13,7 @@
     />
     <meta
       name="description"
-      content="A single-file spy adventure with 24 operations, maths from level one, gadgets, stairs, and playable vehicle escapes. Practice based on supplied mathematics worksheets."
+      content="A single-file spy adventure with 36 operations, maths from level one, gadgets, stairs, and playable vehicle escapes. Practice based on supplied mathematics worksheets."
     />
     <title>Spy Academy Advanced</title>
     <style>
@@ -1760,6 +1760,225 @@
           font-size: 32px;
         }
       }
+      .objective-strip {
+        background: #182b38;
+        border-top: 1px solid #476373;
+        color: #e8d0a4;
+        padding: 12px 16px;
+        font: 11px/1.5 var(--mono);
+        letter-spacing: 0.5px;
+      }
+      @media (max-width: 600px) {
+        .objective-strip {
+          font-size: 10px;
+          padding: 10px;
+        }
+      }
+      #driveOverlay {
+        z-index: 12;
+        overflow-y: auto;
+        touch-action: pan-y;
+        align-items: safe center;
+        background: linear-gradient(150deg, #092632ed, #152c39f7);
+        padding: 18px;
+      }
+      #driveOverlay .panel {
+        max-width: 660px;
+        width: 100%;
+        margin: auto;
+      }
+      #driveOverlay h2 {
+        font-size: 26px;
+        margin: 8px 0 14px;
+      }
+      #drivePrompt {
+        line-height: 1.65;
+        font-size: 15px;
+        color: #e5e3cb;
+      }
+      .drive-lanes {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin: 18px 0;
+      }
+      .drive-lane {
+        position: relative;
+        min-height: 116px;
+        border: 1px solid #6e8791;
+        background: linear-gradient(#284d51 0 40%, #182c36 40%);
+        color: #e1ead3;
+        border-radius: 7px;
+        padding: 12px 2px 40px;
+        font: 600 18px monospace;
+        cursor: pointer;
+      }
+      .drive-lane:after {
+        content: "┊";
+        position: absolute;
+        bottom: 6px;
+        left: 45%;
+        color: #7d969c;
+        font-size: 27px;
+      }
+      .drive-lane.selected {
+        border: 2px solid #e1c184;
+        box-shadow: 0 0 0 2px #e1c18424;
+      }
+      .drive-lane.selected:after {
+        content: "▲";
+        left: calc(50% - 12px);
+        color: #f5d393;
+      }
+      .drive-lane small {
+        display: block;
+        font: 9px monospace;
+        margin-bottom: 7px;
+        letter-spacing: 1px;
+      }
+      .drive-help {
+        font-size: 12px;
+        line-height: 1.5;
+        color: #b3c6c5;
+      }
+      .fuel-tanks {
+        display: flex;
+        gap: 18px;
+        margin: 16px 0;
+      }
+      .fuel-tank {
+        height: 100px;
+        flex: 1;
+        position: relative;
+        border: 2px solid #8caaad;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #0b202e;
+      }
+      .fuel-fill {
+        position: absolute;
+        inset: auto 0 0;
+        height: 0;
+        transition: height 0.1s;
+      }
+      .amber .fuel-fill {
+        background: #c4934880;
+      }
+      .blue .fuel-fill {
+        background: #4cabb580;
+      }
+      .fuel-tank strong {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font: 700 14px monospace;
+        color: #fff1d2;
+      }
+      #fuelValve {
+        width: 100%;
+        accent-color: #e1bb7a;
+        min-height: 42px;
+        touch-action: auto;
+      }
+      #driveFeedback {
+        min-height: 22px;
+        font-size: 13px;
+        color: #eacb97;
+      }
+      #driveGuideForm {
+        margin-top: 12px;
+        padding: 14px;
+        background: #102c39;
+        border: 1px solid #56787d;
+        border-radius: 6px;
+      }
+      #driveGuideForm label {
+        display: block;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      #driveStepAnswer {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #7b999b;
+        border-radius: 4px;
+        background: #081e2b;
+        color: #eef2d9;
+        padding: 10px;
+        font: 16px monospace;
+        margin: 8px 0;
+      }
+      #driveGuideResult {
+        font-size: 13px;
+        line-height: 1.5;
+        color: #c5e7b5;
+      }
+      @media (max-width: 600px) {
+        #driveOverlay {
+          padding: 12px;
+        }
+        #driveOverlay h2 {
+          font-size: 21px;
+        }
+        #drivePrompt {
+          font-size: 14px;
+        }
+        .drive-lanes {
+          gap: 5px;
+        }
+        .drive-lane {
+          font-size: 16px;
+          min-height: 100px;
+        }
+        .fuel-tank strong {
+          font-size: 12px;
+        }
+      }
+      #drivePrompt {
+        max-width: 60ch;
+      }
+      #driveOverlay .drive-help {
+        max-width: 60ch;
+      }
+      #driveGuideResult {
+        max-width: 60ch;
+        margin: 20px auto;
+        text-align: left;
+      }
+      #driveGuideResult li {
+        margin: 6px 0;
+      }
+      .drive-lanes {
+        margin-bottom: 0;
+      }
+      .route-track {
+        position: relative;
+        height: 50px;
+        margin: 0 0 8px;
+        overflow: hidden;
+      }
+      .route-track > svg:first-child {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #routeBike {
+        position: absolute;
+        top: 0;
+        width: 26px;
+        height: 48px;
+        transform: translateX(-50%);
+        transition: left 0.18s ease;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #routeBike,
+        .fuel-fill {
+          transition: none;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1802,7 +2021,7 @@
             <h1 id="title">SPY ACADEMY <em>ADVANCED.</em></h1>
           </div>
           <div class="intro-side">
-            <p>24 operations. Think fast. Go further.</p>
+            <p>36 operations. Think fast. Go further.</p>
             <div class="chip">
               <span>●</span> SINGLE PLAYER <span>/</span> INSTANT PLAY
             </div>
@@ -1811,7 +2030,7 @@
         <section class="training-bar" aria-label="Campaign selection">
           <label
             >GAME MODE<select id="modeSelect">
-              <option value="campaign">Advanced · 24 operations</option>
+              <option value="campaign">Advanced · 36 operations</option>
             </select></label
           >
           <label class="level-field"
@@ -1962,6 +2181,111 @@
                 </div>
               </div>
             </div>
+            <div class="overlay drive-overlay" id="driveOverlay" hidden>
+              <section class="panel" aria-labelledby="driveTitle">
+                <div class="panel-tag">FIELD ENGINEERING · TRAFFIC PAUSED</div>
+                <h2 id="driveTitle">Dispatch junction</h2>
+                <p id="drivePrompt"></p>
+                <div id="driveControls">
+                  <div id="driveRoad">
+                    <div
+                      id="driveLanes"
+                      class="drive-lanes"
+                      aria-label="Road exits"
+                    ></div>
+                    <div class="route-track" aria-hidden="true">
+                      <svg viewBox="0 0 640 50" preserveAspectRatio="none">
+                        <path
+                          d="M320 50L80 0M320 50L240 0M320 50L400 0M320 50L560 0"
+                          fill="none"
+                          stroke="#779399"
+                          stroke-width="2"
+                          stroke-dasharray="5 7"
+                        />
+                      </svg>
+                      <svg id="routeBike" viewBox="0 0 26 48">
+                        <rect
+                          x="9"
+                          y="0"
+                          width="8"
+                          height="48"
+                          rx="4"
+                          fill="#07151c"
+                        />
+                        <rect
+                          x="4"
+                          y="9"
+                          width="18"
+                          height="29"
+                          rx="5"
+                          fill="#deb97a"
+                        />
+                        <rect
+                          x="8"
+                          y="17"
+                          width="10"
+                          height="17"
+                          rx="4"
+                          fill="#274b58"
+                        />
+                        <path d="M0 13H26" stroke="#e5ce9a" stroke-width="4" />
+                        <circle cx="13" cy="14" r="5" fill="#a9c6c7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div id="driveMixer" hidden>
+                    <div class="fuel-tanks">
+                      <div class="fuel-tank amber">
+                        <div id="amberFill" class="fuel-fill"></div>
+                        <strong id="amberLabel"></strong>
+                      </div>
+                      <div class="fuel-tank blue">
+                        <div id="blueFill" class="fuel-fill"></div>
+                        <strong id="blueLabel"></strong>
+                      </div>
+                    </div>
+                    <label for="fuelValve"
+                      >Mixing valve · litres in amber</label
+                    >
+                    <input
+                      id="fuelValve"
+                      type="range"
+                      min="0"
+                      max="100"
+                      value="0"
+                      step="1"
+                    />
+                  </div>
+                  <p class="drive-help" id="driveHelp"></p>
+                  <button class="primary" id="driveCommit">
+                    Take this exit
+                  </button>
+                </div>
+                <p id="driveFeedback" role="status" aria-live="polite"></p>
+                <button class="secondary" id="driveGuideBtn">
+                  Help me calculate
+                </button>
+                <form id="driveGuideForm" hidden>
+                  <ol id="driveStepHistory" class="drive-help"></ol>
+                  <p id="driveStepCount" class="drive-help"></p>
+                  <label id="driveStepPrompt" for="driveStepAnswer"></label>
+                  <p id="driveStepHint" class="drive-help"></p>
+                  <input
+                    id="driveStepAnswer"
+                    autocomplete="off"
+                    inputmode="decimal"
+                    aria-describedby="driveStepHint"
+                  />
+                  <button class="secondary" type="submit">Check step</button>
+                </form>
+                <div id="driveGuideResult" hidden></div>
+                <p class="drive-help">
+                  No countdown. Retries cost no hearts. Correct engineering
+                  earns six seconds of boost.
+                </p>
+              </section>
+            </div>
+
             <div class="overlay" id="challengeOverlay" hidden>
               <div class="panel">
                 <div class="panel-tag" id="challengeMeta">
@@ -2088,6 +2412,13 @@
             </button>
             <span id="energyTray" role="status">Energy 100%</span>
           </div>
+          <div
+            id="objectiveStrip"
+            class="objective-strip"
+            role="status"
+            aria-live="polite"
+            hidden
+          ></div>
           <div class="statusbar">
             <span class="status-message"
               ><span class="status-light"></span
@@ -2217,6 +2548,23 @@
           </p>
         </div>
       </div>
+      <p>
+        Car escapes pause twice at a fuel lab: move the valve to split amber and
+        blue fuel. Motorcycle escapes pause at dispatch junctions: steer to the
+        calculated exit and press FIRE. Correct engineering earns a six-second
+        boost. Help requires a checked input for each calculation; unfinished
+        vehicle tasks are saved.
+      </p>
+      <p>
+        Shadow Atlas (operations 25–36) adds weapon caches, chained objectives
+        and named villains. Two missions start unarmed; C or FIRE performs a
+        takedown until you find a cache. Ion rails pierce guards and use 8
+        energy; ricochet discs return from a wall and use 6. Override the
+        defenses to stop floor traps and remove the villain’s shield. Jump or
+        wait while a trap warns, and use the villain’s recovery window. On
+        Arctic floors, allow room to stop on the ice. Defeat the villain before
+        the final transmission.
+      </p>
       <div class="manual-keys">
         <kbd>P</kbd> / <kbd>Esc</kbd> Pause · <kbd>M</kbd> Sound ·
         <kbd>F</kbd> Fullscreen<br />Touch controls and the equipment buttons
@@ -2250,7 +2598,7 @@
       /*
        * SPY ACADEMY ADVANCED
        * A dependency-free, original tribute. Everything needed to play is in this file.
-       * CUSTOMIZE: MathEngine contains a 24-operation campaign and source-mapped seeded templates.
+       * CUSTOMIZE: MathEngine contains a 36-operation campaign and source-mapped seeded templates.
        * See CURRICULUM.md and SOURCES.md for content provenance and authoring.
        * Challenges pause the action and never cost a life. Everything runs locally in this file.
        * Rendering, input, audio, simulation, and content are kept separate below.
@@ -2507,6 +2855,307 @@
             brief: `${lesson}. Recover the equipment, then complete a ${escape} escape.`,
           }),
         );
+        const expeditions = [
+          [
+            "WHITEOUT CIPHER",
+            "arctic",
+            "helicopter",
+            14,
+            "mixed-quotient",
+            "fractions",
+            "Svalbard, Arctic Circle",
+            "Recover the Aurora Prism before Dr. Voss turns the polar relay into a tracking network.",
+            "Dr. Voss",
+            "ranger",
+            [
+              "THERMAL KEY",
+              "EVACUATE PILOT",
+              "COOLANT VALVE",
+              "AURORA PRISM",
+              "RELAY UPLOAD",
+            ],
+          ],
+          [
+            "AURORA BLACKOUT",
+            "arctic",
+            "plane",
+            16,
+            "unit-ratio",
+            "ratios",
+            "Ice Shelf Listening Station",
+            "Recover a lost frequency map and shut down a disguised orbital uplink.",
+            "Captain Rime",
+            "duelist",
+            [
+              "FREQUENCY KEY",
+              "FLIGHT RECORDER",
+              "GRID OVERRIDE",
+              "POLAR ATLAS",
+              "UPLINK PATCH",
+            ],
+          ],
+          [
+            "MASK OF THE MAGPIE",
+            "venice",
+            "motorcycle",
+            12,
+            "linked-ratios",
+            "ratios",
+            "Venice, Palazzo delle Ombre",
+            "Enter the masquerade unarmed. Find a weapon cache, recover the courier’s token, and expose the Magpie.",
+            "The Magpie",
+            "duelist",
+            [
+              "GUEST TOKEN",
+              "RESCUE COURIER",
+              "ALARM RELAY",
+              "GLASS CANARY",
+              "BEACON UPLOAD",
+            ],
+          ],
+          [
+            "THE GLASS AUCTION",
+            "venice",
+            "helicopter",
+            14,
+            "fractional-percent",
+            "percent",
+            "Venice, Submerged Treasury",
+            "Trace counterfeit bids through a flooded treasury and retrieve a crystal containing the buyers’ identities.",
+            "Count Sable",
+            "ranger",
+            [
+              "AUCTION SEAL",
+              "BID LEDGER",
+              "PUMP OVERRIDE",
+              "OBSIDIAN EYE",
+              "EVIDENCE UPLOAD",
+            ],
+          ],
+          [
+            "SUN DIAL",
+            "desert",
+            "car",
+            16,
+            "shadow-scale",
+            "proportions",
+            "Sahara, Solar Observatory",
+            "Use a stolen survey map to reach a solar antenna and recover its navigation lens.",
+            "Mirage",
+            "ranger",
+            [
+              "SURVEY KEY",
+              "SUN CHART",
+              "MIRROR OVERRIDE",
+              "SOLAR LENS",
+              "SIGNAL UPLOAD",
+            ],
+          ],
+          [
+            "MIRAGE EXCHANGE",
+            "desert",
+            "plane",
+            18,
+            "currency-exchange",
+            "variation",
+            "Marrakesh, Hidden Exchange",
+            "Follow a courier through a desert trading post and seize the Phantom Mint’s cipher plate.",
+            "The Broker",
+            "engineer",
+            [
+              "TRADE SEAL",
+              "COURIER ROUTE",
+              "LASER OVERRIDE",
+              "CIPHER PLATE",
+              "LEDGER UPLOAD",
+            ],
+          ],
+          [
+            "JADE VECTOR",
+            "jungle",
+            "helicopter",
+            14,
+            "monomial-factor-list",
+            "factoring",
+            "Borneo, Canopy Archive",
+            "Enter a ruined observatory without a firearm. Recover the Jade Compass and the scientist who decoded it.",
+            "Dr. Thorn",
+            "engineer",
+            [
+              "VINE KEY",
+              "EVACUATE BOTANIST",
+              "TRAP OVERRIDE",
+              "JADE COMPASS",
+              "RESEARCH UPLOAD",
+            ],
+          ],
+          [
+            "TEMPLE OF FACTORS",
+            "jungle",
+            "parachute",
+            18,
+            "factor-count",
+            "factoring",
+            "Angkor, Temple Below the Roots",
+            "Match the seals, disable the temple traps, and retrieve a mechanism hidden inside the Lotus Engine.",
+            "The Curator",
+            "duelist",
+            [
+              "LOTUS SEAL",
+              "RUBBING FRAGMENT",
+              "TRAP OVERRIDE",
+              "LOTUS ENGINE",
+              "MAP UPLOAD",
+            ],
+          ],
+          [
+            "ABYSS SIGNAL",
+            "abyss",
+            "helicopter",
+            18,
+            "gear-train",
+            "variation",
+            "Indian Ocean, Abyssal Research Station",
+            "Restore the airlock controls and retrieve a black pearl containing a stolen ocean-floor map.",
+            "Admiral Null",
+            "ranger",
+            [
+              "DIVE KEY",
+              "RESCUE DIVER",
+              "CURRENT OVERRIDE",
+              "BLACK PEARL",
+              "SONAR UPLOAD",
+            ],
+          ],
+          [
+            "THE SILENT CURRENT",
+            "abyss",
+            "plane",
+            20,
+            "literal-network",
+            "literal",
+            "Pacific Atoll, Submarine Pen",
+            "Intercept a submarine transmission and extract the Tide Core before its coordinates are erased.",
+            "Dr. Undertow",
+            "engineer",
+            [
+              "DOCK KEY",
+              "ROUTE CYLINDER",
+              "SONAR OVERRIDE",
+              "TIDE CORE",
+              "COMMAND UPLOAD",
+            ],
+          ],
+          [
+            "CALDERA PROTOCOL",
+            "volcano",
+            "helicopter",
+            20,
+            "rational-proportion",
+            "proportions",
+            "Iceland, Caldera Fortress",
+            "Cut the geothermal defenses and retrieve the Helix Key from an armored data vault.",
+            "Iron Warden",
+            "duelist",
+            [
+              "BASALT KEY",
+              "RESCUE ENGINEER",
+              "VENT OVERRIDE",
+              "HELIX KEY",
+              "VAULT UPLOAD",
+            ],
+          ],
+          [
+            "ZERO HOUR ATLAS",
+            "volcano",
+            "parachute",
+            22,
+            "quadratic-proportion",
+            "proportions",
+            "Pacific Rim, Obsidian Spire",
+            "Assemble the evidence, confront Director Zero, and broadcast the Shadow Atlas before parachuting to safety.",
+            "Director Zero",
+            "engineer",
+            [
+              "ATLAS SEAL",
+              "COMMAND FRAGMENT",
+              "SHIELD OVERRIDE",
+              "SHADOW ATLAS",
+              "FINAL BROADCAST",
+            ],
+          ],
+        ];
+        for (const [index, row] of expeditions.entries()) {
+          const [
+            name,
+            theme,
+            escape,
+            floors,
+            template,
+            topic,
+            location,
+            story,
+            villain,
+            style,
+            objects,
+          ] = row;
+          const mixed =
+            index === 3
+              ? ["percent:3:percent-comparison"]
+              : index === 7
+                ? ["factoring:3:multivariable-gcf"]
+                : index === 8
+                  ? ["variation:3:inverse-speed"]
+                  : index === 11
+                    ? [
+                        "factoring:3:multivariable-gcf",
+                        "literal:3:literal-network",
+                        "proportions:3:rational-proportion",
+                      ]
+                    : [];
+          const locks = Array(5).fill(
+            `${topic}:${index < 4 ? 2 : 3}:${template}`,
+          );
+          mixed.forEach((lock, i) => {
+            locks[i + 1] = lock;
+          });
+          campaign.push({
+            level: 25 + index,
+            name,
+            topic,
+            template,
+            tier: index < 4 ? 2 : 3,
+            theme,
+            escape,
+            floors,
+            count: 5,
+            locks,
+            security: 5,
+            chapter: "SHADOW ATLAS",
+            location,
+            story,
+            villain,
+            style,
+            objects,
+            unarmed: [2, 6].includes(index),
+            lesson: {
+              "mixed-quotient": "Mixed-number division",
+              "unit-ratio": "Ratios and unit conversion",
+              "linked-ratios": "Link two ratios",
+              "fractional-percent": "Fractional percents and comparison",
+              "shadow-scale": "Similar shadows and scale",
+              "currency-exchange": "Exchange rates",
+              "monomial-factor-list": "Identify every valid monomial factor",
+              "factor-count": "Count factors and extract multivariable factors",
+              "gear-train": "Gears, speed and inverse variation",
+              "literal-network": "Rearrange multivariable formulas",
+              "rational-proportion": "Rational proportions and excluded values",
+              "quadratic-proportion": "Quadratic proportions and two solutions",
+            }[template],
+            brief: story,
+          });
+        }
+
         const gcd = (a, b) => (b ? gcd(b, a % b) : Math.abs(a));
         const frac = (a, b) => {
           if (b < 0) {
@@ -3441,6 +4090,963 @@
             [`${a}/(y + ${b})`, `(y − ${b})/${a}`, `${a}/y − ${b}`],
           );
         });
+        // Shadow Atlas: new families from previously unused sections of the supplied PDFs.
+        const ratioText = (a, b) => {
+          const g = gcd(a, b);
+          return `${a / g}:${b / g}`;
+        };
+        const divisors = (n) =>
+          Array.from({ length: n }, (_, i) => i + 1).filter((d) => n % d === 0);
+        add("fractions", "mixed-quotient", (r, t) => {
+          const d = r(3, 8),
+            whole = r(2, 5 + t),
+            n = r(1, d - 1),
+            rawN = r(1, 3),
+            rawD = r(4, 9),
+            pieceGcd = gcd(rawN, rawD),
+            pieceN = rawN / pieceGcd,
+            pieceD = rawD / pieceGcd,
+            num = (whole * d + n) * pieceD,
+            den = d * pieceN,
+            answer = frac(num, den);
+          return q(
+            `An Arctic radio cable is ${whole} ${n}/${d} metres long. Each antenna needs ${pieceN}/${pieceD} metre. How many antenna-lengths does the cable contain, including any fractional length?`,
+            answer,
+            [
+              calc(
+                "Multiply the whole part by its denominator.",
+                whole,
+                "×",
+                d,
+                "First convert the mixed number to an improper fraction.",
+              ),
+              calc(
+                "Add the numerator of the fractional part.",
+                whole * d,
+                "+",
+                n,
+                "Keep the original denominator.",
+              ),
+              step(
+                "What is the reciprocal of the antenna length?",
+                frac(pieceD, pieceN),
+                "To divide by a fraction, multiply by its reciprocal.",
+                "fraction",
+              ),
+              calc(
+                "Multiply the improper numerator by the reciprocal numerator.",
+                whole * d + n,
+                "×",
+                pieceD,
+                "Multiply across the numerators.",
+              ),
+              calc(
+                "Multiply the denominators.",
+                d,
+                "×",
+                pieceN,
+                "The reciprocal has swapped the second fraction’s parts.",
+              ),
+              step(
+                "Reduce the quotient. Enter a fraction or decimal.",
+                answer,
+                "This asks for lengths, including fractional lengths, rather than only complete antennas.",
+                "fraction",
+              ),
+            ],
+            { d, whole, n, pieceN, pieceD },
+            source(
+              "S06",
+              "pp. 29–31",
+              "Mixed-number division and applications",
+            ),
+            [
+              frac(num + den, den),
+              frac(num - den, den),
+              frac(num + 2 * den, den),
+            ],
+          );
+        });
+        add("ratios", "unit-ratio", (r, t) => {
+          const minutes = r(2, 6 + t),
+            seconds = r(3, 15) * 5,
+            a = minutes * 60,
+            g = gcd(a, seconds),
+            answer = ratioText(a, seconds);
+          return q(
+            `A listening window lasts ${minutes} minutes. A signal burst lasts ${seconds} seconds. Express listening time : burst time as a simplest whole-number ratio.`,
+            answer,
+            [
+              calc(
+                "Convert the listening time to seconds.",
+                minutes,
+                "×",
+                60,
+                "Ratios must compare quantities in the same units.",
+              ),
+              step(
+                "Find the greatest common factor of the two times in seconds.",
+                g,
+                "Find the largest integer that divides both times.",
+              ),
+              calc(
+                "Divide the listening time by the common factor.",
+                a,
+                "÷",
+                g,
+                "This gives the first part of the reduced ratio.",
+              ),
+              calc(
+                "Divide the burst time by the same factor.",
+                seconds,
+                "÷",
+                g,
+                "Keep the requested order: listening time, then burst time.",
+              ),
+            ],
+            { minutes, seconds },
+            source("S11", "pp. 3–4", "Ratios with unit conversion"),
+            [
+              `${a / g + 1}:${seconds / g}`,
+              `${a / g}:${seconds / g + 1}`,
+              `${a / g + 2}:${seconds / g}`,
+            ],
+          );
+        });
+        add("ratios", "linked-ratios", (r, t) => {
+          const a = r(2, 6),
+            b = r(2, 7),
+            c = r(2, 7),
+            d = r(3, 8 + t),
+            L = (b * c) / gcd(b, c),
+            A = (a * L) / b,
+            C = (d * L) / c,
+            g = gcd(A, C),
+            answer = ratioText(A, C);
+          return q(
+            `At a Venetian auction, ruby : pearl tokens = ${a}:${b}, and pearl : sapphire tokens = ${c}:${d}. What is ruby : sapphire in simplest form?`,
+            answer,
+            [
+              step(
+                `Find the least common multiple of the two pearl counts, ${b} and ${c}.`,
+                L,
+                "Scale both ratios so their shared pearl quantity agrees.",
+              ),
+              calc(
+                "What scale factor turns the first pearl count into that common count?",
+                L,
+                "÷",
+                b,
+                "Scale both parts of the first ratio by this factor.",
+              ),
+              calc(
+                "Find the scaled ruby count.",
+                a,
+                "×",
+                L / b,
+                "Use the first ratio’s scale factor.",
+              ),
+              calc(
+                "Find the scaled sapphire count.",
+                d,
+                "×",
+                L / c,
+                "Use common pearl count ÷ second pearl count as the second scale factor.",
+              ),
+              step(
+                "Find the greatest common factor of the scaled ruby and sapphire counts.",
+                g,
+                "Reduce the final ratio without changing its order.",
+              ),
+              calc(
+                "Find the reduced ruby count.",
+                A,
+                "÷",
+                g,
+                "This is the first part of the answer.",
+              ),
+              calc(
+                "Find the reduced sapphire count.",
+                C,
+                "÷",
+                g,
+                "This is the second part of the answer.",
+              ),
+            ],
+            { a, b, c, d },
+            source(
+              "S17",
+              "p. 4, problem 7",
+              "Linking two ratios through a common quantity",
+            ),
+            [
+              `${A / g + 1}:${C / g}`,
+              `${A / g}:${C / g + 1}`,
+              `${A / g + 2}:${C / g}`,
+            ],
+          );
+        });
+        add("percent", "fractional-percent", (r, t) => {
+          const den = [2, 4, 8][r(0, 2)],
+            num = r(1, den - 1) + (t === 3 ? den : 0),
+            whole = den * r(6, 25),
+            percent = (num * 100) / den;
+          return q(
+            `A vault’s reserve is ${percent}% of its standard ${whole} energy units. How many energy units are in the reserve?`,
+            (whole * num) / den,
+            [
+              calc(
+                "Convert the percentage to a decimal.",
+                percent,
+                "÷",
+                100,
+                "Percent means per hundred, even for a fractional percent or one above 100.",
+              ),
+              calc(
+                "Multiply the standard quantity by that decimal.",
+                whole,
+                "×",
+                num / den,
+                "The reserve is the stated percentage of the standard quantity.",
+              ),
+            ],
+            { den, num, whole, percent },
+            source(
+              "S14",
+              "pp. 6, 12",
+              "Fractional percents and percents above 100",
+            ),
+          );
+        });
+        add("percent", "percent-comparison", (r, t) => {
+          const whole = r(2, 12) * 40,
+            percent = r(1, t === 3 ? 35 : 19) * 5,
+            part = (whole * percent) / 100;
+          return q(
+            `The archive expected ${whole} coded pages and recovered ${part}. The recovered count is what percent of the expected count? Enter the number before %.`,
+            percent,
+            [
+              step(
+                "Express recovered / expected as a simplified fraction.",
+                frac(part, whole),
+                "The expected count is the comparison base.",
+                "fraction",
+              ),
+              calc(
+                "Multiply the recovered count by 100.",
+                part,
+                "×",
+                100,
+                "To turn a ratio into a percent, multiply by 100.",
+              ),
+              calc(
+                "Divide by the expected count.",
+                part * 100,
+                "÷",
+                whole,
+                "A percentage above 100 means the recovered count exceeded the expectation.",
+              ),
+            ],
+            { whole, part },
+            source(
+              "S14",
+              "pp. 10–13",
+              "Finding what percent one number is of another",
+            ),
+          );
+        });
+        add("proportions", "shadow-scale", (r, t) => {
+          const height = r(2, 6),
+            shadow = r(2, 7),
+            k = r(3, 8 + t),
+            towerShadow = shadow * k;
+          return q(
+            `In the desert, a ${height}-metre marker casts a ${shadow}-metre shadow. At the same moment, an upright antenna on level ground casts a ${towerShadow}-metre shadow. How tall is the antenna? Assume parallel sunlight.`,
+            height * k,
+            [
+              calc(
+                "How many times as long is the antenna’s shadow?",
+                towerShadow,
+                "÷",
+                shadow,
+                "Under the same light angle, height and shadow length have the same scale factor.",
+              ),
+              calc(
+                "Scale the marker height by that factor.",
+                height,
+                "×",
+                k,
+                "Keep matching heights to heights and shadows to shadows.",
+              ),
+            ],
+            { height, shadow, towerShadow },
+            source(
+              "S24",
+              "pp. 3–4, example 6",
+              "Proportions in similar shadows",
+            ),
+          );
+        });
+        add("variation", "currency-exchange", (r, t) => {
+          const euros = r(4, 12) * 10,
+            cents = r(85, 145),
+            received = euros * cents,
+            newEuros = r(3, 15) * 10,
+            answer = (newEuros * cents) / 100;
+          return q(
+            `A courier exchanges €${euros} for $${(received / 100).toFixed(2)}. At the same rate with no fees, how many dollars will €${newEuros} buy?`,
+            answer,
+            [
+              step(
+                "Convert the first dollar amount to cents.",
+                received,
+                "Multiply the dollar amount by 100. Working in cents avoids rounding the exchange rate.",
+                "number",
+                { a: received / 100, b: 100, op: "×" },
+              ),
+              calc(
+                "Find cents received for one euro.",
+                received,
+                "÷",
+                euros,
+                "Direct variation keeps the exchange rate constant.",
+              ),
+              calc(
+                "Find cents received for the new amount.",
+                cents,
+                "×",
+                newEuros,
+                "Multiply the rate by the new number of euros.",
+              ),
+              calc(
+                "Convert those cents back to dollars.",
+                cents * newEuros,
+                "÷",
+                100,
+                "Enter the amount without a currency symbol.",
+              ),
+            ],
+            { euros, received, newEuros },
+            source("S21", "p. 1, problem 5", "Currency as direct variation"),
+          );
+        });
+        add("factoring", "monomial-factor-list", (r, t) => {
+          const k = r(2, 6),
+            a = r(2, 4 + t),
+            b = r(2, 5),
+            coefficient = 6 * k;
+          const candidates = [
+            { c: 2 * k, x: a - 1, y: b },
+            { c: coefficient + 1, x: 0, y: 1 },
+            { c: 3 * k, x: a, y: b - 1 },
+            { c: k, x: a + 1, y: 0 },
+          ];
+          for (let i = candidates.length - 1; i > 0; i--) {
+            const j = r(0, i);
+            [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+          }
+          const valid = (v) => coefficient % v.c === 0 && v.x <= a && v.y <= b;
+          const answer = candidates
+            .map((v, i) => (valid(v) ? "ABCD"[i] : null))
+            .filter(Boolean)
+            .join(" and ");
+          const wrong = [
+            "A and B",
+            "A and C",
+            "A and D",
+            "B and C",
+            "B and D",
+            "C and D",
+          ]
+            .filter((v) => v !== answer)
+            .slice(0, 3);
+          const guide = [
+            step(
+              `List all positive factors of the numerical coefficient ${coefficient}.`,
+              divisors(coefficient).join(", "),
+              "A numerical coefficient must divide exactly. Separate the factors with commas.",
+              "set",
+            ),
+          ];
+          candidates.forEach((v, i) =>
+            guide.push(
+              step(
+                `Is candidate ${"ABCD"[i]} a factor? Enter yes or no.`,
+                valid(v) ? "yes" : "no",
+                "Its coefficient must divide the original coefficient, and neither variable exponent may exceed the original exponent.",
+                "text",
+              ),
+            ),
+          );
+          return q(
+            `Which list contains ALL monomial factors of ${coefficient}x^${a}y^${b} among these candidates? ${candidates.map((v, i) => `${"ABCD"[i]}: ${v.c}x^${v.x}y^${v.y}`).join("; ")}. Consider positive integer coefficients and nonnegative integer exponents.`,
+            answer,
+            guide,
+            { coefficient, a, b, candidates },
+            source(
+              "S19",
+              "p. 1, part A",
+              "Monomial divisibility and multiple valid factors",
+            ),
+            wrong,
+          );
+        });
+        add("factoring", "factor-count", (r, t) => {
+          const n = [6, 10, 12, 18, 20, 24, 30, 36][r(0, 7)],
+            a = r(1, 2 + t),
+            b = r(1, 3),
+            factors = divisors(n),
+            answer = factors.length * (a + 1) * (b + 1);
+          return q(
+            `How many distinct monomials with positive integer coefficients and nonnegative integer exponents divide ${n}x^${a}y^${b}? Include 1 and the monomial itself.`,
+            answer,
+            [
+              step(
+                `List the positive integer divisors of ${n}.`,
+                factors.join(", "),
+                "List factor pairs; write each positive divisor once.",
+                "set",
+              ),
+              step(
+                "How many choices are there for the numerical coefficient?",
+                factors.length,
+                "Count the distinct divisors you entered.",
+              ),
+              calc(
+                "How many x exponents are allowed, including exponent zero?",
+                a,
+                "+",
+                1,
+                "Allowed exponents run from 0 through the exponent in the original term.",
+              ),
+              calc(
+                "How many y exponents are allowed?",
+                b,
+                "+",
+                1,
+                "Include zero here as well.",
+              ),
+              calc(
+                "Multiply the coefficient choices by the x-exponent choices.",
+                factors.length,
+                "×",
+                a + 1,
+                "Each choice can be paired with each choice from the next group.",
+              ),
+              calc(
+                "Include the y-exponent choices.",
+                factors.length * (a + 1),
+                "×",
+                b + 1,
+                "The product counts every possible monomial factor exactly once.",
+              ),
+            ],
+            { n, a, b },
+            source(
+              "S19",
+              "p. 1, part B; p. 2 answer lists",
+              "Count all monomial factors",
+            ),
+          );
+        });
+        add("factoring", "multivariable-gcf", (r, t) => {
+          const k = r(2, 9),
+            a = r(2, 5),
+            b = a + 1,
+            p = r(1, t + 2),
+            z = r(1, t + 2),
+            answer = `${k}x^${p}y^${z}(${a}x − ${b}y)`;
+          return q(
+            `Factor out the greatest common monomial from ${k * a}x^${p + 1}y^${z} − ${k * b}x^${p}y^${z + 1}.`,
+            answer,
+            [
+              step(
+                "Find the greatest common factor of the two coefficients.",
+                k,
+                "The common numerical factor must divide both coefficients.",
+              ),
+              step(
+                "What power of x belongs in the common factor?",
+                p,
+                "Choose the smaller x exponent.",
+              ),
+              step(
+                "What power of y belongs in the common factor?",
+                z,
+                "Choose the smaller y exponent independently.",
+              ),
+              calc(
+                "Find the first remaining coefficient.",
+                k * a,
+                "÷",
+                k,
+                "Divide the first term by the common monomial.",
+              ),
+              calc(
+                "Find the signed second remaining coefficient.",
+                -k * b,
+                "÷",
+                k,
+                "The subtraction sign remains with the second term.",
+              ),
+            ],
+            { k, a, b, p, z },
+            source(
+              "S01",
+              "p. 1, problems 1, 8; S23, p. 1",
+              "Common factors with several variables",
+            ),
+            [
+              `${k}x^${p}y^${z}(${a}x + ${b}y)`,
+              `${k}x^${p}y^${z}(${a + 1}x − ${b}y)`,
+              `${k}x^${p + 1}y^${z}(${a}x − ${b}y)`,
+            ],
+          );
+        });
+        add("variation", "gear-train", (r, t) => {
+          const teethA = r(3, 9) * 5,
+            teethB = r(3, 9) * 5,
+            rpmB = r(4, 12) * 10;
+          // Report a rational rate when needed so no rounding assumption is hidden.
+          const rate = frac(teethB * rpmB, teethA);
+          return q(
+            `Two meshed gears control an underwater airlock. Gear A has ${teethA} teeth; gear B has ${teethB} teeth and turns at ${rpmB} rpm. How many rpm does gear A turn? Give an exact fraction or whole number.`,
+            rate,
+            [
+              calc(
+                "Find the constant teeth × rpm using gear B.",
+                teethB,
+                "×",
+                rpmB,
+                "Meshed gears pass the same number of teeth per minute.",
+              ),
+              step(
+                "Divide that constant by the number of teeth on gear A. Enter an exact rate.",
+                rate,
+                "More teeth means fewer revolutions per minute.",
+                "fraction",
+              ),
+            ],
+            { teethA, teethB, rpmB },
+            source("S11", "pp. 7–8", "Inverse variation in meshed gears"),
+            [
+              frac(teethB * rpmB + teethA, teethA),
+              frac(teethB * rpmB - teethA, teethA),
+              frac(teethB * rpmB + 2 * teethA, teethA),
+            ],
+          );
+        });
+        add("variation", "inverse-speed", (r, t) => {
+          const v1 = r(4, 9) * 2,
+            time1 = r(2, 6),
+            v2 = r(3, 8) * 2,
+            distance = v1 * time1,
+            answer = frac(distance, v2);
+          return q(
+            `A submarine travels a fixed route in ${time1} hours at ${v1} km/h. At a constant ${v2} km/h, how many hours will the same route take? Ignore currents; give an exact fraction or whole number.`,
+            answer,
+            [
+              calc(
+                "Find the route distance.",
+                v1,
+                "×",
+                time1,
+                "Distance = speed × time.",
+              ),
+              step(
+                "Divide the distance by the new speed.",
+                answer,
+                "The distance stays fixed, so travel time varies inversely with speed.",
+                "fraction",
+              ),
+            ],
+            { v1, time1, v2 },
+            source("S22", "p. 1, problem 5", "Fixed-distance speed and time"),
+            [
+              frac(distance + v2, v2),
+              frac(distance - v2, v2),
+              frac(distance + 2 * v2, v2),
+            ],
+          );
+        });
+        add("literal", "literal-network", (r, t) => {
+          const a = r(2, 9),
+            b = r(2, 9),
+            factor = `${a}*c-${b}*d`,
+            answer = `u/(${factor})`;
+          return q(
+            `Rearrange u = ${a}cx − ${b}dx to make x the subject. Assume ${a}c − ${b}d ≠ 0. In the answers, * denotes multiplication.`,
+            answer,
+            [
+              step(
+                "Which variable is a factor of both terms on the right?",
+                "x",
+                "Find the variable shared by both products.",
+                "text",
+              ),
+              step(
+                "After factoring out that variable, enter the expression remaining inside parentheses.",
+                factor,
+                "Divide each term by the shared variable. Use * for multiplication and preserve the subtraction.",
+                "code",
+              ),
+              step(
+                "Enter the expression for x.",
+                answer,
+                "Divide both sides by the entire nonzero factor. Use parentheses around the denominator.",
+                "code",
+              ),
+            ],
+            { a, b },
+            source(
+              "S15",
+              "p. 2, problem 27",
+              "Factor a subject from a multivariable formula",
+            ),
+            [`u/(${a}*c+${b}*d)`, `(${factor})/u`, `u*(${factor})`],
+          );
+        });
+        add("proportions", "rational-proportion", (r, t) => {
+          const c = r(2, 6),
+            k = r(2, 5),
+            a = c * k,
+            x = r(-5, 6),
+            unit = r(8, 17),
+            b = k * unit - x,
+            d = unit - x;
+          return q(
+            `Solve ${a}/(x + ${b}) = ${c}/(x + ${d}). Exclude values that make a denominator zero.`,
+            x,
+            [
+              calc(
+                "Cross multiply. What is the constant on the left after distributing?",
+                a,
+                "×",
+                d,
+                "Multiply the left numerator by the entire right denominator.",
+              ),
+              calc(
+                "What is the constant on the right?",
+                c,
+                "×",
+                b,
+                "Multiply the right numerator by the entire left denominator.",
+              ),
+              calc(
+                "Move x terms left: what coefficient remains?",
+                a,
+                "−",
+                c,
+                "Subtract the right coefficient from the left.",
+              ),
+              calc(
+                "Move constants right: what constant remains?",
+                c * b,
+                "−",
+                a * d,
+                "Subtract the left constant from the right.",
+              ),
+              calc(
+                "Divide to solve for x.",
+                c * b - a * d,
+                "÷",
+                a - c,
+                "Keep both negative signs when dividing.",
+              ),
+              step(
+                "List both excluded x values, separated by a comma.",
+                `${-b}, ${-d}`,
+                "Set each original denominator equal to zero. The solution must avoid both values.",
+                "set",
+              ),
+            ],
+            { a, b, c, d, x },
+            source(
+              "S24",
+              "pp. 2, 5",
+              "Variables in denominators and domain restrictions",
+            ),
+          );
+        });
+        add("proportions", "quadratic-proportion", (r, t) => {
+          const k = r(2, 5),
+            d = r(2, 6),
+            n = r(k + 1, k + 7),
+            a = n - k,
+            c = n + d,
+            pos = d + k,
+            answer = `x = ${-n} or x = ${pos}`;
+          return q(
+            `Solve (x + ${a})/${k} = ${c}/(x − ${d}). Find BOTH real solutions, excluding x = ${d}.`,
+            answer,
+            [
+              calc(
+                "Find the known cross product on the right.",
+                k,
+                "×",
+                c,
+                "Cross multiplication gives (x + a)(x − d) on the left.",
+              ),
+              calc(
+                "Expand the left product: what is the coefficient of x?",
+                a,
+                "−",
+                d,
+                "Add the two middle-term coefficients.",
+              ),
+              calc(
+                "What is the constant from the expanded product?",
+                a,
+                "×",
+                -d,
+                "Multiply the two constants with their signs.",
+              ),
+              calc(
+                "Subtract the right-hand cross product to make the equation equal zero.",
+                -a * d,
+                "−",
+                k * c,
+                "Keep the x² and x terms on the left.",
+              ),
+              step(
+                "Find two integers whose sum is the x coefficient and whose product is the constant. Enter both.",
+                `${n}, ${-pos}`,
+                "List factor pairs of the constant, then check their signed sum.",
+                "set",
+              ),
+              step(
+                "Set each linear factor equal to zero. Enter both solutions.",
+                `${-n}, ${pos}`,
+                "A product is zero if either factor is zero. Reverse the sign of each constant inside a factor. Neither root is the excluded value.",
+                "set",
+              ),
+            ],
+            { k, d, n, a, c },
+            source(
+              "S24",
+              "p. 3, example 5; p. 5, problems 21–30",
+              "Quadratic proportions with two solutions",
+            ),
+            [`x = ${n} or x = ${-pos}`, `x = ${-n} only`, `x = ${pos} only`],
+          );
+        });
+
+        // Vehicle missions: physical controls use the same checked-step problem contract.
+        for (const mode of ["fraction", "percent"]) {
+          add(
+            mode === "fraction" ? "fractions" : "percent",
+            `route-${mode}`,
+            (r, t) => {
+              const den = [4, 5, 8, 10][r(0, 3)],
+                num = r(1, den - 1),
+                length = den * r(4, 12 + t),
+                start = r(2, 15),
+                portion = (length * num) / den;
+              const percent = (num * 100) / den;
+              return q(
+                `DISPATCH: Start at road marker ${start}. The dead drop is ${mode === "fraction" ? `${num}/${den}` : `${percent}%`} of a ${length}-block route farther ahead. Which numbered exit reaches the dead drop? Markers increase by one per block.`,
+                start + portion,
+                [
+                  mode === "fraction"
+                    ? calc(
+                        "Find the length of one equal part of the route.",
+                        length,
+                        "÷",
+                        den,
+                        "Split the route into the denominator’s number of equal parts.",
+                      )
+                    : calc(
+                        "Convert the percentage to a decimal.",
+                        percent,
+                        "÷",
+                        100,
+                        "Percent means per hundred.",
+                      ),
+                  mode === "fraction"
+                    ? calc(
+                        "Find the number of blocks to travel.",
+                        length / den,
+                        "×",
+                        num,
+                        "Use the numerator’s number of equal parts.",
+                      )
+                    : step(
+                        "Find the number of blocks to travel.",
+                        portion,
+                        "Multiply the full route length by the decimal.",
+                        "number",
+                        { a: length, b: num / den, op: "×" },
+                      ),
+                  calc(
+                    "Add the travel distance to the starting marker.",
+                    start,
+                    "+",
+                    portion,
+                    "The exit number includes your starting position.",
+                  ),
+                ],
+                { den, num, length, start },
+                source(
+                  mode === "fraction" ? "S06" : "S14",
+                  mode === "fraction" ? "pp. 21–22" : "pp. 6–7",
+                  "Apply a fractional or percentage part to a route, then add an offset",
+                ),
+              );
+            },
+          );
+          add(
+            mode === "fraction" ? "fractions" : "percent",
+            `fuel-${mode}`,
+            (r, t) => {
+              const den = [4, 5, 8, 10][r(0, 3)],
+                num = r(1, den - 1),
+                total = den * r(2, 4 + t),
+                amount = (total * num) / den,
+                percent = (num * 100) / den;
+              return q(
+                `FUEL LAB: Split ${total} litres between the amber and blue tanks. The engine needs ${mode === "fraction" ? `${num}/${den}` : `${percent}%`} of the total in AMBER, with the rest in BLUE. How many litres belong in amber? Move the valve to create the blend.`,
+                amount,
+                [
+                  mode === "fraction"
+                    ? calc(
+                        "Find the size of one equal part.",
+                        total,
+                        "÷",
+                        den,
+                        "Divide the total litres into equal parts.",
+                      )
+                    : calc(
+                        "Convert the percentage to a decimal.",
+                        percent,
+                        "÷",
+                        100,
+                        "Divide by one hundred.",
+                      ),
+                  mode === "fraction"
+                    ? calc(
+                        "Find the amber allocation.",
+                        total / den,
+                        "×",
+                        num,
+                        "Use the required number of equal parts.",
+                      )
+                    : step(
+                        "Calculate the amber allocation.",
+                        amount,
+                        "Multiply total litres by the amber proportion.",
+                        "number",
+                        { a: total, b: num / den, op: "×" },
+                      ),
+                  calc(
+                    "Find the litres remaining for blue.",
+                    total,
+                    "−",
+                    amount,
+                    "The two allocations must add back to the total.",
+                  ),
+                ],
+                { den, num, total },
+                source(
+                  mode === "fraction" ? "S06" : "S14",
+                  mode === "fraction" ? "pp. 21–22" : "pp. 6–7",
+                  "Allocate a whole using a fraction or percent",
+                ),
+              );
+            },
+          );
+        }
+        add("equations", "route-intercept", (r, t) => {
+          const courier = r(2, 5),
+            gap = r(1, 3 + t),
+            minutes = r(3, 9),
+            lead = gap * minutes,
+            speed = courier + gap,
+            answer = speed * minutes;
+          return q(
+            `INTERCEPT: A courier starts at road marker ${lead}, moving at ${courier} blocks/min. You start at marker 0 at ${speed} blocks/min, at the same time and in the same direction. With constant speeds, at which marker do you meet? Choose that exit.`,
+            answer,
+            [
+              calc(
+                "Find your closing speed in blocks per minute.",
+                speed,
+                "−",
+                courier,
+                "Only the difference in speeds closes the gap.",
+              ),
+              calc(
+                "Find how many minutes close the initial gap.",
+                lead,
+                "÷",
+                gap,
+                "Gap divided by closing speed gives the meeting time.",
+              ),
+              calc(
+                "Find your road marker at that time.",
+                speed,
+                "×",
+                minutes,
+                "Start at zero; distance equals speed times time.",
+              ),
+              calc(
+                "Check the courier’s marker at the same time.",
+                lead,
+                "+",
+                courier * minutes,
+                "Both positions must agree.",
+              ),
+            ],
+            { courier, lead, speed },
+            source(
+              "S09",
+              "pp. 1–2; S21, p. 1, problem 1",
+              "Adapt variables on both sides and constant rates to an interception equation",
+            ),
+          );
+        });
+        add("ratios", "fuel-ratio", (r, t) => {
+          const a = r(2, 5),
+            b = a + r(1, 4),
+            scale = r(2, 4 + t),
+            total = (a + b) * scale,
+            amount = a * scale;
+          return q(
+            `FUEL LAB: Divide ${total} litres between amber and blue tanks in the ratio AMBER : BLUE = ${a}:${b}. All fuel must be allocated. How many litres go in amber? Set the mixing valve, then engage the engine.`,
+            amount,
+            [
+              calc(
+                "Find the total number of ratio parts.",
+                a,
+                "+",
+                b,
+                "A part-to-part ratio must be combined before sharing the total.",
+              ),
+              calc(
+                "Find litres per ratio part.",
+                total,
+                "÷",
+                a + b,
+                "Divide the total by the combined parts.",
+              ),
+              calc(
+                "Find litres allocated to amber.",
+                scale,
+                "×",
+                a,
+                "Use amber’s number of parts.",
+              ),
+              calc(
+                "Find litres allocated to blue.",
+                scale,
+                "×",
+                b,
+                "The two allocations should sum to the whole supply.",
+              ),
+            ],
+            { a, b, total },
+            source("S17", "pp. 1–2", "Share a total in a part-to-part ratio"),
+          );
+        });
+
         function matchesStep(step, input) {
           if (typeof input !== "string" || input.length > 200) return false;
           const normalize = (s) =>
@@ -3575,6 +5181,8 @@
         { name: "Pulse pistol", cooldown: 0.24, color: "#b9ebd2" },
         { name: "Scatter blaster", cooldown: 0.65, color: "#f6ca83" },
         { name: "Arc launcher", cooldown: 1.1, color: "#c4a2ff" },
+        { name: "Ion rail", cooldown: 0.8, color: "#8feaff", energy: 8 },
+        { name: "Ricochet disc", cooldown: 0.75, color: "#ffd787", energy: 6 },
       ];
       const GADGETS = [
         { name: "Cloak", cost: 35 },
@@ -3582,6 +5190,36 @@
         { name: "Grapple", cost: 25 },
       ];
       const THEMES = {
+        arctic: {
+          wall: ["#244756", "#29434f"],
+          accent: "#b5e6e2",
+          label: "ARCTIC RELAY",
+        },
+        venice: {
+          wall: ["#493e4e", "#3e3b49"],
+          accent: "#e5bd92",
+          label: "VENETIAN PALAZZO",
+        },
+        desert: {
+          wall: ["#584637", "#4d3e35"],
+          accent: "#efd096",
+          label: "DESERT OUTPOST",
+        },
+        jungle: {
+          wall: ["#2e453e", "#32463f"],
+          accent: "#b4d798",
+          label: "CANOPY ARCHIVE",
+        },
+        abyss: {
+          wall: ["#173c4f", "#1c4050"],
+          accent: "#9ddce6",
+          label: "ABYSSAL STATION",
+        },
+        volcano: {
+          wall: ["#483541", "#42313d"],
+          accent: "#efb18d",
+          label: "CALDERA FORTRESS",
+        },
         academy: {
           wall: ["#233a43", "#263e46"],
           accent: "#b5d8be",
@@ -3618,6 +5256,650 @@
           label: "STRATOSPHERE STATION",
         },
       };
+      const expedition = () => game?.mission >= 25;
+      function operation() {
+        return MathEngine.campaign[game.mission - 1];
+      }
+      function setupShadow() {
+        game.ownedWeapons = expedition()
+          ? operation().unarmed
+            ? []
+            : [0]
+          : [0, 1, 2];
+        game.hazards = [];
+        game.boss = null;
+        game.evac = 0;
+        if (!expedition()) return;
+        for (const [i, weapon] of [1, 3, 4, 2].entries())
+          game.items.push({
+            id: game.items.length,
+            floor: 1 + i * 2,
+            x: [270, 620, 1010, 280][i],
+            kind: "weapon",
+            weapon,
+            collected: false,
+          });
+        for (let floor = 3; floor < game.floors - 2; floor += 3)
+          game.hazards.push({
+            floor,
+            x: [285, 620, 985][(floor / 3 + game.mission) % 3],
+            offset: floor * 0.7,
+          });
+        for (const g of game.guards) {
+          if (g.id % 5 === 0) {
+            g.kind = "brawler";
+            g.armor = 0;
+            g.windup = 0;
+            g.attack = 0;
+            g.cooldown = 1.2;
+          } else if (g.id % 5 === 1) {
+            g.kind = "sniper";
+            g.speed *= 0.7;
+          }
+        }
+        const floor = game.files.at(-1).floor;
+        game.guards = game.guards.filter((g) => g.floor !== floor);
+        game.boss = {
+          id: 9000,
+          x: 665,
+          y: floorY(floor),
+          floor,
+          left: 470,
+          right: 720,
+          dir: -1,
+          stun: 0,
+          armor: 0,
+          armorCooldown: 0,
+          speed: 40,
+          step: 0,
+          cooldown: 0,
+          isBoss: true,
+          name: operation().villain,
+          style: operation().style,
+          hp: 8 + Math.floor((game.mission - 25) / 4) * 2,
+          maxHp: 8 + Math.floor((game.mission - 25) / 4) * 2,
+          phase: "watch",
+          phaseTime: 1.25,
+          hitCooldown: 0,
+          defeated: false,
+        };
+        game.guards.push(game.boss);
+      }
+      function restoreShadow(c) {
+        game.ownedWeapons = expedition()
+          ? operation().unarmed
+            ? []
+            : [0]
+          : [0, 1, 2];
+        game.items.forEach((item, i) => {
+          if (item.kind === "weapon" && c.items?.[i] === true)
+            game.ownedWeapons.push(item.weapon);
+        });
+        if (!game.ownedWeapons.includes(game.weapon))
+          game.weapon = game.ownedWeapons[0] ?? 0;
+        if (game.boss && Number.isInteger(c.boss?.hp)) {
+          game.boss.hp = clamp(c.boss.hp, 0, game.boss.maxHp);
+          game.boss.defeated = game.boss.hp === 0;
+          if (game.boss.defeated) game.boss.stun = 1e9;
+        }
+      }
+      function caseReady(door, announce = false) {
+        if (!expedition()) return true;
+        const missing = (door.requires || []).find(
+          (i) => !game.files[i].collected,
+        );
+        if (missing !== undefined) {
+          if (announce)
+            toast(
+              `First: ${game.files[missing].kind} on floor ${String(game.floors - game.files[missing].floor).padStart(2, "0")}.`,
+              3,
+            );
+          return false;
+        }
+        if (door.id === 4 && !game.boss.defeated) {
+          if (announce)
+            toast(
+              `${game.boss.name} controls this transmitter. Defeat the villain first.`,
+              3,
+            );
+          return false;
+        }
+        return true;
+      }
+      function objectiveEffect(door) {
+        if (!expedition()) return;
+        if (door.id === 2) {
+          game.energy = 100;
+          emit(door.x, floorY(door.floor) - 50, "#9effc5", 35, 170);
+          toast(
+            "Defenses disabled. Traps are offline and the villain’s shield is down.",
+            4,
+          );
+        }
+        if (/RESCUE|EVACUATE/.test(door.kind)) {
+          game.evac = 4;
+          toast("Evacuation beacon sent. Your contact is safe.", 3);
+        }
+        if (door.id === 3) {
+          game.energy = 100;
+          game.lives = Math.min(3, game.lives + 1);
+          toast(
+            `${door.kind} recovered. One heart restored; final transmission ahead.`,
+            4,
+          );
+        }
+      }
+      function performMelee() {
+        if (game.melee > 0 || game.escape) return;
+        game.melee = 0.6;
+        const p = game.player;
+        p.invulnerable = Math.max(p.invulnerable, 0.25);
+        for (const g of game.guards)
+          if (
+            Math.abs(g.y - p.y) < 42 &&
+            (g.x - p.x) * p.facing > -15 &&
+            (g.x - p.x) * p.facing < 76
+          )
+            stunGuard(g, true, 2);
+        Audio.play("shoot");
+      }
+      function hitBoss(g, power) {
+        if (g.defeated || g.hitCooldown > 0) return;
+        g.hitCooldown = 0.38;
+        if (!game.files[2].collected) {
+          floating(g.x, g.y - 80, "SHIELD: FIND THE OVERRIDE", "#96bde5");
+          return;
+        }
+        g.hp = Math.max(0, g.hp - power);
+        emit(g.x, g.y - 35, "#ffb783", 18, 130);
+        Audio.play("stun");
+        if (g.hp === 0) {
+          g.defeated = true;
+          g.stun = 1e9;
+          game.score += 1500;
+          floating(g.x, g.y - 80, "VILLAIN CAPTURED +1500", "#a9e8b2");
+          toast(`${g.name} captured. Complete the final transmission.`, 4);
+          saveBest();
+        }
+        saveCheckpoint();
+      }
+      function bossVolley(g) {
+        for (const vy of [-40, 0, 40])
+          game.bullets.push({
+            x: g.x + g.dir * 22,
+            y: g.y - 35,
+            vx: g.dir * 245,
+            vy,
+            owner: "guard",
+            life: 3,
+            id: ++shotSerial,
+          });
+        Audio.play("enemy");
+      }
+      function updateVillain(g, dt) {
+        const p = game.player;
+        g.hitCooldown = Math.max(0, g.hitCooldown - dt);
+        if (g.defeated) return;
+        const engaged = Math.abs(p.y - g.y) < 90 && Math.abs(p.x - g.x) < 700;
+        if (!engaged || game.cloak > 0) {
+          g.phase = "watch";
+          g.phaseTime = 1.25;
+          return;
+        }
+        g.dir = p.x < g.x ? -1 : 1;
+        g.phaseTime -= dt;
+        if (g.phase === "watch" && g.phaseTime <= 0) {
+          g.phase = "aim";
+          g.phaseTime = g.style === "duelist" ? 0.9 : 1.25;
+          g.chargeDir = g.dir;
+        } else if (g.phase === "aim" && g.phaseTime <= 0) {
+          g.phase = "attack";
+          g.phaseTime = g.style === "duelist" ? 0.55 : 0.3;
+          if (g.style !== "duelist") bossVolley(g);
+          if (
+            g.style === "engineer" &&
+            game.guards.filter((v) => v.summoned && v.stun <= 0).length < 2
+          ) {
+            const live = game.guards.filter((v) => !v.summoned || v.stun <= 0);
+            game.guards = live;
+            game.guards.push({
+              id: ++shotSerial + 10000,
+              x: g.x - 90,
+              y: g.y,
+              floor: g.floor,
+              left: 470,
+              right: 720,
+              dir: -1,
+              kind: "brawler",
+              stun: 0,
+              armor: 0,
+              armorCooldown: 0,
+              speed: 75,
+              step: 0,
+              cooldown: 1.4,
+              windup: 0,
+              attack: 0,
+              summoned: true,
+            });
+          }
+        } else if (g.phase === "attack") {
+          if (g.style === "duelist") {
+            g.x = clamp(g.x + g.chargeDir * 340 * dt, g.left, g.right);
+            g.step += dt * 18;
+            if (Math.abs(g.x - p.x) < 31 && Math.abs(g.y - p.y) < 38) damage();
+          }
+          if (g.phaseTime <= 0) {
+            g.phase = "recover";
+            g.phaseTime = 1.7;
+          }
+        } else if (g.phase === "recover" && g.phaseTime <= 0) {
+          g.phase = "watch";
+          g.phaseTime = 0.65;
+        }
+      }
+      function updateBrawler(g, dt) {
+        const p = game.player;
+        g.cooldown = Math.max(0, g.cooldown);
+        const sameFloor = Math.abs(p.y - g.y) < 18,
+          visible =
+            game.cloak <= 0 &&
+            sameFloor &&
+            p.x >= g.left - 35 &&
+            p.x <= g.right + 35;
+        if (g.attack > 0) {
+          g.attack -= dt;
+          g.x = clamp(g.x + g.dir * 260 * dt, g.left, g.right);
+          if (
+            game.cloak <= 0 &&
+            Math.abs(g.x - p.x) < 30 &&
+            Math.abs(g.y - p.y) < 40
+          )
+            damage();
+          return;
+        }
+        if (g.windup > 0) {
+          g.windup -= dt;
+          if (g.windup <= 0) {
+            g.attack = 0.24;
+            g.cooldown = 1.2;
+          }
+          return;
+        }
+        if (visible) {
+          g.dir = p.x < g.x ? -1 : 1;
+          if (Math.abs(p.x - g.x) < 68 && g.cooldown <= 0) {
+            g.windup = 0.65;
+            return;
+          }
+          if (Math.abs(p.x - g.x) > 42)
+            g.x = clamp(g.x + g.dir * 80 * dt, g.left, g.right);
+        } else {
+          g.x = clamp(g.x + g.dir * g.speed * dt, g.left, g.right);
+          if (g.x === g.left || g.x === g.right) g.dir *= -1;
+        }
+        g.step += dt * 8;
+      }
+      function hazardState(h) {
+        if (game.files[2]?.collected) return "off";
+        const phase = (game.time + h.offset) % 5;
+        return phase < 2.8 ? "safe" : phase < 3.7 ? "warning" : "active";
+      }
+      function updateShadow(dt) {
+        if (!expedition() || game.escape) return;
+        game.evac = Math.max(0, game.evac - dt);
+        const p = game.player;
+        for (const h of game.hazards)
+          if (
+            hazardState(h) === "active" &&
+            Math.abs(p.x - h.x) < 23 &&
+            Math.abs(p.y - floorY(h.floor)) < 19
+          )
+            damage();
+      }
+      function updateObjectiveStrip() {
+        const node = $("objectiveStrip");
+        node.hidden = !expedition();
+        if (!expedition()) return;
+        const next = game.files.find((f) => !f.collected);
+        let label = next
+          ? `NEXT: ${next.kind} · FLOOR ${String(game.floors - next.floor).padStart(2, "0")}`
+          : "ALL OBJECTIVES COMPLETE · REACH EXTRACTION";
+        if (next?.id === 4 && !game.boss.defeated)
+          label = `CONFRONT ${game.boss.name.toUpperCase()} · ${game.boss.hp}/${game.boss.maxHp} ARMOR · FLOOR ${game.floors - game.boss.floor}`;
+        if (game.escape) label = "SHADOW ATLAS · ESCAPE WITH THE EVIDENCE";
+        if (node.textContent !== label) node.textContent = label;
+      }
+      function shadowSky(t) {
+        if (!expedition()) return;
+        const colors = {
+          arctic: "#183647",
+          venice: "#252a45",
+          desert: "#4a2d26",
+          jungle: "#12362e",
+          abyss: "#092d46",
+          volcano: "#321d30",
+        };
+        rect(0, 0, W, H, colors[game.theme]);
+        if (game.theme === "arctic") {
+          for (let i = 0; i < 12; i++) {
+            ctx.strokeStyle = `rgba(103,222,184,${0.04 + i * 0.006})`;
+            ctx.lineWidth = 12;
+            ctx.beginPath();
+            for (let x = 0; x < W; x += 20) {
+              const y = 60 + i * 8 + Math.sin(x * 0.006 + t * 0.2 + i) * 30;
+              if (x === 0) ctx.moveTo(x, y);
+              else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+          }
+          for (let i = 0; i < 55; i++)
+            rect(
+              hash(i) * W,
+              (hash(i + 11) * H + t * 10) % H,
+              2,
+              2,
+              "#a4ccd570",
+            );
+        } else if (game.theme === "desert") {
+          glow(980, 110, 120, "#eaa15b44");
+          ctx.fillStyle = "#b68b6044";
+          for (let i = 0; i < 5; i++) {
+            ctx.beginPath();
+            ctx.ellipse(i * 300, 580, 350, 80 + i * 14, 0, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        } else if (game.theme === "abyss") {
+          for (let i = 0; i < 30; i++) {
+            const x = hash(i * 7) * W,
+              y = (hash(i) * H - t * 14 + 100000) % H;
+            ctx.strokeStyle = "#75b9c43a";
+            ctx.beginPath();
+            ctx.arc(x, y, 2 + hash(i + 8) * 5, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        } else if (game.theme === "volcano") {
+          for (let i = 0; i < 40; i++)
+            rect(
+              hash(i * 7) * W,
+              (hash(i) * H - t * 18 + 100000) % H,
+              2,
+              4,
+              "#f6ac7b55",
+            );
+        } else if (game.theme === "jungle") {
+          for (let x = 25; x < W; x += 120) {
+            rect(x, 0, 13, H, "#071d2480");
+            for (let y = 20; y < H; y += 65) {
+              line(x, y, x + 65, y - 25, "#3b71534a", 8);
+              line(x, y, x - 60, y - 38, "#2a634f60", 8);
+            }
+          }
+        } else {
+          rect(0, 490, W, 110, "#285060");
+          for (let i = 0; i < 18; i++)
+            line(
+              i * 80,
+              520 + Math.sin(t + i) * 8,
+              i * 80 + 45,
+              520 + Math.sin(t + i) * 8,
+              "#84aaba40",
+            );
+        }
+      }
+      function renderShadowFloor(f) {
+        if (!expedition()) return;
+        const theme = THEMES[game.theme];
+        const y = floorY(f);
+        if (y - camera < -20 || y - camera > H + 130) return;
+        if (game.theme === "arctic") {
+          for (const x of [130, 520, 940]) {
+            rect(x, y - 90, 70, 65, "#1a3a4e");
+            for (let j = 0; j < 5; j++)
+              line(x + j * 15, y - 90, x + 10 + j * 15, y - 65, "#b1d9de60", 3);
+            line(x, y - 20, x + 70, y - 20, "#b8e2e3", 3);
+          }
+          text("POLAR RELAY", 550, y - 80, 10, theme.accent);
+        } else if (game.theme === "venice") {
+          for (const x of [140, 535, 935]) {
+            ctx.strokeStyle = "#c9ac8460";
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.arc(x + 30, y - 60, 30, Math.PI, Math.PI * 2);
+            ctx.stroke();
+            line(x, y - 60, x, y - 8, "#b39c7870", 5);
+            line(x + 60, y - 60, x + 60, y - 8, "#b39c7870", 5);
+            rect(x + 8, y - 58, 44, 50, "#254350");
+          }
+          rect(LEFT, y - 5, RIGHT - LEFT, 5, "#63899480");
+        } else if (game.theme === "desert") {
+          for (const x of [120, 540, 960]) {
+            rect(x, y - 85, 60, 85, "#9b735044");
+            line(x, y - 85, x + 60, y - 85, "#ddbb784f", 5);
+            text("◇", x + 30, y - 47, 30, "#dcb36a70", "monospace", "center");
+          }
+        } else if (game.theme === "jungle") {
+          for (const x of [140, 560, 970]) {
+            rect(x, y - 95, 38, 94, "#546c574a");
+            for (let j = 0; j < 5; j++)
+              line(
+                x - 6,
+                y - 90 + j * 19,
+                x + 45,
+                y - 83 + j * 19,
+                "#78997750",
+                2,
+              );
+            line(x + 8, y - 110, x + 18, y - 5, "#62955d", 3);
+          }
+          text("◈", 600, y - 70, 25, "#9dcea066", "monospace", "center");
+        } else if (game.theme === "abyss") {
+          for (const x of [165, 565, 965]) {
+            ctx.fillStyle = "#14536b";
+            ctx.strokeStyle = "#7197a3";
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.arc(x, y - 58, 30, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            line(x - 18, y - 65, x + 8, y - 40, "#8fc6d043", 4);
+          }
+          rect(LEFT, y - 12, RIGHT - LEFT, 8, "#77cbd515");
+        } else {
+          for (const x of [130, 550, 960]) {
+            rect(x, y - 85, 55, 80, "#45343f");
+            line(x + 18, y - 85, x + 35, y - 38, "#e9a36680", 3);
+            line(x + 35, y - 38, x + 8, y - 10, "#e9a36680", 3);
+          }
+          glow(600, y - 15, 100, "#fd96331c");
+        }
+      }
+      function renderShadow(t) {
+        if (!expedition()) return;
+        for (const h of game.hazards) {
+          const y = floorY(h.floor),
+            phase = hazardState(h),
+            color =
+              phase === "off"
+                ? "#7ac9aa"
+                : phase === "active"
+                  ? "#ff966a"
+                  : phase === "warning"
+                    ? "#ffe39a"
+                    : "#586e79";
+          rect(h.x - 20, y - 8, 40, 8, color);
+          text(
+            phase === "off" ? "OFF" : phase === "warning" ? "!" : "▲",
+            h.x,
+            y - 14,
+            11,
+            color,
+            "monospace",
+            "center",
+          );
+          if (phase === "active") {
+            glow(h.x, y - 25, 45, "#ffb46430");
+            for (let i = 0; i < 4; i++)
+              line(
+                h.x - 14 + i * 9,
+                y - 12,
+                h.x - 10 + i * 9,
+                y - 54 - (reducedMotion ? 0 : Math.sin(t * 15 + i) * 9),
+                color,
+                2,
+              );
+          }
+        }
+        for (const f of game.files) {
+          const y = floorY(f.floor) - 55,
+            color = f.collected
+              ? "#7fbea4"
+              : f.id === 3
+                ? "#e5c3ff"
+                : "#e9d19c";
+          if (f.id === 3) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.moveTo(f.x, y - 13);
+            ctx.lineTo(f.x + 11, y);
+            ctx.lineTo(f.x, y + 13);
+            ctx.lineTo(f.x - 11, y);
+            ctx.closePath();
+            ctx.fill();
+            glow(f.x, y, 30, "#d0a8ff30");
+          } else if (f.id === 2) {
+            rect(f.x - 12, y - 9, 24, 18, "#143444");
+            text(
+              f.collected ? "✓" : "⚡",
+              f.x,
+              y + 6,
+              19,
+              color,
+              "monospace",
+              "center",
+            );
+          } else if (f.id === 4) {
+            line(f.x, y - 20, f.x, y + 15, color, 2);
+            for (let j = 1; j < 4; j++) {
+              ctx.strokeStyle = color;
+              ctx.beginPath();
+              ctx.arc(f.x, y - 12, j * 7, -0.8, 0.8);
+              ctx.stroke();
+            }
+          } else if (/EVACUATE|RESCUE/.test(f.kind) && !f.collected) {
+            drawPerson(
+              {
+                x: f.x + 33,
+                y: floorY(f.floor),
+                dir: -1,
+                step: 0,
+                stun: 0,
+                civilian: true,
+              },
+              false,
+              t,
+            );
+            text("SOS", f.x + 33, y - 16, 10, "#c2dfb0", "monospace", "center");
+          }
+        }
+        if (game.evac > 0) {
+          const f = game.files[1];
+          text(
+            "CONTACT EXTRACTED",
+            f.x,
+            floorY(f.floor) - 85 - (4 - game.evac) * 15,
+            11,
+            "#b8ebc0",
+            "monospace",
+            "center",
+          );
+        }
+        for (const item of game.items)
+          if (item.kind === "weapon" && !item.collected) {
+            const y = floorY(item.floor) - 25;
+            rect(item.x - 16, y - 12, 32, 24, "#283f53");
+            line(item.x - 10, y, item.x + 10, y, WEAPONS[item.weapon].color, 4);
+            text(
+              "CACHE",
+              item.x,
+              y - 18,
+              9,
+              WEAPONS[item.weapon].color,
+              "monospace",
+              "center",
+            );
+          }
+        for (const g of game.guards) {
+          if (g.stun > 0) continue;
+          if (g.kind === "brawler") {
+            text(
+              g.windup > 0 ? "!" : g.attack > 0 ? "STRIKE" : "CLOSE",
+              g.x,
+              g.y - 70,
+              10,
+              g.windup > 0 ? "#ffe0a0" : "#d0c0aa",
+              "monospace",
+              "center",
+            );
+            if (g.windup > 0) glow(g.x, g.y - 30, 45, "#ffbf4e20");
+          }
+          if (g.kind === "sniper" && g.alert > 0)
+            line(
+              g.x,
+              g.y - 35,
+              game.player.x,
+              game.player.y - 35,
+              "#e7a09260",
+              1,
+            );
+        }
+        const b = game.boss;
+        if (b && !b.defeated) {
+          const shield = !game.files[2].collected;
+          rect(b.x - 67, b.y - 96, 134, 5, "#172634");
+          rect(
+            b.x - 67,
+            b.y - 96,
+            (134 * b.hp) / b.maxHp,
+            5,
+            shield ? "#8ec3ec" : "#ed927e",
+          );
+          text(
+            b.name.toUpperCase(),
+            b.x,
+            b.y - 105,
+            11,
+            "#ffe2c4",
+            "monospace",
+            "center",
+          );
+          text(
+            shield
+              ? "SHIELD · FIND OVERRIDE"
+              : b.phase === "aim"
+                ? "! INCOMING !"
+                : b.phase === "recover"
+                  ? "EXPOSED"
+                  : b.style.toUpperCase(),
+            b.x,
+            b.y - 77,
+            9,
+            shield ? "#9dcced" : "#f5b888",
+            "monospace",
+            "center",
+          );
+          if (b.phase === "aim") {
+            line(
+              b.x,
+              b.y - 30,
+              clamp(game.player.x, b.left, b.right),
+              b.y - 30,
+              "#f2b67d90",
+              2,
+            );
+          }
+        }
+      }
+
       function setupAdvanced() {
         for (let f = 0; f < game.floors - 1; f++) {
           const x = [110, 500, 900][f % 3];
@@ -3641,12 +5923,13 @@
           if (g.kind === "scout") g.speed *= 1.35;
         }
         game.rings = [];
+        setupShadow();
       }
       function restoreAdvanced(c) {
         const eq = c.equipment;
         if (eq) {
           game.weapon = Number.isInteger(eq.weapon)
-            ? clamp(eq.weapon, 0, 2)
+            ? clamp(eq.weapon, 0, WEAPONS.length - 1)
             : 0;
           game.gadget = Number.isInteger(eq.gadget)
             ? clamp(eq.gadget, 0, 2)
@@ -3655,9 +5938,11 @@
             ? clamp(eq.energy, 0, 100)
             : 100;
         }
+        restoreShadow(c);
         if (
           c.escape &&
           c.escape.kind === game.escapeKind &&
+          (!expedition() || game.boss.defeated) &&
           game.files.every((f) => f.collected)
         ) {
           game.escape = createEscape();
@@ -3667,9 +5952,14 @@
           game.escape.serial = Number.isSafeInteger(c.escape.serial)
             ? clamp(c.escape.serial, 0, 100000)
             : 0;
+          restoreDrive(c.escape.drive);
         }
       }
-      function stunGuard(g, bypass = false) {
+      function stunGuard(g, bypass = false, power = 1) {
+        if (g.isBoss) {
+          hitBoss(g, bypass ? Math.max(2, power) : power);
+          return;
+        }
         if (g.stun > 0) return;
         if (g.armor > 0 && !bypass) {
           if (g.armorCooldown > 0) return;
@@ -3704,7 +5994,17 @@
       function fireAdvanced() {
         const p = game.player,
           w = WEAPONS[game.weapon];
+        if (!game.ownedWeapons.includes(game.weapon)) {
+          performMelee();
+          return;
+        }
         if (p.fireCooldown > 0) return;
+        if (w.energy && game.energy < w.energy) {
+          p.fireCooldown = 0.5;
+          toast("Weapon recharging. Switch weapons or use close combat.", 1.5);
+          return;
+        }
+        if (w.energy) game.energy -= w.energy;
         p.fireCooldown = w.cooldown;
         for (const vy of game.weapon === 1 ? [-95, 0, 95] : [0])
           game.bullets.push({
@@ -3713,9 +6013,12 @@
             vx: p.facing * (game.weapon === 2 ? 440 : 610),
             vy,
             owner: "player",
-            life: 1.5,
+            life: game.weapon === 4 ? 3 : 1.5,
             id: ++shotSerial,
             arc: game.weapon === 2,
+            rail: game.weapon === 3,
+            disc: game.weapon === 4,
+            hitIds: [],
             color: w.color,
           });
         emit(p.x + p.facing * 26, p.y - 37, w.color, 4, 45);
@@ -3741,26 +6044,22 @@
         for (const r of game.rings) r.life -= dt;
         game.rings = game.rings.filter((r) => r.life > 0);
         if (pressed.has("weapon")) {
-          game.weapon = (game.weapon + 1) % WEAPONS.length;
+          if (game.ownedWeapons.length) {
+            const index = game.ownedWeapons.indexOf(game.weapon);
+            game.weapon =
+              game.ownedWeapons[(index + 1) % game.ownedWeapons.length];
+          } else
+            toast(
+              "Unarmed. C or FIRE performs a takedown. Find a weapon cache.",
+              3,
+            );
           Audio.play("lift");
         }
         if (pressed.has("swapGadget")) {
           game.gadget = (game.gadget + 1) % GADGETS.length;
           Audio.play("lift");
         }
-        if (pressed.has("melee") && !game.escape && game.melee <= 0) {
-          game.melee = 0.6;
-          const p = game.player;
-          p.invulnerable = Math.max(p.invulnerable, 0.25);
-          for (const g of game.guards)
-            if (
-              Math.abs(g.y - p.y) < 42 &&
-              (g.x - p.x) * p.facing > -15 &&
-              (g.x - p.x) * p.facing < 76
-            )
-              stunGuard(g, true);
-          Audio.play("shoot");
-        }
+        if (pressed.has("melee") && !game.escape) performMelee();
         if (pressed.has("gadget") && !game.escape) {
           const gadget = GADGETS[game.gadget],
             p = game.player;
@@ -3794,7 +6093,11 @@
             }
           }
         }
-        const weaponText = `Q · ${WEAPONS[game.weapon].name}`,
+        const weaponText = game.escape
+            ? `Q · ${WEAPONS[game.weapon].name}`
+            : game.ownedWeapons.includes(game.weapon)
+              ? `Q · ${WEAPONS[game.weapon].name}`
+              : "UNARMED · FIND A CACHE",
           gadgetText = game.escape
             ? "G · Escape shield"
             : `G · ${GADGETS[game.gadget].name} (${GADGETS[game.gadget].cost})`;
@@ -3970,7 +6273,7 @@
           text(
             f.collected ? "✓ " + f.kind : f.kind,
             f.x,
-            floorY(f.floor) - 106,
+            floorY(f.floor) - (expedition() && f.id === 4 ? 120 : 106),
             9,
             f.collected ? "#9ecba6" : "#ffca88",
             "monospace",
@@ -4028,9 +6331,328 @@
           ctx.globalAlpha = 1;
         }
       }
+      function roadEscape() {
+        return game?.escape && ["car", "motorcycle"].includes(game.escape.kind);
+      }
+      function driveTask() {
+        return game?.escape?.drive?.task;
+      }
+      function makeDriveTask() {
+        const e = game.escape,
+          level = game.mission,
+          tier = Math.min(3, Math.ceil(level / 12));
+        const family =
+          e.kind === "car"
+            ? level < 7
+              ? "fuel-fraction"
+              : level < 17
+                ? "fuel-percent"
+                : "fuel-ratio"
+            : level < 7
+              ? "route-fraction"
+              : level < 17
+                ? "route-percent"
+                : "route-intercept";
+        return {
+          challenge: MathEngine.make(
+            family,
+            tier,
+            `${game.seed}:drive:${e.drive.completed}`,
+          ),
+          study: freshStudy(),
+          value: 0,
+          lane: 0,
+          repeat: 0,
+        };
+      }
+      function saveDrive() {
+        const d = game.escape.drive,
+          t = d.task;
+        return {
+          completed: d.completed,
+          task: t
+            ? { value: t.value, lane: t.lane, study: { ...t.study } }
+            : null,
+        };
+      }
+      function restoreDrive(saved) {
+        if (!roadEscape()) return;
+        const e = game.escape;
+        e.drive.completed = Number.isInteger(saved?.completed)
+          ? clamp(saved.completed, 0, 2)
+          : Math.min(2, Math.floor((e.distance / e.target) * 3));
+        if (!saved?.task || e.drive.completed >= 2) return;
+        const t = (e.drive.task = makeDriveTask()),
+          v = saved.task.study || {},
+          q = t.challenge;
+        t.value = Number.isInteger(saved.task.value)
+          ? clamp(saved.task.value, 0, q.params.total || 0)
+          : 0;
+        t.lane = Number.isInteger(saved.task.lane)
+          ? clamp(saved.task.lane, 0, q.answers.length - 1)
+          : 0;
+        t.study.solution = v.solution === true;
+        t.study.misses = Array.isArray(v.misses)
+          ? v.misses.filter(Number.isFinite).slice(0, 40)
+          : [];
+        t.study.guideMisses = Number.isSafeInteger(v.guideMisses)
+          ? clamp(v.guideMisses, 0, 10000)
+          : 0;
+        if (t.study.solution && Array.isArray(v.guideAnswers))
+          for (
+            let i = 0;
+            i < Math.min(v.guideAnswers.length, q.guide.length);
+            i++
+          ) {
+            if (
+              typeof v.guideAnswers[i] !== "string" ||
+              !MathEngine.matchesStep(q.guide[i], v.guideAnswers[i])
+            )
+              break;
+            t.study.guideAnswers.push(v.guideAnswers[i]);
+          }
+        t.study.guideDraft =
+          typeof v.guideDraft === "string" ? v.guideDraft.slice(0, 200) : "";
+        e.ready = true;
+      }
+      function syncDriveVisibility() {
+        $("driveOverlay").hidden = !(state === "playing" && driveTask());
+      }
+      function paintDrive() {
+        const t = driveTask();
+        syncDriveVisibility();
+        if (!t) return;
+        const q = t.challenge,
+          s = t.study,
+          mixer = game.escape.kind === "car",
+          index = s.guideAnswers.length,
+          step = q.guide[index],
+          guiding = s.solution && !!step;
+        $("driveTitle").textContent =
+          `${mixer ? "Fuel lab" : "Dispatch junction"} · ${game.escape.drive.completed + 1}/2`;
+        $("drivePrompt").textContent = q.prompt;
+        $("driveControls").hidden = guiding;
+        $("driveMixer").hidden = !mixer;
+        $("driveRoad").hidden = mixer;
+        $("routeBike").style.left =
+          `${(100 * (t.lane + 0.5)) / q.answers.length}%`;
+        $("driveLanes").hidden = mixer;
+        $("driveLanes").replaceChildren();
+        if (!mixer && !guiding)
+          q.answers.forEach((answer, i) => {
+            const b = document.createElement("button");
+            b.type = "button";
+            b.className = "drive-lane" + (i === t.lane ? " selected" : "");
+            b.setAttribute("aria-pressed", String(i === t.lane));
+            b.setAttribute("aria-label", `Exit ${answer}`);
+            const label = document.createElement("small");
+            label.textContent = "EXIT";
+            b.append(label, document.createTextNode(answer));
+            b.addEventListener("click", () => {
+              if (state !== "playing") return;
+              t.lane = i;
+              paintDrive();
+              saveCheckpoint();
+              stage.focus({ preventScroll: true });
+            });
+            $("driveLanes").append(b);
+          });
+        $("fuelValve").max = q.params.total || 100;
+        $("fuelValve").value = t.value;
+        if (mixer) {
+          $("amberFill").style.height = (100 * t.value) / q.params.total + "%";
+          $("blueFill").style.height =
+            100 * (1 - t.value / q.params.total) + "%";
+          $("amberLabel").textContent = `AMBER · ${t.value} L`;
+          $("blueLabel").textContent = `BLUE · ${q.params.total - t.value} L`;
+        }
+        $("driveHelp").textContent = mixer
+          ? "Drag the valve or use ← → to transfer fuel. FIRE / X tests the blend."
+          : "Steer ← → or tap a road. FIRE / X takes the selected exit.";
+        $("driveCommit").textContent = mixer
+          ? "Engage the engine →"
+          : "Take this exit →";
+        $("driveGuideBtn").hidden = s.solution;
+        $("driveGuideForm").hidden = !guiding;
+        $("driveStepAnswer").removeAttribute("aria-invalid");
+        if (guiding) {
+          $("driveStepCount").textContent =
+            `STEP ${index + 1} OF ${q.guide.length}`;
+          $("driveStepPrompt").textContent = step.prompt;
+          $("driveStepHint").textContent = step.hint;
+          $("driveStepAnswer").value = s.guideDraft;
+          $("driveStepHistory").replaceChildren();
+          s.guideAnswers.forEach((answer, i) => {
+            const li = document.createElement("li");
+            li.textContent = `${q.guide[i].prompt} ✓ ${answer}`;
+            $("driveStepHistory").append(li);
+          });
+        }
+        $("driveGuideResult").hidden = !(s.solution && !step);
+        $("driveGuideResult").replaceChildren();
+        if (s.solution && !step) {
+          const list = document.createElement("ol");
+          q.guide.forEach((v) => {
+            const item = document.createElement("li");
+            item.textContent = `${v.prompt} ${v.answer}`;
+            list.append(item);
+          });
+          const instruction = document.createElement("p");
+          instruction.textContent = `All steps checked. Now ${mixer ? "set the valve" : "steer to the exit"} using your result.`;
+          $("driveGuideResult").append(list, instruction);
+        }
+      }
+      function checkDrive() {
+        const t = driveTask();
+        if (!t || state !== "playing") return;
+        const q = t.challenge,
+          s = t.study;
+        if (s.solution && s.guideAnswers.length < q.guide.length) return;
+        const correct =
+          game.escape.kind === "car"
+            ? t.value === Number(q.answer)
+            : t.lane === q.correct;
+        if (!correct) {
+          s.misses.push(game.escape.kind === "car" ? t.value : t.lane);
+          s.misses = s.misses.slice(-40);
+          $("driveFeedback").textContent =
+            game.escape.kind === "car"
+              ? "The blend does not match the specification. Rebalance the tanks, or calculate it one step at a time."
+              : "That exit leads to a patrol checkpoint. Dispatch has held traffic: choose another route or check the calculation.";
+          saveCheckpoint();
+          return;
+        }
+        s.solved = true;
+        recordProblem(t);
+        const e = game.escape;
+        if (e.kind === "motorcycle")
+          e.x = clamp((t.lane + 0.5) / q.answers.length, 0.1, 0.9);
+        e.drive.completed++;
+        e.drive.task = null;
+        e.turbo = 6;
+        e.shield = Math.max(4, e.shield);
+        game.energy = Math.min(100, game.energy + 25);
+        game.score += 300;
+        game.player.invulnerable = Math.max(4, game.player.invulnerable);
+        clearInput();
+        syncDriveVisibility();
+        updateHUD();
+        saveBest();
+        saveCheckpoint();
+        Audio.play("file");
+        toast(
+          e.kind === "car"
+            ? "Blend calibrated. Six-second turbo boost!"
+            : "Dead drop secured. Six-second getaway boost!",
+          3,
+        );
+        stage.focus({ preventScroll: true });
+      }
+      function updateDriveControls(dt) {
+        const t = driveTask();
+        if (!t) return;
+        if (
+          t.study.solution &&
+          t.study.guideAnswers.length < t.challenge.guide.length
+        ) {
+          pressed.clear();
+          return;
+        }
+        const dir = (down("right") ? 1 : 0) - (down("left") ? 1 : 0);
+        t.repeat = Math.max(0, t.repeat - dt);
+        if (
+          dir &&
+          (pressed.has("left") || pressed.has("right") || t.repeat <= 0)
+        ) {
+          if (game.escape.kind === "car")
+            t.value = clamp(t.value + dir, 0, t.challenge.params.total);
+          else t.lane = clamp(t.lane + dir, 0, t.challenge.answers.length - 1);
+          t.repeat = 0.15;
+          paintDrive();
+          saveCheckpoint();
+        }
+        if (pressed.has("fire") || pressed.has("interact")) checkDrive();
+        pressed.clear();
+      }
+      function maybeDriveTask() {
+        const e = game.escape;
+        if (!roadEscape() || !e.ready || e.drive.completed >= 2 || e.drive.task)
+          return false;
+        if (e.distance < (e.target * (e.drive.completed + 1)) / 3) return false;
+        e.drive.task = makeDriveTask();
+        clearInput();
+        $("driveFeedback").textContent = "";
+        paintDrive();
+        saveCheckpoint();
+        stage.focus({ preventScroll: true });
+        return true;
+      }
+      function bindDriveControls() {
+        $("driveCommit").addEventListener("click", checkDrive);
+        $("fuelValve").addEventListener("input", () => {
+          const t = driveTask();
+          if (!t || state !== "playing") return;
+          t.value = clamp(
+            Number($("fuelValve").value),
+            0,
+            t.challenge.params.total,
+          );
+          paintDrive();
+          saveCheckpoint();
+        });
+        $("driveGuideBtn").addEventListener("click", () => {
+          const t = driveTask();
+          if (!t || state !== "playing") return;
+          t.study.solution = true;
+          $("driveFeedback").textContent = "";
+          clearInput();
+          paintDrive();
+          saveCheckpoint();
+          $("driveStepAnswer").focus({ preventScroll: true });
+          $("driveGuideForm").scrollIntoView({ block: "nearest" });
+        });
+        $("driveStepAnswer").addEventListener("input", () => {
+          const t = driveTask();
+          if (t) {
+            t.study.guideDraft = $("driveStepAnswer").value.slice(0, 200);
+            saveCheckpoint();
+          }
+        });
+        $("driveGuideForm").addEventListener("submit", (event) => {
+          event.preventDefault();
+          const t = driveTask();
+          if (!t || state !== "playing") return;
+          const s = t.study,
+            step = t.challenge.guide[s.guideAnswers.length];
+          if (!s.solution || !step) return;
+          const answer = $("driveStepAnswer").value;
+          if (!MathEngine.matchesStep(step, answer)) {
+            s.guideMisses++;
+            $("driveStepAnswer").setAttribute("aria-invalid", "true");
+            $("driveFeedback").textContent =
+              "Check this step before moving on. " + step.hint;
+            saveCheckpoint();
+            return;
+          }
+          s.guideAnswers.push(answer.trim());
+          s.guideDraft = "";
+          $("driveFeedback").textContent = "Step checked.";
+          paintDrive();
+          saveCheckpoint();
+          if (s.guideAnswers.length < t.challenge.guide.length) {
+            $("driveStepAnswer").focus({ preventScroll: true });
+            $("driveGuideForm").scrollIntoView({ block: "nearest" });
+          } else {
+            stage.focus({ preventScroll: true });
+            $("driveControls").scrollIntoView({ block: "nearest" });
+          }
+        });
+      }
       function createEscape() {
         return {
           kind: game.escapeKind,
+          drive: { completed: 0, task: null },
+          turbo: 0,
           distance: 0,
           target: 1800 + game.mission * 35,
           x: 0.5,
@@ -4048,6 +6670,16 @@
       }
       function beginEscape() {
         if (game.escape) return;
+        if (
+          expedition() &&
+          (!game.files.every((f) => f.collected) || !game.boss.defeated)
+        ) {
+          toast(
+            "Complete the objectives and capture the villain before extracting.",
+            3,
+          );
+          return;
+        }
         game.escape = createEscape();
         clearInput();
         game.player.traversal = null;
@@ -4070,13 +6702,15 @@
           }
           return;
         }
+        if (maybeDriveTask()) return;
+        e.turbo = Math.max(0, e.turbo - dt);
         p.invulnerable = Math.max(0, p.invulnerable - dt);
         e.shield = Math.max(0, e.shield - dt);
         e.fire = Math.max(0, e.fire - dt);
         const boosted =
           down("jump") && game.energy > 5 && e.kind !== "parachute";
         if (boosted) game.energy = Math.max(0, game.energy - dt * 17);
-        const speed = boosted ? 145 : 85;
+        const speed = boosted || e.turbo > 0 ? 145 : 85;
         e.distance += speed * dt;
         e.timer -= dt;
         e.x = clamp(
@@ -4166,6 +6800,7 @@
         e.shots = e.shots.filter((s) => s.y > -0.1);
         for (const b of e.bursts) b.life -= dt;
         e.bursts = e.bursts.filter((b) => b.life > 0);
+        if (maybeDriveTask()) return;
         if (state === "playing" && e.distance >= e.target) {
           saveBest();
           endGame(true);
@@ -4579,8 +7214,20 @@
               i === 0
                 ? 290
                 : places[(i + Math.floor((level - 1) / 3)) % places.length],
-            kind: MISSION_ITEMS[i % MISSION_ITEMS.length],
+            kind: s.objects?.[i] || MISSION_ITEMS[i % MISSION_ITEMS.length],
+            requires: s.chapter
+              ? i === 0
+                ? []
+                : i === 1
+                  ? [0]
+                  : i === 2
+                    ? [0]
+                    : i === 3
+                      ? [1]
+                      : [2, 3]
+              : [],
             lock: s.locks[i],
+            ...(s.chapter && i === 4 ? { x: 600 } : {}),
           })),
         };
       }
@@ -4656,6 +7303,7 @@
           lives: game.lives,
           time: game.time,
           continues: game.continues,
+          boss: game.boss ? { hp: game.boss.hp } : null,
           point: { ...game.player.checkpoint },
           equipment: {
             weapon: game.weapon,
@@ -4667,6 +7315,7 @@
                 kind: game.escape.kind,
                 distance: game.escape.distance,
                 serial: game.escape.serial,
+                drive: saveDrive(),
               }
             : null,
           lifts: game.lifts.map((l) => ({ y: l.y, target: l.target })),
@@ -4864,6 +7513,13 @@
             ? "Action pauses at every lock. Hints and checked, step-by-step help are always available."
             : "Every operation has maths locks. Take your time; the action pauses."
           : "Press ENTER to clock in.";
+        if (s.chapter && campaign) {
+          document.querySelector(".classified").textContent =
+            `SHADOW ATLAS / ${s.location.toUpperCase()}`;
+          document.querySelector(".lobby-copy p").textContent = s.story;
+          document.querySelector(".start-hint").textContent =
+            `Villain: ${s.villain}. ${s.unarmed ? "Enter unarmed. " : ""}Find caches, disable defenses, recover the artifact, and transmit the evidence.`;
+        }
         canvas.setAttribute(
           "aria-label",
           `Side-view spy game in a ${game.floors}-floor building`,
@@ -4978,6 +7634,7 @@
         ],
       };
       const $ = (id) => document.getElementById(id);
+      bindDriveControls();
       const canvas = $("gameCanvas"),
         ctx = canvas.getContext("2d", { alpha: false }),
         stage = $("stage");
@@ -5177,6 +7834,7 @@
         $("statusText").textContent = text;
       }
       function newGame(mission = 1, score = 0, lives = GAME_CONTENT.lives) {
+        $("driveOverlay").hidden = true;
         stage.classList.remove("solving");
         const spec =
           playMode === "campaign"
@@ -5337,6 +7995,7 @@
         newGame(mission, score, lives);
         const restored = checkpoint ? restoreCheckpoint(checkpoint) : false;
         state = "playing";
+        paintDrive();
         ui.lobby.hidden = true;
         ui.pause.hidden = true;
         ui.result.hidden = true;
@@ -5388,6 +8047,7 @@
       function pauseGame() {
         if (state !== "playing") return;
         state = "paused";
+        syncDriveVisibility();
         clearInput();
         ui.pause.hidden = false;
         $("pauseBtn").setAttribute("aria-label", "Resume game");
@@ -5398,6 +8058,7 @@
       function resumeGame() {
         if (state !== "paused") return;
         state = "playing";
+        syncDriveVisibility();
         clearInput();
         ui.pause.hidden = true;
         $("pauseBtn").setAttribute("aria-label", "Pause game");
@@ -5436,7 +8097,10 @@
         for (const g of game.guards) {
           g.spottedPlayer = false;
           g.alert = 0;
-          g.cooldown = Math.max(g.cooldown, GAME_CONTENT.guardReactionTime);
+          g.cooldown = Math.max(
+            g.cooldown,
+            g.kind === "sniper" ? 1.6 : GAME_CONTENT.guardReactionTime,
+          );
           if (Math.abs(g.x - p.x) < 160 && Math.abs(g.y - p.y) < 20) {
             g.stun = Math.max(g.stun, 3);
           }
@@ -5552,6 +8216,7 @@
         return `${Math.floor(s / 60)}:${String(Math.floor(s) % 60).padStart(2, "0")}`;
       }
       function updateHUD() {
+        updateObjectiveStrip();
         const count = game.files.filter((f) => f.collected).length;
         const k = [
           game.mode,
@@ -5649,6 +8314,7 @@
           );
       }
       function collectFile(door) {
+        if (!caseReady(door)) return;
         if (door.collected || (door.challenge && !lockReady(door))) return;
         if (door.challenge) recordProblem(door);
         door.collected = true;
@@ -5670,11 +8336,13 @@
             : `File ${count} of ${game.files.length} secured. Keep moving.`,
           3.5,
         );
+        objectiveEffect(door);
         updateStatus();
+        updateHUD();
         saveCheckpoint();
       }
       function attemptFile(door) {
-        if (door.collected) return;
+        if (door.collected || !caseReady(door, true)) return;
         if (door.challenge) {
           openChallenge(door);
         } else collectFile(door);
@@ -5982,8 +8650,9 @@
           s = studyFor(challengeDoor);
         $("challengeMeta").textContent =
           `${q.topic ? MathEngine.topics[q.topic] + " · " + MathEngine.tiers[q.tier - 1] : "ACCESS CHALLENGE"} · ACTION PAUSED`;
-        $("challengeTitle").textContent =
-          `CIPHER LOCK ${challengeDoor.id + 1} / ${game.files.length}`;
+        $("challengeTitle").textContent = expedition()
+          ? `${challengeDoor.kind} · ${challengeDoor.id + 1}/${game.files.length}`
+          : `CIPHER LOCK ${challengeDoor.id + 1} / ${game.files.length}`;
         $("challengePrompt").textContent = q.prompt;
         renderQuestionExtra(q, $("challengeExtra"));
         $("answers").replaceChildren();
@@ -6109,7 +8778,11 @@
           game.bullets.push({
             x: g.x + g.dir * 22,
             y: g.y - 35,
-            vx: g.dir * (180 + Math.min(game.security, 8) * 12),
+            vx:
+              g.dir *
+              (g.kind === "sniper"
+                ? 340
+                : 180 + Math.min(game.security, 8) * 12),
             owner: "guard",
             life: 3,
             id: ++shotSerial,
@@ -6195,7 +8868,11 @@
         }
         p.crouch = down("down") && p.grounded && !nearLift;
         const dir = (down("right") ? 1 : 0) - (down("left") ? 1 : 0);
-        p.vx = dir * (p.crouch ? 85 : 206);
+        const intendedSpeed = dir * (p.crouch ? 85 : 206);
+        p.vx =
+          expedition() && game.theme === "arctic" && p.grounded
+            ? mix(p.vx, intendedSpeed, 1 - Math.exp(-dt * 5))
+            : intendedSpeed;
         if (dir) p.facing = dir;
         if (pressed.has("jump") && p.grounded) {
           p.vy = -510;
@@ -6270,6 +8947,14 @@
             g.spottedPlayer = false;
             continue;
           }
+          if (g.isBoss) {
+            updateVillain(g, dt);
+            continue;
+          }
+          if (g.kind === "brawler") {
+            updateBrawler(g, dt);
+            continue;
+          }
           const visible =
             game.cloak <= 0 &&
             Math.abs(p.y - g.y) < 14 &&
@@ -6280,7 +8965,10 @@
           if (visible) {
             // Off-screen patrol time must never consume the first-shot warning.
             if (!g.spottedPlayer) {
-              g.cooldown = Math.max(g.cooldown, GAME_CONTENT.guardReactionTime);
+              g.cooldown = Math.max(
+                g.cooldown,
+                g.kind === "sniper" ? 1.6 : GAME_CONTENT.guardReactionTime,
+              );
             }
             g.spottedPlayer = true;
             g.dir = p.x < g.x ? -1 : 1;
@@ -6319,7 +9007,13 @@
           b.x += b.vx * dt;
           b.y += (b.vy || 0) * dt;
           b.life -= dt;
-          if (b.x < LEFT || b.x > RIGHT) b.life = 0;
+          if (b.x < LEFT || b.x > RIGHT) {
+            if (b.disc && !b.returned) {
+              b.x = clamp(b.x, LEFT, RIGHT);
+              b.vx *= -1;
+              b.returned = true;
+            } else b.life = 0;
+          }
           if (b.owner === "player") {
             const barrel = game.barrels.find(
               (v) =>
@@ -6336,14 +9030,18 @@
             for (const g of game.guards) {
               if (
                 g.stun <= 0 &&
+                !(b.hitIds || []).includes(g.id) &&
                 Math.abs(g.y - 30 - b.y) < 24 &&
                 g.x >= Math.min(old, b.x) - 12 &&
                 g.x <= Math.max(old, b.x) + 12
               ) {
                 if (b.arc) explode(g.x, g.y - 30, 125);
-                else stunGuard(g, false);
-                b.life = 0;
-                break;
+                else stunGuard(g, Boolean(b.rail), b.rail ? 3 : 1);
+                (b.hitIds ||= []).push(g.id);
+                if (!b.rail && !b.disc) {
+                  b.life = 0;
+                  break;
+                }
               }
             }
           } else {
@@ -6372,7 +9070,16 @@
             continue;
           if (item.kind === "medkit" && game.lives >= 3) continue;
           item.collected = true;
-          if (item.kind === "medkit") {
+          if (item.kind === "weapon") {
+            if (!game.ownedWeapons.includes(item.weapon))
+              game.ownedWeapons.push(item.weapon);
+            game.weapon = item.weapon;
+            game.energy = Math.min(100, game.energy + 25);
+            toast(
+              `${WEAPONS[item.weapon].name} acquired. Q cycles your collected weapons.`,
+              4,
+            );
+          } else if (item.kind === "medkit") {
             game.lives = Math.min(3, game.lives + 1);
             toast("Medkit recovered. One heart restored.");
           } else if (item.kind === "shield") {
@@ -6397,6 +9104,10 @@
           if (toastRemaining <= 0) $("toast").classList.remove("show");
         }
         if (state !== "playing") return;
+        if (driveTask()) {
+          updateDriveControls(dt);
+          return;
+        }
         game.time += dt;
         checkpointClock += dt;
         if (checkpointClock >= 3) {
@@ -6419,6 +9130,11 @@
           return;
         }
         updateItems();
+        updateShadow(dt);
+        if (state !== "playing") {
+          pressed.clear();
+          return;
+        }
         updateGuards(dt);
         if (state !== "playing") {
           pressed.clear();
@@ -6703,7 +9419,18 @@
             for (let x = LEFT + 26; x < RIGHT; x += 99)
               line(x, cy + 17, x, y - 29, "#2d454d");
             if (
-              !["rooftop", "skybase", "dungeon", "citadel"].includes(game.theme)
+              ![
+                "rooftop",
+                "skybase",
+                "dungeon",
+                "citadel",
+                "arctic",
+                "venice",
+                "desert",
+                "jungle",
+                "abyss",
+                "volcano",
+              ].includes(game.theme)
             )
               for (const x of [123, 530, 933]) windowPanel(x, y - 92, 68);
             for (const x of [224, 628, 1030]) {
@@ -6746,6 +9473,7 @@
               );
             }
           }
+          if (f > 0) renderShadowFloor(f);
           // Structural floor beams stop at the two elevator shafts.
           for (const [a, b] of [
             [LEFT, 348],
@@ -6899,11 +9627,24 @@
         ctx.translate(Math.round(p.x), Math.round(p.y));
         ctx.scale(p.facing || p.dir, 1);
         const stunned = !isPlayer && p.stun > 0,
-          crouch = isPlayer && p.crouch;
+          crouch = isPlayer && p.crouch,
+          unarmed = isPlayer
+            ? !game.ownedWeapons.includes(game.weapon)
+            : p.civilian ||
+              p.kind === "brawler" ||
+              (p.isBoss && p.style === "duelist");
         const walk = Math.sin(p.step || 0);
         const moving = isPlayer ? Math.abs(p.vx) > 0 : !p.alert && !stunned;
         const leg = moving ? Math.round(walk * 6) : 0;
-        const coat = isPlayer ? "#d5b87e" : "#747d81",
+        const coat = isPlayer
+            ? "#d5b87e"
+            : p.isBoss
+              ? "#bd7f8f"
+              : p.kind === "brawler"
+                ? "#b99870"
+                : p.kind === "sniper"
+                  ? "#a8c6c8"
+                  : "#747d81",
           shadow = isPlayer ? "#9f855a" : "#4b626c",
           pants = isPlayer ? "#31515c" : "#283e4c",
           skin = isPlayer ? "#edc998" : "#c5ad90";
@@ -6918,7 +9659,8 @@
           rect(5, -4, 14, 4, "#13252c");
           rect(-12, -29, 22, 17, coat);
           rect(6, -24, 13, 6, shadow);
-          rect(17, -25, 13, 4, "#c1d0ba");
+          if (!unarmed) rect(17, -25, 13, 4, "#c1d0ba");
+          else rect(18, -27, 7, 7, skin);
           rect(-5, -39, 15, 11, skin);
           rect(-9, -42, 20, 7, shadow);
           rect(-13, -36, 27, 4, coat);
@@ -6935,8 +9677,10 @@
           rect(-1, -39, 3, 11, isPlayer ? "#ad6046" : "#364c59");
           rect(7, -35, 15, 7, coat);
           rect(18, -34, 6, 6, skin);
-          rect(22, -36, 13, 5, isPlayer ? "#bbd3ba" : "#8c9ca4");
-          rect(22, -31, 5, 5, "#283e47");
+          if (!unarmed) {
+            rect(22, -36, 13, 5, isPlayer ? "#bbd3ba" : "#8c9ca4");
+            rect(22, -31, 5, 5, "#283e47");
+          } else rect(20, -36, 8, 8, skin);
           rect(-7, -54, 17, 14, skin);
           rect(8, -49, 5, 5, skin);
           rect(6, -49, 3, 3, "#172b31");
@@ -6971,8 +9715,9 @@
       function renderWorld(t, preview = false) {
         renderBuilding(t, preview);
         renderAdvancedScenery(t);
+        renderShadow(t);
         for (const item of game.items) {
-          if (item.collected) continue;
+          if (item.collected || item.kind === "weapon") continue;
           const y =
               floorY(item.floor) -
               25 +
@@ -7111,6 +9856,7 @@
         );
       }
       function render(t) {
+        syncDriveVisibility();
         const desiredWidth = Math.min(
           W,
           Math.round((stage.clientWidth / stage.clientHeight) * H),
@@ -7121,6 +9867,7 @@
         }
         ctx.clearRect(0, 0, viewWidth, H);
         city(t);
+        shadowSky(t);
         if (game.escape && state !== "lobby") {
           renderEscape(t);
           return;
@@ -7355,12 +10102,23 @@
       });
       // Read-only diagnostics also make browser smoke tests possible without bypassing gameplay.
       window.SpyAcademyAdvanced = window.ElevatorAction = Object.freeze({
-        version: "1.0.0",
+        version: "2.0.0",
         snapshot: () => ({
           state,
           mode: game.mode,
           floors: game.floors,
           security: game.security,
+          ownedWeapons: [...game.ownedWeapons],
+          boss: game.boss
+            ? {
+                name: game.boss.name,
+                hp: game.boss.hp,
+                maxHp: game.boss.maxHp,
+                phase: game.boss.phase,
+                defeated: game.boss.defeated,
+              }
+            : null,
+          hazards: game.hazards.map((h) => ({ ...h, state: hazardState(h) })),
           theme: game.theme,
           weapon: WEAPONS[game.weapon].name,
           gadget: GADGETS[game.gadget].name,

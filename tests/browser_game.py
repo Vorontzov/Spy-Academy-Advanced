@@ -38,8 +38,8 @@ def run():
     assert page.locator('#challengeContinue').is_visible();page.click('#challengeContinue');tick()
    # Structural checks across every mission, without editing any content.
    data=page.evaluate('''()=>MathEngine.campaign.map(s=>{newGame(s.level);return {n:s.level,f:game.floors,locks:game.files.every(f=>f.challenge?.source),stairs:game.stairs.every(s=>!isGap(s.x)&&!isGap(s.endX)),items:game.files.every(f=>!isGap(f.x)&&f.floor<game.floors),theme:game.theme,escape:game.escapeKind}})''')
-   assert len(data)==24 and all(v['locks'] and v['stairs'] and v['items'] for v in data)
-   assert data[-1]['f']==24 and len(set(v['escape'] for v in data))==5
+   assert len(data)==36 and all(v['locks'] and v['stairs'] and v['items'] for v in data)
+   assert data[23]['f']==24 and len(set(v['escape'] for v in data))==5
    page.evaluate('toLobby()');page.click('#startBtn');tick();move(290);key('e')
    assert page.evaluate("state==='challenge'")
    before=page.evaluate('[game.time,game.lives]');tick(300);assert page.evaluate('[game.time,game.lives]')==before
@@ -65,6 +65,9 @@ def run():
    # Survive by steering toward a clear edge, shooting and using continuations if required.
    for _ in range(100):
     if page.evaluate('state')=='won':break
+    if page.evaluate('Boolean(driveTask())'):
+     correct=page.evaluate('driveTask().challenge.correct')
+     page.locator('.drive-lane').nth(correct).click();page.click('#driveCommit')
     if page.evaluate('state')=='lost':page.click('#nextBtn');key('ArrowUp')
     e=page.evaluate('({x:game.escape.x,obs:game.escape.obstacles})');near=[o for o in e['obs'] if .35<o['y']<.85 and o['kind']!='beacon']
     if near:
@@ -88,7 +91,7 @@ def run():
    for level in [1,2,5,8,10]:
     page.evaluate('(level)=>{startGame(level);game.files.forEach(f=>{f.collected=true;studyFor(f).solved=true});beginEscape();game.escape.distance=500;saveCheckpoint()}',level)
     kind=page.evaluate('game.escape.kind');page.reload();page.click('#startBtn');assert page.evaluate('game.escape.kind')==kind;assert page.evaluate('game.escape.distance')==500
-    key('ArrowUp');page.evaluate('game.escape.distance=game.escape.target-2');tick(4);assert page.evaluate('state')=='won'
+    key('ArrowUp');page.evaluate('game.escape.drive.completed=2;game.escape.distance=game.escape.target-2');tick(4);assert page.evaluate('state')=='won'
    print('PASS: all five escape types, escape checkpoint persistence and completion',flush=True)
    # Every authored guide can be completed through the same real form.
    for temp in page.evaluate('MathEngine.templates'):
@@ -96,7 +99,7 @@ def run():
      page.evaluate('''({id,tier})=>{startGame(1);const f=game.files[0];f.challenge=MathEngine.make(id,tier,'form');f.lock=f.challenge.topic+':'+tier;f.study=freshStudy();openChallenge(f)}''',{'id':temp['id'],'tier':tier})
      page.click('#solutionBtn');finish()
    assert not errors,errors
-   print('PASS: all 51 template/tier guided forms; no browser errors',flush=True)
+   print('PASS: all 114 template/tier guided forms; no browser errors',flush=True)
    browser.close()
  finally:server.shutdown()
 if __name__=='__main__':run()
