@@ -31,9 +31,164 @@ const poly = (a, b, c) =>
         v,
     )
     .join("") || "0";
+const rational = (s) => {
+  const [a, b = "1"] = String(s).split("/");
+  return Number(a) / Number(b);
+};
+const compare = (a, op, b) =>
+  op === "<" ? a < b : op === ">" ? a > b : op === "≤" ? a <= b : a >= b;
+function regionContains(answer, x) {
+  if (answer === "all real numbers") return true;
+  if (answer === "no real solution") return false;
+  if (answer.startsWith("all real numbers except "))
+    return x !== Number(answer.slice(24));
+  if (answer.startsWith("x = ")) return x === Number(answer.slice(4));
+  return answer.split(" or ").some((part) => {
+    let m = part.match(/^x ([<>≤≥]) (-?\d+)$/);
+    if (m) return compare(x, m[1], Number(m[2]));
+    m = part.match(/^(-?\d+) ([<≤]) x ([<≤]) (-?\d+)$/);
+    if (m)
+      return compare(Number(m[1]), m[2], x) && compare(x, m[3], Number(m[4]));
+    throw Error("Unparsed interval " + answer);
+  });
+}
+function checkRegion(q, predicate, bounds) {
+  const probes = Array.from({ length: 161 }, (_, i) => i * 2 - 160).concat(
+    bounds.flatMap((x) => [x - 0.25, x, x + 0.25]),
+  );
+  for (const x of probes)
+    assert.equal(regionContains(q.answer, x), predicate(x), q.id + " at " + x);
+  for (const wrong of q.answers.filter((s) => s !== q.answer))
+    assert(
+      probes.some((x) => regionContains(wrong, x) !== predicate(x)),
+      q.id + " equivalent distractor " + wrong,
+    );
+}
+
 function oracle(q) {
   const p = q.params;
   switch (q.templateId) {
+    case "compass-triangle":
+      return p.mode === 2 ? p.total / 3 : 3 * p.side * p.scale;
+    case "triangle-range": {
+      if (p.mode === 3) {
+        let n = 0;
+        for (let x = 1; x < p.a + p.b; x++)
+          if (x + p.a > p.b && x + p.b > p.a) n++;
+        return String(n);
+      }
+      checkRegion(
+        q,
+        (x) => x > 0 && x + p.a > p.b && x + p.b > p.a && p.a + p.b > x,
+        [p.b - p.a, p.a + p.b],
+      );
+      return q.answer;
+    }
+    case "triangle-order": {
+      const vertices = p.labels
+        .map((label, i) => ({ label, angle: p.angles[i] }))
+        .sort((a, b) => a.angle - b.angle);
+      assert.equal(
+        p.angles.reduce((x, y) => x + y, 0),
+        180,
+      );
+      return vertices
+        .map((v) =>
+          p.labels
+            .filter((x) => x !== v.label)
+            .sort()
+            .join(""),
+        )
+        .join(", ");
+    }
+    case "inequality-two-step":
+      checkRegion(q, (x) => compare(p.a * x + p.b, p.op, p.c), [p.bound]);
+      return q.answer;
+    case "inequality-distribute":
+    case "inequality-both-sides":
+      checkRegion(
+        q,
+        (x) => compare(p.a * (p.b * x + p.c) + p.d, p.op, p.e * x + p.rhs),
+        [p.bound],
+      );
+      return q.answer;
+    case "absolute-inside":
+    case "absolute-outside":
+      checkRegion(
+        q,
+        (x) =>
+          compare(
+            Math.abs(x + p.shift),
+            p.inside ? (p.inclusive ? "≤" : "<") : p.inclusive ? "≥" : ">",
+            p.radius,
+          ),
+        [-p.radius - p.shift, p.radius - p.shift],
+      );
+      return q.answer;
+    case "system-classify": {
+      const augmented = p.a * p.rhs - p.k * p.a * p.c;
+      assert.equal(p.a * (p.k * p.b) - p.b * (p.k * p.a), 0);
+      return augmented === 0 ? "infinitely many solutions" : "no solution";
+    }
+    case "square-root-property": {
+      const root = Math.sqrt((p.rhs - p.b) / p.a);
+      assert(Number.isFinite(root));
+      const actual = q.answer
+        .split(" and ")
+        .map(rational)
+        .sort((a, b) => a - b);
+      assert.equal(actual.length, root === 0 ? 1 : 2);
+      actual.forEach((x) => assert(Math.abs(p.a * x * x + p.b - p.rhs) < 1e-8));
+      return root === 0 ? "0" : `${frac(-p.n, p.d)} and ${frac(p.n, p.d)}`;
+    }
+    case "zero-product-linear":
+      return `${frac(-p.b, p.a)} and ${frac(p.d, p.c)}`;
+    case "quadratic-nonmonic": {
+      const roots = q.answer.split(" and ").map(rational);
+      assert.equal(roots.length, 2);
+      roots.forEach((x) =>
+        assert(Math.abs(p.A * x * x + p.B * x + p.C) < 1e-8),
+      );
+      const split = q.guide[1].answer.split(",").map(Number);
+      assert.equal(split[0] + split[1], p.B);
+      assert.equal(split[0] * split[1], p.A * p.C);
+      return `${frac(-p.b, p.a)} and ${frac(-p.d, p.c)}`;
+    }
+    case "quadratic-repeated":
+      assert.equal(p.B * p.B - 4 * p.A * p.C, 0);
+      assert(Math.abs(rational(q.answer) + p.B / (2 * p.A)) < 1e-10);
+      return q.answer;
+    case "quadratic-formula": {
+      const D = p.B * p.B - 4 * p.A * p.C;
+      assert(D > 0);
+      for (const sign of [-1, 1]) {
+        const x = p.center + sign * Math.sqrt(p.rad);
+        assert(Math.abs(p.A * x * x + p.B * x + p.C) < 1e-8);
+      }
+      let square = 1;
+      for (let i = 1; i * i <= D; i++) if (D % (i * i) === 0) square = i * i;
+      assert.equal(Number(q.guide[5].answer), square);
+      return `${-p.B / (2 * p.A)} ± sqrt(${D / (4 * p.A * p.A)})`;
+    }
+    case "discriminant-count": {
+      // Evaluate the vertex relative to zero instead of reusing the discriminant.
+      const x = -p.B / (2 * p.A),
+        minimum = p.A * x * x + p.B * x + p.C;
+      return minimum < 0 ? 2 : minimum === 0 ? 1 : 0;
+    }
+    case "quadratic-interval":
+    case "quadratic-normalize":
+      checkRegion(q, (x) => compare(p.A * x * x + p.B * x + p.C, p.op, 0), [
+        p.lo,
+        p.hi,
+      ]);
+      return q.answer;
+    case "quadratic-double-root":
+      checkRegion(q, (x) => compare(p.A * (x - p.root) ** 2, p.op, 0), [
+        p.root,
+      ]);
+      return q.answer;
+
     case "mixed-to-improper":
       return frac(p.whole * p.d + p.n, p.d);
     case "improper-to-mixed":
@@ -377,10 +532,10 @@ for (const temp of e.templates)
 assert(e.matchesStep({ kind: "fraction", answer: "1/2" }, "2/4"));
 assert(!e.matchesStep({ kind: "fraction", answer: "1/2" }, "1/0"));
 assert(e.matchesStep({ kind: "code", answer: "(y − 3)/2" }, " ( y - 3 ) / 2 "));
-assert.equal(e.campaign.length, 60);
+assert.equal(e.campaign.length, 78);
 for (const s of e.campaign) {
   assert.equal(s.count, s.locks.length);
-  assert(s.floors >= 8 && s.floors <= 30);
+  assert(s.floors >= 8 && s.floors <= 32);
   for (const lock of s.locks) {
     const [topic, tier, template] = lock.split(":");
     const q = e.make(template, Number(tier), "campaign");
@@ -389,5 +544,5 @@ for (const s of e.campaign) {
   }
 }
 console.log(
-  `PASS: ${count} independent answers, ${steps} checked guided inputs, all source references and 60 maths-first missions.`,
+  `PASS: ${count} independent answers, ${steps} checked guided inputs, all source references and 78 maths-first missions.`,
 );

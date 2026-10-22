@@ -45,8 +45,8 @@ def run():
                     page.locator('.answer').nth(page.evaluate('challengeDoor.challenge.correct')).click()
                 page.click('#challengeContinue'); tick()
 
-            assert page.locator('#levelSelect option').count() == 60
-            assert page.locator('#levelSelect optgroup').count() == 3
+            assert page.locator('#levelSelect option').count() == 78
+            assert page.locator('#levelSelect optgroup').count() == 4
             assert page.locator('#levelSelect optgroup[label="PHANTOM CIRCUIT"] option').count() == 24
             page.select_option('#levelSelect', '60')
             assert 'PHANTOM CIRCUIT' in page.locator('.classified').inner_text()
@@ -81,11 +81,11 @@ def run():
                 key('ArrowUp')
                 page.evaluate('game.escape.drive.completed=2;game.escape.distance=game.escape.target-2')
                 tick(4); assert page.evaluate('state') == 'won'
-            assert 'Campaign complete!' in page.locator('#resultText').inner_text()
-            assert page.locator('#nextBtn').inner_text() == 'CHOOSE AN OPERATION →'
-            page.click('#nextBtn'); assert page.evaluate('state') == 'lobby'
-            assert page.locator('#levelSelect option').count() == 60
-            print('PASS: all 24 missions, 120 actual maths gates, three-tier progression, unarmed starts, override/boss gates and campaign finale', flush=True)
+            assert 'The next operation is ready.' in page.locator('#resultText').inner_text()
+            page.click('#nextBtn'); assert page.evaluate('game.mission') == 61
+            page.evaluate('toLobby()')
+            assert page.locator('#levelSelect option').count() == 78
+            print('PASS: all 24 missions, 120 actual maths gates, three-tier progression, unarmed starts, override/boss gates and transition to Eclipse Pact', flush=True)
 
             # A tall tower is reachable via real controls, independent of combat fixtures.
             page.evaluate('startGame(60);game.guards=[];game.hazards=[]')

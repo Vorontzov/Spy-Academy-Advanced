@@ -16,11 +16,11 @@ The sequence groups related topics and builds prerequisites. A new topic starts 
 | 21–22      | Factoring         | Common coefficient and variable → higher common powers                                    | S01, S23, S12      |
 | 23–24      | Literal equations | Undo addition and multiplication → collect/factor the subject                             | S15                |
 
-This release has 62 generators (17 original, 15 added for Shadow Atlas objectives, 6 for vehicle engineering, and 24 for Phantom Circuit). Each supports the common three-tier interface; not every generator changes its mathematical structure at every tier. Levels select an explicit generator and tier rather than a random topic-wide question. Replay produces new numbers. The same seed regenerates the same question and answer order when resuming a save.
+This release has 80 generators (17 original, 15 for Shadow Atlas objectives, 6 for vehicle engineering, 24 for Phantom Circuit, and 18 for Eclipse Pact). Each supports the common three-tier interface; not every generator changes its mathematical structure at every tier. Levels select an explicit generator and tier rather than a random topic-wide question. Replay produces new numbers. The same seed regenerates the same question and answer order when resuming a save.
 
 ## Shadow Atlas: applications and advanced extensions
 
-Operations 25–36 revisit the topic groups in order, adding applications before advanced algebra. Difficulty is grouped by prerequisite, not guaranteed to increase after every individual question. The first 24 operation definitions and their seeded questions are unchanged, preserving existing saves. All 60 operations can be selected from the lobby.
+Operations 25–36 revisit the topic groups in order, adding applications before advanced algebra. Difficulty is grouped by prerequisite, not guaranteed to increase after every individual question. The first 24 operation definitions and their seeded questions are unchanged, preserving existing saves. All 78 operations can be selected from the lobby.
 
 | Operation | Adventure / location                      | New maths                                                                              | Sources                            |
 | --------- | ----------------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------- |
@@ -76,6 +76,37 @@ Money is represented in integer cents. When rounding is required, prompts specif
 
 S30 and S34 contain the same 30 exercises and keys, with different PDF headers; they share the tax/discount content rather than doubling the bank. S36 repeats the earlier literal-equation sheet but contributes its previously unused denominator-subject problem. S28 combines separately taught fraction methods into new expressions. These are source-based adaptations, not verbatim copies or complete coverage of every worksheet.
 
+## Eclipse Pact: geometry, inequalities and quadratics
+
+Operations 61–78 use the next 14 PDFs (46 pages). Each mission has five maths locks: three tiers of its main family and two review questions. The second lock recruits the mission's ally. The fourth requires recovering a sigil through a playable labyrinth before opening the maths task. Neither companions nor mazes supply maths answers. All action and ability cooldowns freeze while a question is open. The first 60 campaign definitions and their seeded question objects remain unchanged.
+
+| Operation | Adventure / location                         | Primary maths                                                         | Source                                              |
+| --------- | -------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------- |
+| 61        | The Meridian Key / pyramid                   | Equal-radius compass construction; perimeter and scale applications   | S48, pp. 1–2                                        |
+| 62        | The False Passage / pyramid                  | Strict triangle bounds; count valid integer third sides               | S50, p. 1, problems 5–8                             |
+| 63        | Eye of the Pyramid / pyramid                 | Missing angle and ordering opposite sides                             | S50, p. 1, problems 9–12                            |
+| 64        | Masquerade Signal / palace                   | Two-step inequalities and sign reversal                               | S49, pp. 1–2                                        |
+| 65        | The Silk Switch / palace                     | Distribution in inequalities                                          | S47, p. 1, problems 6–10                            |
+| 66        | The Palace Double / palace                   | Variables on both sides of inequalities                               | S47, p. 1, problems 11–12                           |
+| 67        | Whisper Radius / catacombs                   | Absolute value: inside a distance range                               | S46, p. 1                                           |
+| 68        | Beyond the Signal / catacombs                | Absolute value: two outside ranges                                    | S46, p. 1                                           |
+| 69        | The Impossible Alibi / catacombs             | Dependent systems and inconsistent-system extension                   | S40, p. 2, problem 22                               |
+| 70        | Cloud Mirror / monastery                     | Square-root property, rational roots and zero                         | S39, pp. 1–3                                        |
+| 71        | Twin Bells / monastery                       | Zero-product property with rational roots                             | S42, pp. 1 and 3                                    |
+| 72        | The Broken Halo / monastery                  | Nonmonic quadratic factoring                                          | S44, pp. 1–2                                        |
+| 73        | One True Coordinate / buried observatory     | Repeated factors and distinct roots                                   | S43, problem 11; S44, problems 9–10                 |
+| 74        | The Irrational Beacon / buried observatory   | Quadratic formula and exact irrational roots                          | S45, pp. 1–4; irrational variants extend the method |
+| 75        | Count the Possibilities / buried observatory | Discriminant and number of real solutions                             | S45, pp. 2–4; negative-discriminant extension       |
+| 76        | The Eclipse Window / airship                 | Quadratic sign intervals, negative leading coefficients and endpoints | S52, p. 1; S51, p. 1                                |
+| 77        | Crossing the Zero Line / airship             | Normalize both sides before solving a quadratic inequality            | S41, p. 1, problems 20–25                           |
+| 78        | The Eclipse Pact / airship                   | Repeated-root inequalities: all, none, one or an excluded point       | S51, problems 12 and 16; S41, problem 16            |
+
+The construction diagram shows equal-radius arcs; checked inputs establish the radii, equal sides and resulting lengths. It is a diagram-based reasoning task, not a freehand compass simulator. Side-ordering problems use distinct angles; equal-angle ties are future work. The triangle range family excludes degenerate triangles and extends the worksheet with integer counting.
+
+Inequality guides require numerical boundaries, the correct relation after division, inside/outside reasoning, and inclusion or exclusion of endpoints. The full solution appears after those checked steps. There is no interval-notation parser or interactive number-line drawing in this release. The exact quadratic-formula family uses roots of the form `center ± sqrt(radicand)` with a square-free radicand. The final typed guide step requests `center +/- sqrt(radicand)`; spacing is flexible, but it does not accept every algebraically equivalent spelling. Root counts distinguish repeated roots from two distinct solutions. General irrational quadratic-inequality boundaries and complex roots remain future material.
+
+The generator tiers vary numerical size, signs, root types or problem structure as appropriate; not every tier is a new algebraic method. New topic groups intentionally start with introductory cases. The game is not a validated placement test or a complete entrance-exam syllabus.
+
 ## Vehicle engineering
 
 Car and motorcycle escapes each have two maths checkpoints, reached at one-third and two-thirds of the route. Traffic and health are frozen until the task is completed. Correct results earn a temporary boost and protection. The learner operates a mixing valve or chooses a road by steering; these tasks use the same seeded generator and checked-guide contract as the cases.
@@ -84,7 +115,7 @@ Car and motorcycle escapes each have two maths checkpoints, reached at one-third
 | --------------- | --------------------------------------------------- | ------------------------------------------- | ------------------------------------------------ |
 | 1–6             | Fraction of a route, then add the starting marker   | Allocate fuel using a fraction of the total | S06, pp. 21–22                                   |
 | 7–16            | Percentage of a route, then add the starting marker | Allocate fuel using a percentage            | S14, pp. 6–7                                     |
-| 17–60           | Closing speed, meeting time and meeting position    | Divide a total in a part-to-part ratio      | S09, pp. 1–2; S21, p. 1, problem 1; S17, pp. 1–2 |
+| 17–78           | Closing speed, meeting time and meeting position    | Divide a total in a part-to-part ratio      | S09, pp. 1–2; S21, p. 1, problem 1; S17, pp. 1–2 |
 
 These are newly authored applications of the listed methods, not copied vehicle questions from the worksheets. Moving-courier problems specify constant speeds, a common start time and a common direction. Fuel allocations use integer litres; percent products are stored exactly to avoid displaying floating-point artifacts. Every unfinished vehicle guide resumes at the validated prefix of checked answers. Completing a guide reveals its solution but still requires the learner to operate the valve or select the exit.
 
@@ -120,4 +151,4 @@ Questions are stored in the HTML, so this is a learning interface rather than a 
 
 ## Next material to add
 
-S02 contains a broader 57-question SHSAT mathematics paper with geometry, statistics, probability and other applications. S07 adds sample spaces and probability. Further work can add these families, polynomial identities, general non-factorable quadratics, general radical equations, and further literal-equation structures. They are not claimed as covered by the current 60 operations.
+S02 contains a broader 57-question SHSAT mathematics paper with geometry, statistics, probability and other applications. S07 adds sample spaces and probability. Further work can add these families, polynomial identities, broader quadratic-formula forms, general radical equations, irrational-boundary inequalities, equal-angle triangle ordering, and further literal-equation structures. They are not claimed as covered by the current 78 operations.

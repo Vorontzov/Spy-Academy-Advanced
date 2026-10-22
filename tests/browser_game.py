@@ -38,7 +38,7 @@ def run():
     assert page.locator('#challengeContinue').is_visible();page.click('#challengeContinue');tick()
    # Structural checks across every mission, without editing any content.
    data=page.evaluate('''()=>MathEngine.campaign.map(s=>{newGame(s.level);return {n:s.level,f:game.floors,locks:game.files.every(f=>f.challenge?.source),stairs:game.stairs.every(s=>!isGap(s.x)&&!isGap(s.endX)),items:game.files.every(f=>!isGap(f.x)&&f.floor<game.floors),theme:game.theme,escape:game.escapeKind}})''')
-   assert len(data)==60 and all(v['locks'] and v['stairs'] and v['items'] for v in data)
+   assert len(data)==78 and all(v['locks'] and v['stairs'] and v['items'] for v in data)
    assert data[23]['f']==24 and len(set(v['escape'] for v in data))==5
    page.evaluate('toLobby()');page.click('#startBtn');tick();move(290);key('e')
    assert page.evaluate("state==='challenge'")
@@ -99,7 +99,7 @@ def run():
      page.evaluate('''({id,tier})=>{startGame(1);const f=game.files[0];f.challenge=MathEngine.make(id,tier,'form');f.lock=f.challenge.topic+':'+tier;f.study=freshStudy();openChallenge(f)}''',{'id':temp['id'],'tier':tier})
      page.click('#solutionBtn');finish()
    assert not errors,errors
-   print('PASS: all 186 template/tier guided forms; no browser errors',flush=True)
+   print('PASS: all 240 template/tier guided forms; no browser errors',flush=True)
    browser.close()
  finally:server.shutdown()
 if __name__=='__main__':run()

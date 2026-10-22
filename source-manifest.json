@@ -226,5 +226,89 @@
     "file": "2025-12-30_equations_systems_2-variables_elimination-method-l1-3.pdf",
     "pages": 2,
     "sha256": "952d1b3b6c1a4d739df63f94afd8edf08146d893a47880dd210419300f004dc4"
+  },
+  {
+    "id": "S39",
+    "file": "2026-01-02_s_Solving_Quadratic_Equations_Using_the_Square_Root_Porperty.pdf",
+    "pages": 4,
+    "sha256": "9ad101fdd049c69a6b27392b1dc2bbfd35b62333b32112d8f5cdaab04a9f0a2e"
+  },
+  {
+    "id": "S40",
+    "file": "2025-12-30_sSystems_of_Equations_Elimination_w_Answers_NEXT.pdf",
+    "pages": 4,
+    "sha256": "cc3171d8a4f9f5666f562f37e8b135531bb3032f1bcd35dd28de4f5f8c45c420"
+  },
+  {
+    "id": "S41",
+    "file": "2026-01-23_ssSolving-Quadratic-Inequalities_2026.pdf",
+    "pages": 2,
+    "sha256": "ed7a7c2272faf9134bd5fe9a1d8165ab96b3f98cf2ed9fa459d2a28426a2f37b"
+  },
+  {
+    "id": "S42",
+    "file": "2026-01-02_s1-2_quadratic-equation_zero-product-all.pdf",
+    "pages": 4,
+    "sha256": "2e1e6296175b91f36b9318f254c7b83471970789d722f35bc1cf545d3b954268"
+  },
+  {
+    "id": "S43",
+    "file": "2026-01-06_#s_quadratic_equations_solvingforx.pdf",
+    "pages": 2,
+    "sha256": "5964a0f145afe4fe6f2d8885184c3e9ba3f1f38431a15c643041abf999526252"
+  },
+  {
+    "id": "S44",
+    "file": "2026-01-09_Solving_Quadratic_Equations_(A).pdf",
+    "pages": 2,
+    "sha256": "4847572d695d3dff53bed35051397982d495241aec1838b278ab165ca70fbab6"
+  },
+  {
+    "id": "S45",
+    "file": "2026-01-09_sQuadratic_Formula_2.pdf",
+    "pages": 4,
+    "sha256": "4f8e0c99499b125716b39b7672462ab10baf16de4c60bcf3e2c1bf27b0c778d0"
+  },
+  {
+    "id": "S46",
+    "file": "2026-01-13_s_absolute-value-inequalities-1_with_-KEY.pdf",
+    "pages": 2,
+    "sha256": "04080ccf1ad06962bc69a6537a096431cfe702f9bf5dc11d63c6427046dd8722"
+  },
+  {
+    "id": "S47",
+    "file": "2026-01-13_s1_Multi-Step_Inequalities.pdf",
+    "pages": 2,
+    "sha256": "e7d28202e0e83d611cbe3dbc60b02397a9d57cbbe6c4e0e1ac61ccd8b622cb51"
+  },
+  {
+    "id": "S48",
+    "file": "2026-01-16_compass_and_straightedge_construction_of_regular_triangle.pdf",
+    "pages": 2,
+    "sha256": "abf9d27077854a0e11fb045a34d744e333f20cae2552af4ac4a08f7ef4c5958f"
+  },
+  {
+    "id": "S49",
+    "file": "2026-01-13_sTwo-Step_Inequalities.pdf",
+    "pages": 4,
+    "sha256": "3ff1abc18d0edce42f05d32c62ef306fbac494e693b157b582b4dc0c3860d50a"
+  },
+  {
+    "id": "S50",
+    "file": "2026-01-16_ss_Triangle_Inequality_01162026.pdf",
+    "pages": 10,
+    "sha256": "d56737bbabc90b201ce1cf45935f9ae83366f993f64910975072f523dfb35f4d"
+  },
+  {
+    "id": "S51",
+    "file": "2026-01-20_sSolving-Quadratic-Inequalities1.pdf",
+    "pages": 2,
+    "sha256": "a043868058fff39693f252fa6f8d68cfe8dae0afb9714db6487832b1a59f00e9"
+  },
+  {
+    "id": "S52",
+    "file": "2026-01-23_SSolving_Quadratic_Inequalities1_2026.pdf",
+    "pages": 2,
+    "sha256": "411771e51026403b329f4d1047af461f3dc225416492ec6702afbe0c55bf1e86"
   }
 ]

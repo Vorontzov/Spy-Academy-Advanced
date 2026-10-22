@@ -13,7 +13,7 @@
     />
     <meta
       name="description"
-      content="A single-file spy adventure with 60 operations, maths from level one, gadgets, stairs, and playable vehicle escapes. Practice based on supplied mathematics worksheets."
+      content="A single-file spy adventure with 78 operations, maths from level one, gadgets, stairs, and playable vehicle escapes. Practice based on supplied mathematics worksheets."
     />
     <title>Spy Academy Advanced</title>
     <style>
@@ -2021,7 +2021,7 @@
             <h1 id="title">SPY ACADEMY <em>ADVANCED.</em></h1>
           </div>
           <div class="intro-side">
-            <p>60 operations. Think fast. Go further.</p>
+            <p>78 operations. Think fast. Go further.</p>
             <div class="chip">
               <span>●</span> SINGLE PLAYER <span>/</span> INSTANT PLAY
             </div>
@@ -2030,7 +2030,7 @@
         <section class="training-bar" aria-label="Campaign selection">
           <label
             >GAME MODE<select id="modeSelect">
-              <option value="campaign">Advanced · 60 operations</option>
+              <option value="campaign">Advanced · 78 operations</option>
             </select></label
           >
           <label class="level-field"
@@ -2410,6 +2410,9 @@
             <button class="touch-key" data-key="swapGadget">
               V · Change gadget
             </button>
+            <button class="touch-key" data-key="ally" id="allyTray" hidden>
+              B · Ally support
+            </button>
             <span id="energyTray" role="status">Energy 100%</span>
           </div>
           <div
@@ -2556,6 +2559,22 @@
         vehicle tasks are saved.
       </p>
       <p>
+        Eclipse Pact (operations 61–78) adds six settings, cellar labyrinths,
+        and three allies. The second lock recruits Nova (shield and recharge),
+        Ibis (cloak and maze route scan), or Rook (cover fire). Press B or tap
+        the ally button; support recharges in 14 seconds. Each ally supplies a
+        weapon. At the artifact door, enter the lower maze, take the diamond,
+        and reach OUT. Arrows move; FIRE stuns sentinels. At IN, JUMP returns to
+        the tower. Maze progress and the sigil survive a continuation or reload.
+      </p>
+      <p>
+        New villains telegraph their attacks: wardens launch low shockwaves and
+        guard during windup, hunters combine volleys with charges, and saboteurs
+        mark delayed floor blasts. Jump, move out of marked areas, call your
+        ally, and strike during recovery. At half armor they attack more often.
+        Maths still pauses all action, with no mission deadline.
+      </p>
+      <p>
         Phantom Circuit (operations 37–60) introduces eight new settings and
         towers up to 30 floors. Each operation mixes its new skill with
         prerequisite review: build confidence, apply the skill, then solve its
@@ -2604,7 +2623,7 @@
       /*
        * SPY ACADEMY ADVANCED
        * A dependency-free, original tribute. Everything needed to play is in this file.
-       * CUSTOMIZE: MathEngine contains a 60-operation campaign and source-mapped seeded templates.
+       * CUSTOMIZE: MathEngine contains a 78-operation campaign and source-mapped seeded templates.
        * See CURRICULUM.md and SOURCES.md for content provenance and authoring.
        * Challenges pause the action and never cost a life. Everything runs locally in this file.
        * Rendering, input, audio, simulation, and content are kept separate below.
@@ -2625,6 +2644,8 @@
           averages: "Averages & data",
           integers: "Signed numbers & operations",
           systems: "Systems of equations",
+          geometry: "Geometry & construction",
+          inequalities: "Inequalities",
         };
         const tiers = ["Build confidence", "Stretch", "Advanced"];
         const rows = [
@@ -3545,6 +3566,293 @@
             brief: `${lesson}. ${story}`,
           });
         });
+
+        const eclipseSectors = [
+          ["pyramid", "Luxor, Meridian Pyramid", [18, 20, 22]],
+          ["palace", "Jaipur, Mirror Palace", [20, 22, 24]],
+          ["catacomb", "Paris, Catacomb Exchange", [20, 22, 24]],
+          ["monastery", "Bhutan, Cloud Monastery", [22, 24, 26]],
+          ["cavern", "Cappadocia, Buried Observatory", [24, 26, 28]],
+          ["airship", "Aegean Sky, Eclipse Flagship", [26, 30, 32]],
+        ];
+        const eclipseRows = [
+          [
+            "THE MERIDIAN KEY",
+            "geometry",
+            "compass-triangle",
+            "Compass construction and equal sides",
+            "Anubis-9",
+            "SUN COMPASS",
+            "nova",
+            "Nova, your partner and brilliant field engineer, joins you beneath a pyramid. Rebuild a triangular antenna to locate the stolen Meridian Key.",
+            "fractions:2:fraction-product",
+            "geometry:1:compass-triangle",
+          ],
+          [
+            "THE FALSE PASSAGE",
+            "geometry",
+            "triangle-range",
+            "Strict triangle bounds",
+            "The Sand Warden",
+            "SCARAB SEAL",
+            "ibis",
+            "Recruit Ibis, a desert scout, and trace the cellar passages before the Sand Warden can move the Scarab Seal.",
+            "geometry:1:compass-triangle",
+            "geometry:2:triangle-range",
+          ],
+          [
+            "EYE OF THE PYRAMID",
+            "geometry",
+            "triangle-order",
+            "Opposite sides and angles",
+            "Queen Sable",
+            "EYE OF RA",
+            "rook",
+            "Rook offers a temporary truce: help recover his stolen cipher, and he will cover your raid on Queen Sable’s vault.",
+            "geometry:1:triangle-range",
+            "geometry:2:compass-triangle",
+          ],
+          [
+            "MASQUERADE SIGNAL",
+            "inequalities",
+            "inequality-two-step",
+            "Inequality boundaries and sign reversal",
+            "Marquis Mirage",
+            "MIRROR MASK",
+            "nova",
+            "Nova poses as a gala guest while you infiltrate the Mirror Palace. A hidden cellar carries the real guest list and a stolen mask.",
+            "integers:2:signed-route",
+            "equations:2:balanced-distribution",
+          ],
+          [
+            "THE SILK SWITCH",
+            "inequalities",
+            "inequality-distribute",
+            "Distribute and solve inequalities",
+            "Lady Vesper",
+            "SILK TRANSMITTER",
+            "ibis",
+            "Ibis has found service corridors beneath the royal kitchens. Follow her markers and sever Vesper’s counterfeit signal network.",
+            "inequalities:1:inequality-two-step",
+            "inequalities:2:inequality-two-step",
+          ],
+          [
+            "THE PALACE DOUBLE",
+            "inequalities",
+            "inequality-both-sides",
+            "Variables on both sides of inequalities",
+            "The Glass Regent",
+            "ROYAL SIGNET",
+            "rook",
+            "The Glass Regent plans to replace a peace treaty with a forgery. Rook knows the palace cellars, but needs your help to expose the double.",
+            "inequalities:2:inequality-distribute",
+            "integers:3:power-order",
+          ],
+          [
+            "WHISPER RADIUS",
+            "inequalities",
+            "absolute-inside",
+            "Absolute value as a bounded distance",
+            "Dr. Echo",
+            "ECHO PRISM",
+            "ibis",
+            "An underground listening network is tracking the academy. Find the safe signal range and carry the Echo Prism out through the catacombs.",
+            "inequalities:1:inequality-two-step",
+            "geometry:2:triangle-range",
+          ],
+          [
+            "BEYOND THE SIGNAL",
+            "inequalities",
+            "absolute-outside",
+            "Absolute value and separated ranges",
+            "The Undertone",
+            "SILENCE COIL",
+            "nova",
+            "Nova can shield you from the Undertone’s scanners. Navigate the forbidden bands and recover a coil that can silence the network.",
+            "inequalities:1:absolute-inside",
+            "inequalities:2:inequality-distribute",
+          ],
+          [
+            "THE IMPOSSIBLE ALIBI",
+            "systems",
+            "system-classify",
+            "Dependent and inconsistent systems",
+            "Archivist Null",
+            "PACT LEDGER",
+            "rook",
+            "Two agents give conflicting accounts of the same shipment. Resolve their evidence, then use Rook’s truce to seize the Pact Ledger.",
+            "systems:2:system-eliminate",
+            "systems:2:system-scale",
+          ],
+          [
+            "CLOUD MIRROR",
+            "equations",
+            "square-root-property",
+            "The square-root property",
+            "Abbot Frost",
+            "CLOUD MIRROR",
+            "nova",
+            "The Cloud Monastery hides a weather-control relay. Nova supplies an ion rail; you must recover both halves of its calibration.",
+            "equations:1:quadratic-factors",
+            "fractions:2:reduce",
+          ],
+          [
+            "TWIN BELLS",
+            "equations",
+            "zero-product-linear",
+            "Zero-product property and rational roots",
+            "The Bellkeeper",
+            "HARMONIC CLAPPER",
+            "ibis",
+            "Two bells encode the relay’s location. Follow Ibis through a tunnel maze and solve both branches of the alarm cipher.",
+            "equations:2:square-root-property",
+            "equations:2:fraction-linear",
+          ],
+          [
+            "THE BROKEN HALO",
+            "equations",
+            "quadratic-nonmonic",
+            "Factor nonmonic quadratics",
+            "General Halcyon",
+            "HALO ENGINE",
+            "rook",
+            "General Halcyon has occupied the mountain sanctuary. Rook will help break his guard while you dismantle the Halo Engine’s control equation.",
+            "equations:2:zero-product-linear",
+            "polynomials:2:poly-product",
+          ],
+          [
+            "ONE TRUE COORDINATE",
+            "equations",
+            "quadratic-repeated",
+            "Repeated roots and perfect squares",
+            "The Doppelganger",
+            "SINGLE STAR MAP",
+            "nova",
+            "A buried observatory reports two identical coordinates. Find the single true location before the Doppelganger swaps the star map.",
+            "equations:2:quadratic-nonmonic",
+            "equations:2:square-root-property",
+          ],
+          [
+            "THE IRRATIONAL BEACON",
+            "equations",
+            "quadratic-formula",
+            "Quadratic formula and exact radicals",
+            "Professor Rift",
+            "RIFT BEACON",
+            "ibis",
+            "The Rift Beacon cannot be calibrated with whole numbers. Derive its exact settings and use Ibis’s survey to escape the buried galleries.",
+            "equations:2:quadratic-repeated",
+            "equations:2:radical-verification",
+          ],
+          [
+            "COUNT THE POSSIBILITIES",
+            "equations",
+            "discriminant-count",
+            "Discriminant and real-solution count",
+            "Oracle Vanta",
+            "ORACLE LENS",
+            "rook",
+            "Oracle Vanta claims every prediction has two outcomes. Test that claim, recover the lens, and keep the temporary alliance alive.",
+            "equations:1:quadratic-formula",
+            "systems:3:system-classify",
+          ],
+          [
+            "THE ECLIPSE WINDOW",
+            "inequalities",
+            "quadratic-interval",
+            "Quadratic sign intervals",
+            "Admiral Umbra",
+            "ECLIPSE CHART",
+            "ibis",
+            "Board the Eclipse flagship above the Aegean. Ibis scouts its maintenance labyrinth while you calculate the safe launch windows.",
+            "inequalities:2:absolute-outside",
+            "equations:2:quadratic-nonmonic",
+          ],
+          [
+            "CROSSING THE ZERO LINE",
+            "inequalities",
+            "quadratic-normalize",
+            "Standard form and quadratic inequalities",
+            "Marshal Zero",
+            "DAWN CORE",
+            "rook",
+            "Marshal Zero is preparing to jam the city’s emergency network. Rook holds the boarding route while you recover the Dawn Core below decks.",
+            "inequalities:2:quadratic-interval",
+            "inequalities:3:inequality-both-sides",
+          ],
+          [
+            "THE ECLIPSE PACT",
+            "inequalities",
+            "quadratic-double-root",
+            "Repeated-root inequalities and complete solution sets",
+            "Director Eclipse",
+            "ECLIPSE OVERRIDE",
+            "nova",
+            "Nova joins the final assault. Cross the flagship’s lower labyrinth, capture Director Eclipse, and restore the emergency network before your parachute extraction.",
+            "equations:3:quadratic-repeated",
+            "inequalities:3:quadratic-normalize",
+          ],
+        ];
+        eclipseRows.forEach(
+          (
+            [
+              name,
+              topic,
+              template,
+              lesson,
+              villain,
+              artifact,
+              ally,
+              story,
+              reviewA,
+              reviewB,
+            ],
+            i,
+          ) => {
+            const [theme, location, floors] = eclipseSectors[Math.floor(i / 3)];
+            campaign.push({
+              level: 61 + i,
+              name,
+              topic,
+              template,
+              tier: i < 9 ? 2 : 3,
+              theme,
+              location,
+              floors: floors[i % 3],
+              count: 5,
+              locks: [
+                `${topic}:1:${template}`,
+                reviewA,
+                `${topic}:2:${template}`,
+                reviewB,
+                `${topic}:3:${template}`,
+              ],
+              security: 3 + (i % 3),
+              chapter: "ECLIPSE PACT",
+              villain,
+              style: ["warden", "hunter", "saboteur"][i % 3],
+              bossArmor: 12 + 2 * Math.floor(i / 6),
+              ally,
+              objects: [
+                "COVERT ACCESS",
+                `RECRUIT ${ally.toUpperCase()}`,
+                "DEFENSE OVERRIDE",
+                artifact,
+                "NETWORK UPLINK",
+              ],
+              escape:
+                i === 17
+                  ? "parachute"
+                  : ["motorcycle", "car", "helicopter", "plane", "parachute"][
+                      i % 5
+                    ],
+              unarmed: [2, 5, 8, 11, 14, 16].includes(i),
+              lesson,
+              story,
+              brief: `${lesson}. ${story}`,
+            });
+          },
+        );
 
         const gcd = (a, b) => (b ? gcd(b, a % b) : Math.abs(a));
         const frac = (a, b) => {
@@ -6941,6 +7249,1008 @@
           );
         });
 
+        // Eclipse Pact: source-mapped algebra, inequalities and construction.
+        const ray = (op, bound) => `x ${op} ${bound}`;
+        const interval = (lo, hi, inside, inclusive) =>
+          inside
+            ? `${lo} ${inclusive ? "≤" : "<"} x ${inclusive ? "≤" : "<"} ${hi}`
+            : `x ${inclusive ? "≤" : "<"} ${lo} or x ${inclusive ? "≥" : ">"} ${hi}`;
+        const rootPair = (a, b) => (a === b ? String(a) : `${a} and ${b}`);
+        const relationFlip = (op) =>
+          ({ "<": ">", ">": "<", "≤": "≥", "≥": "≤" })[op];
+        const relations = ["<", ">", "≤", "≥"];
+
+        add("geometry", "compass-triangle", (r, t) => {
+          const side = r(5, 30),
+            scale = t === 3 ? r(2, 5) : 1,
+            total = 3 * side;
+          const answer = t === 2 ? side : total * scale;
+          const question =
+            t === 2
+              ? `Nova needs an equilateral antenna frame with perimeter ${total} cm. What compass radius constructs it?`
+              : `A segment PQ is ${side} cm. Equal-radius arcs centered at P and Q meet at R, using radius PQ. ${t === 3 ? `The finished triangle is enlarged by scale factor ${scale}. ` : ""}What is the ${t === 3 ? "enlarged " : ""}triangle's perimeter in cm?`;
+          const guide =
+            t === 2
+              ? [
+                  calc(
+                    "Divide the perimeter by the number of equal sides.",
+                    total,
+                    "÷",
+                    3,
+                    "An equilateral triangle has three equal sides.",
+                  ),
+                  step(
+                    "The second arc must be centered at which endpoint: P or Q?",
+                    "Q",
+                    "The first arc is centered at P. Use the other endpoint.",
+                    "text",
+                  ),
+                  step(
+                    "What radius must both compass arcs use, in cm?",
+                    side,
+                    "Each arc uses the required side length.",
+                  ),
+                ]
+              : [
+                  step(
+                    "What is the radius of the arc centered at P?",
+                    side,
+                    "Use the length of the original segment.",
+                  ),
+                  step(
+                    "Since R lies on that arc, what is PR?",
+                    side,
+                    "Every point on a circle is one radius from its center.",
+                  ),
+                  step(
+                    "Since R also lies on the arc centered at Q, what is QR?",
+                    side,
+                    "The two arcs have the same radius.",
+                  ),
+                  calc(
+                    "Find the perimeter of the original triangle.",
+                    side,
+                    "×",
+                    3,
+                    "Add the three equal side lengths.",
+                  ),
+                  ...(t === 3
+                    ? [
+                        calc(
+                          "Scale the perimeter by the enlargement factor.",
+                          total,
+                          "×",
+                          scale,
+                          "All lengths scale by the same factor.",
+                        ),
+                      ]
+                    : []),
+                ];
+          return {
+            ...q(
+              question,
+              answer,
+              guide,
+              { side, scale, total, mode: t },
+              source(
+                "S48",
+                "pp. 1–2",
+                "Equal-radius compass construction; perimeter/scale applications",
+              ),
+            ),
+            diagram: {
+              type: "compass",
+              label:
+                t === 2
+                  ? "Required perimeter: " + total + " cm"
+                  : "PQ = " + side + " cm",
+            },
+          };
+        });
+        add("geometry", "triangle-range", (r, t) => {
+          const a = r(4, 20 + 5 * t),
+            b = a + r(1, 15),
+            lo = b - a,
+            hi = a + b,
+            count = hi - lo - 1;
+          const answer =
+            t === 3 ? String(count) : interval(lo, hi, true, false);
+          return q(
+            `A triangular escape rig has two sides of ${a} m and ${b} m. ${t === 3 ? "How many positive whole-number lengths can its third side have?" : "Find the full range for its third side x, in metres."}`,
+            answer,
+            [
+              calc(
+                "Subtract the shorter known side from the longer.",
+                b,
+                "−",
+                a,
+                "The third side must be strictly greater than the difference.",
+              ),
+              calc(
+                "Add the two known lengths.",
+                a,
+                "+",
+                b,
+                "The third side must be strictly less than the sum.",
+              ),
+              step(
+                "Can either boundary be included? Type yes or no.",
+                "no",
+                "Equality would flatten the triangle into a straight line.",
+                "text",
+              ),
+              ...(t === 3
+                ? [
+                    calc(
+                      "Find the number of integer gaps between the boundaries.",
+                      hi,
+                      "−",
+                      lo,
+                      "First subtract the lower endpoint.",
+                    ),
+                    calc(
+                      "Exclude the endpoint itself.",
+                      hi - lo,
+                      "−",
+                      1,
+                      "Both endpoints are excluded.",
+                    ),
+                  ]
+                : [
+                    step(
+                      "Does the third side lie inside or outside these bounds?",
+                      "inside",
+                      "All three sides must satisfy the triangle inequality.",
+                      "text",
+                    ),
+                  ]),
+            ],
+            { a, b, lo, hi, count, mode: t },
+            source(
+              "S50",
+              "p. 1, problems 5–8; pp. 3, 5, 7, 9 equivalents",
+              "Strict triangle bounds; integer-length extension",
+            ),
+            t === 3
+              ? [count + 1, count - 1, count + 2]
+              : [
+                  interval(lo, hi, true, true),
+                  interval(lo, hi, false, false),
+                  interval(lo + 1, hi + 1, true, false),
+                ],
+          );
+        });
+        add("geometry", "triangle-order", (r, t) => {
+          const A = r(25, 45),
+            B = r(50, 60),
+            C = 180 - A - B;
+          // Rotate vertex labels, preserving three distinct angles and opposite sides.
+          const turn = r(0, 2),
+            names = ["A", "B", "C"],
+            angles = [A, B, C],
+            labels = names.slice(turn).concat(names.slice(0, turn));
+          const opposite = [
+            labels[1] + labels[2],
+            labels[0] + labels[2],
+            labels[0] + labels[1],
+          ].map((s) => s.split("").sort().join(""));
+          const answer = opposite.join(", ");
+          return {
+            ...q(
+              `In triangle ABC, angle ${labels[0]} is ${A}° and angle ${labels[1]} is ${B}°. Order the sides from shortest to longest.`,
+              answer,
+              [
+                calc(
+                  "Add the two given angles.",
+                  A,
+                  "+",
+                  B,
+                  "A triangle’s angles sum to 180 degrees.",
+                ),
+                calc(
+                  "Find the missing angle.",
+                  180,
+                  "−",
+                  A + B,
+                  "Subtract the known total.",
+                ),
+                step(
+                  "Which vertex has the smallest angle?",
+                  labels[0],
+                  "Compare all three angles.",
+                  "text",
+                ),
+                step(
+                  "Name the side opposite that vertex (letters in alphabetical order).",
+                  opposite[0],
+                  "The opposite side joins the other two vertices.",
+                  "text",
+                ),
+                step(
+                  "Name the side opposite the middle-sized angle.",
+                  opposite[1],
+                  "Longer sides face larger angles.",
+                  "text",
+                ),
+                step(
+                  "Name the longest side.",
+                  opposite[2],
+                  "Find the side opposite the largest angle.",
+                  "text",
+                ),
+              ],
+              { labels, angles, opposite },
+              source(
+                "S50",
+                "p. 1, problems 9–12; corresponding sections on pp. 3, 5, 7, 9",
+                "Order sides using opposite angles",
+              ),
+              [
+                opposite.slice().reverse().join(", "),
+                [opposite[1], opposite[0], opposite[2]].join(", "),
+                [opposite[0], opposite[2], opposite[1]].join(", "),
+              ],
+            ),
+            diagram: { type: "triangle", labels, angles: [A, B, null] },
+          };
+        });
+        add("inequalities", "inequality-two-step", (r, t) => {
+          const a = r(2, 9) * (t > 1 && r(0, 1) ? -1 : 1),
+            b = r(-18, 18),
+            bound = r(-12, 12),
+            c = a * bound + b,
+            op = relations[r(0, 3)],
+            final = a < 0 ? relationFlip(op) : op;
+          return q(
+            `A security sensor accepts all x satisfying ${a}x ${signed(b)} ${op} ${c}. Find its complete accepted range.`,
+            ray(final, bound),
+            [
+              calc(
+                "Subtract the constant from the right side.",
+                c,
+                "−",
+                b,
+                "Perform the same operation on both sides.",
+              ),
+              calc(
+                "Divide by the x coefficient to find the boundary.",
+                c - b,
+                "÷",
+                a,
+                "Keep the coefficient’s sign.",
+              ),
+              step(
+                "Does division reverse the inequality? Type yes or no.",
+                a < 0 ? "yes" : "no",
+                "Only division by a negative number reverses the relation.",
+                "text",
+              ),
+              step(
+                "Enter the final relation symbol: <, >, <= or >=.",
+                final,
+                "Apply the sign rule to the original relation.",
+                "code",
+              ),
+            ],
+            { a, b, c, op, bound },
+            source(
+              "S49",
+              "pp. 1–2, problems 1–24",
+              "Two-step inequalities with sign reversal",
+            ),
+            [
+              ray(relationFlip(final), bound),
+              ray(final, bound + 1),
+              ray(final, bound - 1),
+            ],
+          );
+        });
+        function distributedInequality(r, t, both) {
+          const a = r(2, 6) * (r(0, 1) ? -1 : 1),
+            b = r(2, 6),
+            c = r(-9, 9),
+            d = r(-10, 10),
+            e = both ? r(1, 6) * (a < 0 ? 1 : -1) : 0;
+          const coefficient = a * b - e,
+            constant = a * c + d,
+            bound = r(-10, 10),
+            rhs = coefficient * bound + constant,
+            op = relations[r(0, 3)],
+            final = coefficient < 0 ? relationFlip(op) : op;
+          return q(
+            `Solve ${a}(${b}x ${signed(c)}) ${signed(d)} ${op} ${e ? `${e}x ${signed(rhs)}` : rhs}.`,
+            ray(final, bound),
+            [
+              calc(
+                "Distribute to find the left x coefficient.",
+                a,
+                "×",
+                b,
+                "Multiply the outside factor by each inside term.",
+              ),
+              calc(
+                "Find the distributed constant.",
+                a,
+                "×",
+                c,
+                "Retain negative signs.",
+              ),
+              calc(
+                "Combine the constants on the left.",
+                a * c,
+                "+",
+                d,
+                "Add the outside constant.",
+              ),
+              calc(
+                "Subtract the right x coefficient from the left one.",
+                a * b,
+                "−",
+                e,
+                "Move variable terms to the left.",
+              ),
+              calc(
+                "Subtract the left constant from the right constant.",
+                rhs,
+                "−",
+                constant,
+                "Move constants to the right.",
+              ),
+              calc(
+                "Divide to find the boundary.",
+                rhs - constant,
+                "÷",
+                coefficient,
+                "Division by a negative reverses the inequality.",
+              ),
+              step(
+                "Enter the final relation symbol.",
+                final,
+                "Decide whether the coefficient you divided by was negative.",
+                "code",
+              ),
+            ],
+            { a, b, c, d, e, rhs, op, bound },
+            source(
+              "S47",
+              both ? "p. 1, problems 11–12" : "p. 1, problems 6–10",
+              "Distribute, collect terms and preserve/reverse inequalities",
+            ),
+            [
+              ray(relationFlip(final), bound),
+              ray(final, bound + 2),
+              ray(final, bound - 2),
+            ],
+          );
+        }
+        add("inequalities", "inequality-distribute", (r, t) =>
+          distributedInequality(r, t, false),
+        );
+        add("inequalities", "inequality-both-sides", (r, t) =>
+          distributedInequality(r, t, true),
+        );
+        function absoluteRange(r, t, inside) {
+          const shift = r(-20, 20),
+            radius = r(3, 10 + 8 * t),
+            inclusive = t > 1 && r(0, 1) === 1,
+            lo = -radius - shift,
+            hi = radius - shift;
+          const op = inside ? (inclusive ? "≤" : "<") : inclusive ? "≥" : ">";
+          return q(
+            `Find every real x satisfying |x ${signed(shift)}| ${op} ${radius}.`,
+            interval(lo, hi, inside, inclusive),
+            [
+              step(
+                "What is the negative boundary for the expression inside the bars?",
+                -radius,
+                "Absolute value measures distance from zero.",
+              ),
+              calc(
+                "Subtract the shift to find the lower x boundary.",
+                -radius,
+                "−",
+                shift,
+                "Undo the same shift on both boundaries.",
+              ),
+              calc(
+                "Find the upper x boundary.",
+                radius,
+                "−",
+                shift,
+                "Start from the positive distance boundary.",
+              ),
+              step(
+                "Are the accepted values inside or outside the two boundaries?",
+                inside ? "inside" : "outside",
+                "A smaller distance stays between them; a greater distance lies beyond them.",
+                "text",
+              ),
+              step(
+                "Are the boundary points included? Type yes or no.",
+                inclusive ? "yes" : "no",
+                "Check for an equality bar in the original symbol.",
+                "text",
+              ),
+            ],
+            { shift, radius, inclusive, inside, lo, hi },
+            source(
+              "S46",
+              "p. 1, examples and problems 1–9; p. 2 key",
+              "Absolute-value inequalities as inside/outside distance ranges",
+            ),
+            [
+              interval(lo, hi, !inside, inclusive),
+              interval(lo, hi, inside, !inclusive),
+              interval(lo + 1, hi + 1, inside, inclusive),
+            ],
+          );
+        }
+        add("inequalities", "absolute-inside", (r, t) =>
+          absoluteRange(r, t, true),
+        );
+        add("inequalities", "absolute-outside", (r, t) =>
+          absoluteRange(r, t, false),
+        );
+        add("systems", "system-classify", (r, t) => {
+          const a = r(2, 8),
+            b = r(2, 7),
+            c = r(-20, 20),
+            k = r(2, 5) * (r(0, 1) ? -1 : 1),
+            delta = t === 1 ? 0 : r(0, 1) * r(1, 8),
+            rhs = k * c + delta;
+          const answer = delta ? "no solution" : "infinitely many solutions";
+          return q(
+            `Classify the system ${a}x + ${b}y = ${c}; ${k * a}x ${signed(k * b)}y = ${rhs}.`,
+            answer,
+            [
+              step(
+                "What multiplier makes the first x coefficient match the second?",
+                k,
+                "Divide the second x coefficient by the first.",
+              ),
+              calc(
+                "Scale the first y coefficient.",
+                b,
+                "×",
+                k,
+                "Check that both variable coefficients match.",
+              ),
+              calc(
+                "Scale the first right side.",
+                c,
+                "×",
+                k,
+                "The same multiplier applies to the entire equation.",
+              ),
+              calc(
+                "Subtract the scaled first right side from the second.",
+                rhs,
+                "−",
+                k * c,
+                "All variable terms cancel on the left.",
+              ),
+              step(
+                "Is the resulting statement 0 = this difference true? Type yes or no.",
+                delta ? "no" : "yes",
+                "Zero equals only zero.",
+                "text",
+              ),
+              step(
+                "Enter none or infinite for the number of solutions.",
+                delta ? "none" : "infinite",
+                "A contradiction has none; matching equations describe the same line.",
+                "text",
+              ),
+            ],
+            { a, b, c, k, rhs, delta },
+            source(
+              "S40",
+              "p. 2, problem 22; p. 4 answer",
+              "Dependent systems; inconsistent-system extension",
+            ),
+            [
+              delta ? "infinitely many solutions" : "no solution",
+              "exactly one solution",
+              "exactly two solutions",
+            ],
+          );
+        });
+        add("equations", "square-root-property", (r, t) => {
+          const d = t === 1 ? 1 : r(2, 8),
+            n = r(0, 9),
+            a = d * d * (r(0, 1) && t === 3 ? -1 : 1),
+            b = r(-15, 15),
+            rhs = (a < 0 ? -1 : 1) * n * n + b,
+            value = frac(n * n, d * d),
+            pos = frac(n, d),
+            neg = frac(-n, d);
+          return q(
+            `Find ALL real solutions of ${a}x² ${signed(b)} = ${rhs}.`,
+            n ? rootPair(neg, pos) : "0",
+            [
+              calc(
+                "Subtract the constant from the right side.",
+                rhs,
+                "−",
+                b,
+                "Isolate the squared term.",
+              ),
+              step(
+                "Divide by the quadratic coefficient. What is x²?",
+                value,
+                "Keep an exact fraction.",
+                "fraction",
+              ),
+              step(
+                "Find the nonnegative square root.",
+                pos,
+                "Take square roots of numerator and denominator.",
+                "fraction",
+              ),
+              step(
+                "Find its opposite (zero stays zero).",
+                neg,
+                "A positive square has both a positive and a negative root.",
+                "fraction",
+              ),
+              step(
+                "How many distinct real solutions are there?",
+                n ? 2 : 1,
+                "Do not count zero twice.",
+              ),
+            ],
+            { a, b, rhs, n, d },
+            source(
+              "S39",
+              "pp. 1–3, problems 1–20; p. 4 key",
+              "Square-root property with zero and rational roots",
+            ),
+            n
+              ? [pos, String(n + 1), "no real solution"]
+              : ["1", "-1", "no real solution"],
+          );
+        });
+        add("equations", "zero-product-linear", (r, t) => {
+          const a = r(2, 5 + t),
+            b = r(1, 12),
+            c = r(2, 6 + t),
+            d = r(1, 12),
+            left = frac(-b, a),
+            right = frac(d, c);
+          return q(
+            `Solve (${a}x + ${b})(${c}x − ${d}) = 0. Find both real roots.`,
+            rootPair(left, right),
+            [
+              step(
+                "How many linear factors can independently make the product zero?",
+                2,
+                "Either factor can be zero.",
+              ),
+              step(
+                "For the first factor, move the constant to the right. What is that value?",
+                -b,
+                "Subtract the first constant.",
+              ),
+              step(
+                "Divide to find the first root.",
+                left,
+                "Divide by the first x coefficient.",
+                "fraction",
+              ),
+              step(
+                "For the second factor, move its constant to the right.",
+                d,
+                "Undo subtraction by addition.",
+              ),
+              step(
+                "Divide to find the second root.",
+                right,
+                "Divide by the second x coefficient.",
+                "fraction",
+              ),
+            ],
+            { a, b, c, d },
+            source(
+              "S42",
+              "pp. 1 and 3, sheets 1–2; keys pp. 2 and 4",
+              "Zero-product property with rational roots",
+            ),
+            [
+              rootPair(frac(b, a), right),
+              rootPair(left, frac(-d, c)),
+              rootPair(frac(-b - a, a), right),
+            ],
+          );
+        });
+        add("equations", "quadratic-nonmonic", (r, t) => {
+          const a = r(2, 5),
+            b = r(1, 8),
+            c = r(1, 3 + t),
+            d = -r(1, 10),
+            A = a * c,
+            B = a * d + b * c,
+            C = b * d;
+          const left = frac(-b, a),
+            right = frac(-d, c);
+          return q(
+            `Factor and solve ${poly(A, B, C)} = 0. Find both real roots.`,
+            rootPair(left, right),
+            [
+              calc(
+                "Multiply the leading coefficient by the constant.",
+                A,
+                "×",
+                C,
+                "Use the ac method to split the middle term.",
+              ),
+              step(
+                "Find two integers whose product is ac and whose sum is the middle coefficient. Enter both.",
+                `${a * d},${b * c}`,
+                "One is negative and one positive.",
+                "set",
+              ),
+              step(
+                `After grouping, one factor is ${a}x + ${b}. What x coefficient is in the other factor?`,
+                c,
+                "Match the leading product.",
+              ),
+              step(
+                "What signed constant is in the other factor?",
+                d,
+                "Match the constant product.",
+              ),
+              step(
+                "Set the first factor to zero and solve.",
+                left,
+                "Undo addition, then divide.",
+                "fraction",
+              ),
+              step(
+                "Set the second factor to zero and solve.",
+                right,
+                "Use the other linear factor.",
+                "fraction",
+              ),
+            ],
+            { a, b, c, d, A, B, C },
+            source(
+              "S44",
+              "p. 1, problems 1–20; p. 2 worked answers",
+              "Factoring nonmonic quadratics",
+            ),
+            [
+              rootPair(frac(b, a), right),
+              rootPair(left, frac(d, c)),
+              rootPair(frac(-b + a, a), right),
+            ],
+          );
+        });
+        add("equations", "quadratic-repeated", (r, t) => {
+          const a = t === 1 ? 1 : r(2, 6),
+            b = r(1, 15) * (r(0, 1) ? -1 : 1),
+            factor = t === 3 ? -r(1, 3) : 1,
+            A = factor * a * a,
+            B = factor * 2 * a * b,
+            C = factor * b * b,
+            answer = frac(-b, a);
+          return q(
+            `Solve ${poly(A, B, C)} = 0. Report each distinct real solution once.`,
+            answer,
+            [
+              step(
+                "Divide by the common outside factor. What is the positive leading coefficient?",
+                a * a,
+                "Remove any negative common factor first.",
+              ),
+              step(
+                "What is the x coefficient in the repeated linear factor?",
+                a,
+                "Take the positive square root of that leading coefficient.",
+              ),
+              step(
+                "What signed constant completes that linear factor?",
+                b,
+                "Its square is the constant; twice its product with the x coefficient is the middle term.",
+              ),
+              step(
+                "Set the repeated factor equal to zero and solve.",
+                answer,
+                "Divide the opposite of the constant by its x coefficient.",
+                "fraction",
+              ),
+              step(
+                "How many distinct roots does this repeated factor give?",
+                1,
+                "The two factors produce the same root.",
+              ),
+            ],
+            { a, b, factor, A, B, C },
+            source(
+              t === 1 ? "S43" : "S44",
+              t === 1
+                ? "p. 1, problem 11; p. 2 solution"
+                : "p. 1, problems 9–10; p. 2 solutions",
+              "Repeated factors and distinct roots",
+            ),
+            [frac(b, a), frac(-b + a, a), "no real solution"],
+          );
+        });
+        add("equations", "quadratic-formula", (r, t) => {
+          const center = r(-9, 9),
+            rad = [2, 3, 5, 6, 7, 10, 11, 13][r(0, 2 + t)],
+            A = r(1, t + 1),
+            B = -2 * A * center,
+            C = A * (center * center - rad),
+            D = B * B - 4 * A * C,
+            den = 2 * A;
+          const answer = `${center} ± sqrt(${rad})`;
+          return q(
+            `Solve ${poly(A, B, C)} = 0 with the quadratic formula. Give exact real roots; sqrt means square root.`,
+            answer,
+            [
+              step(
+                "Identify the signed coefficient b.",
+                B,
+                "Read the x term, including its sign.",
+              ),
+              calc("Compute b².", B, "×", B, "Square the signed coefficient."),
+              step(
+                "Compute 4ac.",
+                4 * A * C,
+                "Multiply four, the leading coefficient and the constant.",
+              ),
+              calc(
+                "Compute the discriminant b² − 4ac.",
+                B * B,
+                "−",
+                4 * A * C,
+                "Subtract the entire signed product.",
+              ),
+              calc(
+                "Compute the denominator 2a.",
+                2,
+                "×",
+                A,
+                "The denominator divides the entire numerator.",
+              ),
+              step(
+                "What is the largest perfect-square factor of the discriminant?",
+                den * den,
+                "Separate the square factor from the square-free part.",
+              ),
+              calc(
+                "What remains under the square root?",
+                D,
+                "÷",
+                den * den,
+                "Factor the discriminant into a square times a square-free integer.",
+              ),
+              calc(
+                "Compute the rational part, −b divided by 2a.",
+                -B,
+                "÷",
+                den,
+                "Divide the rational numerator by the denominator.",
+              ),
+              step(
+                "Enter both roots as center +/- sqrt(radicand), using your two previous results.",
+                `${center}+/-sqrt(${rad})`,
+                "The square-root coefficient simplifies to one. Use the requested format.",
+                "code",
+              ),
+            ],
+            { A, B, C, center, rad, D },
+            source(
+              "S45",
+              "pp. 1–4, formula and substitution examples",
+              "Quadratic formula; exact irrational-root extension",
+            ),
+            [
+              `${-center + 1} ± sqrt(${rad})`,
+              `${center} ± sqrt(${rad + 1})`,
+              `${center} ± ${rad}`,
+            ],
+          );
+        });
+        add("equations", "discriminant-count", (r, t) => {
+          const A = r(1, 6),
+            h = r(-10, 10),
+            offset = (t === 1 ? r(0, 1) : r(-1, 1)) * r(1, 9),
+            B = -2 * A * h,
+            C = A * h * h + offset,
+            D = B * B - 4 * A * C,
+            answer = D > 0 ? 2 : D === 0 ? 1 : 0;
+          return q(
+            `How many DISTINCT REAL solutions does ${poly(A, B, C)} = 0 have?`,
+            answer,
+            [
+              calc(
+                "Compute b².",
+                B,
+                "×",
+                B,
+                "Include the sign before squaring.",
+              ),
+              step(
+                "Compute 4ac.",
+                4 * A * C,
+                "Multiply using the signed constant.",
+              ),
+              calc(
+                "Subtract to get the discriminant.",
+                B * B,
+                "−",
+                4 * A * C,
+                "The discriminant determines the number of real roots.",
+              ),
+              step(
+                "Is it positive, zero or negative?",
+                D > 0 ? "positive" : D === 0 ? "zero" : "negative",
+                "Compare the result to zero.",
+                "text",
+              ),
+              step(
+                "How many distinct real roots follow?",
+                answer,
+                "Positive gives two, zero gives one, negative gives none.",
+              ),
+            ],
+            { A, B, C, D },
+            source(
+              "S45",
+              "pp. 2–4, formula and repeated-root example",
+              "Discriminant classification, including no-real-root extension",
+            ),
+            [0, 1, 2, 3].filter((n) => n !== answer),
+          );
+        });
+        function quadraticRange(r, t, normalize) {
+          const lo = -r(1, 3 + 3 * t),
+            hi = r(1, 3 + 3 * t),
+            A = (r(0, 1) ? -1 : 1) * r(1, t + 1),
+            B = -A * (lo + hi),
+            C = A * lo * hi,
+            inside = !!r(0, 1),
+            inclusive = t > 1 && !!r(0, 1),
+            positive = inside ? A < 0 : A > 0;
+          const op = positive ? (inclusive ? "≥" : ">") : inclusive ? "≤" : "<",
+            shift = normalize ? r(1, 5) : 0;
+          const prompt = normalize
+            ? `${poly(A + shift, B, C)} ${op} ${shift}x²`
+            : `${poly(A, B, C)} ${op} 0`;
+          const region = interval(lo, hi, inside, inclusive);
+          return q(
+            `Solve ${prompt}. Give ALL accepted real values of x.`,
+            region,
+            [
+              ...(normalize
+                ? [
+                    calc(
+                      "Move the right quadratic term to the left. What leading coefficient remains?",
+                      A + shift,
+                      "−",
+                      shift,
+                      "Subtract the same quadratic term from both sides.",
+                    ),
+                  ]
+                : []),
+              step(
+                "After removing the nonzero leading factor, find the two roots. Enter both.",
+                `${lo},${hi}`,
+                "Factor the remaining monic quadratic. These are boundaries, not the whole answer.",
+                "set",
+              ),
+              step(
+                "Test x = 0. What is the original left-minus-right expression there?",
+                C,
+                "The x terms vanish at zero, which lies between the two roots.",
+              ),
+              step(
+                "Does the middle interval satisfy the inequality? Type yes or no.",
+                inside ? "yes" : "no",
+                "Compare the test value with zero using the requested relation.",
+                "text",
+              ),
+              step(
+                "Is the solution inside or outside the roots?",
+                inside ? "inside" : "outside",
+                "A quadratic with two simple roots changes sign at each root.",
+                "text",
+              ),
+              step(
+                "Are the roots themselves included? Type yes or no.",
+                inclusive ? "yes" : "no",
+                "Substitution gives zero at either root; check whether equality is allowed.",
+                "text",
+              ),
+            ],
+            { A, B, C, lo, hi, inside, inclusive, op, shift },
+            source(
+              normalize ? "S41" : t === 1 ? "S52" : "S51",
+              normalize
+                ? "p. 1, problems 20–25"
+                : t === 1
+                  ? "p. 1, problems 1–8; p. 2 key"
+                  : "p. 1, problems 1–11, 13–15, 26–32",
+              "Quadratic sign intervals, endpoint inclusion and standard form",
+            ),
+            [
+              interval(lo, hi, !inside, inclusive),
+              interval(lo, hi, inside, !inclusive),
+              interval(lo - 1, hi + 1, inside, inclusive),
+            ],
+          );
+        }
+        add("inequalities", "quadratic-interval", (r, t) =>
+          quadraticRange(r, t, false),
+        );
+        add("inequalities", "quadratic-normalize", (r, t) =>
+          quadraticRange(r, t, true),
+        );
+        add("inequalities", "quadratic-double-root", (r, t) => {
+          const root = r(-15, 15),
+            A = (t === 3 ? -1 : 1) * r(1, 5),
+            B = -2 * A * root,
+            C = A * root * root,
+            op = relations[r(0, 3)],
+            normalized = A < 0 ? relationFlip(op) : op;
+          const answer =
+            normalized === "≥"
+              ? "all real numbers"
+              : normalized === ">"
+                ? `all real numbers except ${root}`
+                : normalized === "≤"
+                  ? `x = ${root}`
+                  : "no real solution";
+          return q(
+            `Solve ${poly(A, B, C)} ${op} 0. Watch for a repeated root.`,
+            answer,
+            [
+              step(
+                "After dividing by the leading coefficient, what relation symbol remains?",
+                normalized,
+                "Reverse the relation if you divide by a negative.",
+                "code",
+              ),
+              step(
+                "The expression is now a perfect square. At what x does it equal zero?",
+                root,
+                "Factor it as a repeated linear factor.",
+              ),
+              step(
+                "Away from that root, is the square positive or negative?",
+                "positive",
+                "A nonzero real number times itself is positive.",
+                "text",
+              ),
+              step(
+                "Does the root satisfy the inequality? Type yes or no.",
+                ["≤", "≥"].includes(normalized) ? "yes" : "no",
+                "At the root the square equals zero.",
+                "text",
+              ),
+              step(
+                "Do all the other real numbers satisfy it? Type yes or no.",
+                [">", "≥"].includes(normalized) ? "yes" : "no",
+                "Test a positive square against zero.",
+                "text",
+              ),
+            ],
+            { A, B, C, root, op },
+            source(
+              "S51",
+              "p. 1, problems 12 and 16; S41 p. 1, problem 16",
+              "Repeated-root inequalities; empty, singleton, excluded-point and all-real sets",
+            ),
+            [
+              "all real numbers",
+              `all real numbers except ${root}`,
+              `x = ${root}`,
+              "no real solution",
+            ].filter((s) => s !== answer),
+          );
+        });
+
         function matchesStep(step, input) {
           if (typeof input !== "string" || input.length > 200) return false;
           const normalize = (s) =>
@@ -7084,6 +8394,42 @@
         { name: "Grapple", cost: 25 },
       ];
       const THEMES = {
+        pyramid: {
+          wall: ["#62523d", "#6b593f"],
+          accent: "#ead09c",
+          label: "MERIDIAN PYRAMID",
+          sky: "#423c49",
+        },
+        palace: {
+          wall: ["#554052", "#5b4553"],
+          accent: "#edca9b",
+          label: "MIRROR PALACE",
+          sky: "#4b425e",
+        },
+        catacomb: {
+          wall: ["#394044", "#3d4245"],
+          accent: "#d4c4a0",
+          label: "CATACOMB EXCHANGE",
+          sky: "#182b37",
+        },
+        monastery: {
+          wall: ["#484653", "#45414c"],
+          accent: "#dcc8a6",
+          label: "CLOUD MONASTERY",
+          sky: "#3c5968",
+        },
+        cavern: {
+          wall: ["#40394d", "#45394f"],
+          accent: "#d4b8df",
+          label: "BURIED OBSERVATORY",
+          sky: "#212b3b",
+        },
+        airship: {
+          wall: ["#394c5e", "#3c5063"],
+          accent: "#c2dce2",
+          label: "ECLIPSE FLAGSHIP",
+          sky: "#476576",
+        },
         museum: {
           wall: ["#48453e", "#45413c"],
           accent: "#dcc79d",
@@ -7315,6 +8661,7 @@
       }
       function objectiveEffect(door) {
         if (!expedition()) return;
+        if (eclipse() && door.id === 1) recruitAlly();
         if (door.id === 2) {
           game.energy = 100;
           emit(door.x, floorY(door.floor) - 50, "#9effc5", 35, 170);
@@ -7357,6 +8704,19 @@
           floating(g.x, g.y - 80, "SHIELD: FIND THE OVERRIDE", "#96bde5");
           return;
         }
+        if (
+          eclipse() &&
+          g.style === "warden" &&
+          ["aim", "attack"].includes(g.phase)
+        ) {
+          floating(
+            g.x,
+            g.y - 80,
+            "GUARD UP · STRIKE DURING RECOVERY",
+            "#a4e6e9",
+          );
+          return;
+        }
         g.hp = Math.max(0, g.hp - power);
         emit(g.x, g.y - 35, "#ffb783", 18, 130);
         Audio.play("stun");
@@ -7384,6 +8744,10 @@
         Audio.play("enemy");
       }
       function updateVillain(g, dt) {
+        if (eclipse()) {
+          updateEclipseBoss(g, dt);
+          return;
+        }
         const p = game.player;
         g.hitCooldown = Math.max(0, g.hitCooldown - dt);
         if (g.defeated) return;
@@ -7493,6 +8857,7 @@
       }
       function updateShadow(dt) {
         if (!expedition() || game.escape) return;
+        if (eclipse()) updateEclipseTraps(dt);
         game.evac = Math.max(0, game.evac - dt);
         const p = game.player;
         for (const h of game.hazards)
@@ -7515,8 +8880,920 @@
           label = `CONFRONT ${game.boss.name.toUpperCase()} · ${game.boss.hp}/${game.boss.maxHp} ARMOR · FLOOR ${game.floors - game.boss.floor}`;
         if (game.escape)
           label = `${operation().chapter} · ESCAPE WITH THE EVIDENCE`;
+        if (eclipse() && next?.id === 3 && !game.labyrinth.cleared)
+          label = `ENTER LOWER LABYRINTH · ${next.kind} · FLOOR ${game.floors - next.floor}`;
+        if (game.labyrinth?.active)
+          label = game.labyrinth.hasSigil
+            ? "SIGIL SECURED · REACH THE GREEN EXIT"
+            : "FIND THE DIAMOND · FIRE STUNS SENTINELS · B CALLS YOUR ALLY";
         if (node.textContent !== label) node.textContent = label;
       }
+      const eclipse = () => game?.mode === "campaign" && game.mission >= 61;
+      const ALLIES = {
+        nova: {
+          name: "Nova",
+          role: "Field engineer",
+          ability: "shield + recharge",
+          color: "#86e7d6",
+          gift: 3,
+        },
+        ibis: {
+          name: "Ibis",
+          role: "Scout",
+          ability: "cloak + route scan",
+          color: "#d0dc8a",
+          gift: 4,
+        },
+        rook: {
+          name: "Rook",
+          role: "Temporary ally",
+          ability: "cover fire",
+          color: "#e8b491",
+          gift: 1,
+        },
+      };
+      function setupEclipse() {
+        game.ally = null;
+        game.labyrinth = null;
+        game.bossTraps = [];
+        if (!eclipse()) return;
+        game.ally = {
+          id: operation().ally,
+          ready: false,
+          cooldown: 0,
+          signal: 0,
+        };
+        game.labyrinth = createLabyrinth(game.mission);
+      }
+      function recruitAlly() {
+        if (!eclipse() || game.ally.ready) return;
+        game.ally.ready = true;
+        const a = ALLIES[game.ally.id];
+        if (!game.ownedWeapons.includes(a.gift)) game.ownedWeapons.push(a.gift);
+        game.weapon = a.gift;
+        game.energy = 100;
+        toast(
+          `${a.name} joined you. ${WEAPONS[a.gift].name} supplied. B calls ${a.ability}; support recharges in 14 seconds.`,
+          6,
+        );
+      }
+      function allyAssist() {
+        const a = game.ally;
+        if (!a?.ready || a.cooldown > 0 || game.escape) return;
+        a.cooldown = 14;
+        a.signal = 4;
+        const p = game.player;
+        if (a.id === "nova") {
+          game.energy = Math.min(100, game.energy + 45);
+          p.invulnerable = Math.max(p.invulnerable, 5);
+          toast("Nova: Shield online. Your gadgets are recharged.", 3);
+        } else if (a.id === "ibis") {
+          game.cloak = Math.max(game.cloak, 6);
+          game.labyrinth.scan = 6;
+          toast(
+            "Ibis: Six seconds unseen. Follow the highlighted route below ground.",
+            3,
+          );
+        } else {
+          p.invulnerable = Math.max(p.invulnerable, 3);
+          if (game.labyrinth.active)
+            game.labyrinth.guards.forEach((g) => (g.stun = 6));
+          else
+            for (const g of game.guards)
+              if (Math.abs(g.y - p.y) < 48 && Math.abs(g.x - p.x) < 300)
+                stunGuard(g, true, 3);
+          toast("Rook: I have your back. Move while they are stunned.", 3);
+        }
+        Audio.play("lift");
+        saveCheckpoint();
+      }
+      function updateAlly(dt) {
+        const a = game.ally,
+          button = $("allyTray");
+        button.hidden = !eclipse();
+        if (!a) return;
+        a.cooldown = Math.max(0, a.cooldown - dt);
+        a.signal = Math.max(0, a.signal - dt);
+        if (pressed.has("ally")) allyAssist();
+        const label = !a.ready
+          ? `B · Recruit ${ALLIES[a.id].name}`
+          : a.cooldown > 0
+            ? `B · ${ALLIES[a.id].name} (${Math.ceil(a.cooldown)}s)`
+            : `B · ${ALLIES[a.id].name}: ${ALLIES[a.id].ability}`;
+        if (button.textContent !== label) button.textContent = label;
+        button.setAttribute(
+          "aria-disabled",
+          String(!a.ready || a.cooldown > 0 || !!game.escape),
+        );
+      }
+      function restoreEclipse(c) {
+        if (!eclipse()) return;
+        const a = game.ally;
+        a.ready = game.files[1].collected;
+        if (a.ready && !game.ownedWeapons.includes(ALLIES[a.id].gift))
+          game.ownedWeapons.push(ALLIES[a.id].gift);
+        a.cooldown = Number.isFinite(c.allyCooldown)
+          ? clamp(c.allyCooldown, 0, 14)
+          : 0;
+        const m = game.labyrinth,
+          v = c.labyrinth;
+        if (v && typeof v === "object") {
+          m.cleared = v.cleared === true || game.files[3].collected;
+          m.hasSigil = v.hasSigil === true || m.cleared;
+          m.active =
+            v.active === true &&
+            !m.cleared &&
+            a.ready &&
+            !game.files[3].collected;
+          if (
+            Number.isInteger(v.x) &&
+            Number.isInteger(v.y) &&
+            mazeOpen(m, v.x, v.y)
+          ) {
+            m.x = v.x;
+            m.y = v.y;
+          }
+        }
+        if (m.active) {
+          game.player.invulnerable = 6;
+          clearInput();
+        }
+      }
+      function createLabyrinth(seed) {
+        const grid = Array.from({ length: 7 }, () => Array(9).fill(1));
+        let serial = 0;
+        const visit = (x, y) => {
+          grid[y][x] = 0;
+          const dirs = [
+            [2, 0],
+            [-2, 0],
+            [0, 2],
+            [0, -2],
+          ]
+            .map((d) => ({ d, rank: hash(seed * 91 + ++serial * 17) }))
+            .sort((a, b) => a.rank - b.rank);
+          for (const {
+            d: [dx, dy],
+          } of dirs) {
+            const xx = x + dx,
+              yy = y + dy;
+            if (xx > 0 && xx < 8 && yy > 0 && yy < 6 && grid[yy][xx]) {
+              grid[y + dy / 2][x + dx / 2] = 0;
+              visit(xx, yy);
+            }
+          }
+        };
+        visit(1, 1);
+        const m = {
+          grid,
+          x: 1,
+          y: 1,
+          exit: { x: 7, y: 5 },
+          sigil: null,
+          active: false,
+          cleared: false,
+          hasSigil: false,
+          move: 0,
+          fire: 0,
+          scan: 0,
+          dir: [1, 0],
+          guards: [],
+        };
+        let longest = [];
+        for (let y = 1; y < 6; y++)
+          for (let x = 1; x < 8; x++)
+            if (!grid[y][x] && (x !== 7 || y !== 5)) {
+              const route = mazePath(m, 1, 1, x, y);
+              if (route.length > longest.length) longest = route;
+            }
+        m.sigil = longest.at(-1);
+        for (const index of [
+          Math.floor(longest.length / 3),
+          Math.floor((longest.length * 2) / 3),
+        ]) {
+          const path = longest.slice(
+            Math.max(2, index),
+            Math.max(2, index) + 3,
+          );
+          if (path.length > 1)
+            m.guards.push({ path, index: 0, dir: 1, timer: 1.1, stun: 0 });
+        }
+        return m;
+      }
+      function mazeOpen(m, x, y) {
+        return x >= 0 && x < 9 && y >= 0 && y < 7 && m.grid[y][x] === 0;
+      }
+      function mazePath(m, sx, sy, tx, ty) {
+        const queue = [[{ x: sx, y: sy }]],
+          seen = new Set([`${sx},${sy}`]);
+        while (queue.length) {
+          const path = queue.shift(),
+            last = path.at(-1);
+          if (last.x === tx && last.y === ty) return path;
+          for (const [dx, dy] of [
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1],
+          ]) {
+            const x = last.x + dx,
+              y = last.y + dy,
+              k = `${x},${y}`;
+            if (mazeOpen(m, x, y) && !seen.has(k)) {
+              seen.add(k);
+              queue.push([...path, { x, y }]);
+            }
+          }
+        }
+        return [];
+      }
+      function enterLabyrinth() {
+        const m = game.labyrinth;
+        if (!m || m.cleared || !game.ally.ready) return;
+        m.active = true;
+        m.move = 0.25;
+        m.fire = 0;
+        game.player.checkpoint = {
+          x: game.files[3].x,
+          floor: game.files[3].floor,
+        };
+        game.bullets = [];
+        game.player.invulnerable = Math.max(game.player.invulnerable, 3);
+        clearInput();
+        saveCheckpoint();
+        toast(
+          "Below ground: arrows move; FIRE stuns a nearby sentinel. Recover the diamond, then reach EXIT. B calls your ally.",
+          6,
+        );
+      }
+      function leaveLabyrinth(won) {
+        const m = game.labyrinth;
+        m.active = false;
+        if (won) {
+          m.cleared = true;
+          game.score += 600;
+          toast("Vault sigil recovered. Now solve the artifact lock. +600", 4);
+        } else
+          toast("Back at the vault entrance. Your maze progress is saved.", 3);
+        const door = game.files[3],
+          p = game.player;
+        Object.assign(p, {
+          x: door.x,
+          y: floorY(door.floor),
+          vx: 0,
+          vy: 0,
+          grounded: true,
+          lift: null,
+          traversal: null,
+          fallStart: floorY(door.floor),
+          checkpoint: { x: door.x, floor: door.floor },
+          invulnerable: 6,
+        });
+        camera = clamp(p.y - 240, 0, floorY(game.floors - 1) - H + 76);
+        clearInput();
+        updateHUD();
+        saveCheckpoint();
+      }
+      function updateLabyrinth(dt) {
+        const m = game.labyrinth,
+          p = game.player;
+        if (pressed.has("gadget"))
+          toast("Use FIRE to stun sentinels, or B for ally support.", 3);
+        p.invulnerable = Math.max(0, p.invulnerable - dt);
+        m.move = Math.max(0, m.move - dt);
+        m.fire = Math.max(0, m.fire - dt);
+        m.scan = Math.max(0, m.scan - dt);
+        if (
+          m.x === 1 &&
+          m.y === 1 &&
+          (pressed.has("jump") || pressed.has("interact"))
+        ) {
+          leaveLabyrinth(false);
+          return;
+        }
+        for (const [key, dx, dy] of [
+          ["left", -1, 0],
+          ["right", 1, 0],
+          ["up", 0, -1],
+          ["down", 0, 1],
+        ]) {
+          if ((down(key) || pressed.has(key)) && m.move <= 0) {
+            m.dir = [dx, dy];
+            m.move = 0.17;
+            if (mazeOpen(m, m.x + dx, m.y + dy)) {
+              m.x += dx;
+              m.y += dy;
+            }
+            break;
+          }
+        }
+        if (
+          (down("fire") || pressed.has("fire") || pressed.has("melee")) &&
+          m.fire <= 0
+        ) {
+          m.fire = 0.45;
+          for (let i = 1; i <= 3; i++) {
+            const x = m.x + m.dir[0] * i,
+              y = m.y + m.dir[1] * i;
+            if (!mazeOpen(m, x, y)) break;
+            for (const g of m.guards) {
+              const pos = g.path[g.index];
+              if (pos.x === x && pos.y === y) g.stun = 5;
+            }
+          }
+          for (const g of m.guards) {
+            const pos = g.path[g.index];
+            if (Math.abs(pos.x - m.x) + Math.abs(pos.y - m.y) <= 1) g.stun = 5;
+          }
+          Audio.play("shoot");
+        }
+        for (const g of m.guards) {
+          g.stun = Math.max(0, g.stun - dt);
+          if (g.stun > 0) continue;
+          g.timer -= dt;
+          if (g.timer <= 0) {
+            g.timer = 0.8;
+            if (g.index + g.dir < 0 || g.index + g.dir >= g.path.length)
+              g.dir *= -1;
+            g.index += g.dir;
+          }
+          const pos = g.path[g.index];
+          if (pos.x === m.x && pos.y === m.y && game.cloak <= 0) damage();
+          if (state !== "playing") return;
+        }
+        if (!m.hasSigil && m.x === m.sigil.x && m.y === m.sigil.y) {
+          m.hasSigil = true;
+          Audio.play("file");
+          toast("Sigil found. Find the green EXIT.", 3);
+          saveCheckpoint();
+        }
+        if (m.hasSigil && m.x === m.exit.x && m.y === m.exit.y) {
+          leaveLabyrinth(true);
+          return;
+        }
+        updateHUD();
+      }
+      function renderLabyrinth(t) {
+        const m = game.labyrinth,
+          cell = Math.min(61, (viewWidth - 40) / 9),
+          ox = (viewWidth - cell * 9) / 2,
+          oy = 90,
+          theme = THEMES[game.theme],
+          uiFont = clamp(
+            (12 * viewWidth) / Math.max(1, stage.clientWidth),
+            14,
+            27,
+          );
+        rect(0, 0, viewWidth, H, "#091c29");
+        text(
+          "THE LOWER LABYRINTH",
+          viewWidth / 2,
+          35,
+          Math.max(23, uiFont * 1.35),
+          theme.accent,
+          "monospace",
+          "center",
+        );
+        text(
+          m.hasSigil
+            ? "SIGIL SECURED · FIND EXIT"
+            : "RECOVER THE DIAMOND · THEN FIND EXIT",
+          viewWidth / 2,
+          63,
+          uiFont,
+          "#c6ded5",
+          "monospace",
+          "center",
+        );
+        for (let y = 0; y < 7; y++)
+          for (let x = 0; x < 9; x++) {
+            rect(
+              ox + x * cell + 2,
+              oy + y * cell + 2,
+              cell - 4,
+              cell - 4,
+              m.grid[y][x] ? theme.wall[(x + y) % 2] : "#173340",
+            );
+            if (m.grid[y][x])
+              line(
+                ox + x * cell + 5,
+                oy + y * cell + 7,
+                ox + (x + 1) * cell - 5,
+                oy + y * cell + 7,
+                theme.accent + "50",
+                2,
+              );
+          }
+        if (m.scan > 0) {
+          const goal = m.hasSigil ? m.exit : m.sigil;
+          for (const p of mazePath(m, m.x, m.y, goal.x, goal.y))
+            rect(
+              ox + (p.x + 0.4) * cell,
+              oy + (p.y + 0.4) * cell,
+              cell * 0.2,
+              cell * 0.2,
+              "#d0dc8a",
+            );
+        }
+        const marker = (p, label, color) =>
+          text(
+            label,
+            ox + (p.x + 0.5) * cell,
+            oy + (p.y + 0.64) * cell,
+            Math.max(14, cell * 0.35),
+            color,
+            "monospace",
+            "center",
+          );
+        for (const [door, label, color] of [
+          [{ x: 1, y: 1 }, "IN", "#b4ced7"],
+          [m.exit, "OUT", m.hasSigil ? "#b7efab" : "#6a807c"],
+        ]) {
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 2;
+          ctx.strokeRect(
+            ox + (door.x + 0.12) * cell,
+            oy + (door.y + 0.12) * cell,
+            cell * 0.76,
+            cell * 0.76,
+          );
+          text(
+            label,
+            ox + (door.x + 0.5) * cell,
+            oy + (door.y + 0.85) * cell,
+            cell * 0.2,
+            color,
+            "monospace",
+            "center",
+          );
+        }
+        if (!m.hasSigil) {
+          glow(
+            ox + (m.sigil.x + 0.5) * cell,
+            oy + (m.sigil.y + 0.5) * cell,
+            cell * 0.65,
+            "#eac78622",
+          );
+          marker(m.sigil, "◆", "#eed095");
+        }
+        for (const g of m.guards) {
+          const pos = g.path[g.index],
+            x = ox + (pos.x + 0.5) * cell,
+            y = oy + (pos.y + 0.5) * cell,
+            color = g.stun > 0 ? "#79949e" : "#e2937b";
+          line(
+            x - cell * 0.25,
+            y - cell * 0.2,
+            x + cell * 0.25,
+            y + cell * 0.2,
+            color,
+            3,
+          );
+          line(
+            x - cell * 0.25,
+            y + cell * 0.2,
+            x + cell * 0.25,
+            y - cell * 0.2,
+            color,
+            3,
+          );
+          for (const dx of [-1, 1])
+            for (const dy of [-1, 1]) {
+              ctx.strokeStyle = color;
+              ctx.lineWidth = 2;
+              ctx.beginPath();
+              ctx.arc(
+                x + dx * cell * 0.25,
+                y + dy * cell * 0.2,
+                cell * 0.11,
+                0,
+                Math.PI * 2,
+              );
+              ctx.stroke();
+            }
+          rect(
+            x - cell * 0.14,
+            y - cell * 0.13,
+            cell * 0.28,
+            cell * 0.26,
+            "#182d39",
+          );
+          rect(
+            x - cell * 0.08,
+            y - cell * 0.05,
+            cell * 0.16,
+            cell * 0.1,
+            color,
+          );
+          if (g.stun > 0)
+            text(
+              "z",
+              x + cell * 0.24,
+              y - cell * 0.25,
+              cell * 0.22,
+              "#abc5cb",
+              "monospace",
+              "center",
+            );
+        }
+        const px = ox + (m.x + 0.5) * cell,
+          py = oy + (m.y + 0.5) * cell,
+          scale = cell / 60;
+        ctx.save();
+        ctx.translate(px, py);
+        ctx.scale(scale, scale);
+        ctx.globalAlpha = game.cloak > 0 ? 0.45 : 1;
+        ctx.fillStyle = "#0a1c26";
+        ctx.beginPath();
+        ctx.ellipse(0, 7, 14, 9, 0, 0, Math.PI * 2);
+        ctx.fill();
+        rect(-12, -4, 24, 18, "#70b9b4");
+        rect(-8, 10, 6, 7, "#273d4b");
+        rect(2, 10, 6, 7, "#273d4b");
+        rect(-7, -12, 14, 13, "#e1c79b");
+        rect(-8, -13, 16, 5, "#334a59");
+        line(
+          m.dir[0] * 8,
+          m.dir[1] * 8,
+          m.dir[0] * 23,
+          m.dir[1] * 23,
+          "#d5e5ca",
+          4,
+        );
+        if (m.fire > 0.32) glow(m.dir[0] * 26, m.dir[1] * 26, 13, "#e9e2b465");
+        if (game.player.invulnerable > 0) {
+          ctx.strokeStyle = "#e4dba1";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(0, 0, 23, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        ctx.restore();
+        text(
+          "ARROWS move · FIRE stun · B ally",
+          viewWidth / 2,
+          oy + cell * 7 + 27,
+          uiFont,
+          "#b4d1cd",
+          "monospace",
+          "center",
+        );
+        text(
+          "At IN: JUMP returns to the tower",
+          viewWidth / 2,
+          oy + cell * 7 + 50,
+          uiFont * 0.9,
+          "#92a9b5",
+          "monospace",
+          "center",
+        );
+        $("statusRight").textContent =
+          "CELLAR LABYRINTH / " +
+          (m.hasSigil ? "SIGIL SECURED" : "SIGIL MISSING");
+      }
+      function updateEclipseBoss(g, dt) {
+        const p = game.player;
+        g.hitCooldown = Math.max(0, g.hitCooldown - dt);
+        if (g.defeated) return;
+        if (Math.abs(p.y - g.y) > 90 || game.cloak > 0) {
+          g.phase = "watch";
+          g.phaseTime = 1.25;
+          return;
+        }
+        g.dir = p.x < g.x ? -1 : 1;
+        g.enraged = g.hp <= g.maxHp / 2;
+        g.phaseTime -= dt;
+        if (g.phase === "watch" && g.phaseTime <= 0) {
+          g.phase = "aim";
+          g.phaseTime = 1.1;
+          g.chargeDir = g.dir;
+          g.targetX = p.x;
+        } else if (g.phase === "aim" && g.phaseTime <= 0) {
+          g.phase = "attack";
+          g.phaseTime = g.style === "hunter" ? 0.65 : 0.35;
+          if (g.style === "warden") {
+            for (const speed of [200, 280, 360])
+              game.bullets.push({
+                x: g.x + g.dir * 22,
+                y: g.y - 9,
+                vx: g.dir * speed,
+                vy: 0,
+                owner: "guard",
+                life: 3,
+                id: ++shotSerial,
+                color: "#e8b88d",
+              });
+          } else if (g.style === "hunter") bossVolley(g);
+          else {
+            game.bossTraps = [-85, 0, 85].map((dx) => ({
+              x: clamp(g.targetX + dx, 90, 1110),
+              floor: g.floor,
+              life: 1.8,
+              warning: 1.25,
+            }));
+          }
+          Audio.play("enemy");
+        } else if (g.phase === "attack") {
+          if (g.style === "hunter") {
+            g.x = clamp(g.x + g.chargeDir * 380 * dt, g.left, g.right);
+            g.step += dt * 18;
+            if (Math.abs(g.x - p.x) < 31 && Math.abs(g.y - p.y) < 38) damage();
+          }
+          if (g.phaseTime <= 0) {
+            g.phase = "recover";
+            g.phaseTime = 1.8;
+          }
+        } else if (g.phase === "recover" && g.phaseTime <= 0) {
+          g.phase = "watch";
+          g.phaseTime = g.enraged ? 0.35 : 0.8;
+        }
+      }
+      function updateEclipseTraps(dt) {
+        for (const bomb of game.bossTraps) {
+          bomb.life -= dt;
+          bomb.warning -= dt;
+          if (
+            bomb.warning <= 0 &&
+            Math.abs(game.player.x - bomb.x) < 30 &&
+            Math.abs(game.player.y - floorY(bomb.floor)) < 22
+          )
+            damage();
+        }
+        game.bossTraps = game.bossTraps.filter((b) => b.life > 0);
+      }
+      function renderEclipse(t) {
+        if (!eclipse()) return;
+        const a = game.ally,
+          p = game.player,
+          door = game.files[3];
+        if (!game.labyrinth.cleared) {
+          text(
+            "↓ LOWER LABYRINTH",
+            door.x,
+            floorY(door.floor) - 106,
+            11,
+            "#dbd1a1",
+            "monospace",
+            "center",
+          );
+          rect(door.x - 18, floorY(door.floor) - 8, 36, 8, "#98b6b0");
+        }
+        if (a.ready) {
+          const friend = {
+            x: clamp(p.x - p.facing * 47, 85, 1110),
+            y: p.y,
+            dir: p.facing,
+            step: p.step,
+            stun: 0,
+            civilian: true,
+          };
+          drawPerson(friend, false, t);
+          line(
+            friend.x - 15,
+            friend.y - 6,
+            friend.x + 15,
+            friend.y - 6,
+            ALLIES[a.id].color,
+            3,
+          );
+          text(
+            ALLIES[a.id].name.toUpperCase(),
+            friend.x,
+            friend.y - 69,
+            10,
+            ALLIES[a.id].color,
+            "monospace",
+            "center",
+          );
+          if (a.signal > 0)
+            glow(friend.x, friend.y - 34, 65, ALLIES[a.id].color + "30");
+        }
+        for (const b of game.bossTraps) {
+          const y = floorY(b.floor),
+            warn = b.warning > 0;
+          rect(b.x - 29, y - 8, 58, 8, warn ? "#e2cc8c" : "#ec846f");
+          text(
+            warn ? "! MOVE !" : "BURST",
+            b.x,
+            y - 29,
+            12,
+            warn ? "#ffe6a0" : "#ffa182",
+            "monospace",
+            "center",
+          );
+          if (!warn) glow(b.x, y - 22, 55, "#f3a46470");
+        }
+        const b = game.boss;
+        if (b && !b.defeated) {
+          if (b.enraged)
+            text(
+              "OVERDRIVE",
+              b.x,
+              b.y - 123,
+              10,
+              "#ffc091",
+              "monospace",
+              "center",
+            );
+          if (b.style === "warden" && ["aim", "attack"].includes(b.phase))
+            line(
+              b.x + b.dir * 25,
+              b.y - 62,
+              b.x + b.dir * 25,
+              b.y - 6,
+              "#a4e6e9",
+              6,
+            );
+          if (b.style === "hunter" && b.phase === "aim")
+            line(
+              b.x,
+              b.y - 5,
+              clamp(b.x + b.chargeDir * 230, b.left, b.right),
+              b.y - 5,
+              "#f0b18e",
+              4,
+            );
+        }
+      }
+
+      function renderEclipseSky(t) {
+        const theme = THEMES[game.theme];
+        rect(0, 0, viewWidth, H, theme.sky);
+        const colors = ["#9c785c", "#5d505f", "#36404a"];
+        for (let i = 0; i < 7; i++) {
+          const x = ((i * 211 + game.mission * 13) % (viewWidth + 150)) - 75;
+          if (game.theme === "pyramid" || game.theme === "monastery") {
+            ctx.fillStyle = colors[i % 3];
+            ctx.beginPath();
+            ctx.moveTo(x - 140, ROOF + 50);
+            ctx.lineTo(x, 20 + (i % 3) * 25);
+            ctx.lineTo(x + 140, ROOF + 50);
+            ctx.fill();
+            if (game.theme === "monastery") {
+              ctx.fillStyle = "#b8c9ce";
+              ctx.beginPath();
+              ctx.moveTo(x - 26, 55 + (i % 3) * 25);
+              ctx.lineTo(x, 20 + (i % 3) * 25);
+              ctx.lineTo(x + 26, 55 + (i % 3) * 25);
+              ctx.fill();
+            }
+          } else if (game.theme === "palace") {
+            rect(x - 50, 80, 100, 110, "#6a5064");
+            ctx.fillStyle = "#b49775";
+            ctx.beginPath();
+            ctx.ellipse(x, 80, 50, 45, 0, Math.PI, Math.PI * 2);
+            ctx.fill();
+            line(x, 20, x, 45, "#e1c18c", 3);
+          } else if (["catacomb", "cavern"].includes(game.theme)) {
+            ctx.fillStyle = i % 2 ? "#252f3a" : "#3b3945";
+            ctx.beginPath();
+            ctx.moveTo(x - 80, 0);
+            ctx.lineTo(x + 70, 0);
+            ctx.lineTo(x + 12, 110 + (i % 2) * 30);
+            ctx.fill();
+          } else {
+            ctx.fillStyle = "#cbd9df25";
+            ctx.beginPath();
+            ctx.ellipse(x, 80 + (i % 3) * 25, 110, 22, 0, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+        if (game.theme === "airship") {
+          ctx.fillStyle = "#728293";
+          ctx.beginPath();
+          ctx.ellipse(viewWidth * 0.63, 70, 240, 49, 0, 0, Math.PI * 2);
+          ctx.fill();
+          for (let i = -3; i <= 3; i++)
+            line(
+              viewWidth * 0.63 + i * 55,
+              30,
+              viewWidth * 0.63 + i * 55,
+              110,
+              "#acb8be70",
+              2,
+            );
+          rect(viewWidth * 0.63 - 100, 108, 200, 20, "#3e5365");
+          text(
+            "ECLIPSE",
+            viewWidth * 0.63,
+            78,
+            21,
+            "#d3d6c3",
+            "monospace",
+            "center",
+          );
+        }
+      }
+      function renderEclipseFloor(f) {
+        const y = floorY(f),
+          theme = THEMES[game.theme],
+          cellar = f >= game.floors - 3;
+        if (cellar) {
+          rect(72, y - 119, 1056, 119, "#17293690");
+          for (let row = 0; row < 3; row++)
+            for (let i = 0; i < 15; i++) {
+              const x = 75 + i * 72 + (row % 2) * 30;
+              if (isGap(x)) continue;
+              line(
+                x,
+                y - 25 - row * 30,
+                Math.min(x + 62, 1125),
+                y - 25 - row * 30,
+                "#71808235",
+                2,
+              );
+            }
+          text(
+            game.theme === "airship" ? "LOWER DECKS" : "CELLAR GALLERIES",
+            600,
+            y - 105,
+            10,
+            theme.accent,
+            "monospace",
+            "center",
+          );
+        }
+        for (const x of [202, 580, 988]) {
+          if (game.theme === "pyramid") {
+            rect(x - 47, y - 106, 94, 100, "#786345");
+            line(x - 40, y - 98, x + 40, y - 98, "#d7b777", 4);
+            for (let k = 0; k < 4; k++)
+              text(
+                ["𓂀", "◇", "△", "≋"][k],
+                x,
+                y - 75 + k * 19,
+                17,
+                theme.accent,
+                "monospace",
+                "center",
+              );
+            rect(x - 53, y - 10, 106, 7, "#c5a66c");
+          } else if (game.theme === "palace") {
+            ctx.fillStyle = "#273546";
+            ctx.beginPath();
+            ctx.moveTo(x - 40, y - 9);
+            ctx.lineTo(x - 40, y - 72);
+            ctx.quadraticCurveTo(x - 40, y - 105, x, y - 112);
+            ctx.quadraticCurveTo(x + 40, y - 105, x + 40, y - 72);
+            ctx.lineTo(x + 40, y - 9);
+            ctx.fill();
+            ctx.strokeStyle = theme.accent;
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            line(x, y - 98, x, y - 22, "#d7bc8a55", 2);
+            text("✧", x, y - 48, 28, "#b9cad790", "monospace", "center");
+          } else if (game.theme === "catacomb") {
+            rect(x - 40, y - 106, 80, 96, "#31373b");
+            for (let k = 0; k < 3; k++) {
+              rect(x - 32, y - 97 + k * 28, 64, 20, "#192733");
+              text(
+                "•  •  •",
+                x,
+                y - 82 + k * 28,
+                14,
+                "#a8a393",
+                "monospace",
+                "center",
+              );
+            }
+            text("ARCHIVE", x, y - 111, 8, theme.accent, "monospace", "center");
+          } else if (game.theme === "monastery") {
+            rect(x - 35, y - 98, 70, 90, "#4b3c42");
+            line(x - 46, y - 100, x + 46, y - 100, "#bc9a6e", 6);
+            line(x, y - 95, x, y - 70, "#c5b68b", 3);
+            ctx.fillStyle = "#c6a06d";
+            ctx.beginPath();
+            ctx.arc(x, y - 51, 20, Math.PI, Math.PI * 2);
+            ctx.lineTo(x + 24, y - 26);
+            ctx.lineTo(x - 24, y - 26);
+            ctx.fill();
+            text("◆", x, y - 10, 12, "#deb880", "monospace", "center");
+          } else if (game.theme === "cavern") {
+            ctx.fillStyle = "#766287";
+            ctx.beginPath();
+            ctx.moveTo(x - 30, y - 8);
+            ctx.lineTo(x - 14, y - 89);
+            ctx.lineTo(x + 6, y - 42);
+            ctx.lineTo(x + 23, y - 108);
+            ctx.lineTo(x + 39, y - 8);
+            ctx.fill();
+            line(x + 23, y - 108, x + 18, y - 10, "#caafd780", 3);
+            glow(x, y - 44, 60, "#d3b0ed12");
+          } else {
+            ctx.strokeStyle = "#adc9d0";
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.arc(x, y - 62, 35, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.fillStyle = "#425d70";
+            ctx.fill();
+            line(x - 27, y - 62, x + 27, y - 62, "#94bdc2", 2);
+            line(x, y - 89, x, y - 35, "#94bdc2", 2);
+            rect(x - 43, y - 15, 86, 7, "#788893");
+          }
+        }
+      }
+
       function renderPhantomSky(t) {
         const theme = THEMES[game.theme];
         rect(0, 0, W, H, theme.sky);
@@ -7785,6 +10062,10 @@
 
       function shadowSky(t) {
         if (!expedition()) return;
+        if (eclipse()) {
+          renderEclipseSky(t);
+          return;
+        }
         if (game.mission >= 37) {
           renderPhantomSky(reducedMotion ? 0 : t);
           return;
@@ -7866,6 +10147,10 @@
       }
       function renderShadowFloor(f) {
         if (!expedition()) return;
+        if (eclipse()) {
+          renderEclipseFloor(f);
+          return;
+        }
         if (game.mission >= 37) {
           renderPhantomFloor(f);
           return;
@@ -8146,6 +10431,7 @@
         }
         game.rings = [];
         setupShadow();
+        setupEclipse();
       }
       function restoreAdvanced(c) {
         const eq = c.equipment;
@@ -8161,6 +10447,9 @@
             : 100;
         }
         restoreShadow(c);
+        restoreEclipse(c);
+        if (eclipse() && game.ownedWeapons.includes(eq?.weapon))
+          game.weapon = eq.weapon;
         if (
           c.escape &&
           c.escape.kind === game.escapeKind &&
@@ -8257,6 +10546,7 @@
         );
       }
       function updateEquipment(dt) {
+        updateAlly(dt);
         game.energy = Math.min(100, game.energy + dt * 5);
         game.cloak = Math.max(0, game.cloak - dt);
         game.melee = Math.max(0, game.melee - dt);
@@ -8281,8 +10571,9 @@
           game.gadget = (game.gadget + 1) % GADGETS.length;
           Audio.play("lift");
         }
-        if (pressed.has("melee") && !game.escape) performMelee();
-        if (pressed.has("gadget") && !game.escape) {
+        if (pressed.has("melee") && !game.escape && !game.labyrinth?.active)
+          performMelee();
+        if (pressed.has("gadget") && !game.escape && !game.labyrinth?.active) {
           const gadget = GADGETS[game.gadget],
             p = game.player;
           if (game.energy < gadget.cost)
@@ -8320,9 +10611,11 @@
             : game.ownedWeapons.includes(game.weapon)
               ? `Q · ${WEAPONS[game.weapon].name}`
               : "UNARMED · FIND A CACHE",
-          gadgetText = game.escape
-            ? "G · Escape shield"
-            : `G · ${GADGETS[game.gadget].name} (${GADGETS[game.gadget].cost})`;
+          gadgetText = game.labyrinth?.active
+            ? "G · Unavailable underground"
+            : game.escape
+              ? "G · Escape shield"
+              : `G · ${GADGETS[game.gadget].name} (${GADGETS[game.gadget].cost})`;
         if ($("weaponTray").textContent !== weaponText)
           $("weaponTray").textContent = weaponText;
         if ($("gadgetTray").textContent !== gadgetText)
@@ -9426,12 +11719,14 @@
           ...s,
           files: Array.from({ length: s.count }, (_, i) => ({
             floor:
-              i === 0
-                ? 0
-                : 2 +
-                  Math.round(
-                    ((i - 1) * (s.floors - 4)) / Math.max(1, s.count - 2),
-                  ),
+              level >= 61 && i === 3
+                ? s.floors - 3
+                : i === 0
+                  ? 0
+                  : 2 +
+                    Math.round(
+                      ((i - 1) * (s.floors - 4)) / Math.max(1, s.count - 2),
+                    ),
             x:
               i === 0
                 ? 290
@@ -9526,6 +11821,18 @@
           time: game.time,
           continues: game.continues,
           boss: game.boss ? { hp: game.boss.hp } : null,
+          ...(eclipse()
+            ? {
+                allyCooldown: game.ally.cooldown,
+                labyrinth: {
+                  active: game.labyrinth.active,
+                  cleared: game.labyrinth.cleared,
+                  hasSigil: game.labyrinth.hasSigil,
+                  x: game.labyrinth.x,
+                  y: game.labyrinth.y,
+                },
+              }
+            : {}),
           point: { ...game.player.checkpoint },
           equipment: {
             weapon: game.weapon,
@@ -9752,6 +12059,9 @@
           document.querySelector(".start-hint").textContent =
             `Villain: ${s.villain}. ${s.unarmed ? "Enter unarmed. " : ""}Find caches, disable defenses, recover the artifact, and transmit the evidence.`;
         }
+        if (campaign && s.level >= 61)
+          document.querySelector(".start-hint").textContent =
+            `Ally: ${ALLIES[s.ally].name}. Recruit at the second lock; B calls support. The artifact lies beyond a playable cellar maze. Villain: ${s.villain}.`;
         canvas.setAttribute(
           "aria-label",
           `Side-view spy game in a ${game.floors}-floor building`,
@@ -9947,6 +12257,7 @@
         KeyC: "melee",
         KeyG: "gadget",
         KeyV: "swapGadget",
+        KeyB: "ally",
       };
 
       // Sound is synthesized locally, only after a user gesture. No audio assets or autoplay.
@@ -10306,6 +12617,12 @@
         game.lives = GAME_CONTENT.lives;
         game.continues++;
         p.traversal = null;
+        if (game.labyrinth?.active) {
+          game.labyrinth.x = 1;
+          game.labyrinth.y = 1;
+          game.labyrinth.guards.forEach((g) => (g.stun = 6));
+        }
+        game.bossTraps = [];
         if (game.escape) {
           game.escape.obstacles = [];
           game.escape.shots = [];
@@ -10548,6 +12865,7 @@
       function collectFile(door) {
         if (!caseReady(door)) return;
         if (door.collected || (door.challenge && !lockReady(door))) return;
+        if (eclipse() && door.id === 3 && !game.labyrinth.cleared) return;
         if (door.challenge) recordProblem(door);
         door.collected = true;
         door.open = 1;
@@ -10575,6 +12893,10 @@
       }
       function attemptFile(door) {
         if (door.collected || !caseReady(door, true)) return;
+        if (eclipse() && door.id === 3 && !game.labyrinth.cleared) {
+          enterLabyrinth();
+          return;
+        }
         if (door.challenge) {
           openChallenge(door);
         } else collectFile(door);
@@ -10641,7 +12963,73 @@
               ? "Route grid. Coordinates and blocked point are also given in the question."
               : "Rectangle diagram, not to scale.",
           );
-          if (q.diagram.type === "rectangle") {
+          if (["compass", "triangle"].includes(q.diagram.type)) {
+            const points = [
+                [80, 145],
+                [200, 145],
+                [140, 41],
+              ],
+              labels =
+                q.diagram.type === "compass"
+                  ? ["P", "Q", "R"]
+                  : q.diagram.labels;
+            svg.querySelector("title").textContent =
+              q.diagram.type === "compass"
+                ? "Equal-radius compass arcs intersect at R. All numerical information is also given in the question."
+                : "Triangle with labeled vertices; not to scale. Angles are also stated in the question.";
+            if (q.diagram.type === "compass") {
+              el("path", {
+                d: "M200 145 A120 120 0 0 0 140 41 M80 145 A120 120 0 0 1 140 41",
+                fill: "none",
+                stroke: "#e2bd87",
+                "stroke-width": 2,
+                "stroke-dasharray": "5 3",
+              });
+              el(
+                "text",
+                {
+                  x: 140,
+                  y: 182,
+                  fill: "#d9d9b1",
+                  "text-anchor": "middle",
+                  "font-size": 13,
+                },
+                q.diagram.label,
+              );
+            }
+            el("path", {
+              d: "M80 145 L200 145 L140 41 Z",
+              fill: "none",
+              stroke: "#a8d8c8",
+              "stroke-width": 2,
+            });
+            points.forEach(([x, y], i) => {
+              el("circle", { cx: x, cy: y, r: 3, fill: "#e4dab8" });
+              el(
+                "text",
+                {
+                  x: x + (i === 0 ? -15 : i === 1 ? 15 : 0),
+                  y: y + (i === 2 ? -12 : 18),
+                  fill: "#e4dab8",
+                  "font-size": 14,
+                  "text-anchor": "middle",
+                },
+                labels[i],
+              );
+              if (q.diagram.type === "triangle" && q.diagram.angles[i] !== null)
+                el(
+                  "text",
+                  {
+                    x: x + (i === 0 ? 14 : i === 1 ? -15 : 0),
+                    y: y + (i === 2 ? 28 : -15),
+                    fill: "#c1d8cd",
+                    "font-size": 12,
+                    "text-anchor": "middle",
+                  },
+                  q.diagram.angles[i] + "°",
+                );
+            });
+          } else if (q.diagram.type === "rectangle") {
             el("rect", {
               x: 55,
               y: 30,
@@ -11349,6 +13737,11 @@
         game.shake = Math.max(0, game.shake - dt * 22);
         game.hint = Math.max(0, game.hint - dt);
         updateEquipment(dt);
+        if (game.labyrinth?.active) {
+          updateLabyrinth(dt);
+          pressed.clear();
+          return;
+        }
         if (game.escape) {
           updateEscape(dt);
           updateHUD();
@@ -11949,6 +14342,7 @@
         renderBuilding(t, preview);
         renderAdvancedScenery(t);
         renderShadow(t);
+        renderEclipse(t);
         for (const item of game.items) {
           if (item.collected || item.kind === "weapon") continue;
           const y =
@@ -12101,6 +14495,10 @@
         ctx.clearRect(0, 0, viewWidth, H);
         city(t);
         shadowSky(t);
+        if (game.labyrinth?.active && state !== "lobby") {
+          renderLabyrinth(t);
+          return;
+        }
         if (game.escape && state !== "lobby") {
           renderEscape(t);
           return;
@@ -12335,7 +14733,7 @@
       });
       // Read-only diagnostics also make browser smoke tests possible without bypassing gameplay.
       window.SpyAcademyAdvanced = window.ElevatorAction = Object.freeze({
-        version: "3.0.0",
+        version: "4.0.0",
         snapshot: () => ({
           state,
           mode: game.mode,
