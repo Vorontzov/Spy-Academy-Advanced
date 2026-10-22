@@ -13,7 +13,7 @@
     />
     <meta
       name="description"
-      content="A single-file spy adventure with 36 operations, maths from level one, gadgets, stairs, and playable vehicle escapes. Practice based on supplied mathematics worksheets."
+      content="A single-file spy adventure with 60 operations, maths from level one, gadgets, stairs, and playable vehicle escapes. Practice based on supplied mathematics worksheets."
     />
     <title>Spy Academy Advanced</title>
     <style>
@@ -2021,7 +2021,7 @@
             <h1 id="title">SPY ACADEMY <em>ADVANCED.</em></h1>
           </div>
           <div class="intro-side">
-            <p>36 operations. Think fast. Go further.</p>
+            <p>60 operations. Think fast. Go further.</p>
             <div class="chip">
               <span>●</span> SINGLE PLAYER <span>/</span> INSTANT PLAY
             </div>
@@ -2030,7 +2030,7 @@
         <section class="training-bar" aria-label="Campaign selection">
           <label
             >GAME MODE<select id="modeSelect">
-              <option value="campaign">Advanced · 36 operations</option>
+              <option value="campaign">Advanced · 60 operations</option>
             </select></label
           >
           <label class="level-field"
@@ -2556,6 +2556,12 @@
         vehicle tasks are saved.
       </p>
       <p>
+        Phantom Circuit (operations 37–60) introduces eight new settings and
+        towers up to 30 floors. Each operation mixes its new skill with
+        prerequisite review: build confidence, apply the skill, then solve its
+        advanced form. Select a chapter in the operation menu.
+      </p>
+      <p>
         Shadow Atlas (operations 25–36) adds weapon caches, chained objectives
         and named villains. Two missions start unarmed; C or FIRE performs a
         takedown until you find a cache. Ion rails pierce guards and use 8
@@ -2598,7 +2604,7 @@
       /*
        * SPY ACADEMY ADVANCED
        * A dependency-free, original tribute. Everything needed to play is in this file.
-       * CUSTOMIZE: MathEngine contains a 36-operation campaign and source-mapped seeded templates.
+       * CUSTOMIZE: MathEngine contains a 60-operation campaign and source-mapped seeded templates.
        * See CURRICULUM.md and SOURCES.md for content provenance and authoring.
        * Challenges pause the action and never cost a life. Everything runs locally in this file.
        * Rendering, input, audio, simulation, and content are kept separate below.
@@ -2616,6 +2622,9 @@
           polynomials: "Polynomials",
           factoring: "Factoring",
           literal: "Literal equations",
+          averages: "Averages & data",
+          integers: "Signed numbers & operations",
+          systems: "Systems of equations",
         };
         const tiers = ["Build confidence", "Stretch", "Advanced"];
         const rows = [
@@ -3155,6 +3164,387 @@
             brief: story,
           });
         }
+
+        const phantomSectors = [
+          ["museum", "Prague, Clockwork Museum", [14, 16, 18]],
+          ["neon", "Tokyo, Neon Bazaar", [16, 18, 20]],
+          ["bazaar", "Istanbul, Grand Exchange", [16, 18, 20]],
+          ["gardens", "Singapore, Sky Gardens", [18, 20, 22]],
+          ["railway", "Swiss Alps, Night Express Terminal", [20, 22, 24]],
+          ["storm", "Scottish Coast, Storm Citadel", [20, 24, 26]],
+          ["observatory", "Atacama, Hidden Observatory", [22, 26, 28]],
+          ["relay", "Stratosphere, Phantom Relay", [24, 28, 30]],
+        ];
+        const phantomRows = [
+          [
+            "CLOCKWORK ENTRY",
+            "fractions",
+            "mixed-to-improper",
+            "Mixed numbers to improper fractions",
+            "Curator Wren",
+            "museum token",
+            "RESCUE ARCHIVIST",
+            "ORRERY KEY",
+            "Slip into the clockwork museum, free its archivist, and recover the key to a hidden orrery.",
+            "fractions:1:reduce",
+            "fractions:2:mixed-to-improper",
+          ],
+          [
+            "PENDULUM VAULT",
+            "fractions",
+            "improper-to-mixed",
+            "Improper fractions to mixed numbers",
+            "The Minute Hand",
+            "pendulum seal",
+            "GEAR LEDGER",
+            "CHRONOMETER",
+            "Trace the stolen gear ledger through the museum tower and seize a chronometer that records enemy transmissions.",
+            "fractions:1:mixed-to-improper",
+            "fractions:2:reduce",
+          ],
+          [
+            "THE PRISM LENS",
+            "fractions",
+            "fraction-expression",
+            "Parentheses and fraction operations",
+            "Master Spring",
+            "lens permit",
+            "PRISM BLUEPRINT",
+            "PRISM LENS",
+            "Reassemble a scrambled optical calibration and recover the prism used to hide messages in plain sight.",
+            "fractions:2:fraction-sum",
+            "fractions:2:fraction-product",
+          ],
+          [
+            "NEON PERCENT",
+            "percent",
+            "percent-decimal",
+            "Exact percentage calculations",
+            "Spectra",
+            "market pass",
+            "SIGNAL RECEIPT",
+            "NEON DECODER",
+            "Follow a false signal through the neon market and expose a transmitter disguised as an advertising sign.",
+            "percent:2:fractional-percent",
+            "percent:2:percent-decimal",
+          ],
+          [
+            "GHOST RECEIPT",
+            "percent",
+            "percent-missing-whole",
+            "Recover a whole from a percentage",
+            "The Null Cashier",
+            "receipt cipher",
+            "RESCUE ANALYST",
+            "GHOST LEDGER",
+            "An analyst has only a fragment of the Phantom network ledger. Recover the original figures and extract the evidence.",
+            "percent:2:percent-decimal",
+            "percent:2:percent-comparison",
+          ],
+          [
+            "DOUBLE MARKDOWN",
+            "percent",
+            "successive-discounts",
+            "Successive discounts",
+            "Madame Vector",
+            "vendor seal",
+            "BUYER MANIFEST",
+            "SPECTRAL CHIP",
+            "Infiltrate a midnight technology sale. The apparent bargains hide two layers of accounting fraud and a stolen chip.",
+            "percent:2:percent-missing-whole",
+            "percent:2:percent-change",
+          ],
+          [
+            "FALSE CONSIGNMENT",
+            "percent",
+            "sales-tax-cents",
+            "Tax and rounding to cents",
+            "The Assessor",
+            "customs pass",
+            "SHIPPING PAPERS",
+            "FALSE STAMP",
+            "Break into a customs archive and use the correct tax totals to identify the forged shipping stamp.",
+            "percent:2:percent-decimal",
+            "percent:2:percent-missing-whole",
+          ],
+          [
+            "CAMERA OBSCURA",
+            "percent",
+            "discount-then-tax",
+            "Discount before sales tax",
+            "Count Obscura",
+            "camera seal",
+            "RESCUE REPORTER",
+            "COVERT CAMERA",
+            "A reporter is trapped inside the exchange. Reconstruct a camera purchase, disable the security grid, and bring the evidence out.",
+            "percent:2:sales-tax-cents",
+            "percent:2:successive-discounts",
+          ],
+          [
+            "THE AUCTIONEER",
+            "percent",
+            "commission-threshold",
+            "Commission, thresholds and bonuses",
+            "The Auctioneer",
+            "auction pass",
+            "COMMISSION FILE",
+            "MERCURY TOKEN",
+            "Enter a private auction under cover. Unravel the agent payroll and steal the token that funds the next Phantom operation.",
+            "percent:2:percent-decimal",
+            "percent:2:discount-then-tax",
+          ],
+          [
+            "MARKUP MIRAGE",
+            "percent",
+            "profit-base",
+            "Profit based on cost or selling price",
+            "The Gilded Fox",
+            "garden permit",
+            "DEALER RECORD",
+            "GILDED SEED",
+            "A rooftop dealer is financing a surveillance garden. Separate cost from selling price to uncover the true transaction.",
+            "percent:2:percent-missing-whole",
+            "percent:2:commission-threshold",
+          ],
+          [
+            "CUSTOMS CANOPY",
+            "percent",
+            "tiered-tax",
+            "Percentage bands and thresholds",
+            "Director Canopy",
+            "canopy pass",
+            "RESCUE BOTANIST",
+            "CANOPY CORE",
+            "Climb through glasshouse terraces to rescue a botanist. Decode the layered customs fees hiding a stolen environmental sensor.",
+            "percent:2:sales-tax-cents",
+            "percent:2:profit-base",
+          ],
+          [
+            "FOUR SIGNALS",
+            "averages",
+            "mean-readings",
+            "Arithmetic means",
+            "Dr. Verdant",
+            "sensor key",
+            "SENSOR LOG",
+            "VERDANT BEACON",
+            "Four sensor signals disagree. Calibrate the greenhouse network and recover the beacon before its readings are falsified.",
+            "fractions:2:fraction-sum",
+            "percent:2:percent-decimal",
+          ],
+          [
+            "AVERAGE EXPRESS",
+            "averages",
+            "missing-mean",
+            "Missing values in an average",
+            "Inspector Slate",
+            "rail pass",
+            "RESCUE CONDUCTOR",
+            "SWITCH MAP",
+            "Board the alpine terminal disguised as an inspector. Repair a missing calibration reading and secure the hidden switch map.",
+            "averages:1:mean-readings",
+            "averages:2:mean-readings",
+          ],
+          [
+            "WEIGHTED CARGO",
+            "averages",
+            "weighted-mean",
+            "Weighted averages",
+            "Freightmaster K",
+            "cargo seal",
+            "CARGO MANIFEST",
+            "BALANCE CORE",
+            "The night express is moving a covert signal array. Weigh the unequal cargo groups and track down its control core.",
+            "averages:2:mean-readings",
+            "averages:2:missing-mean",
+          ],
+          [
+            "ROUND TRIP GAMBIT",
+            "averages",
+            "round-trip-speed",
+            "Average speed over a whole journey",
+            "The Rail Phantom",
+            "route cipher",
+            "RETURN SCHEDULE",
+            "PHANTOM TICKET",
+            "Follow a double journey through the mountain terminal. The return speed hides the courier’s real timetable.",
+            "averages:2:weighted-mean",
+            "variation:2:inverse-speed",
+          ],
+          [
+            "BELOW ZERO",
+            "integers",
+            "signed-route",
+            "Signed addition and subtraction",
+            "Captain Squall",
+            "storm key",
+            "RESCUE TECHNICIAN",
+            "DEPTH COMPASS",
+            "A technician has vanished below the storm fortress. Read signed depth codes, restore the relay, and recover the compass.",
+            "equations:1:combine-equation",
+            "integers:2:signed-route",
+          ],
+          [
+            "POWERHOUSE",
+            "integers",
+            "power-order",
+            "Powers and order of operations",
+            "The Exponent",
+            "breaker pass",
+            "POWER LOG",
+            "STORM BATTERY",
+            "Climb through the fortress power plant. Its breaker codes distinguish a negative square from the square of a negative.",
+            "integers:2:signed-route",
+            "integers:2:power-order",
+          ],
+          [
+            "DOUBLE CROSS",
+            "equations",
+            "balanced-distribution",
+            "Distribution on both sides",
+            "Colonel Cross",
+            "tower seal",
+            "DOUBLE AGENT FILE",
+            "CROSS CIPHER",
+            "Two versions of an intercepted order conceal the same secret. Reconcile both sides and unmask the double agent.",
+            "integers:2:power-order",
+            "equations:2:distribute-equation",
+          ],
+          [
+            "FRACTIONAL FREQUENCY",
+            "equations",
+            "fraction-linear",
+            "Linear equations with denominators",
+            "Dr. Parallax",
+            "antenna key",
+            "FREQUENCY LOG",
+            "PARALLAX LENS",
+            "The desert observatory receives only fragments of a signal. Clear the fractional interference and recover its secret frequency.",
+            "fractions:2:fraction-expression",
+            "equations:2:balanced-distribution",
+          ],
+          [
+            "LITERAL CONSTELLATION",
+            "literal",
+            "literal-denominator",
+            "Rearranging formulas with variable denominators",
+            "Professor Umbra",
+            "star pass",
+            "RESCUE ASTRONOMER",
+            "UMBRA MAP",
+            "An astronomer has encoded an escape route as a formula. Isolate the missing subject and retrieve the map of the relay network.",
+            "literal:2:literal-network",
+            "equations:2:fraction-linear",
+          ],
+          [
+            "TWIN BEACONS",
+            "systems",
+            "system-eliminate",
+            "Systems by direct elimination",
+            "The Binary Broker",
+            "beacon key",
+            "BEACON PAIR",
+            "TWIN OSCILLATOR",
+            "Two beacon readings reveal the coordinates of a hidden oscillator. Combine the clues and shut down its false transmissions.",
+            "equations:2:balanced-distribution",
+            "equations:2:fraction-linear",
+          ],
+          [
+            "RELAY INTERCEPT",
+            "systems",
+            "system-scale",
+            "Scale equations before elimination",
+            "Commander Cipher",
+            "relay pass",
+            "RESCUE PILOT",
+            "VECTOR ARRAY",
+            "Reach the high-altitude relay, decode two incompatible signal scales, and bring the stranded pilot to the extraction beacon.",
+            "systems:1:system-eliminate",
+            "systems:2:system-eliminate",
+          ],
+          [
+            "ZERO PRODUCT",
+            "equations",
+            "quadratic-factors",
+            "Factoring quadratics and retaining both roots",
+            "The Null Architect",
+            "vault seal",
+            "ROOT DIRECTORY",
+            "ZERO ENGINE",
+            "The Phantom vault has two valid keys. Keep every root of its lock equation and take the engine that drives the network.",
+            "factoring:2:common-factor",
+            "systems:2:system-scale",
+          ],
+          [
+            "PHANTOM PROOF",
+            "equations",
+            "radical-verification",
+            "Radical equations and candidate verification",
+            "Director Phantom",
+            "phantom key",
+            "MASTER EVIDENCE",
+            "PHANTOM CIRCUIT",
+            "Reach the top-secret command relay. Reject false mathematical candidates, defeat Director Phantom, and broadcast the evidence.",
+            "equations:2:quadratic-factors",
+            "literal:3:literal-denominator",
+          ],
+        ];
+        phantomRows.forEach((row, i) => {
+          const [
+            name,
+            topic,
+            template,
+            lesson,
+            villain,
+            key,
+            contact,
+            artifact,
+            story,
+            reviewA,
+            reviewB,
+          ] = row;
+          const [theme, location, floors] = phantomSectors[Math.floor(i / 3)];
+          campaign.push({
+            level: 37 + i,
+            name,
+            topic,
+            template,
+            tier: i < 15 ? 2 : 3,
+            theme,
+            escape:
+              i >= 21
+                ? ["plane", "helicopter", "parachute"][i - 21]
+                : ["motorcycle", "car", "helicopter", "plane", "parachute"][
+                    i % 5
+                  ],
+            floors: floors[i % 3],
+            count: 5,
+            locks: [
+              `${topic}:1:${template}`,
+              reviewA,
+              `${topic}:2:${template}`,
+              reviewB,
+              `${topic}:3:${template}`,
+            ],
+            security: 3 + (i % 3),
+            chapter: "PHANTOM CIRCUIT",
+            location,
+            story,
+            villain,
+            style: ["duelist", "ranger", "engineer"][i % 3],
+            bossArmor: 10 + 2 * Math.floor(i / 8),
+            objects: [
+              key.toUpperCase(),
+              contact,
+              `${["CLOCK", "SIGN", "EXCHANGE", "CANOPY", "RAIL", "STORM", "DISH", "RELAY"][Math.floor(i / 3)]} OVERRIDE`,
+              artifact,
+              "EVIDENCE UPLINK",
+            ],
+            unarmed: [0, 7, 12, 19].includes(i),
+            lesson,
+            brief: `${lesson}. ${story}`,
+          });
+        });
 
         const gcd = (a, b) => (b ? gcd(b, a % b) : Math.abs(a));
         const frac = (a, b) => {
@@ -5047,6 +5437,1510 @@
           );
         });
 
+        // Phantom Circuit: worksheet families S25–S38. Currency arithmetic stays in integer cents.
+        const fractionChoices = (n, d) => [
+          frac(n + d, d),
+          frac(n - d, d),
+          frac(n + 2 * d, d),
+        ];
+        const money = (cents) => (cents / 100).toFixed(2);
+        const roundedPercentCents = (cents, p) =>
+          Math.floor((cents * p + 50) / 100);
+        add("fractions", "mixed-to-improper", (r, t) => {
+          const whole = r(2, 8 + 4 * t),
+            d = [4, 5, 8, 10, 12, 16, 20, 25][r(0, 7)],
+            n = r(1, d - 1),
+            N = whole * d + n;
+          return q(
+            `The clockwork museum's cable measures ${whole} ${n}/${d} metres. Express its length as an improper fraction in simplest form.`,
+            frac(N, d),
+            [
+              calc(
+                "Convert the whole metres to numerator units.",
+                whole,
+                "×",
+                d,
+                "Each whole contains the denominator’s number of equal pieces.",
+              ),
+              calc(
+                "Include the fractional pieces.",
+                whole * d,
+                "+",
+                n,
+                "Add the numerator, keeping the same denominator.",
+              ),
+              step(
+                "Find the greatest common factor of the new numerator and denominator.",
+                gcd(N, d),
+                "Find the largest integer that divides both.",
+              ),
+              step(
+                "Write the simplified improper fraction.",
+                frac(N, d),
+                "Divide both numerator and denominator by their common factor.",
+                "fraction",
+              ),
+            ],
+            { whole, n, d },
+            source(
+              "S31",
+              "pp. 1–2",
+              "Mixed numbers to simplified improper fractions",
+            ),
+            fractionChoices(N, d),
+          );
+        });
+        add("fractions", "improper-to-mixed", (r, t) => {
+          const d = [5, 8, 10, 12, 16, 20][r(0, 5)],
+            w = r(2, 8 + 3 * t),
+            n = r(1, d - 1),
+            N = w * d + n,
+            g = gcd(n, d),
+            answer = `${w} ${n / g}/${d / g}`;
+          return q(
+            `A mechanism needs ${N}/${d} turns. Write that as a mixed number with a simplified fractional part.`,
+            answer,
+            [
+              step(
+                "How many complete wholes fit in the numerator?",
+                w,
+                "Use the whole-number quotient; keep any remainder for the next steps.",
+              ),
+              calc(
+                "How much of the numerator do those wholes use?",
+                w,
+                "×",
+                d,
+                "Multiply the whole-number quotient by the divisor.",
+              ),
+              calc(
+                "Find the remaining numerator.",
+                N,
+                "−",
+                w * d,
+                "Subtract the amount used by complete wholes.",
+              ),
+              step(
+                "Find the common factor of the remainder and denominator.",
+                g,
+                "Reduce the fractional part.",
+              ),
+              calc(
+                "Find the simplified remainder numerator.",
+                n,
+                "÷",
+                g,
+                "Divide both parts of the fraction by the same factor.",
+              ),
+              calc(
+                "Find the simplified denominator.",
+                d,
+                "÷",
+                g,
+                "Combine the whole-number quotient with this reduced fraction.",
+              ),
+            ],
+            { N, d },
+            source("S33", "pp. 1–2", "Improper fractions to mixed numbers"),
+            [
+              `${w + 1} ${n / g}/${d / g}`,
+              `${w - 1} ${n / g}/${d / g}`,
+              `${w} ${n / g + 1}/${d / g}`,
+            ],
+          );
+        });
+        add("fractions", "fraction-expression", (r, t) => {
+          const b = r(3, 7 + t),
+            d = r(3, 8 + t),
+            a = r(1, b - 1),
+            c = r(1, d - 1),
+            e = r(2, 5),
+            f = e + r(1, 4),
+            L = (b * d) / gcd(b, d),
+            A = a * (L / b),
+            C = c * (L / d),
+            N = (A + C) * e,
+            D = L * f;
+          return q(
+            `The lens calibration is (${a}/${b} + ${c}/${d}) × ${e}/${f}. Calculate its exact value as a simplified fraction.`,
+            frac(N, D),
+            [
+              step(
+                "Find the least common denominator for the sum.",
+                L,
+                "Use the least common multiple of the two denominators.",
+              ),
+              calc(
+                "Rewrite the first numerator over that denominator.",
+                a,
+                "×",
+                L / b,
+                "Scale numerator and denominator by the same factor.",
+              ),
+              calc(
+                "Rewrite the second numerator.",
+                c,
+                "×",
+                L / d,
+                "Use the second fraction’s scale factor.",
+              ),
+              calc(
+                "Add the rewritten numerators.",
+                A,
+                "+",
+                C,
+                "Complete the parentheses before multiplication.",
+              ),
+              calc(
+                "Multiply the result’s numerator by the last numerator.",
+                A + C,
+                "×",
+                e,
+                "Multiply across the numerators.",
+              ),
+              calc(
+                "Multiply the denominators.",
+                L,
+                "×",
+                f,
+                "Multiply across the denominators.",
+              ),
+              step(
+                "Simplify the final fraction.",
+                frac(N, D),
+                "Cancel a common factor from numerator and denominator.",
+                "fraction",
+              ),
+            ],
+            { a, b, c, d, e, f },
+            source(
+              "S28",
+              "pp. 17, 25–27, 31",
+              "Common denominators followed by fraction multiplication",
+            ),
+            fractionChoices(N, D),
+          );
+        });
+        add("percent", "percent-decimal", (r, t) => {
+          const p = r(7, 98),
+            whole = r(21, 100 + 30 * t),
+            product = p * whole;
+          return q(
+            `The signal scanner has ${whole} units of capacity. What is ${p}% of that capacity? Give the exact number, without rounding.`,
+            product / 100,
+            [
+              calc(
+                "Multiply the percentage number by the full capacity.",
+                p,
+                "×",
+                whole,
+                "Percent will require division by one hundred.",
+              ),
+              calc(
+                "Divide the product by 100.",
+                product,
+                "÷",
+                100,
+                "Keep the exact decimal; do not round to a whole unit.",
+              ),
+            ],
+            { p, whole },
+            source(
+              "S25",
+              "p. 1, problems 1–16; p. 2 answers",
+              "Percent of a quantity with decimal results",
+            ),
+          );
+        });
+        add("percent", "percent-missing-whole", (r, t) => {
+          const p = [12.5, 25, 37.5, 62.5, 75, 125, 150][r(0, t === 1 ? 4 : 6)],
+            whole = 8 * r(8, 20 + 5 * t),
+            part = (whole * p) / 100;
+          return q(
+            `A recovered code fragment has ${part} symbols. That is ${p}% of the reference code. How many symbols are in the reference code?`,
+            whole,
+            [
+              calc(
+                "Convert the percentage to a decimal multiplier.",
+                p,
+                "÷",
+                100,
+                "The reference code is the whole, even when the percentage exceeds 100.",
+              ),
+              calc(
+                "Divide the part by the multiplier.",
+                part,
+                "÷",
+                p / 100,
+                "Part = multiplier × whole; undo multiplication to find the whole.",
+              ),
+            ],
+            { p, part },
+            source(
+              "S27",
+              "pp. 1–2, problems 5, 6, 9, 11",
+              "Find the whole from a percent proportion",
+            ),
+          );
+        });
+        add("percent", "successive-discounts", (r, t) => {
+          const price = 100 * r(2, 8 + 2 * t),
+            p = r(1, 6) * 5,
+            s = r(1, 5) * 5,
+            discount1 = (price * p) / 100,
+            sale1 = price - discount1,
+            discount2 = (sale1 * s) / 100,
+            answerCents = sale1 * (100 - s);
+          return q(
+            `A surveillance kit costs $${price}. A cover identity receives ${p}% off, then ${s}% off the reduced price. What is the final cost? Give dollars; there is no tax.`,
+            money(answerCents),
+            [
+              calc(
+                "Find the first discount in dollars.",
+                price * p,
+                "÷",
+                100,
+                "Use the original price for the first discount.",
+              ),
+              calc(
+                "Find the price after the first discount.",
+                price,
+                "−",
+                discount1,
+                "The next discount uses this new price.",
+              ),
+              calc(
+                "Find the second discount in dollars.",
+                sale1 * s,
+                "÷",
+                100,
+                "Apply the second percentage to the reduced price, not the original.",
+              ),
+              step(
+                "Subtract the second discount to find the final dollars.",
+                money(answerCents),
+                "Successive discounts are applied in order.",
+                "number",
+                { a: sale1, b: discount2, op: "−" },
+              ),
+            ],
+            { price, p, s },
+            source(
+              "S29",
+              "pp. 4–5; p. 12, problems 6 and 10",
+              "Successive discounts and changing percentage bases",
+            ),
+          );
+        });
+        add("percent", "sales-tax-cents", (r, t) => {
+          const cents = r(8, 30 + 20 * t) * 100 + r(1, 99),
+            tax = r(2, 9),
+            taxCents = roundedPercentCents(cents, tax);
+          return q(
+            `A disguised transmitter costs $${money(cents)} before ${tax}% sales tax. Round the tax to the nearest cent, with half a cent rounded up. What is the total in dollars?`,
+            money(cents + taxCents),
+            [
+              step(
+                "Convert the listed price to cents.",
+                cents,
+                "Multiply dollars by 100.",
+                "number",
+                { a: cents / 100, b: 100, op: "×" },
+              ),
+              calc(
+                "Multiply the price in cents by the tax percentage number.",
+                cents,
+                "×",
+                tax,
+                "The product must then be divided by 100.",
+              ),
+              step(
+                "Divide by 100 and round to the nearest whole cent.",
+                taxCents,
+                "A half-cent rounds up. This is the tax, in cents.",
+              ),
+              calc(
+                "Add the price and tax in cents.",
+                cents,
+                "+",
+                taxCents,
+                "The total includes the original price.",
+              ),
+              calc(
+                "Convert the total to dollars.",
+                cents + taxCents,
+                "÷",
+                100,
+                "Enter a dollar amount without the dollar sign.",
+              ),
+            ],
+            { cents, tax },
+            source(
+              "S30",
+              "p. 1, problems 1–10; p. 3 answers",
+              "Sales tax and currency rounding",
+            ),
+          );
+        });
+        add("percent", "discount-then-tax", (r, t) => {
+          const cents = r(12, 40 + 20 * t) * 100 + r(1, 99),
+            discount = r(1, 8) * 5,
+            tax = r(2, 9),
+            cut = roundedPercentCents(cents, discount),
+            sale = cents - cut,
+            levy = roundedPercentCents(sale, tax);
+          return q(
+            `A courier buys a camera for $${money(cents)} before a ${discount}% discount and ${tax}% tax on the discounted price. Round the discount and tax separately to the nearest cent, halves up. What is the final total in dollars?`,
+            money(sale + levy),
+            [
+              step(
+                "Write the original price in cents.",
+                cents,
+                "Work in cents to make the rounding rule explicit.",
+              ),
+              step(
+                "Calculate the discount in cents, rounded to the nearest cent.",
+                cut,
+                "Multiply the original cents by the discount percentage, divide by 100, then round.",
+              ),
+              calc(
+                "Subtract the discount from the original cents.",
+                cents,
+                "−",
+                cut,
+                "Sales tax applies to this reduced price.",
+              ),
+              step(
+                "Calculate the tax on the reduced price, rounded to cents.",
+                levy,
+                "Use the reduced price as the tax base, and round half a cent up.",
+              ),
+              calc(
+                "Add the tax to the discounted price in cents.",
+                sale,
+                "+",
+                levy,
+                "Combine the reduced price and its tax.",
+              ),
+              calc(
+                "Express the total in dollars.",
+                sale + levy,
+                "÷",
+                100,
+                "Keep two decimal places when needed.",
+              ),
+            ],
+            { cents, discount, tax },
+            source(
+              "S34",
+              "p. 2, problems 21–30; p. 4 answers; also S30",
+              "Discount followed by sales tax; explicit cent-rounding policy",
+            ),
+          );
+        });
+        add("percent", "commission-threshold", (r, t) => {
+          const base = r(2, 6) * 100,
+            quota = r(2, 8) * 1000,
+            sales = quota + r(5, 20 + 5 * t) * 100,
+            p = r(2, 9),
+            bonus = r(1, 5) * 25,
+            eligible = sales - quota,
+            commission = (eligible * p) / 100;
+          return q(
+            `An undercover auction agent earns $${base} base pay, ${p}% commission only on sales ABOVE $${quota}, and a $${bonus} bonus. Sales total $${sales}. What is the total pay in dollars?`,
+            base + commission + bonus,
+            [
+              calc(
+                "Find the sales eligible for commission.",
+                sales,
+                "−",
+                quota,
+                "Only sales above the threshold earn commission.",
+              ),
+              calc(
+                "Multiply eligible sales by the percentage number.",
+                eligible,
+                "×",
+                p,
+                "The percentage applies only to eligible sales.",
+              ),
+              calc(
+                "Divide by 100 to find commission dollars.",
+                eligible * p,
+                "÷",
+                100,
+                "Convert the percentage product to its monetary amount.",
+              ),
+              calc(
+                "Add the base pay.",
+                base,
+                "+",
+                commission,
+                "Base pay is separate from commission.",
+              ),
+              calc(
+                "Include the bonus.",
+                base + commission,
+                "+",
+                bonus,
+                "All three pay components count.",
+              ),
+            ],
+            { base, quota, sales, p, bonus },
+            source(
+              "S29",
+              "pp. 6–7; p. 12, problem 2",
+              "Base pay, commission above a threshold, and bonus",
+            ),
+          );
+        });
+        add("percent", "profit-base", (r, t) => {
+          const p = r(2, 6) * 5,
+            onSale = t > 1 && r(0, 1) === 1,
+            cost = r(8, 50) * 20,
+            saleCents = onSale ? r(10, 60) * 10000 : cost * (100 + p),
+            sale = saleCents / 100,
+            answerCents = onSale ? (saleCents * (100 - p)) / 100 : cost * 100;
+          const guide = onSale
+            ? [
+                calc(
+                  "Find the profit in dollars.",
+                  sale * p,
+                  "÷",
+                  100,
+                  "Here the stated base is the selling price.",
+                ),
+                calc(
+                  "Subtract the profit from the selling price.",
+                  sale,
+                  "−",
+                  (sale * p) / 100,
+                  "Selling price = cost + profit.",
+                ),
+              ]
+            : [
+                calc(
+                  "The selling price is what percent of cost?",
+                  100,
+                  "+",
+                  p,
+                  "It includes the full cost plus the markup.",
+                ),
+                calc(
+                  "Convert that percentage to a multiplier.",
+                  100 + p,
+                  "÷",
+                  100,
+                  "Divide by 100.",
+                ),
+                step(
+                  "Divide the selling price by the multiplier.",
+                  money(answerCents),
+                  "Undo the markup to find cost.",
+                  "number",
+                  { a: sale, b: (100 + p) / 100, op: "÷" },
+                ),
+              ];
+          return q(
+            `A broker sells a scanner for $${money(saleCents)}. The profit is ${p}% of the ${onSale ? "SELLING PRICE" : "ORIGINAL COST"}. What was the original cost in dollars?`,
+            money(answerCents),
+            guide,
+            { p, onSale, saleCents },
+            source(
+              "S29",
+              "pp. 8–9, including exercise 4 problem 4",
+              "Distinguish profit as a percent of cost or of selling price",
+            ),
+          );
+        });
+        add("percent", "tiered-tax", (r, t) => {
+          const first = r(2, 6) * 1000,
+            next = r(2, 5) * 1000,
+            rest = r(1, 8 + t) * 1000,
+            income = first + next + rest,
+            a = r(1, 3),
+            b = a + 2,
+            c = b + 2,
+            A = (first * a) / 100,
+            B = (next * b) / 100,
+            C = (rest * c) / 100;
+          return q(
+            `A fictional customs fee charges ${a}% on the first $${first}, ${b}% on the NEXT $${next}, and ${c}% on the remainder. A shipment is valued at $${income}. Find the total fee in dollars.`,
+            A + B + C,
+            [
+              calc(
+                "Find the value above the first band.",
+                income,
+                "−",
+                first,
+                "Each rate applies only to its own band.",
+              ),
+              calc(
+                "Find the value in the final band.",
+                income - first,
+                "−",
+                next,
+                "Remove the second band as well.",
+              ),
+              calc(
+                "Calculate the first band’s fee.",
+                first * a,
+                "÷",
+                100,
+                "Apply the first rate to the first band only.",
+              ),
+              calc(
+                "Calculate the second band’s fee.",
+                next * b,
+                "÷",
+                100,
+                "Apply the second rate to the next band only.",
+              ),
+              calc(
+                "Calculate the final band’s fee.",
+                rest * c,
+                "÷",
+                100,
+                "The highest rate applies only to the remainder.",
+              ),
+              calc(
+                "Combine the first two fees.",
+                A,
+                "+",
+                B,
+                "Add the separate fees.",
+              ),
+              calc(
+                "Include the last fee.",
+                A + B,
+                "+",
+                C,
+                "Do not apply one rate to the entire shipment.",
+              ),
+            ],
+            { first, next, income, a, b, c },
+            source(
+              "S29",
+              "p. 2, problem 7; p. 11, problem 2",
+              "Piecewise percentage charges",
+            ),
+          );
+        });
+        add("averages", "mean-readings", (r, t) => {
+          const values = Array.from({ length: 4 }, () => r(12, 40 + 20 * t)),
+            [a, b, c, d] = values,
+            sum = a + b + c + d;
+          return q(
+            `Four greenhouse sensors read ${values.join(", ")} units. What is the arithmetic mean reading? Give the exact value.`,
+            sum / 4,
+            [
+              calc(
+                "Add the first two readings.",
+                a,
+                "+",
+                b,
+                "The mean uses all four readings.",
+              ),
+              calc(
+                "Include the third reading.",
+                a + b,
+                "+",
+                c,
+                "Build the total.",
+              ),
+              calc(
+                "Include the last reading.",
+                a + b + c,
+                "+",
+                d,
+                "This is the sum, not the mean yet.",
+              ),
+              calc(
+                "Divide by the number of readings.",
+                sum,
+                "÷",
+                4,
+                "Mean = sum ÷ count.",
+              ),
+            ],
+            { values },
+            source("S32", "pp. 3–4", "Arithmetic mean"),
+          );
+        });
+        add("averages", "missing-mean", (r, t) => {
+          const mean = r(40, 65),
+            a = r(2, 8 + t),
+            b = r(2, 8 + t),
+            c = r(2, 8 + t),
+            known = [mean - a, mean + b, mean - c],
+            sum = known.reduce((a, b) => a + b, 0),
+            answer = 4 * mean - sum;
+          return q(
+            `A rail scanner needs an average calibration score of ${mean} across four trials. Three scores are ${known.join(", ")}. What must the fourth score be?`,
+            answer,
+            [
+              calc(
+                "Find the required total for four trials.",
+                mean,
+                "×",
+                4,
+                "Multiply the target mean by the total count.",
+              ),
+              calc(
+                "Add the first two known scores.",
+                known[0],
+                "+",
+                known[1],
+                "Find the total already recorded.",
+              ),
+              calc(
+                "Include the third known score.",
+                known[0] + known[1],
+                "+",
+                known[2],
+                "These are the known contributions.",
+              ),
+              calc(
+                "Subtract the known total from the required total.",
+                4 * mean,
+                "−",
+                sum,
+                "The missing score supplies the difference.",
+              ),
+            ],
+            { mean, known },
+            source("S32", "p. 5", "Recover a missing value from a target mean"),
+          );
+        });
+        add("averages", "weighted-mean", (r, t) => {
+          const n = r(2, 6 + t),
+            m = n + 1,
+            a = r(4, 9) * 10,
+            b = r(10, 15) * 10,
+            A = n * a,
+            B = m * b,
+            N = A + B,
+            D = n + m;
+          return q(
+            `The night train carries ${n} signal units weighing ${a} kg EACH and ${m} units weighing ${b} kg EACH. What is the mean mass per unit? Give an exact fraction or decimal.`,
+            frac(N, D),
+            [
+              calc(
+                "Find the first group’s total mass.",
+                n,
+                "×",
+                a,
+                "Weight each measurement by how many times it occurs.",
+              ),
+              calc(
+                "Find the second group’s total mass.",
+                m,
+                "×",
+                b,
+                "Use the second group’s own count.",
+              ),
+              calc(
+                "Combine the masses.",
+                A,
+                "+",
+                B,
+                "Add the full weighted totals.",
+              ),
+              calc(
+                "Count all units.",
+                n,
+                "+",
+                m,
+                "Divide by units, not by groups.",
+              ),
+              step(
+                "Divide total mass by total units.",
+                frac(N, D),
+                "Use a fraction when the decimal does not terminate.",
+                "fraction",
+              ),
+            ],
+            { n, m, a, b },
+            source("S32", "p. 6", "Weighted means with unequal group sizes"),
+            fractionChoices(N, D),
+          );
+        });
+        add("averages", "round-trip-speed", (r, t) => {
+          const a = r(3, 8) * 10,
+            raw = r(2, 5) * 10,
+            b = raw === a ? raw + 10 : raw,
+            distance = ((a * b) / gcd(a, b)) * r(1, t + 1),
+            out = distance / a,
+            back = distance / b,
+            N = 2 * distance,
+            D = out + back;
+          return q(
+            `A courier travels ${distance} km at ${a} km/h and the SAME distance back at ${b} km/h, without stops. What is the average speed for the whole round trip? Give an exact fraction or decimal in km/h.`,
+            frac(N, D),
+            [
+              calc(
+                "Find the outward travel time in hours.",
+                distance,
+                "÷",
+                a,
+                "Time = distance ÷ speed.",
+              ),
+              calc(
+                "Find the return travel time.",
+                distance,
+                "÷",
+                b,
+                "Equal distances need not take equal times.",
+              ),
+              calc(
+                "Find total time.",
+                out,
+                "+",
+                back,
+                "Add both travel times.",
+              ),
+              calc(
+                "Find total distance.",
+                distance,
+                "×",
+                2,
+                "Both legs count.",
+              ),
+              step(
+                "Divide total distance by total time.",
+                frac(N, D),
+                "Do not take the simple average of the two speeds.",
+                "fraction",
+              ),
+            ],
+            { a, b, distance },
+            source(
+              "S32",
+              "p. 6; p. 8, problem 9",
+              "Average speed over equal distances",
+            ),
+            fractionChoices(N, D),
+          );
+        });
+        add("integers", "signed-route", (r, t) => {
+          const a = -r(5, 20 + 5 * t),
+            b = r(-12, 15),
+            c = -r(3, 15),
+            d = r(2, 12),
+            answer = a + b - c - d;
+          return q(
+            `The storm citadel’s depth code is ${a} + (${b}) − (${c}) − ${d}. Evaluate it, keeping every sign.`,
+            answer,
+            [
+              calc(
+                "Add the first two signed numbers.",
+                a,
+                "+",
+                b,
+                "Combine their signs and magnitudes.",
+              ),
+              calc(
+                "Subtract the negative third number.",
+                a + b,
+                "−",
+                c,
+                "Subtracting a negative adds its opposite.",
+              ),
+              calc(
+                "Subtract the final positive number.",
+                a + b - c,
+                "−",
+                d,
+                "Work through addition and subtraction from left to right.",
+              ),
+            ],
+            { a, b, c, d },
+            source(
+              "S37",
+              "pp. 1–2, especially problems 17–25; S35, pp. 3–4",
+              "Signed addition and subtraction",
+            ),
+          );
+        });
+        add("integers", "power-order", (r, t) => {
+          const a = r(2, 6 + t),
+            c = r(2, 6),
+            b = c * r(2, 8),
+            d = r(2, 5),
+            e = r(2, 10),
+            f = r(3, 12),
+            inside = r(0, 1) === 1,
+            square = (inside ? 1 : -1) * a * a,
+            answer = square + (b / c) * d - (e - f);
+          return q(
+            `Evaluate ${inside ? `(−${a})²` : `−${a}²`} + ${b} ÷ ${c} × ${d} − (${e} − ${f}). Follow order of operations; multiplication and division have equal priority.`,
+            answer,
+            [
+              calc(
+                "Evaluate the final parentheses.",
+                e,
+                "−",
+                f,
+                "Do grouped operations first.",
+              ),
+              calc(
+                "Calculate the magnitude of the squared number.",
+                a,
+                "×",
+                a,
+                "Squaring multiplies a number by itself.",
+              ),
+              step(
+                "What is the signed value of the powered term as written?",
+                square,
+                "Check whether the minus sign is inside the squared parentheses.",
+              ),
+              calc(
+                "Evaluate the division.",
+                b,
+                "÷",
+                c,
+                "Multiplication and division proceed from left to right.",
+              ),
+              calc(
+                "Multiply that quotient by the next factor.",
+                b / c,
+                "×",
+                d,
+                "Do not multiply the divisor by this factor first.",
+              ),
+              calc(
+                "Combine the powered term and product.",
+                square,
+                "+",
+                (b / c) * d,
+                "Now perform addition and subtraction.",
+              ),
+              calc(
+                "Subtract the value of the parentheses.",
+                square + (b / c) * d,
+                "−",
+                e - f,
+                "Keep the sign of the quantity being subtracted.",
+              ),
+            ],
+            { a, b, c, d, e, f, inside },
+            source(
+              "S37",
+              "pp. 2–3, order-of-operations practice",
+              "Exponent signs, parentheses, and left-to-right operations",
+            ),
+          );
+        });
+        add("equations", "balanced-distribution", (r, t) => {
+          const D = r(2, 5) * (t > 1 ? -1 : 1),
+            k = r(2, 4),
+            A = D * k,
+            B = r(2, 5),
+            E = k * B + 1,
+            C = r(-8, 8),
+            x = r(-10, 12),
+            F = -x + k * C,
+            L = A * B,
+            R = D * E,
+            lc = A * C,
+            rc = D * F;
+          return q(
+            `Solve ${A}(${B}x ${signed(C)}) = ${D}(${E}x ${signed(F)}). Distribute on BOTH sides.`,
+            x,
+            [
+              calc(
+                "Find the x coefficient on the left.",
+                A,
+                "×",
+                B,
+                "Multiply the outside factor into both terms.",
+              ),
+              calc(
+                "Find the constant on the left.",
+                A,
+                "×",
+                C,
+                "Keep the sign of the constant.",
+              ),
+              calc(
+                "Find the x coefficient on the right.",
+                D,
+                "×",
+                E,
+                "Distribute the right-side factor too.",
+              ),
+              calc(
+                "Find the constant on the right.",
+                D,
+                "×",
+                F,
+                "Multiply both signed numbers.",
+              ),
+              calc(
+                "Move the right x term left. What coefficient remains?",
+                L,
+                "−",
+                R,
+                "Subtract the right coefficient on both sides.",
+              ),
+              calc(
+                "Move the left constant right. What constant remains?",
+                rc,
+                "−",
+                lc,
+                "Subtract the left constant on both sides.",
+              ),
+              calc(
+                "Divide to solve for x.",
+                rc - lc,
+                "÷",
+                L - R,
+                "Divide by the remaining coefficient, including its sign.",
+              ),
+            ],
+            { A, B, C, D, E, F },
+            source(
+              "S26",
+              "p. 1, problems 2 and 5; p. 2 answers",
+              "Distribution on both sides with signed coefficients",
+            ),
+          );
+        });
+        add("equations", "fraction-linear", (r, t) => {
+          const b = r(2, 5),
+            d = b + r(1, 3),
+            a = r(1, 6),
+            c = r(1, 6),
+            rhs = r(-4, 7 + t),
+            L = (b * d) / gcd(b, d),
+            B = L / b,
+            D = L / d,
+            constant = -a * B + c * D,
+            N = rhs * L - constant,
+            coef = B + D;
+          return q(
+            `Solve (x − ${a})/${b} + (x + ${c})/${d} = ${rhs}. Give an exact fraction or decimal.`,
+            frac(N, coef),
+            [
+              step(
+                "Find the least common multiple of the denominators.",
+                L,
+                "Multiply the entire equation by this number.",
+              ),
+              calc(
+                "Find the multiplier of the first numerator.",
+                L,
+                "÷",
+                b,
+                "Cancel the first denominator.",
+              ),
+              calc(
+                "Find the multiplier of the second numerator.",
+                L,
+                "÷",
+                d,
+                "Cancel the second denominator.",
+              ),
+              calc(
+                "Find the first distributed constant.",
+                -a,
+                "×",
+                B,
+                "The first numerator has a negative constant.",
+              ),
+              calc(
+                "Find the second distributed constant.",
+                c,
+                "×",
+                D,
+                "Distribute the second multiplier.",
+              ),
+              calc(
+                "Combine the constants on the left.",
+                -a * B,
+                "+",
+                c * D,
+                "Keep their signs.",
+              ),
+              calc(
+                "Subtract that constant from the scaled right side.",
+                rhs * L,
+                "−",
+                constant,
+                "The right side was also multiplied by the common denominator.",
+              ),
+              calc(
+                "Combine the x coefficients.",
+                B,
+                "+",
+                D,
+                "Both x terms are on the left.",
+              ),
+              step(
+                "Divide to find x.",
+                frac(N, coef),
+                "Keep the exact fraction if the decimal repeats.",
+                "fraction",
+              ),
+            ],
+            { a, b, c, d, rhs },
+            source("S35", "pp. 5–6", "Clear denominators in linear equations"),
+            fractionChoices(N, coef),
+          );
+        });
+        add("literal", "literal-denominator", (r, t) => {
+          const p = r(2, 5 + t),
+            n = r(2, 9),
+            answer = `-${n}/(k*u+${p})`;
+          return q(
+            `Rearrange u = (−${p}a − ${n})/(ka) to make a the subject. Assume k ≠ 0 and ku + ${p} ≠ 0. Use * for multiplication in typed steps.`,
+            answer,
+            [
+              step(
+                "Multiply by ka. Enter the left side, using k*u*a order.",
+                "k*u*a",
+                "Multiply the whole equation by the denominator.",
+                "code",
+              ),
+              step(
+                "Move the term containing a to the left and factor out a. What factor multiplies a?",
+                `k*u+${p}`,
+                "Add the positive counterpart of the right-side a term to both sides.",
+                "code",
+              ),
+              step(
+                "What signed constant remains on the right?",
+                -n,
+                "The constant is unchanged by moving the variable term.",
+              ),
+              step(
+                "Divide by the full factor. Enter the expression for a.",
+                answer,
+                "Keep the negative numerator and group the entire denominator.",
+                "code",
+              ),
+            ],
+            { p, n },
+            source(
+              "S36",
+              "p. 2, problem 30; p. 4 answer",
+              "Literal equation with the subject in numerator and denominator",
+            ),
+            [`${n}/(k*u+${p})`, `-${n}/(k*u-${p})`, `(k*u+${p})/-${n}`],
+          );
+        });
+        add("systems", "system-eliminate", (r, t) => {
+          const den = t,
+            a = r(2, 6) * den,
+            b = r(2, 6) * den,
+            c = r(1, 5) * den,
+            xN = r(-9, 12),
+            yN = r(-9, 10),
+            R = (a * xN + b * yN) / den,
+            S = (a * xN - c * yN) / den,
+            y = frac(R - S, b + c),
+            by = (b * yN) / den,
+            x = frac(R - by, a),
+            answer = `(${x}, ${y})`;
+          return q(
+            `Solve the system ${a}x + ${b}y = ${R}; ${a}x − ${c}y = ${S}. Give the ordered pair (x, y).`,
+            answer,
+            [
+              calc(
+                "Subtract the second equation from the first. What y coefficient remains?",
+                b,
+                "−",
+                -c,
+                "The equal x coefficients cancel.",
+              ),
+              calc(
+                "Subtract the right sides in the same order.",
+                R,
+                "−",
+                S,
+                "Perform the same subtraction on both sides.",
+              ),
+              step(
+                "Divide to solve for y.",
+                y,
+                "Use a fraction if needed.",
+                "fraction",
+              ),
+              step(
+                "Substitute y into the first equation. What is the value of its y term?",
+                by,
+                "Multiply the first y coefficient by your value of y.",
+                "number",
+                { a: b, b: yN / den, op: "×" },
+              ),
+              calc(
+                "Subtract this value from the first right side.",
+                R,
+                "−",
+                by,
+                "This leaves the first coefficient times x.",
+              ),
+              step(
+                "Divide by the x coefficient to find x.",
+                x,
+                "Write the final pair in x, y order.",
+                "fraction",
+              ),
+            ],
+            { a, b, c, R, S },
+            source(
+              "S38",
+              "p. 1, problems 1–8; p. 2 answers",
+              "Elimination with matching coefficients, including fractional solutions",
+            ),
+            [
+              `(${frac(R - by + a, a)}, ${y})`,
+              `(${x}, ${frac(R - S + b + c, b + c)})`,
+              `(${frac(R - by - a, a)}, ${y})`,
+            ],
+          );
+        });
+        add("systems", "system-scale", (r, t) => {
+          const den = t,
+            a = r(2, 5) * den,
+            b = r(2, 5) * den,
+            c = r(2, 5) * den,
+            d = (b / den + r(1, 3)) * den,
+            xN = r(-8, 12),
+            yN = r(-7, 10),
+            R = (a * xN + b * yN) / den,
+            S = (c * xN - d * yN) / den,
+            g = gcd(b, d),
+            m = d / g,
+            n = b / g,
+            A = a * m,
+            C = c * n,
+            U = R * m,
+            V = S * n,
+            coef = A + C,
+            total = U + V,
+            x = frac(total, coef),
+            ax = (a * xN) / den,
+            y = frac(R - ax, b),
+            answer = `(${x}, ${y})`;
+          return q(
+            `Solve ${a}x + ${b}y = ${R} and ${c}x − ${d}y = ${S}. Multiply equations to eliminate y, then give (x, y).`,
+            answer,
+            [
+              step(
+                "What smallest positive multiplier makes the first y coefficient equal the LCM of both y magnitudes?",
+                m,
+                "Use LCM ÷ the first y coefficient.",
+              ),
+              calc(
+                "Find the scaled first x coefficient.",
+                a,
+                "×",
+                m,
+                "Multiply every term in that equation.",
+              ),
+              calc(
+                "Find the scaled first right side.",
+                R,
+                "×",
+                m,
+                "The right side must receive the same multiplier.",
+              ),
+              step(
+                "What smallest positive multiplier gives the second y term the opposite matching coefficient?",
+                n,
+                "Use LCM ÷ the second y magnitude.",
+              ),
+              calc(
+                "Find the scaled second x coefficient.",
+                c,
+                "×",
+                n,
+                "Keep the second y term negative.",
+              ),
+              calc(
+                "Find the scaled second right side.",
+                S,
+                "×",
+                n,
+                "Scale both sides.",
+              ),
+              calc(
+                "Add the scaled x coefficients.",
+                A,
+                "+",
+                C,
+                "The opposite y terms cancel on addition.",
+              ),
+              calc(
+                "Add the scaled right sides.",
+                U,
+                "+",
+                V,
+                "Match the operation used on the left.",
+              ),
+              step(
+                "Divide to solve for x.",
+                x,
+                "Use an exact fraction if necessary.",
+                "fraction",
+              ),
+              step(
+                "Substitute x in the first equation. Find its x term.",
+                ax,
+                "Multiply the original first x coefficient by x.",
+                "number",
+                { a, b: xN / den, op: "×" },
+              ),
+              calc(
+                "Subtract the x term from the first right side.",
+                R,
+                "−",
+                ax,
+                "The remainder equals the first y coefficient times y.",
+              ),
+              step(
+                "Divide to find y.",
+                y,
+                "Return the final values in x, y order.",
+                "fraction",
+              ),
+            ],
+            { a, b, c, d, R, S },
+            source(
+              "S35",
+              "pp. 7–8",
+              "Scale equations before eliminating an unknown",
+            ),
+            [
+              `(${frac(total + coef, coef)}, ${y})`,
+              `(${x}, ${frac(R - ax + b, b)})`,
+              `(${frac(total - coef, coef)}, ${y})`,
+            ],
+          );
+        });
+        add("equations", "quadratic-factors", (r, t) => {
+          if (t === 1) {
+            const a = r(2, 7),
+              b = a * r(1, 7) + 1,
+              g = gcd(a, b),
+              root = frac(b, a),
+              answer = `0 and ${root}`;
+            return q(
+              `Find ALL real solutions of ${a}x² − ${b}x = 0. Do not lose a solution by dividing by x.`,
+              answer,
+              [
+                step(
+                  "Find the greatest common numerical factor of the coefficients.",
+                  g,
+                  "Use a factor shared by both coefficients.",
+                ),
+                calc(
+                  "After removing that factor and x, what x coefficient remains inside?",
+                  a,
+                  "÷",
+                  g,
+                  "Factor out the common variable as well.",
+                ),
+                calc(
+                  "What positive constant magnitude remains inside?",
+                  b,
+                  "÷",
+                  g,
+                  "Keep the subtraction sign in the factor.",
+                ),
+                step(
+                  "Set the outside variable factor equal to zero. What root does it give?",
+                  0,
+                  "A product is zero when at least one factor is zero.",
+                ),
+                step(
+                  "Solve the other linear factor for its root.",
+                  root,
+                  "Move its constant, then divide by its x coefficient.",
+                  "fraction",
+                ),
+              ],
+              { kind: "zero", a, b },
+              source(
+                "S35",
+                "p. 9, first two examples",
+                "Zero-product property and the zero root",
+              ),
+              [`${root} only`, "0 only", `0 and ${frac(b + a, a)}`],
+            );
+          }
+          if (t === 2) {
+            const a = r(2, 6),
+              b = a * r(1, 3) + 1,
+              positive = frac(b, a),
+              negative = frac(-b, a),
+              answer = `${negative} and ${positive}`;
+            return q(
+              `Find BOTH real solutions of ${a * a}x² − ${b * b} = 0.`,
+              answer,
+              [
+                step(
+                  "Move the constant right. What is the right side?",
+                  b * b,
+                  "Add the same constant on both sides.",
+                ),
+                step(
+                  "Divide by the x² coefficient. What is x²?",
+                  frac(b * b, a * a),
+                  "Keep an exact fraction.",
+                  "fraction",
+                ),
+                step(
+                  "Find the positive square root of the numerator.",
+                  b,
+                  "Which nonnegative number squares to that numerator?",
+                ),
+                step(
+                  "Find the positive square root of the denominator.",
+                  a,
+                  "Take the square root of the denominator too.",
+                ),
+                step(
+                  "Write the positive solution.",
+                  positive,
+                  "Divide the two square roots.",
+                  "fraction",
+                ),
+                step(
+                  "Write the negative solution.",
+                  negative,
+                  "Both opposite numbers have the same square.",
+                  "fraction",
+                ),
+              ],
+              { kind: "squares", a, b },
+              source(
+                "S35",
+                "pp. 9–10",
+                "Difference of squares and two opposite roots",
+              ),
+              [
+                `${positive} only`,
+                `${negative} only`,
+                `${frac(-b - a, a)} and ${frac(b + a, a)}`,
+              ],
+            );
+          }
+          const left = -r(2, 9),
+            right = r(2, 10),
+            B = -(left + right) || 0,
+            C = left * right,
+            answer = `${left} and ${right}`;
+          return q(
+            `Find both real roots of ${poly(1, B, C)} = 0 by factoring.`,
+            answer,
+            [
+              step(
+                "List the two signed integers whose sum is the x coefficient and product is the constant.",
+                `${-left}, ${-right}`,
+                "Try signed factor pairs of the constant. Enter both numbers separated by a comma.",
+                "set",
+              ),
+              calc(
+                "For the positive constant factor, solve x + that constant = 0.",
+                0,
+                "−",
+                -left,
+                "The root is the opposite of the constant.",
+              ),
+              calc(
+                "For the negative constant factor, solve x + that constant = 0.",
+                0,
+                "−",
+                -right,
+                "Apply the zero-product property to the second factor too.",
+              ),
+            ],
+            { kind: "monic", B, C },
+            source(
+              "S35",
+              "p. 10, exercise 4",
+              "Factor a monic quadratic and use both linear factors",
+            ),
+            [
+              `${left + 1} and ${right + 1}`,
+              `${left - 1} and ${right}`,
+              `${left} and ${right + 1}`,
+            ],
+          );
+        });
+        add("equations", "radical-verification", (r, t) => {
+          const a = r(1, 3 + t),
+            candidate = r(2, 15),
+            c = r(2, 8) * (t > 1 && r(0, 2) === 0 ? -1 : 1),
+            b = c * c - a * candidate,
+            answer = c < 0 ? "no real solution" : candidate,
+            inside = a * candidate + b;
+          return q(
+            `Solve √(${a}x ${signed(b)}) = ${c} over the REAL numbers. √ denotes the principal square root. Check any candidate in the ORIGINAL equation.`,
+            answer,
+            [
+              calc(
+                "Square the right-hand side to obtain a candidate equation.",
+                c,
+                "×",
+                c,
+                "Squaring can introduce a candidate that the original equation rejects.",
+              ),
+              calc(
+                "Subtract the constant inside the radical.",
+                c * c,
+                "−",
+                b,
+                "Now isolate the variable term in the squared equation.",
+              ),
+              calc(
+                "Divide by the coefficient to find the candidate.",
+                c * c - b,
+                "÷",
+                a,
+                "This is only a candidate until checked.",
+              ),
+              calc(
+                "Multiply the candidate by its original coefficient.",
+                candidate,
+                "×",
+                a,
+                "Substitute back into the original radicand.",
+              ),
+              calc(
+                "Add the original constant.",
+                a * candidate,
+                "+",
+                b,
+                "This is the original radicand at the candidate.",
+              ),
+              step(
+                "What is the principal square root of this radicand?",
+                Math.abs(c),
+                "The principal square root is nonnegative.",
+              ),
+              step(
+                "Does that value equal the original right side? Enter yes or no.",
+                c < 0 ? "no" : "yes",
+                "Accept the candidate only if it satisfies the original equation.",
+                "text",
+              ),
+            ],
+            { a, b, c },
+            source(
+              "S35",
+              "pp. 11–12, first two examples",
+              "Radical equations and rejecting extraneous candidates",
+            ),
+            c < 0
+              ? [candidate, -candidate, candidate + 1]
+              : ["no real solution", candidate + 1, candidate - 1],
+          );
+        });
+
         function matchesStep(step, input) {
           if (typeof input !== "string" || input.length > 200) return false;
           const normalize = (s) =>
@@ -5190,6 +7084,55 @@
         { name: "Grapple", cost: 25 },
       ];
       const THEMES = {
+        museum: {
+          wall: ["#48453e", "#45413c"],
+          accent: "#dcc79d",
+          label: "CLOCKWORK MUSEUM",
+          sky: "#1c303b",
+        },
+        neon: {
+          wall: ["#302d49", "#2c304b"],
+          accent: "#dca4e7",
+          label: "NEON BAZAAR",
+          sky: "#191f3b",
+        },
+        bazaar: {
+          wall: ["#51463d", "#4d3d3b"],
+          accent: "#edc68d",
+          label: "GRAND EXCHANGE",
+          sky: "#3c3342",
+        },
+        gardens: {
+          wall: ["#28473f", "#294c46"],
+          accent: "#b2deaf",
+          label: "SKY GARDENS",
+          sky: "#254650",
+        },
+        railway: {
+          wall: ["#41464d", "#46474c"],
+          accent: "#dfc89c",
+          label: "NIGHT EXPRESS TERMINAL",
+          sky: "#24354b",
+        },
+        storm: {
+          wall: ["#2a3c4c", "#2d3f50"],
+          accent: "#a4d3de",
+          label: "STORM CITADEL",
+          sky: "#1d2b42",
+        },
+        observatory: {
+          wall: ["#35394e", "#3c3c53"],
+          accent: "#ccbae3",
+          label: "HIDDEN OBSERVATORY",
+          sky: "#1a2543",
+        },
+        relay: {
+          wall: ["#293e53", "#29445a"],
+          accent: "#b2dfdf",
+          label: "PHANTOM RELAY",
+          sky: "#11293e",
+        },
+
         arctic: {
           wall: ["#244756", "#29434f"],
           accent: "#b5e6e2",
@@ -5316,8 +7259,12 @@
           isBoss: true,
           name: operation().villain,
           style: operation().style,
-          hp: 8 + Math.floor((game.mission - 25) / 4) * 2,
-          maxHp: 8 + Math.floor((game.mission - 25) / 4) * 2,
+          hp:
+            operation().bossArmor ??
+            8 + Math.floor((game.mission - 25) / 4) * 2,
+          maxHp:
+            operation().bossArmor ??
+            8 + Math.floor((game.mission - 25) / 4) * 2,
           phase: "watch",
           phaseTime: 1.25,
           hitCooldown: 0,
@@ -5566,11 +7513,282 @@
           : "ALL OBJECTIVES COMPLETE · REACH EXTRACTION";
         if (next?.id === 4 && !game.boss.defeated)
           label = `CONFRONT ${game.boss.name.toUpperCase()} · ${game.boss.hp}/${game.boss.maxHp} ARMOR · FLOOR ${game.floors - game.boss.floor}`;
-        if (game.escape) label = "SHADOW ATLAS · ESCAPE WITH THE EVIDENCE";
+        if (game.escape)
+          label = `${operation().chapter} · ESCAPE WITH THE EVIDENCE`;
         if (node.textContent !== label) node.textContent = label;
       }
+      function renderPhantomSky(t) {
+        const theme = THEMES[game.theme];
+        rect(0, 0, W, H, theme.sky);
+        if (["museum", "observatory", "relay"].includes(game.theme)) {
+          for (let i = 0; i < 65; i++)
+            rect(
+              hash(i * 19) * W,
+              hash(i + 3) * H,
+              1 + (i % 9 === 0),
+              1,
+              "#b7c8cf60",
+            );
+          glow(1025, 96, 70, theme.accent + "20");
+        }
+        if (game.theme === "neon") {
+          for (let i = 0; i < 14; i++) {
+            const x = i * 90,
+              y = 75 + hash(i) * 170;
+            rect(x, y, 65, H - y, "#15233c");
+            for (let k = 0; k < 9; k++)
+              rect(
+                x + 12,
+                y + 14 + k * 30,
+                35,
+                3,
+                k % 2 ? "#f89bc859" : "#78e3dc50",
+              );
+          }
+        } else if (game.theme === "bazaar") {
+          for (let i = 0; i < 8; i++) {
+            const x = 30 + i * 160;
+            ctx.fillStyle = "#88735544";
+            ctx.beginPath();
+            ctx.arc(x + 45, 350, 55, Math.PI, 0);
+            ctx.fill();
+            rect(x - 10, 350, 110, 250, "#88735544");
+            line(x + 45, 270, x + 45, 295, "#c8ad7355", 3);
+          }
+        } else if (game.theme === "gardens") {
+          for (let i = 0; i < 10; i++) {
+            const x = i * 140,
+              h = 170 + hash(i) * 220;
+            rect(x, H - h, 88, h, "#25534e66");
+            for (let j = 0; j < 6; j++)
+              line(x, H - h + j * 30, x + 88, H - h + j * 30, "#8cbfae35", 2);
+          }
+          glow(950, 90, 115, "#cdeba629");
+        } else if (game.theme === "railway") {
+          for (let i = 0; i < 6; i++) {
+            const x = i * 240 - 60;
+            ctx.fillStyle = i % 2 ? "#566d8550" : "#9aa7b33a";
+            ctx.beginPath();
+            ctx.moveTo(x, H);
+            ctx.lineTo(x + 150, 100 + hash(i) * 140);
+            ctx.lineTo(x + 350, H);
+            ctx.fill();
+          }
+          for (let i = 0; i < 35; i++)
+            rect(hash(i * 7) * W, (hash(i) * H + t * 8) % H, 2, 2, "#dbe8e055");
+        } else if (game.theme === "storm") {
+          for (let i = 0; i < 70; i++) {
+            const x = hash(i) * W,
+              y = (hash(i + 8) * H + t * 180) % H;
+            line(x, y, x - 6, y + 20, "#7db1d532");
+          }
+          if (!reducedMotion && Math.sin(t * 0.9) > 0.998) {
+            line(1060, 0, 1018, 115, "#d7e6fa77", 3);
+            line(1018, 115, 1040, 106, "#d7e6fa77", 3);
+            line(1040, 106, 1000, 210, "#d7e6fa77", 3);
+          }
+        } else if (game.theme === "relay") {
+          ctx.fillStyle = "#32657a55";
+          ctx.beginPath();
+          ctx.ellipse(600, 810, 880, 380, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = "#85d6dc55";
+          ctx.lineWidth = 4;
+          ctx.beginPath();
+          ctx.ellipse(600, 810, 880, 380, 0, Math.PI, Math.PI * 2);
+          ctx.stroke();
+        }
+      }
+      function renderPhantomFloor(f) {
+        const y = floorY(f),
+          theme = THEMES[game.theme];
+        if (y - camera < -20 || y - camera > H + 130) return;
+        for (const x of [160, 565, 970]) {
+          if (game.theme === "museum") {
+            rect(x - 35, y - 95, 70, 80, "#634f3f");
+            rect(x - 29, y - 89, 58, 66, "#243c43");
+            ctx.strokeStyle = "#c7a978";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(x, y - 61, 24, 0, Math.PI * 2);
+            ctx.stroke();
+            for (let i = 0; i < 12; i++) {
+              const a = (i * Math.PI) / 6;
+              line(
+                x + Math.sin(a) * 20,
+                y - 61 - Math.cos(a) * 20,
+                x + Math.sin(a) * 23,
+                y - 61 - Math.cos(a) * 23,
+                "#c7a978",
+                2,
+              );
+            }
+            const a = (reducedMotion ? 0 : clock * 0.25) + f;
+            line(
+              x,
+              y - 61,
+              x + Math.sin(a) * 17,
+              y - 61 - Math.cos(a) * 17,
+              "#e4d5b5",
+              2,
+            );
+            line(x, y - 61, x - 8, y - 68, "#e4d5b5", 3);
+            rect(x - 39, y - 16, 78, 6, "#ac9161");
+          } else if (game.theme === "neon") {
+            rect(x - 35, y - 93, 70, 72, "#20283f");
+            ctx.strokeStyle = f % 2 ? "#b276d4" : "#55b6c0";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(x - 31, y - 89, 62, 64);
+            text(
+              ["ECHO", "KITE", "NOVA"][f % 3],
+              x,
+              y - 61,
+              13,
+              theme.accent,
+              "monospace",
+              "center",
+            );
+            line(x - 24, y - 42, x + 24, y - 42, "#ee88ad77", 3);
+            line(x - 24, y - 35, x + 12, y - 35, "#8edbd577", 2);
+            rect(x - 35, y - 9, 70, 4, "#ad71bc40");
+          } else if (game.theme === "bazaar") {
+            ctx.fillStyle = "#b393593a";
+            ctx.beginPath();
+            ctx.arc(x, y - 70, 32, Math.PI, 0);
+            ctx.lineTo(x + 32, y - 15);
+            ctx.lineTo(x - 32, y - 15);
+            ctx.fill();
+            line(x - 34, y - 67, x + 34, y - 67, "#ceac7280", 3);
+            for (let i = 0; i < 5; i++)
+              line(
+                x - 28 + i * 14,
+                y - 67,
+                x - 28 + i * 14,
+                y - 20,
+                "#a06a6a65",
+                5,
+              );
+            rect(x - 40, y - 14, 80, 9, "#bba47545");
+            text("◇", x, y - 48, 24, "#efce9b8f", "monospace", "center");
+          } else if (game.theme === "gardens") {
+            rect(x - 38, y - 103, 76, 82, "#24525060");
+            ctx.strokeStyle = "#7cae9d80";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(x - 38, y - 103, 76, 82);
+            line(x, y - 103, x, y - 21, "#8cbeb17a", 2);
+            for (let k = 0; k < 3; k++) {
+              const xx = x - 24 + k * 24;
+              line(xx, y - 27, xx, y - 75 - k * 3, "#75ae727a", 3);
+              for (let j = 0; j < 3; j++) {
+                line(
+                  xx,
+                  y - 40 - j * 12,
+                  xx + 12,
+                  y - 48 - j * 12,
+                  "#8ac581a8",
+                  5,
+                );
+                line(
+                  xx,
+                  y - 46 - j * 12,
+                  xx - 11,
+                  y - 55 - j * 12,
+                  "#68aa7399",
+                  5,
+                );
+              }
+            }
+            rect(x - 44, y - 21, 88, 14, "#2d5150");
+            line(x - 44, y - 20, x + 44, y - 20, "#9ebf8166", 3);
+          } else if (game.theme === "railway") {
+            rect(x - 39, y - 96, 78, 70, "#746357");
+            rect(x - 33, y - 90, 66, 57, "#54717c");
+            ctx.fillStyle = "#b4c6cb80";
+            ctx.beginPath();
+            ctx.moveTo(x - 32, y - 35);
+            ctx.lineTo(x - 8, y - 77);
+            ctx.lineTo(x + 16, y - 35);
+            ctx.fill();
+            line(x, y - 90, x, y - 33, "#c1b28c", 3);
+            rect(x - 44, y - 25, 88, 8, "#ae9676");
+            text("ALPINE", x, y - 104, 9, theme.accent, "monospace", "center");
+          } else if (game.theme === "storm") {
+            rect(x - 37, y - 100, 74, 78, "#142a40");
+            for (let k = 0; k < 6; k++)
+              line(
+                x - 31 + k * 12,
+                y - 96,
+                x - 31 + k * 12,
+                y - 26,
+                "#496c82",
+                3,
+              );
+            rect(x - 20, y - 20, 40, 12, "#537c89");
+            line(x, y - 89, x, y - 35, "#9bdddf80", 2);
+            for (let k = 0; k < 4; k++)
+              line(
+                x - 12,
+                y - 80 + k * 12,
+                x + 12,
+                y - 80 + k * 12,
+                "#88bbcf7f",
+                2,
+              );
+          } else if (game.theme === "observatory") {
+            rect(x - 39, y - 100, 78, 77, "#171f3d");
+            for (let k = 0; k < 8; k++)
+              rect(
+                x - 30 + hash(k + f) * 55,
+                y - 92 + hash(k + 3) * 55,
+                2,
+                2,
+                "#d1d1bb",
+              );
+            line(x - 30, y - 37, x + 21, y - 76, "#ad99c2", 12);
+            line(x - 31, y - 38, x + 22, y - 77, "#d7c4dd", 3);
+            line(x, y - 55, x - 16, y - 6, "#8d82a0", 3);
+            line(x, y - 55, x + 17, y - 6, "#8d82a0", 3);
+          } else {
+            rect(x - 40, y - 100, 80, 80, "#1d3e59");
+            ctx.strokeStyle = "#7db5ca";
+            ctx.lineWidth = 3;
+            ctx.strokeRect(x - 35, y - 95, 70, 70);
+            for (let k = 0; k < 3; k++) {
+              line(
+                x - 27,
+                y - 81 + k * 20,
+                x + 12,
+                y - 81 + k * 20,
+                "#83c2c46a",
+                2,
+              );
+              line(
+                x + 12,
+                y - 81 + k * 20,
+                x + 25,
+                y - 71 + k * 20,
+                "#83c2c46a",
+                2,
+              );
+              rect(
+                x - 31,
+                y - 84 + k * 20,
+                6,
+                6,
+                k % 2 ? "#d9bd81" : "#9dd8ca",
+              );
+            }
+            rect(x - 38, y - 13, 76, 5, "#a0cbd555");
+          }
+        }
+      }
+
       function shadowSky(t) {
         if (!expedition()) return;
+        if (game.mission >= 37) {
+          renderPhantomSky(reducedMotion ? 0 : t);
+          return;
+        }
         const colors = {
           arctic: "#183647",
           venice: "#252a45",
@@ -5648,6 +7866,10 @@
       }
       function renderShadowFloor(f) {
         if (!expedition()) return;
+        if (game.mission >= 37) {
+          renderPhantomFloor(f);
+          return;
+        }
         const theme = THEMES[game.theme];
         const y = floorY(f);
         if (y - camera < -20 || y - camera > H + 130) return;
@@ -7477,14 +9699,24 @@
         }
       }
       function populateLevels() {
-        $("levelSelect").replaceChildren();
+        const select = $("levelSelect");
+        select.replaceChildren();
+        const groups = new Map();
         for (const s of MathEngine.campaign) {
-          const o = document.createElement("option");
-          o.value = s.level;
-          o.textContent = `${String(s.level).padStart(2, "0")} · ${s.name}${practice.completed.includes(s.level) ? " ✓" : ""}`;
-          $("levelSelect").append(o);
+          const title = s.chapter || "ACADEMY FOUNDATIONS";
+          let group = groups.get(title);
+          if (!group) {
+            group = document.createElement("optgroup");
+            group.label = title;
+            groups.set(title, group);
+            select.append(group);
+          }
+          const option = document.createElement("option");
+          option.value = s.level;
+          option.textContent = `${String(s.level).padStart(2, "0")} · ${s.name}${practice.completed.includes(s.level) ? " ✓" : ""}`;
+          group.append(option);
         }
-        $("levelSelect").value = selectedLevel;
+        select.value = selectedLevel;
       }
       function refreshBriefing() {
         const s = MathEngine.campaign[selectedLevel - 1];
@@ -7515,7 +9747,7 @@
           : "Press ENTER to clock in.";
         if (s.chapter && campaign) {
           document.querySelector(".classified").textContent =
-            `SHADOW ATLAS / ${s.location.toUpperCase()}`;
+            `${s.chapter} / ${s.location.toUpperCase()}`;
           document.querySelector(".lobby-copy p").textContent = s.story;
           document.querySelector(".start-hint").textContent =
             `Villain: ${s.villain}. ${s.unarmed ? "Enter unarmed. " : ""}Find caches, disable defenses, recover the artifact, and transmit the evidence.`;
@@ -9419,6 +11651,7 @@
             for (let x = LEFT + 26; x < RIGHT; x += 99)
               line(x, cy + 17, x, y - 29, "#2d454d");
             if (
+              game.mission < 37 &&
               ![
                 "rooftop",
                 "skybase",
@@ -10102,7 +12335,7 @@
       });
       // Read-only diagnostics also make browser smoke tests possible without bypassing gameplay.
       window.SpyAcademyAdvanced = window.ElevatorAction = Object.freeze({
-        version: "2.0.0",
+        version: "3.0.0",
         snapshot: () => ({
           state,
           mode: game.mode,

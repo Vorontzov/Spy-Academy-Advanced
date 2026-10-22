@@ -34,6 +34,138 @@ const poly = (a, b, c) =>
 function oracle(q) {
   const p = q.params;
   switch (q.templateId) {
+    case "mixed-to-improper":
+      return frac(p.whole * p.d + p.n, p.d);
+    case "improper-to-mixed":
+      return `${Math.floor(p.N / p.d)} ${frac(p.N % p.d, p.d)}`;
+    case "fraction-expression":
+      return frac((p.a * p.d + p.c * p.b) * p.e, p.b * p.d * p.f);
+    case "percent-decimal":
+      return (p.p * p.whole) / 100;
+    case "percent-missing-whole":
+      return (p.part * 100) / p.p;
+    case "successive-discounts":
+      return (p.price * (100 - p.p) * (100 - p.s)) / 10000;
+    case "sales-tax-cents": {
+      const tax = Number((BigInt(p.cents) * BigInt(p.tax) + 50n) / 100n);
+      assert.equal(Number(q.guide[2].answer), tax);
+      return (p.cents + tax) / 100;
+    }
+    case "discount-then-tax": {
+      const cut = Number((BigInt(p.cents) * BigInt(p.discount) + 50n) / 100n);
+      const reduced = p.cents - cut,
+        tax = Number((BigInt(reduced) * BigInt(p.tax) + 50n) / 100n);
+      assert.equal(Number(q.guide[1].answer), cut);
+      assert.equal(Number(q.guide[3].answer), tax);
+      return (reduced + tax) / 100;
+    }
+    case "commission-threshold":
+      return p.base + ((p.sales - p.quota) * p.p) / 100 + p.bonus;
+    case "profit-base":
+      return p.onSale
+        ? (p.saleCents * (100 - p.p)) / 10000
+        : p.saleCents / (100 + p.p);
+    case "tiered-tax": {
+      let tax = 0;
+      for (let dollar = 0; dollar < p.income; dollar++)
+        tax += dollar < p.first ? p.a : dollar < p.first + p.next ? p.b : p.c;
+      return tax / 100;
+    }
+    case "mean-readings":
+      return p.values.reduce((a, b) => a + b, 0) / p.values.length;
+    case "missing-mean":
+      return p.mean * 4 - p.known.reduce((a, b) => a + b, 0);
+    case "weighted-mean":
+      return frac(p.n * p.a + p.m * p.b, p.n + p.m);
+    case "round-trip-speed":
+      return frac(2 * p.a * p.b, p.a + p.b);
+    case "signed-route":
+      return p.a + p.b - p.c - p.d;
+    case "power-order": {
+      assert.equal(
+        Number(q.guide[2].answer),
+        p.inside ? p.a ** 2 : -(p.a ** 2),
+      );
+      return (
+        (p.inside ? p.a ** 2 : -(p.a ** 2)) + (p.b * p.d) / p.c - p.e + p.f
+      );
+    }
+    case "balanced-distribution": {
+      const roots = [];
+      for (let x = -100; x <= 100; x++)
+        if (p.A * (p.B * x + p.C) === p.D * (p.E * x + p.F)) roots.push(x);
+      assert.equal(roots.length, 1);
+      return roots[0];
+    }
+    case "fraction-linear":
+      return frac(p.rhs * p.b * p.d + p.a * p.d - p.c * p.b, p.b + p.d);
+    case "literal-denominator": {
+      // Substitute several independent u,k values into the rearranged expression.
+      for (const k of [1, 2, 4])
+        for (const u of [1, 3, 5]) {
+          const a = -p.n / (k * u + p.p);
+          assert(Math.abs((-p.p * a - p.n) / (k * a) - u) < 1e-9);
+        }
+      return `-${p.n}/(k*u+${p.p})`;
+    }
+    case "system-eliminate": {
+      const x = frac(p.R * p.c + p.b * p.S, p.a * (p.b + p.c)),
+        y = frac(p.R - p.S, p.b + p.c);
+      assert.equal(q.guide[2].answer, y);
+      assert.equal(q.guide[5].answer, x);
+      return `(${x}, ${y})`;
+    }
+    case "system-scale": {
+      const determinant = p.a * p.d + p.b * p.c,
+        x = frac(p.R * p.d + p.b * p.S, determinant),
+        y = frac(p.c * p.R - p.a * p.S, determinant);
+      assert.equal(q.guide[8].answer, x);
+      assert.equal(q.guide[11].answer, y);
+      assert.equal(
+        Number(q.guide[0].answer) * p.b,
+        Number(q.guide[3].answer) * p.d,
+      );
+      return `(${x}, ${y})`;
+    }
+    case "quadratic-factors": {
+      if (p.kind === "zero") return `0 and ${frac(p.b, p.a)}`;
+      if (p.kind === "squares")
+        return `${frac(-p.b, p.a)} and ${frac(p.b, p.a)}`;
+      const roots = [];
+      for (let x = -30; x <= 30; x++)
+        if (x * x + p.B * x + p.C === 0) roots.push(x);
+      assert.equal(roots.length, 2);
+      const factors = q.guide[0].answer.split(",").map(Number);
+      assert.equal(factors[0] + factors[1], p.B);
+      assert.equal(factors[0] * factors[1], p.C);
+      // Distractors must not be equivalent to the correct unordered root set.
+      for (const value of q.answers.filter((v) => v !== q.answer)) {
+        const pair = value
+          .split(" and ")
+          .map(Number)
+          .sort((a, b) => a - b);
+        assert.notEqual(JSON.stringify(pair), JSON.stringify(roots));
+      }
+      return roots.join(" and ");
+    }
+    case "radical-verification": {
+      const roots = [];
+      for (let x = -100; x <= 100; x++)
+        if (
+          p.a * x + p.b >= 0 &&
+          Math.abs(Math.sqrt(p.a * x + p.b) - p.c) < 1e-12
+        )
+          roots.push(x);
+      if (p.c < 0) {
+        assert.equal(roots.length, 0);
+        assert.equal(q.guide.at(-1).answer, "no");
+        return "no real solution";
+      }
+      assert.equal(roots.length, 1);
+      assert.equal(q.guide.at(-1).answer, "yes");
+      return roots[0];
+    }
+
     case "route-fraction":
     case "route-percent":
       return p.start + (p.length * p.num) / p.den;
@@ -245,10 +377,10 @@ for (const temp of e.templates)
 assert(e.matchesStep({ kind: "fraction", answer: "1/2" }, "2/4"));
 assert(!e.matchesStep({ kind: "fraction", answer: "1/2" }, "1/0"));
 assert(e.matchesStep({ kind: "code", answer: "(y − 3)/2" }, " ( y - 3 ) / 2 "));
-assert.equal(e.campaign.length, 36);
+assert.equal(e.campaign.length, 60);
 for (const s of e.campaign) {
   assert.equal(s.count, s.locks.length);
-  assert(s.floors >= 8 && s.floors <= 24);
+  assert(s.floors >= 8 && s.floors <= 30);
   for (const lock of s.locks) {
     const [topic, tier, template] = lock.split(":");
     const q = e.make(template, Number(tier), "campaign");
@@ -257,5 +389,5 @@ for (const s of e.campaign) {
   }
 }
 console.log(
-  `PASS: ${count} independent answers, ${steps} checked guided inputs, all source references and 36 maths-first missions.`,
+  `PASS: ${count} independent answers, ${steps} checked guided inputs, all source references and 60 maths-first missions.`,
 );

@@ -16,11 +16,11 @@ The sequence groups related topics and builds prerequisites. A new topic starts 
 | 21–22      | Factoring         | Common coefficient and variable → higher common powers                                    | S01, S23, S12      |
 | 23–24      | Literal equations | Undo addition and multiplication → collect/factor the subject                             | S15                |
 
-This release has 38 generators (17 original, 15 added for Shadow Atlas objectives, and 6 for vehicle engineering). Each supports the common three-tier interface; not every generator changes its mathematical structure at every tier. Levels select an explicit generator and tier rather than a random topic-wide question. Replay produces new numbers. The same seed regenerates the same question and answer order when resuming a save.
+This release has 62 generators (17 original, 15 added for Shadow Atlas objectives, 6 for vehicle engineering, and 24 for Phantom Circuit). Each supports the common three-tier interface; not every generator changes its mathematical structure at every tier. Levels select an explicit generator and tier rather than a random topic-wide question. Replay produces new numbers. The same seed regenerates the same question and answer order when resuming a save.
 
 ## Shadow Atlas: applications and advanced extensions
 
-Operations 25–36 revisit the topic groups in order, adding applications before advanced algebra. Difficulty is grouped by prerequisite, not guaranteed to increase after every individual question. The first 24 operation definitions and their seeded questions are unchanged, preserving existing saves. All 36 operations can be selected from the lobby.
+Operations 25–36 revisit the topic groups in order, adding applications before advanced algebra. Difficulty is grouped by prerequisite, not guaranteed to increase after every individual question. The first 24 operation definitions and their seeded questions are unchanged, preserving existing saves. All 60 operations can be selected from the lobby.
 
 | Operation | Adventure / location                      | New maths                                                                              | Sources                            |
 | --------- | ----------------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------- |
@@ -39,6 +39,43 @@ Operations 25–36 revisit the topic groups in order, adding applications before
 
 The last two operations explicitly handle denominator restrictions. The final family generates factorable quadratics with two valid real roots and checks both. Factor-list guides require each candidate to be classified, while factor-count guides enumerate coefficient divisors and count allowable exponents before multiplying. These are adaptations of the worksheet skills, with new numbers and spy contexts.
 
+## Phantom Circuit: new source collection
+
+Operations 37–60 add 24 families based on the latest 14 PDFs. Each mission uses its primary family at tiers 1, 2 and 3, with two review questions between them. The first 36 operation definitions and their seeded questions remain unchanged. Each replay draws new numerical variants; the curriculum is an authored progression rather than adaptive mastery assessment.
+
+| Operation | Adventure / location            | Primary maths                                                         | Source location                                   |
+| --------- | ------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------- |
+| 37        | Clockwork Entry / Prague        | Mixed numbers to improper fractions                                   | S31, p. 1                                         |
+| 38        | Pendulum Vault / Prague         | Improper fractions to mixed numbers                                   | S33, p. 1                                         |
+| 39        | The Prism Lens / Prague         | Add unlike fractions, then multiply                                   | S28, pp. 17, 25–27, 31                            |
+| 40        | Neon Percent / Tokyo            | Exact percent quantities with decimal results                         | S25, p. 1                                         |
+| 41        | Ghost Receipt / Tokyo           | Recover the whole, including fractional and greater-than-100 percents | S27, pp. 1–2                                      |
+| 42        | Double Markdown / Tokyo         | Successive discounts use successive bases                             | S29, p. 4                                         |
+| 43        | False Consignment / Istanbul    | Sales tax, cent rounding and total price                              | S30, p. 1, problems 1–10                          |
+| 44        | Camera Obscura / Istanbul       | Round a discount, then tax the reduced price                          | S34 (same exercises as S30), p. 2, problems 21–30 |
+| 45        | The Auctioneer / Istanbul       | Salary, bonus and commission only above a quota                       | S29, p. 12, problem 2                             |
+| 46        | Markup Mirage / Singapore       | Profit as a fraction of cost versus selling price                     | S29, pp. 8–9                                      |
+| 47        | Customs Canopy / Singapore      | Apply different rates to successive tax bands                         | S29, p. 11, problem 2                             |
+| 48        | Four Signals / Singapore        | Mean of four readings                                                 | S32, pp. 3–4                                      |
+| 49        | Average Express / Swiss Alps    | Find a missing reading from the required mean                         | S32, p. 5                                         |
+| 50        | Weighted Cargo / Swiss Alps     | Weighted mean with unequal group sizes                                | S32, p. 6                                         |
+| 51        | Round Trip Gambit / Swiss Alps  | Average speed over equal distances, using total time                  | S32, p. 8, problem 9                              |
+| 52        | Below Zero / Scottish coast     | Signed addition and subtraction                                       | S37, pp. 1–2; S35, pp. 3–4                        |
+| 53        | Powerhouse / Scottish coast     | Exponents, negative bases and left-to-right ×/÷                       | S37, pp. 2–3                                      |
+| 54        | Double Cross / Scottish coast   | Distribution on both sides of an equation                             | S26, p. 1, problems 2 and 5                       |
+| 55        | Fractional Frequency / Atacama  | Clear denominators; rational linear solutions                         | S35, pp. 5–6                                      |
+| 56        | Literal Constellation / Atacama | Rearrange a formula with the subject in a denominator                 | S36, p. 2, problem 30                             |
+| 57        | Twin Beacons / Atacama          | Eliminate a variable with matching coefficients                       | S38, pp. 1–2                                      |
+| 58        | Relay Intercept / stratosphere  | Scale equations before elimination; rational answers                  | S35, pp. 7–8                                      |
+| 59        | Zero Product / stratosphere     | Common-factor quadratics, difference of squares, then monic factoring | S35, pp. 9–10                                     |
+| 60        | Phantom Proof / stratosphere    | Solve a simple radical equation and reject extraneous candidates      | S35, pp. 11–12                                    |
+
+Fraction guides accept equivalent fractions and decimals. For mixed-number conversions, the checked steps separately ask for the whole part, remainder and reduction. Two-variable guides solve each variable separately so exact fractions can be entered. Quadratic guides ask for both roots, including zero when applicable. Literal-equation guides state excluded denominators and require the requested expression; they are not a general symbolic equivalence checker.
+
+Money is represented in integer cents. When rounding is required, prompts specify nearest cent with half cents rounded up; discount and tax are rounded at their separate stages. Tax bands are fictional training scenarios. Weighted averages use counts as weights, while round-trip speed uses total distance divided by total time. The radical family covers a linear expression under one principal square root, with positive and negative right-hand sides; the latter require rejecting the candidate after substitution.
+
+S30 and S34 contain the same 30 exercises and keys, with different PDF headers; they share the tax/discount content rather than doubling the bank. S36 repeats the earlier literal-equation sheet but contributes its previously unused denominator-subject problem. S28 combines separately taught fraction methods into new expressions. These are source-based adaptations, not verbatim copies or complete coverage of every worksheet.
+
 ## Vehicle engineering
 
 Car and motorcycle escapes each have two maths checkpoints, reached at one-third and two-thirds of the route. Traffic and health are frozen until the task is completed. Correct results earn a temporary boost and protection. The learner operates a mixing valve or chooses a road by steering; these tasks use the same seeded generator and checked-guide contract as the cases.
@@ -47,7 +84,7 @@ Car and motorcycle escapes each have two maths checkpoints, reached at one-third
 | --------------- | --------------------------------------------------- | ------------------------------------------- | ------------------------------------------------ |
 | 1–6             | Fraction of a route, then add the starting marker   | Allocate fuel using a fraction of the total | S06, pp. 21–22                                   |
 | 7–16            | Percentage of a route, then add the starting marker | Allocate fuel using a percentage            | S14, pp. 6–7                                     |
-| 17–36           | Closing speed, meeting time and meeting position    | Divide a total in a part-to-part ratio      | S09, pp. 1–2; S21, p. 1, problem 1; S17, pp. 1–2 |
+| 17–60           | Closing speed, meeting time and meeting position    | Divide a total in a part-to-part ratio      | S09, pp. 1–2; S21, p. 1, problem 1; S17, pp. 1–2 |
 
 These are newly authored applications of the listed methods, not copied vehicle questions from the worksheets. Moving-courier problems specify constant speeds, a common start time and a common direction. Fuel allocations use integer litres; percent products are stored exactly to avoid displaying floating-point artifacts. Every unfinished vehicle guide resumes at the validated prefix of checked answers. Completing a guide reveals its solution but still requires the learner to operate the valve or select the exit.
 
@@ -83,4 +120,4 @@ Questions are stored in the HTML, so this is a learning interface rather than a 
 
 ## Next material to add
 
-S02 contains a broader 57-question SHSAT mathematics paper with geometry, statistics, probability and other applications. S07 adds sample spaces and probability. Further work can add these families, polynomial identities, general non-factorable quadratics, fractional/decimal linear-equation solutions, and further literal-equation structures. They are not claimed as covered by the current 36 operations.
+S02 contains a broader 57-question SHSAT mathematics paper with geometry, statistics, probability and other applications. S07 adds sample spaces and probability. Further work can add these families, polynomial identities, general non-factorable quadratics, general radical equations, and further literal-equation structures. They are not claimed as covered by the current 60 operations.

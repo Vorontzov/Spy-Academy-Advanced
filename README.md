@@ -1,6 +1,6 @@
 # Spy Academy Advanced
 
-A standalone browser spy adventure with **36 operations**, maths from the first level, towers from 8 to 24 floors, and playable vehicle escapes. The complete game is in **`index.html`**: no build, server backend, Python runtime, external assets, accounts or API keys.
+A standalone browser spy adventure with **60 operations**, maths from the first level, towers from 8 to 30 floors, and playable vehicle escapes. The complete game is in **`index.html`**: no build, server backend, Python runtime, external assets, accounts or API keys.
 
 The maths generators are based on selected topics in the user's uploaded worksheets. This is an expanding curriculum, not a transcription of every supplied problem. See [CURRICULUM.md](CURRICULUM.md) for the sequence and authoring contract and [SOURCES.md](SOURCES.md) for the source mapping and remaining material.
 
@@ -44,9 +44,13 @@ Objectives have prerequisites. The override disables timed floor traps and remov
 
 Operations 27 and 31 start unarmed: **C**, **X** or **Z** performs a takedown until a weapon is recovered. Other Shadow Atlas missions start with the pulse pistol. Four optional caches contain the scatter blaster, ion rail, ricochet disc and arc launcher. The ion rail penetrates guards and costs 8 energy; the disc rebounds once and costs 6. Energy regenerates, and **Q** cycles only the weapons recovered during the mission. The first 24 operations retain their original three-weapon loadout and infiltration progression.
 
+**Phantom Circuit (operations 37–60)** adds 24 adventures across eight settings: Prague's clockwork museum, Tokyo's neon bazaar, Istanbul's grand exchange, Singapore's sky gardens, a Swiss mountain rail terminal, a Scottish storm citadel, an Atacama observatory and a stratospheric relay. Recover an orrery key, a covert camera, a depth compass and other named artifacts; rescue contacts, disable defenses and confront each location's villain. These missions build on the five-objective chains, acquired weapons and three villain styles introduced in Shadow Atlas. Operations 37, 44, 49 and 56 begin unarmed. Towers grow from 14 to 30 floors, with villain armor capped at 14 pulse-pistol hits.
+
+Each new operation introduces one problem family at three tiers, interleaved with two review gates: **120 additional required maths tasks**. The sequence moves through fraction conversions, percent applications, tax and discounts, commissions, profit, means and weighted averages, signed numbers, distributed and fractional equations, literal equations, elimination, factorable quadratics and checking radical solutions. Money questions state their rounding rules; radical guides require checking a candidate in the original equation. A chapter-grouped mission selector makes the expanded campaign easier to browse. Existing operation definitions, seeded questions and save keys are preserved.
+
 **Maths on the move:** every car and motorcycle escape has two engineering checkpoints. On a motorcycle, steer toward the numbered exit calculated from dispatch instructions: fractional routes, percentage routes, then intercepting a moving courier. In a car, move a valve to divide fuel between visible amber and blue tanks according to a fraction, percentage or ratio. Use arrows, tap an exit, or drag the valve; **FIRE/X** or the on-screen button commits the choice. Both checkpoints pause traffic, allow harmless retries, and award six seconds of automatic boost plus brief protection when solved. Helicopter, plane and parachute escapes keep their action controls.
 
-“Help me calculate” requires a correct input for each intermediate calculation, then returns control of the route or valve to the learner. Vehicle tasks contribute to the same Practice Record and save their checked steps. Existing escape saves skip checkpoints already passed. Their topic progression uses operations 1–6, 7–16 and 17–36, independently of the tower’s current topic.
+“Help me calculate” requires a correct input for each intermediate calculation, then returns control of the route or valve to the learner. Vehicle tasks contribute to the same Practice Record and save their checked steps. Existing escape saves skip checkpoints already passed. Their topic progression uses operations 1–6, 7–16 and 17–60, independently of the tower’s current topic.
 
 There is no countdown. The action freezes during maths. Wrong answers do not cost hearts. “Walk me through it” hides the main answer choices and requires a correct input for each step before revealing the next. Only after all steps are checked does the complete solution appear. Fractions accept equivalent fractions or decimals; symbolic formula steps accept the requested expression with flexible spacing and minus-sign notation. They do not perform general symbolic algebra equivalence checking.
 
@@ -60,12 +64,13 @@ The game requires no test packages to play. The optional developer checks requir
 node tests/math_bank.cjs
 python tests/browser_game.py
 python tests/shadow_atlas.py
+python tests/phantom_circuit.py
 python tests/vehicle_maths.py
 python tests/mobile_offline.py
 ```
 
 If needed for a fresh test environment: `python -m pip install playwright` and `python -m playwright install chromium`. The test scripts use `CHROMIUM_PATH`, a system `chromium`, or Playwright's installed Chromium. Each browser test starts and stops its own HTTP server.
 
-The maths suite checks 22,800 seeded variants against independent answer calculations and 88,500 guided inputs. Browser checks cover a full mission through actual controls, maths gating and saved steps, all 114 template/tier forms, weapons and gadgets, all five escape types, all 12 new operations and 60 objective locks, villain attack patterns and persistence, weapon caches/piercing/ricochet, trap timing and ice, both vehicle interfaces and six road-problem families, phone input and scrolling, blocked/corrupt storage, and offline rendering of the complete HTML without a network connection. The managed test browser blocks `file://` navigation by policy, so that URL scheme is not covered by the automated checks.
+The maths suite checks 37,200 seeded variants against independent answer calculations and 165,500 guided inputs. Browser checks cover a full mission through actual controls, maths gating and saved steps, all 186 template/tier forms, weapons and gadgets, all five escape types, all 36 expansion operations and 180 objective locks, the 30-floor lift/stair route, final campaign completion, new fractional/system/radical saves and phone guides, villain attack patterns and persistence, weapon caches/piercing/ricochet, trap timing and ice, both vehicle interfaces and six road-problem families, phone input and scrolling, blocked/corrupt storage, and offline rendering of the complete HTML without a network connection. The managed test browser blocks `file://` navigation by policy, so that URL scheme is not covered by the automated checks.
 
 Rendering, sound and game logic are procedural and contained in the HTML. The documentation and tests are development aids; only `index.html` needs to be served.
