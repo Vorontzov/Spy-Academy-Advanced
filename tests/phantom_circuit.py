@@ -45,8 +45,8 @@ def run():
                     page.locator('.answer').nth(page.evaluate('challengeDoor.challenge.correct')).click()
                 page.click('#challengeContinue'); tick()
 
-            assert page.locator('#levelSelect option').count() == 78
-            assert page.locator('#levelSelect optgroup').count() == 4
+            assert page.locator('#levelSelect option').count() == 96
+            assert page.locator('#levelSelect optgroup').count() == 5
             assert page.locator('#levelSelect optgroup[label="PHANTOM CIRCUIT"] option').count() == 24
             page.select_option('#levelSelect', '60')
             assert 'PHANTOM CIRCUIT' in page.locator('.classified').inner_text()
@@ -84,7 +84,7 @@ def run():
             assert 'The next operation is ready.' in page.locator('#resultText').inner_text()
             page.click('#nextBtn'); assert page.evaluate('game.mission') == 61
             page.evaluate('toLobby()')
-            assert page.locator('#levelSelect option').count() == 78
+            assert page.locator('#levelSelect option').count() == 96
             print('PASS: all 24 missions, 120 actual maths gates, three-tier progression, unarmed starts, override/boss gates and transition to Eclipse Pact', flush=True)
 
             # A tall tower is reachable via real controls, independent of combat fixtures.

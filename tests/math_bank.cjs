@@ -470,6 +470,125 @@ function oracle(q) {
       assert.equal(pair[0] * pair[1], -p.a * p.d - p.k * p.c);
       return `x = ${roots[0]} or x = ${roots[1]}`;
     }
+    case "mixed-supply":
+      return frac((p.w * p.d + p.n) * p.b, p.d * (p.v * p.b + p.a));
+    case "consecutive-code": {
+      const first = (p.total - (p.gap * p.count * (p.count - 1)) / 2) / p.count;
+      assert.equal(Number(q.guide[3].answer), first);
+      return first + (p.count - 1) * p.gap;
+    }
+    case "coin-count": {
+      const solutions = [];
+      for (let b = 0; b <= p.count; b++)
+        if (p.low * (p.count - b) + p.high * b === p.value) solutions.push(b);
+      assert.equal(solutions.length, 1);
+      return solutions[0];
+    }
+    case "ticket-ledger": {
+      const solutions = [];
+      for (let a = 0; a <= p.count; a++)
+        if (p.low * a + p.high * (p.count - a) === p.revenue) solutions.push(a);
+      assert.equal(solutions.length, 1);
+      return solutions[0];
+    }
+    case "interest-plan": {
+      const I = ((p.principal * p.rate) / 100) * p.years;
+      return p.monthly ? (p.principal + I) / (12 * p.years) : I;
+    }
+    case "interest-unknown":
+      return p.time
+        ? p.interest / ((p.principal * p.rate) / 100)
+        : (100 * p.interest) / (p.principal * p.years);
+    case "fraction-rebuild": {
+      const solutions = [];
+      for (let n = 1; n < 1000; n++)
+        if ((n + p.change) * p.v === p.u * (p.k * n + p.b + p.change))
+          solutions.push(n);
+      assert.equal(solutions.length, 1);
+      const n = solutions[0],
+        d = p.k * n + p.b;
+      assert.equal(Number(q.guide[4].answer), n);
+      assert.equal(Number(q.guide[5].answer), d);
+      return frac(n, d);
+    }
+    case "age-offset": {
+      const solutions = [];
+      for (let y = 1; y < 100; y++)
+        if (p.nowRatio * y + p.years === p.laterRatio * (y + p.years))
+          solutions.push(y);
+      assert.equal(solutions.length, 1);
+      assert.equal(Number(q.guide[2].answer), solutions[0]);
+      return p.nowRatio * solutions[0] - p.past;
+    }
+    case "mixture-water": {
+      const added = Number(q.answer);
+      assert(
+        Math.abs(p.volume * p.initial - (p.volume + added) * p.target) < 1e-7,
+      );
+      return p.volume * (p.initial / p.target - 1);
+    }
+    case "mixture-blend": {
+      const high = Number(q.answer);
+      assert(high > 0 && high < p.volume);
+      assert(
+        Math.abs(
+          p.high * high + p.low * (p.volume - high) - p.target * p.volume,
+        ) < 1e-7,
+      );
+      assert.equal(Number(q.guide[0].answer), (p.volume * p.low) / 100);
+      assert(
+        Math.abs(Number(q.guide[1].answer) - (p.volume * p.target) / 100) <
+          1e-8,
+      );
+      return (p.volume * (p.target - p.low)) / (p.high - p.low);
+    }
+    case "work-together": {
+      const hours = rational(q.answer);
+      assert(
+        Math.abs(hours / p.a + ((p.drain ? -1 : 1) * hours) / p.b - 1) < 1e-9,
+      );
+      return frac(p.a * p.b, p.drain ? p.b - p.a : p.a + p.b);
+    }
+    case "meeting-motion":
+      return (60 * p.distance) / (p.a + p.b);
+    case "pursuit-motion": {
+      const hours = rational(q.answer);
+      assert(Math.abs(p.fast * hours - p.slow * (p.head + hours)) < 1e-8);
+      return frac(p.slow * p.head, p.fast - p.slow);
+    }
+    case "river-current":
+      return (
+        p.distance / (p.still + p.current) + p.distance / (p.still - p.current)
+      );
+    case "pythagoras-route":
+      return Math.sqrt(p.leg ? p.c * p.c - p.a * p.a : p.a * p.a + p.b * p.b);
+    case "trapezoid-roof":
+      return ((p.a + p.b) * p.h * p.unit) / 2;
+    case "tank-volume":
+      return frac(
+        p.length * p.width * p.height * p.num,
+        p.den * (p.pump ? p.rate : 1),
+      );
+    case "signal-probability": {
+      const chips = [
+        ...Array(p.blue).fill("b"),
+        ...Array(p.gold).fill("g"),
+        ...Array(p.red).fill("r"),
+      ];
+      let favorable = 0,
+        total = 0;
+      if (p.single) {
+        favorable = p.blue;
+        total = chips.length;
+      } else
+        for (let i = 0; i < chips.length; i++)
+          for (let j = 0; j < chips.length; j++)
+            if (p.replaced || i !== j) {
+              total++;
+              if (chips[i] === "b" && chips[j] === "g") favorable++;
+            }
+      return frac(favorable, total);
+    }
     default:
       throw Error("Missing oracle " + q.templateId);
   }
@@ -488,6 +607,18 @@ for (const temp of e.templates)
       assert.equal(q.answers[q.correct], q.answer);
       assert.equal(new Set(q.answers).size, q.answers.length);
       assert(q.answers.length >= 3);
+      if (e.templates.indexOf(temp) >= 80) {
+        for (const wrong of q.answers.filter((x) => x !== q.answer))
+          assert(
+            Math.abs(rational(wrong) - rational(q.answer)) > 1e-9,
+            q.id + " equivalent choice",
+          );
+        if (q.templateId === "interest-plan" && t === 3)
+          assert(
+            Number.isInteger(Number(q.answer)),
+            q.id + " payment must be an exact whole-dollar amount",
+          );
+      }
       assert.equal(JSON.stringify(q), JSON.stringify(e.make(temp.id, t, seed)));
       assert(q.guide.length >= 2);
       assert(q.source?.id && q.source.pages);
@@ -532,11 +663,11 @@ for (const temp of e.templates)
 assert(e.matchesStep({ kind: "fraction", answer: "1/2" }, "2/4"));
 assert(!e.matchesStep({ kind: "fraction", answer: "1/2" }, "1/0"));
 assert(e.matchesStep({ kind: "code", answer: "(y − 3)/2" }, " ( y - 3 ) / 2 "));
-assert.equal(e.campaign.length, 78);
+assert.equal(e.campaign.length, 96);
 for (const s of e.campaign) {
   assert.equal(s.count, s.locks.length);
-  assert(s.floors >= 8 && s.floors <= 32);
-  for (const lock of s.locks) {
+  assert(s.floors >= 8 && s.floors <= 34);
+  for (const lock of [...s.locks, ...(s.interiorLocks || [])]) {
     const [topic, tier, template] = lock.split(":");
     const q = e.make(template, Number(tier), "campaign");
     assert.equal(q.topic, topic);
@@ -544,5 +675,5 @@ for (const s of e.campaign) {
   }
 }
 console.log(
-  `PASS: ${count} independent answers, ${steps} checked guided inputs, all source references and 78 maths-first missions.`,
+  `PASS: ${count} independent answers, ${steps} checked guided inputs, all source references and 96 maths-first missions.`,
 );

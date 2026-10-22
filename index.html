@@ -13,7 +13,7 @@
     />
     <meta
       name="description"
-      content="A single-file spy adventure with 78 operations, maths from level one, gadgets, stairs, and playable vehicle escapes. Practice based on supplied mathematics worksheets."
+      content="A single-file spy adventure with 96 operations, maths from level one, gadgets, stairs, and playable vehicle escapes. Practice based on supplied mathematics worksheets."
     />
     <title>Spy Academy Advanced</title>
     <style>
@@ -2021,7 +2021,7 @@
             <h1 id="title">SPY ACADEMY <em>ADVANCED.</em></h1>
           </div>
           <div class="intro-side">
-            <p>78 operations. Think fast. Go further.</p>
+            <p>96 operations. Think fast. Go further.</p>
             <div class="chip">
               <span>●</span> SINGLE PLAYER <span>/</span> INSTANT PLAY
             </div>
@@ -2030,7 +2030,7 @@
         <section class="training-bar" aria-label="Campaign selection">
           <label
             >GAME MODE<select id="modeSelect">
-              <option value="campaign">Advanced · 78 operations</option>
+              <option value="campaign">Advanced · 96 operations</option>
             </select></label
           >
           <label class="level-field"
@@ -2543,11 +2543,11 @@
           <h3>04. Escape with the evidence</h3>
           <p>
             After collecting all items, reach floor 01 extraction to begin a
-            car, motorcycle, helicopter, plane or parachute stage. Steer with
-            arrows or WASD; X clears hazards, G shields, Space boosts (except
-            while parachuting). Collect beacons and dodge obstacles until the
-            route ends. Pausing works in both phases. Continue restores lives
-            without losing recovered items or escape distance.
+            car, motorcycle, boat, helicopter, plane or parachute stage. Steer
+            with arrows or WASD; X clears hazards, G shields, Space boosts
+            (except while parachuting). Collect beacons and dodge obstacles
+            until the route ends. Pausing works in both phases. Continue
+            restores lives without losing recovered items or escape distance.
           </p>
         </div>
       </div>
@@ -2557,6 +2557,26 @@
         calculated exit and press FIRE. Correct engineering earns a six-second
         boost. Help requires a checked input for each calculation; unfinished
         vehicle tasks are saved.
+      </p>
+      <p>
+        Jade Current (operations 79–96) adds canal towers, Japanese castle
+        galleries, factories, harbors and a skyport. At the artifact door, press
+        E or UP to enter a playable interior. Solve its middle-floor safety
+        panel and upper evidence seal, then return through the left door on the
+        bottom floor. Ladders work with UP/DOWN. Interior progress survives
+        exits and reloads; a reload resumes at the safe entrance. Machinery
+        warns before striking. Factory safety overrides stop presses and
+        conveyors.
+      </p>
+      <p>
+        Training access in operations 79, 80 and 81 unlocks the rising jump,
+        spinning kick and aerial strike. Starting a later Jade mission awards
+        its prerequisite moves after its first lock. Hold UP and press JUMP to
+        reach one floor above; C spins on the ground or strikes while airborne.
+        Q selects acquired shock knives, stun swords and rescue machetes; FIRE
+        swings them. All combat uses cartoon stuns. Boat escapes have currents;
+        new flight escapes have crosswinds. Steer against the drift, use G for
+        protection and collect beacons. Skills are saved on this device.
       </p>
       <p>
         Eclipse Pact (operations 61–78) adds six settings, cellar labyrinths,
@@ -2623,7 +2643,7 @@
       /*
        * SPY ACADEMY ADVANCED
        * A dependency-free, original tribute. Everything needed to play is in this file.
-       * CUSTOMIZE: MathEngine contains a 78-operation campaign and source-mapped seeded templates.
+       * CUSTOMIZE: MathEngine contains a 96-operation campaign and source-mapped seeded templates.
        * See CURRICULUM.md and SOURCES.md for content provenance and authoring.
        * Challenges pause the action and never cost a life. Everything runs locally in this file.
        * Rendering, input, audio, simulation, and content are kept separate below.
@@ -2646,6 +2666,7 @@
           systems: "Systems of equations",
           geometry: "Geometry & construction",
           inequalities: "Inequalities",
+          probability: "Probability",
         };
         const tiers = ["Build confidence", "Stretch", "Advanced"];
         const rows = [
@@ -3847,6 +3868,298 @@
                       i % 5
                     ],
               unarmed: [2, 5, 8, 11, 14, 16].includes(i),
+              lesson,
+              story,
+              brief: `${lesson}. ${story}`,
+            });
+          },
+        );
+
+        const jadeSectors = [
+          ["canal", "Suzhou · Lantern Canal", [18, 20, 22], "Canal safehouse"],
+          ["castle", "Kyoto · Kestrel Castle", [20, 22, 24], "Moonlit dojo"],
+          [
+            "foundry",
+            "Kaohsiung · Meridian Steelworks",
+            [22, 24, 26],
+            "Hydraulic press hall",
+          ],
+          [
+            "dockyard",
+            "Singapore · Stormbreak Harbor",
+            [24, 26, 28],
+            "Floodgate control room",
+          ],
+          [
+            "pagoda",
+            "Guilin · Cloud Lantern Observatory",
+            [26, 28, 30],
+            "Cloud archive",
+          ],
+          [
+            "aerodrome",
+            "Okinawa · Typhoon Skyport",
+            [28, 30, 34],
+            "Storm engine chamber",
+          ],
+        ];
+        const jadeRows = [
+          [
+            "THE LANTERN COURIER",
+            "fractions",
+            "mixed-supply",
+            "Mixed-number supply calculations",
+            "Sable Voss",
+            "TIDAL KEY",
+            "nova",
+            "boat",
+            "Recover a river-routing key from a canal safehouse. Nova’s movement simulator unlocks your rising jump.",
+          ],
+          [
+            "THE FIVE-SEAL VAULT",
+            "integers",
+            "consecutive-code",
+            "Consecutive integer models",
+            "Cipher Vale",
+            "FIVE-SEAL CODE",
+            "ibis",
+            "motorcycle",
+            "Follow a trail of numbered seals through the canal towers. Learn the spinning kick before the motorcycle pursuit.",
+          ],
+          [
+            "COINS UNDER THE BRIDGE",
+            "systems",
+            "coin-count",
+            "Coin-count systems",
+            "The Ferryman",
+            "COURIER PURSE",
+            "rook",
+            "boat",
+            "Trace a counterfeit ferry ledger. Rook’s reluctant alliance gets you inside; complete aerial-strike training and escape by boat.",
+          ],
+          [
+            "THE PAPER CRANE LEDGER",
+            "systems",
+            "ticket-ledger",
+            "Ticket and revenue systems",
+            "Madam Static",
+            "EVACUATION LEDGER",
+            "ibis",
+            "car",
+            "A stolen passenger ledger hides a rescue route. Cross castle galleries and enter a guarded dojo to recover it.",
+          ],
+          [
+            "INTEREST AT MIDNIGHT",
+            "percent",
+            "interest-plan",
+            "Simple interest and equal repayments",
+            "Broker Flint",
+            "RESCUE BOND",
+            "nova",
+            "helicopter",
+            "Secure funding records for the evacuation fleet. Clear the dojo and lift the rescue bond out by helicopter.",
+          ],
+          [
+            "THE BORROWED HOUR",
+            "percent",
+            "interest-unknown",
+            "Finding interest rates and time",
+            "Clockhand",
+            "CHRONOMETER",
+            "rook",
+            "plane",
+            "Unmask Clockhand’s fabricated accounts, retrieve a chronometer, and fly its calibration data to headquarters.",
+          ],
+          [
+            "THE FRACTURED FORMULA",
+            "equations",
+            "fraction-rebuild",
+            "Reconstructing fractions algebraically",
+            "Dr. Split",
+            "VALVE FORMULA",
+            "nova",
+            "boat",
+            "Meridian Steelworks is still running. Dodge presses and conveyors, then rebuild the missing valve formula inside its control hall.",
+          ],
+          [
+            "THE TIMEKEEPER FILE",
+            "equations",
+            "age-offset",
+            "Age problems and time offsets",
+            "Archivist Ash",
+            "TIMEKEEPER FILE",
+            "ibis",
+            "helicopter",
+            "An altered personnel record hides the factory’s true owner. Solve the age clues and extract the unedited file.",
+          ],
+          [
+            "PURE WATER PROTOCOL",
+            "percent",
+            "mixture-water",
+            "Dilution and conserved solute",
+            "Warden Brine",
+            "COOLANT CANISTER",
+            "rook",
+            "car",
+            "Brine has locked the cooling network. Cross the live production line and calculate how to restore safe coolant concentrations.",
+          ],
+          [
+            "THE TWO-TANK DECEPTION",
+            "percent",
+            "mixture-blend",
+            "Two-stock mixture equations",
+            "Captain Alloy",
+            "BLEND REGULATOR",
+            "nova",
+            "boat",
+            "Board Stormbreak’s repair towers. Blend the rescue fleet’s coolant before a fast boat run past patrol launches.",
+          ],
+          [
+            "PARTNERS AGAINST THE FLOOD",
+            "ratios",
+            "work-together",
+            "Combined work and pump rates",
+            "Lockmaster",
+            "FLOODGATE RELAY",
+            "rook",
+            "helicopter",
+            "Work with Rook to restore the floodgates. A pump-room interior tests combined rates while security closes in.",
+          ],
+          [
+            "RENDEZVOUS ABOVE THE STRAIT",
+            "ratios",
+            "meeting-motion",
+            "Closing speeds and time units",
+            "Marshal Vector",
+            "RENDEZVOUS BEACON",
+            "ibis",
+            "plane",
+            "Aircraft are converging on the wrong coordinates. Recover the beacon, calculate their meeting time and correct the rendezvous.",
+          ],
+          [
+            "THE VANISHING COURIER",
+            "ratios",
+            "pursuit-motion",
+            "Pursuit and head starts",
+            "Silhouette",
+            "SKY COURIER MAP",
+            "ibis",
+            "motorcycle",
+            "A courier has a head start through the mountain roads. Find the pursuit map in the observatory archive before the chase.",
+          ],
+          [
+            "AGAINST THE JADE CURRENT",
+            "ratios",
+            "river-current",
+            "Round trips and river currents",
+            "Admiral Undertow",
+            "CURRENT CHART",
+            "nova",
+            "boat",
+            "Recover a current chart from the cliffside towers. Distinguish boat speed from speed over the riverbank to plan the escape.",
+          ],
+          [
+            "THE ROOFTOP RESCUE",
+            "geometry",
+            "pythagoras-route",
+            "Pythagorean routes and lengths",
+            "The Rigger",
+            "RESCUE CABLE",
+            "rook",
+            "helicopter",
+            "The observatory’s rescue line is cut. Calculate cable lengths, leap between floors and confront the Rigger above the river.",
+          ],
+          [
+            "WINGS OF THE STORM",
+            "geometry",
+            "trapezoid-roof",
+            "Trapezoid area and material cost",
+            "Captain Monsoon",
+            "SOLAR WING",
+            "nova",
+            "plane",
+            "Rebuild the skyport’s solar-wing plans. Enter the engine chamber and dodge its moving presses before taking flight.",
+          ],
+          [
+            "THE LAST RESERVOIR",
+            "geometry",
+            "tank-volume",
+            "Volume, fractions and pumping",
+            "General Siphon",
+            "STORM RESERVOIR KEY",
+            "ibis",
+            "boat",
+            "Siphon controls the skyport reservoirs. Restore the pump settings and leave through the sea tunnels in a patrol launch.",
+          ],
+          [
+            "JADE CURRENT FINALE",
+            "probability",
+            "signal-probability",
+            "Conditional probability and replacement",
+            "Director Crosswind",
+            "JADE TRANSMITTER",
+            "rook",
+            "helicopter",
+            "Crosswind is rerouting the rescue fleet with false signals. Recover the transmitter, test the signal-chip probabilities, and reunite the team at helicopter extraction.",
+          ],
+        ];
+        jadeRows.forEach(
+          (
+            [
+              name,
+              topic,
+              template,
+              lesson,
+              villain,
+              artifact,
+              ally,
+              escape,
+              story,
+            ],
+            i,
+          ) => {
+            const [theme, location, floors, interior] =
+              jadeSectors[Math.floor(i / 3)];
+            const review = i
+              ? `${jadeRows[i - 1][1]}:2:${jadeRows[i - 1][2]}`
+              : "fractions:2:mixed-supply";
+            campaign.push({
+              level: 79 + i,
+              name,
+              topic,
+              template,
+              tier: i < 9 ? 2 : 3,
+              theme,
+              location,
+              floors: floors[i % 3],
+              count: 5,
+              locks: [
+                `${topic}:1:${template}`,
+                review,
+                `${topic}:2:${template}`,
+                review,
+                `${topic}:3:${template}`,
+              ],
+              interiorLocks: [
+                `${topic}:1:${template}`,
+                `${topic}:2:${template}`,
+              ],
+              interior,
+              security: 3 + (i % 3),
+              chapter: "JADE CURRENT",
+              villain,
+              style: ["hunter", "warden", "saboteur"][i % 3],
+              bossArmor: 14 + 2 * Math.floor(i / 6),
+              ally,
+              objects: [
+                "TRAINING ACCESS",
+                `RECRUIT ${ally.toUpperCase()}`,
+                "SAFETY OVERRIDE",
+                artifact,
+                "RESCUE UPLINK",
+              ],
+              escape,
+              unarmed: i % 3 === 1,
               lesson,
               story,
               brief: `${lesson}. ${story}`,
@@ -8251,6 +8564,1051 @@
           );
         });
 
+        // Jade Current: model word problems, then use the model to plan an escape.
+        add("fractions", "mixed-supply", (r, t) => {
+          const w = r(2, 5 + t),
+            d = r(2, 5 + t),
+            n = r(1, d - 1),
+            b = r(2, 7),
+            a = r(1, b - 1),
+            v = t === 1 ? 0 : r(1, 3);
+          const N = w * d + n,
+            A = v * b + a,
+            answer = frac(N * b, d * A);
+          return q(
+            `A rescue drone carries ${w} ${n}/${d} liters of coolant. Each full service uses ${v ? v + " " : ""}${a}/${b} liters. How many services' worth is aboard? Include a fractional service; give an exact fraction.`,
+            answer,
+            [
+              calc(
+                "Convert the supply: whole part × denominator.",
+                w,
+                "×",
+                d,
+                "Count the fractional pieces in the whole liters.",
+              ),
+              calc(
+                "Add the supply numerator.",
+                w * d,
+                "+",
+                n,
+                "This is the improper numerator.",
+              ),
+              step(
+                "Convert the amount per service to an improper fraction.",
+                frac(A, b),
+                "Multiply its whole part by its denominator, then add its numerator.",
+                "fraction",
+              ),
+              step(
+                "What is the reciprocal of the amount per service?",
+                frac(b, A),
+                "Flip the divisor, not the supply.",
+                "fraction",
+              ),
+              calc(
+                "Multiply the two numerators.",
+                N,
+                "×",
+                b,
+                "Divide by multiplying by the reciprocal.",
+              ),
+              calc(
+                "Multiply the two denominators.",
+                d,
+                "×",
+                A,
+                "Keep numerator and denominator separate.",
+              ),
+              step(
+                "Simplify the quotient.",
+                answer,
+                "Divide top and bottom by their greatest common factor.",
+                "fraction",
+              ),
+            ],
+            { w, d, n, b, a, v },
+            source(
+              "S59",
+              "pp. 27–30, especially p. 29 (Remixes)",
+              "Mixed-number division in a supply problem",
+            ),
+            [
+              frac(N * b + d * A, d * A),
+              frac(N * b + 2 * d * A, d * A),
+              frac(N * b + 3 * d * A, d * A),
+            ],
+          );
+        });
+        add("integers", "consecutive-code", (r, t) => {
+          const first = r(3, 40 * t),
+            count = t + 2,
+            gap = t === 3 ? 2 : 1,
+            offset = (gap * count * (count - 1)) / 2,
+            total = count * first + offset;
+          return q(
+            `A vault code uses ${count} ${gap === 2 ? "consecutive odd or consecutive even integers (spacing 2)" : "consecutive integers"}. Their sum is ${total}. What is the greatest integer?`,
+            first + (count - 1) * gap,
+            [
+              step(
+                "Let the first integer be x. What is the spacing between neighbors?",
+                gap,
+                "Consecutive integers differ by one; consecutive integers of the same parity differ by two.",
+              ),
+              step(
+                "Add the offsets after x in all the terms.",
+                offset,
+                "Start with zero, then add one spacing, two spacings, and so on.",
+              ),
+              calc(
+                "Subtract the offset total from the sum.",
+                total,
+                "−",
+                offset,
+                "Collect the x terms before dividing.",
+              ),
+              calc(
+                "Divide by the number of integers to find the first.",
+                total - offset,
+                "÷",
+                count,
+                "Each term contributes one x.",
+              ),
+              calc(
+                "Add the last offset to find the greatest.",
+                first,
+                "+",
+                gap * (count - 1),
+                "The question asks for the greatest, not the first.",
+              ),
+            ],
+            { first, count, gap, total },
+            source(
+              "S61",
+              "pp. 2–5; S54 p. 4",
+              "Consecutive integer sums and endpoints",
+            ),
+          );
+        });
+        add("systems", "coin-count", (r, t) => {
+          const low = [5, 10, 5][t - 1],
+            high = [10, 25, 25][t - 1],
+            a = r(3, 20 * t),
+            b = r(3, 17 * t),
+            count = a + b,
+            value = low * a + high * b;
+          return q(
+            `A courier's pouch holds ${count} coins: only ${low}-cent and ${high}-cent coins. Their total value is ${value} cents. How many ${high}-cent coins are there?`,
+            b,
+            [
+              calc(
+                "If every coin had the lower value, what would the total be (cents)?",
+                count,
+                "×",
+                low,
+                "Begin with all low-value coins.",
+              ),
+              calc(
+                "How many cents above that baseline is the actual total?",
+                value,
+                "−",
+                count * low,
+                "Each high-value coin adds extra value.",
+              ),
+              calc(
+                "How much extra value does one high-value coin add?",
+                high,
+                "−",
+                low,
+                "Replacing one low coin keeps the coin count unchanged.",
+              ),
+              calc(
+                "Divide the excess by that difference.",
+                value - count * low,
+                "÷",
+                high - low,
+                "This counts the high-value coins.",
+              ),
+              calc(
+                "How many lower-value coins remain?",
+                count,
+                "−",
+                b,
+                "Check that the two counts add to the total.",
+              ),
+            ],
+            { low, high, count, value },
+            source("S53", "p. 1, problems 3–5; S54 p. 3", "Coin-count systems"),
+          );
+        });
+        add("systems", "ticket-ledger", (r, t) => {
+          const low = r(2, 5 + t),
+            high = low + r(2, 6),
+            small = r(5, 25 * t),
+            large = r(4, 18 * t),
+            count = small + large,
+            revenue = low * small + high * large;
+          return q(
+            `The harbor sold ${count} ferry tickets. Child tickets cost $${low}; adult tickets cost $${high}. Revenue was $${revenue}. How many child tickets were sold?`,
+            small,
+            [
+              calc(
+                "What would revenue be if all tickets were adult tickets?",
+                count,
+                "×",
+                high,
+                "Use an all-adult baseline.",
+              ),
+              calc(
+                "How far below that baseline is the actual revenue?",
+                count * high,
+                "−",
+                revenue,
+                "Each child ticket explains part of the shortfall.",
+              ),
+              calc(
+                "How much less does each child ticket cost?",
+                high,
+                "−",
+                low,
+                "Subtract the ticket prices.",
+              ),
+              calc(
+                "Divide to find the number of child tickets.",
+                count * high - revenue,
+                "÷",
+                high - low,
+                "Use shortfall ÷ discount per ticket.",
+              ),
+              calc(
+                "How many adult tickets were sold?",
+                count,
+                "−",
+                small,
+                "Check the total ticket count.",
+              ),
+            ],
+            { low, high, count, revenue },
+            source(
+              "S53",
+              "p. 2, problem 15",
+              "Ticket-count and revenue systems",
+            ),
+          );
+        });
+        add("percent", "interest-plan", (r, t) => {
+          const principal = r(5, 35) * (t === 3 ? 7200 : 1200),
+            rate = r(2, 9),
+            years = r(1, 5),
+            interest = (principal * rate * years) / 100,
+            months = years * 12,
+            answer = t === 3 ? (principal + interest) / months : interest;
+          return q(
+            t === 3
+              ? `An evacuation boat costs $${principal}, borrowed at ${rate}% annual simple interest for ${years} years. The full principal plus interest is repaid in ${months} equal monthly payments. What is each payment in dollars? No fees or compounding.`
+              : `A rescue reserve of $${principal} earns ${rate}% annual simple interest for ${years} years. How many dollars of interest does it earn?`,
+            answer,
+            [
+              step(
+                "Convert the annual percent rate to a decimal.",
+                rate / 100,
+                "Divide the percent by 100.",
+              ),
+              calc(
+                "Find one year of interest in dollars.",
+                principal,
+                "×",
+                rate / 100,
+                "Simple interest always uses the original principal.",
+              ),
+              calc(
+                "Find the total interest.",
+                (principal * rate) / 100,
+                "×",
+                years,
+                "Multiply the yearly interest by the years.",
+              ),
+              ...(t === 3
+                ? [
+                    calc(
+                      "Add the principal to get the repayment total.",
+                      principal,
+                      "+",
+                      interest,
+                      "Repay the original loan and its interest.",
+                    ),
+                    calc(
+                      "Divide by the number of monthly payments.",
+                      principal + interest,
+                      "÷",
+                      months,
+                      "The problem specifies equal payments of the full simple-interest total.",
+                    ),
+                  ]
+                : []),
+            ],
+            { principal, rate, years, monthly: t === 3 },
+            source(
+              t === 3 ? "S64" : "S58",
+              t === 3 ? "p. 3, problem 12" : "p. 1, problems 4, 9–10; p. 2 key",
+              "Simple interest and equal total repayments",
+            ),
+          );
+        });
+        add("percent", "interest-unknown", (r, t) => {
+          const principal = r(8, 80) * 100,
+            rate = r(2, 12),
+            years = r(2, 9),
+            interest = (principal * rate * years) / 100;
+          const time = t === 3,
+            answer = time ? years : rate;
+          return q(
+            time
+              ? `A gadget fund of $${principal} earns $${interest} in simple interest at ${rate}% annually. How many years was it invested?`
+              : `A gadget fund of $${principal} grows to $${principal + interest} after ${years} years at simple interest. What is the annual rate as a percent?`,
+            answer,
+            [
+              calc(
+                "Subtract the principal from the final balance to find the interest.",
+                principal + interest,
+                "−",
+                principal,
+                "Interest is the money earned, not the balance.",
+              ),
+              ...(time
+                ? [
+                    step(
+                      "Convert the percent to a decimal.",
+                      rate / 100,
+                      "Divide by 100.",
+                    ),
+                    calc(
+                      "Calculate one year of interest.",
+                      principal,
+                      "×",
+                      rate / 100,
+                      "Use principal × annual rate.",
+                    ),
+                    calc(
+                      "Divide total interest by yearly interest.",
+                      interest,
+                      "÷",
+                      (principal * rate) / 100,
+                      "The quotient is time in years.",
+                    ),
+                  ]
+                : [
+                    calc(
+                      "Multiply principal by years.",
+                      principal,
+                      "×",
+                      years,
+                      "Rearrange I = Prt to r = I/(Pt).",
+                    ),
+                    step(
+                      "Divide interest by principal × years to get the decimal rate.",
+                      rate / 100,
+                      "Keep the rate as a decimal for this step.",
+                    ),
+                    calc(
+                      "Convert the decimal rate to a percent.",
+                      rate / 100,
+                      "×",
+                      100,
+                      "Multiply by 100; do not enter a percent sign.",
+                    ),
+                  ]),
+            ],
+            { principal, rate, years, interest, time },
+            source(
+              "S58",
+              "p. 1, problems 1–3, 5–8",
+              "Rearranging simple-interest models",
+            ),
+          );
+        });
+        add("equations", "fraction-rebuild", (r, t) => {
+          // Build a solvable relation without ambiguous original numerator/denominator counts.
+          const n = r(2, 8 + t),
+            k = t === 1 ? 1 : 2,
+            d = k * n + r(6, 12),
+            change = r(1, 5),
+            D = d + change,
+            N = n + change,
+            g = gcd(N, D),
+            u = N / g,
+            v = D / g,
+            b = d - k * n;
+          const answer = frac(n, d),
+            coef = v - u * k,
+            rhs = u * (b + change) - v * change;
+          return q(
+            `An original fraction has denominator ${k === 1 ? "its numerator" : k + " times its numerator"} plus ${b}. Add ${change} to BOTH its numerator and denominator; its value becomes ${u}/${v}. What was the original fraction's value?`,
+            answer,
+            [
+              step(
+                `Call the original numerator n. Cross-multiply (n + ${change})/(${k}n + ${b + change}) = ${u}/${v}. What is the coefficient of n on the left?`,
+                v,
+                "Multiply the left numerator by the right denominator.",
+              ),
+              calc(
+                "What is the coefficient of n on the right?",
+                u,
+                "×",
+                k,
+                "Distribute the other numerator over the denominator expression.",
+              ),
+              calc(
+                "Subtract the right coefficient from the left.",
+                v,
+                "−",
+                u * k,
+                "Collect the n terms.",
+              ),
+              step(
+                "After moving constants to the right, what is the right-hand value?",
+                rhs,
+                `Compute ${u} × ${b + change} − ${v} × ${change}.`,
+              ),
+              calc(
+                "Divide to recover the original numerator.",
+                rhs,
+                "÷",
+                coef,
+                "Divide both sides by the coefficient of n.",
+              ),
+              step(
+                "Use the original relationship to find its denominator.",
+                d,
+                `Compute ${k} × n + ${b}.`,
+              ),
+              step(
+                "Write the original value as a fraction.",
+                answer,
+                "Use the ORIGINAL numerator and denominator; an equivalent reduced fraction is accepted.",
+                "fraction",
+              ),
+            ],
+            { n, d, k, change, u, v, b },
+            source(
+              t === 1 ? "S57" : "S56",
+              t === 1 ? "p. 1, problem 2" : "p. 1, problem 2; S54 pp. 8–9",
+              "Reconstructing a fraction by cross-multiplication",
+            ),
+            [frac(n + 1, d), frac(n + 2, d), frac(n + 3, d)],
+          );
+        });
+        add("equations", "age-offset", (r, t) => {
+          const laterRatio = 2,
+            nowRatio = r(3, 3 + t),
+            unit = r(10, 14),
+            years = unit * (nowRatio - laterRatio),
+            young = unit,
+            older = nowRatio * young,
+            past = r(1, young - 1);
+          return q(
+            `An older agent is ${nowRatio} times as old as a junior trainee now. In ${years} years the agent will be ${laterRatio} times the trainee's age. How old was the agent ${past} years ago?`,
+            older - past,
+            [
+              step(
+                "Let the trainee be x now. What is the coefficient of x after subtracting the future-age ratio?",
+                nowRatio - laterRatio,
+                "Both people age by the same number of years.",
+              ),
+              step(
+                "After moving constants, what is on the right of that equation?",
+                (laterRatio - 1) * years,
+                `From ${nowRatio}x + ${years} = ${laterRatio}(x + ${years}), distribute and collect.`,
+              ),
+              calc(
+                "Divide to find the trainee’s current age.",
+                (laterRatio - 1) * years,
+                "÷",
+                nowRatio - laterRatio,
+                "Solve for x before finding the older age.",
+              ),
+              calc(
+                "Find the agent’s current age.",
+                young,
+                "×",
+                nowRatio,
+                "Multiply by the present-age ratio.",
+              ),
+              calc(
+                "Find the agent’s age at the requested past time.",
+                older,
+                "−",
+                past,
+                "Subtract the past-time offset.",
+              ),
+            ],
+            { nowRatio, laterRatio, years, past },
+            source(
+              "S62",
+              "p. 1, problems 1–10; S54 p. 5",
+              "Present, future and past age equations",
+            ),
+          );
+        });
+        add("percent", "mixture-water", (r, t) => {
+          const volume = r(2, 12) * 10,
+            initial = r(2, 6) * 10,
+            target = initial / (t === 1 ? 2 : t === 2 ? 5 : 10),
+            final = (volume * initial) / target,
+            answer = final - volume;
+          return q(
+            `A factory tank contains ${volume} liters of ${initial}% salt solution. Only pure water is added, with no loss of salt. How many liters of water make it ${target}% salt? Assume volumes add.`,
+            answer,
+            [
+              step(
+                "Write the starting concentration as a decimal.",
+                initial / 100,
+                "Percent means out of 100.",
+              ),
+              calc(
+                "How many liters of salt-equivalent solute are present?",
+                volume,
+                "×",
+                initial / 100,
+                "The amount of solute stays unchanged.",
+              ),
+              step(
+                "Write the target concentration as a decimal.",
+                target / 100,
+                "Use a decimal before dividing.",
+              ),
+              calc(
+                "Find the final total volume.",
+                (volume * initial) / 100,
+                "÷",
+                target / 100,
+                "Solute ÷ concentration gives total solution.",
+              ),
+              calc(
+                "Subtract the starting volume to find water added.",
+                final,
+                "−",
+                volume,
+                "Final volume includes the original solution.",
+              ),
+            ],
+            { volume, initial, target },
+            source(
+              "S60",
+              "p. 1, problems 1, 5, 7; p. 2, problem 22",
+              "Dilution with pure water",
+            ),
+          );
+        });
+        add("percent", "mixture-blend", (r, t) => {
+          const low = r(1, 3) * 10,
+            high = low + r(2, 5) * 10,
+            parts = [2, 4, 5][t - 1],
+            highParts = r(1, parts - 1),
+            volume = parts * r(2, 8) * 5,
+            target = low + ((high - low) * highParts) / parts,
+            answer = (volume * highParts) / parts;
+          return q(
+            `Nova needs ${volume} liters of a ${Number(target.toFixed(8))}% coolant blend from ${low}% and ${high}% stocks. How many liters of the ${high}% stock are needed? Assume volumes add.`,
+            answer,
+            [
+              step(
+                "If all the liquid used the low concentration, how many solute-liters would it contain?",
+                (volume * low) / 100,
+                "Multiply total liters by the low decimal concentration.",
+              ),
+              step(
+                "How many solute-liters must the finished blend contain?",
+                (volume * target) / 100,
+                "Multiply total liters by the target decimal concentration.",
+              ),
+              step(
+                "How many extra solute-liters are needed?",
+                (volume * (target - low)) / 100,
+                "Subtract the all-low baseline.",
+              ),
+              step(
+                "Replacing one low-stock liter with high stock adds how many solute-liters?",
+                (high - low) / 100,
+                "Subtract the decimal concentrations.",
+              ),
+              step(
+                "Divide to find the high-stock liters.",
+                answer,
+                "Extra solute ÷ extra solute per replaced liter.",
+              ),
+              calc(
+                "How many low-stock liters remain?",
+                volume,
+                "−",
+                answer,
+                "The two volumes must add to the requested total.",
+              ),
+            ],
+            { low, high, volume, target },
+            source(
+              "S60",
+              "p. 1, problems 8–11; p. 2, problem 20",
+              "Two-concentration mixture systems",
+            ),
+          );
+        });
+        add("ratios", "work-together", (r, t) => {
+          const a = r(2, 6) * t,
+            b = a + r(1, 5),
+            drain = t === 3,
+            den = drain ? b - a : a + b,
+            answer = frac(a * b, den);
+          return q(
+            drain
+              ? `One pump fills a reservoir in ${a} hours. A drain empties a full reservoir in ${b} hours. Both run at constant rates. Starting empty, how many hours until full? Give an exact fraction.`
+              : `Nova repairs a relay alone in ${a} hours; Ibis needs ${b} hours. Working together at constant rates without interference, how many hours does one relay take? Give an exact fraction.`,
+            answer,
+            [
+              step(
+                "What fraction of the job does the first worker or pump do in one hour?",
+                frac(1, a),
+                "Use the reciprocal of its solo completion time.",
+                "fraction",
+              ),
+              step(
+                "What fraction does the second do in one hour?",
+                frac(1, b),
+                "The drain removes this fraction rather than adding it.",
+                "fraction",
+              ),
+              step(
+                `Find the net hourly rate by ${drain ? "subtracting" : "adding"} the rates.`,
+                frac(den, a * b),
+                "Use a common denominator; do not add completion times.",
+                "fraction",
+              ),
+              step(
+                "Invert the net rate to find the completion time.",
+                answer,
+                "Time for one whole job = 1 ÷ net rate.",
+                "fraction",
+              ),
+            ],
+            { a, b, drain },
+            source(
+              "S54",
+              "pp. 15–16, examples and exercise 8 problems 2–3",
+              "Combined work and fill/drain rates",
+            ),
+            [
+              frac(a * b + den, den),
+              frac(a * b + 2 * den, den),
+              frac(a * b + 3 * den, den),
+            ],
+          );
+        });
+        add("ratios", "meeting-motion", (r, t) => {
+          const a = r(3, 12) * 10,
+            b = r(4, 15) * 10,
+            minutes = r(3, 12) * 15,
+            distance = ((a + b) * minutes) / 60;
+          return q(
+            `Two rescue aircraft head toward each other along the same straight route, ${distance} km apart. Their constant ground speeds are ${a} and ${b} km/h. In how many minutes do they meet?`,
+            minutes,
+            [
+              calc(
+                "Find the closing speed in km/h.",
+                a,
+                "+",
+                b,
+                "When traveling toward each other, both cover the gap.",
+              ),
+              step(
+                "Divide distance by closing speed. How many hours?",
+                frac(distance, a + b),
+                "Keep an exact fraction if needed.",
+                "fraction",
+              ),
+              step(
+                "Convert that time to minutes.",
+                minutes,
+                "Multiply hours by 60.",
+              ),
+            ],
+            { a, b, distance },
+            source(
+              "S63",
+              "pp. 1–2, problems 1, 8, 10–11",
+              "Opposing motion and time conversion",
+            ),
+          );
+        });
+        add("ratios", "pursuit-motion", (r, t) => {
+          const slow = r(3, 8) * 10,
+            extra = r(1, 4) * 10,
+            fast = slow + extra,
+            head = r(1, 3 * t),
+            gap = slow * head,
+            answer = frac(gap, extra);
+          return q(
+            `A courier leaves at ${slow} km/h. ${head} hours later your aircraft follows the same route at ${fast} km/h. At constant speeds, how many hours AFTER YOUR departure do you catch up? Give an exact fraction.`,
+            answer,
+            [
+              calc(
+                "Find the courier’s head-start distance in km.",
+                slow,
+                "×",
+                head,
+                "Distance = speed × time.",
+              ),
+              calc(
+                "Find how fast the gap closes in km/h.",
+                fast,
+                "−",
+                slow,
+                "Same-direction pursuit uses the difference of speeds.",
+              ),
+              step(
+                "Divide the gap by the closing speed.",
+                answer,
+                "The requested clock starts when the pursuer departs.",
+                "fraction",
+              ),
+              step(
+                "How many hours has the courier traveled by then?",
+                frac(gap + head * extra, extra),
+                "Add the head start to the chase time.",
+                "fraction",
+              ),
+            ],
+            { slow, fast, head },
+            source(
+              "S63",
+              "p. 1, problem 4; p. 2, problem 7",
+              "Pursuit with a delayed departure",
+            ),
+            [
+              frac(gap + extra, extra),
+              frac(gap + 2 * extra, extra),
+              frac(gap + 3 * extra, extra),
+            ],
+          );
+        });
+        add("ratios", "river-current", (r, t) => {
+          const still = r(12, 30),
+            current = r(2, 6),
+            distance = r(1, 3 + t) * (still - current) * (still + current),
+            downstream = still + current,
+            upstream = still - current,
+            answer = distance / downstream + distance / upstream;
+          return q(
+            `A boat moves at ${still} km/h in still water. A river flows at ${current} km/h. It travels ${distance} km downstream and the same distance upstream, without stops. How many hours does the round trip take?`,
+            answer,
+            [
+              calc(
+                "Find downstream speed over the bank in km/h.",
+                still,
+                "+",
+                current,
+                "The current assists downstream travel.",
+              ),
+              calc(
+                "Find upstream speed over the bank in km/h.",
+                still,
+                "−",
+                current,
+                "The current opposes upstream travel.",
+              ),
+              calc(
+                "Find downstream travel time.",
+                distance,
+                "÷",
+                downstream,
+                "Use distance divided by ground speed.",
+              ),
+              calc(
+                "Find upstream travel time.",
+                distance,
+                "÷",
+                upstream,
+                "The distances are equal; the times differ.",
+              ),
+              calc(
+                "Add the two travel times.",
+                distance / downstream,
+                "+",
+                distance / upstream,
+                "Do not average the two speeds first.",
+              ),
+            ],
+            { still, current, distance },
+            source(
+              "S54",
+              "pp. 12–14, motion problems; S63 p. 1, problem 3",
+              "Adaptation of unequal-speed round trips to river currents",
+            ),
+          );
+        });
+        add("geometry", "pythagoras-route", (r, t) => {
+          const triple = [
+              [3, 4, 5],
+              [5, 12, 13],
+              [8, 15, 17],
+              [7, 24, 25],
+            ][r(0, t)],
+            scale = r(2, 10),
+            a = triple[0] * scale,
+            b = triple[1] * scale,
+            c = triple[2] * scale,
+            leg = t === 3;
+          const answer = leg ? b : c;
+          const out = q(
+            leg
+              ? `A roof brace is a right triangle. Its hypotenuse is ${c} m and one leg is ${a} m. How long is its other leg in meters?`
+              : `A rescue cable is the hypotenuse of a right triangle with perpendicular legs ${a} m and ${b} m. How long is the cable in meters?`,
+            answer,
+            [
+              calc(
+                `Square the ${leg ? "hypotenuse" : "first leg"}.`,
+                leg ? c : a,
+                "×",
+                leg ? c : a,
+                "Square a length by multiplying it by itself.",
+              ),
+              calc(
+                `Square the ${leg ? "known leg" : "second leg"}.`,
+                leg ? a : b,
+                "×",
+                leg ? a : b,
+                "Identify the hypotenuse before applying the formula.",
+              ),
+              calc(
+                `Find the unknown side squared by ${leg ? "subtracting" : "adding"}.`,
+                leg ? c * c : a * a,
+                leg ? "−" : "+",
+                leg ? a * a : b * b,
+                "Use a² + b² = c².",
+              ),
+              step(
+                "Take the positive square root to find the length.",
+                answer,
+                "A physical length is positive.",
+              ),
+            ],
+            { a, b, c, leg },
+            source(
+              "S55",
+              "pp. 9–11, Pythagorean theorem and triples",
+              "Pythagorean cable and roof lengths",
+            ),
+          );
+          out.diagram = {
+            type: "right-route",
+            a: String(a) + " m",
+            b: leg ? "?" : String(b) + " m",
+            c: leg ? String(c) + " m" : "?",
+          };
+          return out;
+        });
+        add("geometry", "trapezoid-roof", (r, t) => {
+          const a = r(4, 15),
+            b = a + r(2, 15),
+            h = 2 * r(2, 8),
+            unit = t === 3 ? r(2, 8) : 1,
+            area = ((a + b) * h) / 2,
+            answer = area * unit;
+          const out = q(
+            `A trapezoid-shaped hangar roof has parallel edges ${a} m and ${b} m, and perpendicular height ${h} m. ${t === 3 ? `Solar covering costs $${unit} per square meter. What is the total cost in dollars?` : "What is its area in square meters?"}`,
+            answer,
+            [
+              calc(
+                "Add the lengths of the parallel edges.",
+                a,
+                "+",
+                b,
+                "Use the two parallel bases.",
+              ),
+              calc(
+                "Multiply by the perpendicular height.",
+                a + b,
+                "×",
+                h,
+                "Use perpendicular height, not a sloping side.",
+              ),
+              calc(
+                "Divide by two to find area.",
+                (a + b) * h,
+                "÷",
+                2,
+                "A trapezoid has the average of its two base lengths times height.",
+              ),
+              ...(t === 3
+                ? [
+                    calc(
+                      "Multiply area by cost per square meter.",
+                      area,
+                      "×",
+                      unit,
+                      "Area determines how much covering is needed.",
+                    ),
+                  ]
+                : []),
+            ],
+            { a, b, h, unit },
+            source(
+              "S55",
+              "p. 4, formula G; pp. 5–6",
+              "Trapezoid area and area-based cost",
+            ),
+          );
+          out.diagram = {
+            type: "trapezoid",
+            a: a + " m",
+            b: b + " m",
+            h: h + " m",
+          };
+          return out;
+        });
+        add("geometry", "tank-volume", (r, t) => {
+          const length = r(3, 15),
+            width = r(2, 9),
+            height = r(2, 6),
+            den = t === 1 ? 1 : 4,
+            num = t === 1 ? 1 : r(1, 3),
+            rate = r(2, 9),
+            volume = length * width * height,
+            remaining = (volume * (den - num)) / den,
+            answer =
+              t === 3
+                ? frac(volume * num, den * rate)
+                : frac(volume * num, den);
+          return q(
+            `A rectangular reservoir measures ${length} m × ${width} m × ${height} m. ${t === 1 ? "It is full." : `It is ${num}/${den} full.`} ${t === 3 ? `A pump removes ${rate} cubic meters per hour. How many hours empty the water already inside? Give an exact fraction.` : "How many cubic meters of water are inside? Give an exact value."}`,
+            answer,
+            [
+              calc(
+                "Find the base area in square meters.",
+                length,
+                "×",
+                width,
+                "Multiply length by width.",
+              ),
+              calc(
+                "Find total capacity in cubic meters.",
+                length * width,
+                "×",
+                height,
+                "Area × height gives volume.",
+              ),
+              step(
+                "Find the water volume at the stated fraction full.",
+                frac(volume * num, den),
+                "Multiply capacity by the filled fraction.",
+                "fraction",
+              ),
+              ...(t === 3
+                ? [
+                    step(
+                      "Divide water volume by pump rate to find hours.",
+                      answer,
+                      "Volume ÷ volume per hour = hours.",
+                      "fraction",
+                    ),
+                  ]
+                : []),
+            ],
+            { length, width, height, num, den, rate, pump: t === 3 },
+            source(
+              "S55",
+              "pp. 22–23, rectangular solids and exercise 9 problems 4–5",
+              "Volume, fraction full, and pumping time",
+            ),
+            [
+              frac(volume * num + den, den * (t === 3 ? rate : 1)),
+              frac(volume * num + 2 * den, den * (t === 3 ? rate : 1)),
+              frac(volume * num + 3 * den, den * (t === 3 ? rate : 1)),
+            ],
+          );
+        });
+        add("probability", "signal-probability", (r, t) => {
+          const blue = r(2, 8),
+            gold = r(2, 8),
+            red = r(1, 7),
+            total = blue + gold + red,
+            replaced = t === 2,
+            single = t === 1,
+            answer = single
+              ? frac(blue, total)
+              : frac(blue * gold, total * (replaced ? total : total - 1));
+          return q(
+            single
+              ? `A pouch holds ${blue} blue, ${gold} gold and ${red} red signal chips. A chip is chosen uniformly at random. What is the probability it is blue?`
+              : `A pouch holds ${blue} blue, ${gold} gold and ${red} red signal chips. Two chips are chosen uniformly at random, ${replaced ? "replacing and remixing the first before the second draw" : "WITHOUT replacing the first"}. What is the probability of BLUE FIRST, THEN GOLD? Give an exact fraction.`,
+            answer,
+            [
+              step(
+                "How many chips are in the pouch initially?",
+                total,
+                "Add all three color counts.",
+              ),
+              step(
+                "What is the probability of blue on the first draw?",
+                frac(blue, total),
+                "Favorable outcomes divided by all equally likely outcomes.",
+                "fraction",
+              ),
+              ...(single
+                ? []
+                : [
+                    step(
+                      "After a blue first draw, how many chips are in the pouch for draw two?",
+                      replaced ? total : total - 1,
+                      replaced
+                        ? "Replacement restores the initial total."
+                        : "One chip has been removed.",
+                    ),
+                    step(
+                      "Given a blue first draw, what is the probability of gold next?",
+                      frac(gold, replaced ? total : total - 1),
+                      "No gold chip was removed on the first draw.",
+                      "fraction",
+                    ),
+                    step(
+                      "Multiply to find the probability of the ordered pair.",
+                      answer,
+                      "Multiply the first probability by the conditional second probability.",
+                      "fraction",
+                    ),
+                  ]),
+            ],
+            { blue, gold, red, replaced, single },
+            source(
+              "S64",
+              "pp. 11–12, problems 44–50, especially problem 50",
+              "Single and ordered compound probabilities",
+            ),
+            [
+              frac(blue * gold + total, total * (replaced ? total : total - 1)),
+              frac(
+                blue * gold + 2 * total,
+                total * (replaced ? total : total - 1),
+              ),
+              frac(
+                blue * gold + 3 * total,
+                total * (replaced ? total : total - 1),
+              ),
+            ]
+              .filter((x) => x !== answer)
+              .concat(["0", "1"])
+              .slice(0, 3),
+          );
+        });
+
+        for (const template of templates.slice(-18)) {
+          const build = template.build;
+          template.build = (r, t) => {
+            const q = build(r, t);
+            for (const s of q.guide)
+              if (s.kind === "number")
+                s.answer = String(Number(Number(s.answer).toFixed(10)));
+            return q;
+          };
+        }
         function matchesStep(step, input) {
           if (typeof input !== "string" || input.length > 200) return false;
           const normalize = (s) =>
@@ -8387,6 +9745,27 @@
         { name: "Arc launcher", cooldown: 1.1, color: "#c4a2ff" },
         { name: "Ion rail", cooldown: 0.8, color: "#8feaff", energy: 8 },
         { name: "Ricochet disc", cooldown: 0.75, color: "#ffd787", energy: 6 },
+        {
+          name: "Shock knife",
+          cooldown: 0.38,
+          color: "#a2e1e9",
+          melee: 72,
+          power: 2,
+        },
+        {
+          name: "Stun sword",
+          cooldown: 0.85,
+          color: "#ecd296",
+          melee: 125,
+          power: 4,
+        },
+        {
+          name: "Rescue machete",
+          cooldown: 1.05,
+          color: "#b7dfa3",
+          melee: 104,
+          power: 5,
+        },
       ];
       const GADGETS = [
         { name: "Cloak", cost: 35 },
@@ -8394,6 +9773,42 @@
         { name: "Grapple", cost: 25 },
       ];
       const THEMES = {
+        canal: {
+          wall: ["#3d5653", "#3e514e"],
+          accent: "#e5bc86",
+          sky: "#233e50",
+          label: "LANTERN CANAL",
+        },
+        castle: {
+          wall: ["#574d48", "#5e514a"],
+          accent: "#ded1a1",
+          sky: "#3a415c",
+          label: "KESTREL CASTLE",
+        },
+        foundry: {
+          wall: ["#3e4b50", "#424d51"],
+          accent: "#edba76",
+          sky: "#343842",
+          label: "MERIDIAN STEELWORKS",
+        },
+        dockyard: {
+          wall: ["#354d58", "#3a515b"],
+          accent: "#b2d9d0",
+          sky: "#1c4356",
+          label: "STORMBREAK HARBOR",
+        },
+        pagoda: {
+          wall: ["#4e5252", "#525654"],
+          accent: "#cbe0b3",
+          sky: "#3d6471",
+          label: "CLOUD LANTERN OBSERVATORY",
+        },
+        aerodrome: {
+          wall: ["#3d4f5d", "#435461"],
+          accent: "#d5d4b1",
+          sky: "#3b506b",
+          label: "TYPHOON SKYPORT",
+        },
         pyramid: {
           wall: ["#62523d", "#6b593f"],
           accent: "#ead09c",
@@ -8637,6 +10052,15 @@
         }
       }
       function caseReady(door, announce = false) {
+        if (door.interiorStation) {
+          const ready = door.id === 100 || game.interior.stations[0].collected;
+          if (!ready && announce)
+            toast(
+              "First solve the room safety panel on the middle platform.",
+              3,
+            );
+          return ready;
+        }
         if (!expedition()) return true;
         const missing = (door.requires || []).find(
           (i) => !game.files[i].collected,
@@ -8661,6 +10085,7 @@
       }
       function objectiveEffect(door) {
         if (!expedition()) return;
+        if (jade() && door.id === 0) unlockTraining();
         if (eclipse() && door.id === 1) recruitAlly();
         if (door.id === 2) {
           game.energy = 100;
@@ -8684,6 +10109,7 @@
         }
       }
       function performMelee() {
+        if (jade()) return jadeMelee();
         if (game.melee > 0 || game.escape) return;
         game.melee = 0.6;
         const p = game.player;
@@ -8857,6 +10283,7 @@
       }
       function updateShadow(dt) {
         if (!expedition() || game.escape) return;
+        updateMachines(dt);
         if (eclipse()) updateEclipseTraps(dt);
         game.evac = Math.max(0, game.evac - dt);
         const p = game.player;
@@ -8880,7 +10307,13 @@
           label = `CONFRONT ${game.boss.name.toUpperCase()} · ${game.boss.hp}/${game.boss.maxHp} ARMOR · FLOOR ${game.floors - game.boss.floor}`;
         if (game.escape)
           label = `${operation().chapter} · ESCAPE WITH THE EVIDENCE`;
-        if (eclipse() && next?.id === 3 && !game.labyrinth.cleared)
+        if (jade() && next?.id === 3 && !game.interior.cleared)
+          label = `ENTER ${operation().interior.toUpperCase()} · FLOOR ${game.floors - next.floor}`;
+        if (game.interior?.active)
+          label = game.interior.cleared
+            ? "INTERIOR SECURED · RETURN THROUGH THE LEFT DOOR"
+            : `INTERIOR · ${game.interior.stations.filter((f) => f.collected).length}/2 PANELS · E INTERACTS`;
+        if (eclipse() && !jade() && next?.id === 3 && !game.labyrinth.cleared)
           label = `ENTER LOWER LABYRINTH · ${next.kind} · FLOOR ${game.floors - next.floor}`;
         if (game.labyrinth?.active)
           label = game.labyrinth.hasSigil
@@ -8889,6 +10322,969 @@
         if (node.textContent !== label) node.textContent = label;
       }
       const eclipse = () => game?.mode === "campaign" && game.mission >= 61;
+      // Jade Current uses the same physics, challenge UI and local record as the tower.
+      const jade = () => game?.mode === "campaign" && game.mission >= 79;
+      const TECHNIQUES = ["rising jump", "spinning kick", "aerial strike"];
+      const MARTIAL = {
+        knife: {
+          name: "KNIFE",
+          reach: 49,
+          windup: 0.55,
+          dash: 150,
+          recover: 1.25,
+          color: "#a4dfe7",
+        },
+        sword: {
+          name: "SWORD",
+          reach: 95,
+          windup: 0.95,
+          dash: 65,
+          recover: 1.55,
+          color: "#e1c695",
+        },
+        machete: {
+          name: "MACHETE",
+          reach: 76,
+          windup: 1.15,
+          dash: 120,
+          recover: 1.8,
+          color: "#b3d59c",
+        },
+        kungfu: {
+          name: "KUNG FU",
+          reach: 74,
+          windup: 0.8,
+          dash: 250,
+          recover: 1.6,
+          color: "#e6a2ad",
+        },
+      };
+      const knows = (id) => jade() && practice.techniques.includes(id);
+      function unlockTraining() {
+        if (!jade()) return;
+        const earned = TECHNIQUES.slice(0, Math.min(3, game.mission - 78));
+        const fresh = earned.filter((x) => !practice.techniques.includes(x));
+        practice.techniques = [...new Set([...practice.techniques, ...earned])];
+        if (fresh.length)
+          toast(
+            `TRAINING UNLOCKED: ${fresh.join(" + ")}. Space jumps; C strikes. Hold UP with JUMP to reach the floor above.`,
+            7,
+          );
+        savePractice();
+      }
+      function jadeJumpPower() {
+        return knows("rising jump") && (down("up") || pressed.has("up"))
+          ? -730
+          : -510;
+      }
+      function jadeMelee(useWeapon = false) {
+        if (game.melee > 0 || game.escape) return;
+        const p = game.player,
+          w =
+            useWeapon && game.ownedWeapons.includes(game.weapon)
+              ? WEAPONS[game.weapon]
+              : null;
+        const aerial = !useWeapon && !p.grounded && knows("aerial strike"),
+          spin = !useWeapon && p.grounded && knows("spinning kick");
+        const reach = w?.melee || (aerial ? 110 : spin ? 100 : 76),
+          power = aerial ? 4 : spin ? 3 : w?.power || 2;
+        game.melee = w?.melee ? w.cooldown : 0.65;
+        game.meleeStyle = aerial
+          ? "AERIAL STRIKE"
+          : spin
+            ? "SPINNING KICK"
+            : w?.melee
+              ? w.name.toUpperCase()
+              : "PALM STRIKE";
+        p.invulnerable = Math.max(p.invulnerable, 0.28);
+        for (const g of game.guards) {
+          const dx = g.x - p.x,
+            dy = g.y - p.y;
+          if (
+            Math.abs(dx) < reach &&
+            (spin || dx * p.facing > -18) &&
+            (aerial ? dy >= -30 && dy < 135 : Math.abs(dy) < 44)
+          )
+            stunGuard(g, true, power);
+        }
+        Audio.play("shoot");
+      }
+      function makeMartial(id, x, floor, kind, left = 90, right = 1110) {
+        return {
+          id,
+          x,
+          y: floorY(floor),
+          floor,
+          kind,
+          left,
+          right,
+          dir: -1,
+          stun: 0,
+          armor: 0,
+          armorCooldown: 0,
+          speed: 70,
+          step: 0,
+          cooldown: 1.5,
+          phase: "approach",
+          phaseTime: 0,
+          alert: 0,
+        };
+      }
+      function updateMartial(g, dt) {
+        const m = MARTIAL[g.kind],
+          p = game.player;
+        const visible =
+          game.cloak <= 0 &&
+          Math.abs(p.y - g.y) < 145 &&
+          Math.abs(p.x - g.x) < 450;
+        if (!visible) {
+          g.phase = "approach";
+          g.phaseTime = 0;
+          g.x = clamp(g.x + g.dir * 40 * dt, g.left, g.right);
+          if (g.x === g.left || g.x === g.right) g.dir *= -1;
+          return;
+        }
+        g.phaseTime -= dt;
+        if (g.phase === "aim" && g.phaseTime <= 0) {
+          g.phase = "attack";
+          g.phaseTime = g.kind === "kungfu" ? 0.45 : 0.28;
+        } else if (g.phase === "attack") {
+          g.x = clamp(g.x + g.dir * m.dash * dt, g.left, g.right);
+          const dx = (p.x - g.x) * g.dir;
+          if (
+            dx > -22 &&
+            dx < m.reach &&
+            Math.abs(p.y - g.y) < (g.kind === "kungfu" ? 63 : 42)
+          )
+            damage();
+          if (g.phaseTime <= 0) {
+            g.phase = "recover";
+            g.phaseTime = m.recover;
+          }
+        } else if (g.phase === "recover" && g.phaseTime <= 0) {
+          g.phase = "approach";
+          g.cooldown = 0.45;
+        } else if (g.phase === "approach") {
+          g.dir = p.x < g.x ? -1 : 1;
+          if (
+            Math.abs(p.x - g.x) < m.reach + 30 &&
+            g.cooldown <= 0 &&
+            Math.abs(p.y - g.y) < 80
+          ) {
+            g.phase = "aim";
+            g.phaseTime = m.windup;
+          } else if (Math.abs(p.x - g.x) > m.reach - 12) {
+            g.x = clamp(
+              g.x + g.dir * (g.kind === "kungfu" ? 98 : 70) * dt,
+              g.left,
+              g.right,
+            );
+            g.step += dt * 9;
+          }
+        }
+      }
+      function setupJade() {
+        game.interior = null;
+        game.machines = [];
+        if (!jade()) return;
+        game.labyrinth.cleared = true; // Jade's side-view rooms replace the earlier maze requirement.
+        game.guards.forEach((g, i) => {
+          if (!g.isBoss && i % 2 === 0)
+            Object.assign(
+              g,
+              makeMartial(
+                g.id,
+                g.x,
+                g.floor,
+                Object.keys(MARTIAL)[Math.floor(i / 2) % 4],
+                g.left,
+                g.right,
+              ),
+            );
+        });
+        for (const [i, weapon] of [5, 6, 7].entries())
+          game.items.push({
+            id: game.items.length,
+            floor: 2 + i * 2,
+            x: [1010, 620, 270][i],
+            kind: "weapon",
+            weapon,
+            collected: false,
+          });
+        if (["foundry", "aerodrome", "dockyard"].includes(game.theme))
+          for (let f = 1; f < game.floors - 2; f += 3)
+            game.machines.push({ x: 560, floor: f, offset: f * 0.57 });
+        const spec = operation();
+        game.interior = {
+          active: false,
+          cleared: false,
+          entry: null,
+          clock: 0,
+          worldGuards: null,
+          worldBarrels: null,
+          stations: spec.interiorLocks.map((lock, i) => {
+            const [topic, tier, template] = lock.split(":");
+            return {
+              id: 100 + i,
+              interiorStation: true,
+              x: i ? 990 : 530,
+              floor: i ? 0 : 1,
+              kind: i ? "EVIDENCE SEAL" : "ROOM SAFETY PANEL",
+              lock,
+              requires: i ? [100] : [],
+              collected: false,
+              open: 0,
+              challenge: MathEngine.make(
+                template,
+                Number(tier),
+                `${game.seed}:interior:${i}`,
+              ),
+              study: freshStudy(),
+            };
+          }),
+          guards: [
+            makeMartial(20001, 605, 1, "sword", 370, 720),
+            makeMartial(
+              20002,
+              870,
+              0,
+              ["kungfu", "machete", "knife"][game.mission % 3],
+              690,
+              1100,
+            ),
+          ],
+          machines: [
+            { x: 430, floor: 1, offset: 0 },
+            { x: 800, floor: 0, offset: 2.7 },
+          ],
+        };
+      }
+      function enterInterior(restoring = false) {
+        const room = game.interior,
+          p = game.player;
+        if (!room || room.active || !game.files[1].collected) return;
+        room.entry = { x: p.x, y: p.y, checkpoint: { ...p.checkpoint } };
+        room.worldGuards = game.guards;
+        room.worldBarrels = game.barrels;
+        game.guards = room.guards;
+        game.barrels = [];
+        room.active = true;
+        Object.assign(p, {
+          x: 150,
+          y: floorY(2),
+          vx: 0,
+          vy: 0,
+          grounded: true,
+          lift: null,
+          traversal: null,
+          fallStart: floorY(2),
+          invulnerable: 6,
+        });
+        game.bullets = [];
+        game.particles = [];
+        game.texts = [];
+        camera = 0;
+        clearInput();
+        updateStatus();
+        if (!restoring) {
+          toast(
+            `${operation().interior}: solve both panels. UP + JUMP rises a floor; use the ladders or return through the left door with E.`,
+            7,
+          );
+          saveCheckpoint();
+        }
+      }
+      function leaveInterior() {
+        const room = game.interior,
+          p = game.player;
+        if (!room?.active) return;
+        room.guards = game.guards;
+        game.guards = room.worldGuards;
+        game.barrels = room.worldBarrels;
+        room.active = false;
+        Object.assign(p, {
+          x: room.entry.x,
+          y: room.entry.y,
+          checkpoint: { ...room.entry.checkpoint },
+          vx: 0,
+          vy: 0,
+          grounded: true,
+          traversal: null,
+          lift: null,
+          fallStart: room.entry.y,
+          invulnerable: 6,
+        });
+        game.bullets = [];
+        game.particles = [];
+        game.texts = [];
+        camera = clamp(p.y - 240, 0, floorY(game.floors - 1) - H + 76);
+        clearInput();
+        updateStatus();
+        saveCheckpoint();
+        toast(
+          room.cleared
+            ? "Room secured. E opens the artifact’s final lock."
+            : "Back in the tower. Interior progress kept.",
+          4,
+        );
+      }
+      function collectInterior(door) {
+        if (door.collected || !lockReady(door) || !caseReady(door)) return;
+        recordProblem(door);
+        door.collected = true;
+        door.open = 1;
+        game.score += GAME_CONTENT.fileScore;
+        game.energy = 100;
+        const room = game.interior;
+        room.cleared = room.stations.every((f) => f.collected);
+        if (room.cleared) {
+          game.lives = Math.min(3, game.lives + 1);
+          room.guards.forEach((g) => (g.stun = 1e9));
+        }
+        Audio.play("file");
+        saveBest();
+        updateHUD();
+        saveCheckpoint();
+        toast(
+          room.cleared
+            ? "INTERIOR SECURED. Return to the left exit on the bottom floor."
+            : "Room machinery disabled. Find the upper evidence seal.",
+          5,
+        );
+      }
+      function saveInterior() {
+        const r = game.interior;
+        if (!r) return null;
+        return {
+          active: r.active,
+          clock: r.clock,
+          stations: r.stations.map((f) => ({
+            collected: f.collected,
+            study: { ...f.study },
+          })),
+        };
+      }
+      function restoreInterior(c) {
+        const room = game.interior,
+          v = c.interior;
+        if (!jade() || !room || !v) return;
+        // Regenerate questions from the mission seed, never trust saved answer keys.
+        if (Array.isArray(v.stations))
+          room.stations.forEach((f, i) => {
+            const saved = v.stations[i],
+              s = freshStudy(),
+              q = f.challenge;
+            if (!saved || !saved.study || typeof saved.study !== "object")
+              return;
+            const a = saved.study;
+            s.solution = a.solution === true;
+            s.scratch =
+              typeof a.scratch === "string" ? a.scratch.slice(0, 4000) : "";
+            s.hints = Number.isInteger(a.hints) ? clamp(a.hints, 0, 2) : 0;
+            s.misses = Array.isArray(a.misses)
+              ? [
+                  ...new Set(
+                    a.misses.filter(
+                      (n) =>
+                        Number.isInteger(n) &&
+                        n >= 0 &&
+                        n < q.answers.length &&
+                        n !== q.correct,
+                    ),
+                  ),
+                ]
+              : [];
+            if (s.solution && Array.isArray(a.guideAnswers))
+              for (
+                let n = 0;
+                n < Math.min(a.guideAnswers.length, q.guide.length);
+                n++
+              ) {
+                if (!MathEngine.matchesStep(q.guide[n], a.guideAnswers[n]))
+                  break;
+                s.guideAnswers.push(a.guideAnswers[n].trim());
+              }
+            s.guideDraft =
+              typeof a.guideDraft === "string"
+                ? a.guideDraft.slice(0, 200)
+                : "";
+            s.guideMisses = Number.isSafeInteger(a.guideMisses)
+              ? clamp(a.guideMisses, 0, 1e6)
+              : 0;
+            s.solved = s.solution
+              ? s.guideAnswers.length === q.guide.length
+              : a.solved === true;
+            s.recorded = a.recorded === true && s.solved;
+            f.study = s;
+            f.collected =
+              saved.collected === true &&
+              s.solved &&
+              (i === 0 || room.stations[0].collected);
+          });
+        room.cleared = room.stations.every((f) => f.collected);
+        room.clock = Number.isFinite(v.clock) ? clamp(v.clock, 0, 1e8) : 0;
+        if (v.active === true && game.files[1].collected && !game.escape)
+          enterInterior(true);
+      }
+      function machinePhase(m, room = false) {
+        if (
+          room ? game.interior.stations[0].collected : game.files[2].collected
+        )
+          return "off";
+        const t = ((room ? game.interior.clock : game.time) + m.offset) % 6;
+        return t < 3.9
+          ? "idle"
+          : t < 5.1
+            ? "warning"
+            : t < 5.7
+              ? "active"
+              : "idle";
+      }
+      function updateMachines(dt, room = false) {
+        if (!jade()) return;
+        const p = game.player,
+          list = room ? game.interior.machines : game.machines;
+        for (const m of list) {
+          const phase = machinePhase(m, room),
+            y = floorY(m.floor);
+          if (
+            phase === "active" &&
+            Math.abs(p.x - m.x) < 32 &&
+            Math.abs(p.y - y) < 61
+          )
+            damage();
+          if (
+            (!room ||
+              ["foundry", "dockyard", "aerodrome"].includes(game.theme)) &&
+            phase !== "off" &&
+            p.grounded &&
+            Math.abs(p.y - y) < 4 &&
+            p.x > m.x - 90 &&
+            p.x < m.x + 95
+          )
+            p.x = clamp(
+              p.x + dt * 32 * (m.floor % 2 ? 1 : -1),
+              LEFT + 16,
+              RIGHT - 16,
+            );
+        }
+      }
+      function updateInterior(dt) {
+        const room = game.interior,
+          p = game.player;
+        room.clock += dt;
+        room.scan = Math.max(0, (room.scan || 0) - dt);
+        p.invulnerable = Math.max(0, p.invulnerable - dt);
+        p.fireCooldown = Math.max(0, p.fireCooldown - dt);
+        if (p.traversal) {
+          const tr = p.traversal;
+          tr.t += dt;
+          const f = clamp(tr.t / tr.duration, 0, 1);
+          p.x = mix(tr.fromX, tr.toX, f);
+          p.y = mix(tr.fromY, tr.toY, f);
+          p.vy = 0;
+          p.grounded = false;
+          if (f === 1) {
+            p.traversal = null;
+            p.grounded = true;
+            p.fallStart = p.y;
+          }
+          updateMachines(dt, true);
+          if (state === "playing") updateGuards(dt);
+          if (state === "playing") updateBullets(dt);
+          updateHUD();
+          return;
+        }
+        if (
+          (pressed.has("interact") || pressed.has("up")) &&
+          Math.abs(p.x - 150) < 45 &&
+          Math.abs(p.y - floorY(2)) < 10
+        ) {
+          leaveInterior();
+          return;
+        }
+        const station = room.stations.find(
+          (f) =>
+            !f.collected &&
+            Math.abs(p.x - f.x) < 42 &&
+            Math.abs(p.y - floorY(f.floor)) < 10,
+        );
+        if (station && (pressed.has("interact") || pressed.has("up"))) {
+          attemptFile(station);
+          return;
+        }
+        // Ladders provide an accessible route even without a simultaneous jump input.
+        const ladders = [
+          { x: 400, from: 2 },
+          { x: 710, from: 1 },
+        ];
+        if (!pressed.has("jump"))
+          for (const l of ladders)
+            if (Math.abs(p.x - l.x) < 25 && p.grounded) {
+              if (pressed.has("up") && Math.abs(p.y - floorY(l.from)) < 5) {
+                p.y = floorY(l.from - 1);
+                p.vy = 0;
+                p.fallStart = p.y;
+              } else if (
+                pressed.has("down") &&
+                Math.abs(p.y - floorY(l.from - 1)) < 5
+              ) {
+                p.y = floorY(l.from);
+                p.vy = 0;
+                p.fallStart = p.y;
+              }
+            }
+        p.crouch = down("down") && p.grounded;
+        p.vx =
+          ((down("right") ? 1 : 0) - (down("left") ? 1 : 0)) *
+          (p.crouch ? 85 : 206);
+        if (p.vx) p.facing = Math.sign(p.vx);
+        if (pressed.has("jump") && p.grounded) {
+          p.vy = jadeJumpPower();
+          p.grounded = false;
+          Audio.play("jump");
+        }
+        if (down("fire") || pressed.has("fire")) fireAdvanced();
+        p.x = clamp(p.x + p.vx * dt, 90, 1110);
+        p.step += (Math.abs(p.vx) * dt) / 18;
+        const oldY = p.y;
+        p.vy = Math.min(1000, p.vy + 1550 * dt);
+        p.y += p.vy * dt;
+        p.grounded = false;
+        for (const [f, l, r] of [
+          [0, 660, 1120],
+          [1, 340, 740],
+          [2, 80, 1120],
+        ]) {
+          const y = floorY(f);
+          if (p.x >= l && p.x <= r && oldY <= y + 5 && p.y >= y && p.vy >= 0) {
+            p.y = y;
+            p.vy = 0;
+            p.grounded = true;
+            p.fallStart = y;
+            break;
+          }
+        }
+        updateMachines(dt, true);
+        if (state !== "playing") return;
+        updateGuards(dt);
+        if (state !== "playing") return;
+        updateBullets(dt);
+        for (const a of game.particles) {
+          a.life -= dt;
+          a.x += a.vx * dt;
+          a.y += a.vy * dt;
+        }
+        game.particles = game.particles.filter((a) => a.life > 0);
+        for (const a of game.texts) {
+          a.life -= dt;
+          a.y -= 20 * dt;
+        }
+        game.texts = game.texts.filter((a) => a.life > 0);
+        updateHUD();
+      }
+      function renderMartial(g) {
+        if (!MARTIAL[g.kind] || g.stun > 0) return;
+        const m = MARTIAL[g.kind],
+          dir = g.dir,
+          aim = g.phase === "aim",
+          attack = g.phase === "attack";
+        text(
+          aim
+            ? "! " + m.name
+            : attack
+              ? "STRIKE"
+              : g.phase === "recover"
+                ? "OPEN"
+                : m.name,
+          g.x,
+          g.y - 72,
+          10,
+          aim ? "#ffe39a" : m.color,
+          "monospace",
+          "center",
+        );
+        if (g.kind === "kungfu") {
+          rect(g.x - 12, g.y - 38, 24, 4, m.color);
+          if (attack) line(g.x, g.y - 24, g.x + dir * 54, g.y - 42, m.color, 9);
+        } else {
+          const reach = attack ? m.reach : 27;
+          line(
+            g.x + dir * 18,
+            g.y - 32,
+            g.x + dir * (20 + reach),
+            g.y - (aim ? 65 : 34),
+            m.color,
+            g.kind === "machete" ? 7 : 3,
+          );
+          line(
+            g.x + dir * 21,
+            g.y - 42,
+            g.x + dir * 21,
+            g.y - 25,
+            "#f2d38a",
+            3,
+          );
+        }
+        if (aim) line(g.x, g.y - 4, g.x + dir * m.reach, g.y - 4, "#f6c877", 3);
+      }
+      function renderMachine(m, room = false) {
+        const y = floorY(m.floor),
+          phase = machinePhase(m, room),
+          active = phase === "active",
+          color =
+            phase === "warning"
+              ? "#ffe59a"
+              : active
+                ? "#ff906e"
+                : phase === "off"
+                  ? "#89d4ba"
+                  : "#789da6";
+        if (room && ["canal", "castle", "pagoda"].includes(game.theme)) {
+          const dojo = game.theme === "castle";
+          rect(m.x - 14, y - 115, 28, 12, "#728a8b");
+          rect(m.x - 18, y - 6, 36, 6, color);
+          if (dojo) {
+            line(m.x, y - 102, m.x, y - 59, "#987b61", 7);
+            line(
+              m.x,
+              y - 59,
+              m.x + (active ? 55 : 20),
+              y - (active ? 32 : 76),
+              color,
+              9,
+            );
+          } else if (active) {
+            rect(m.x - 30, y - 65, 60, 65, "#ee9d6b22");
+            for (let k = 0; k < 6; k++)
+              line(
+                m.x - 29,
+                y - 5 - k * 11,
+                m.x + 29,
+                y - 5 - k * 11,
+                color,
+                2,
+              );
+          }
+          text(
+            phase === "off"
+              ? "SAFE"
+              : phase === "warning"
+                ? "! MOVE !"
+                : dojo
+                  ? "SWEEP ARM"
+                  : "SECURITY BEAM",
+            m.x,
+            y - 123,
+            10,
+            color,
+            "monospace",
+            "center",
+          );
+          return;
+        }
+        rect(m.x - 90, y - 5, 185, 10, "#182c35");
+        for (let i = 0; i < 12; i++) {
+          const x =
+            m.x -
+            85 +
+            ((i * 16 +
+              (phase === "off" || reducedMotion ? 0 : game.time * 32)) %
+              180);
+          line(x, y - 3, x + 8, y + 3, color, 2);
+        }
+        rect(m.x - 12, y - 112, 24, active ? 90 : 30, "#557580");
+        rect(m.x - 35, y - (active ? 28 : 84), 70, 16, color);
+        if (phase === "warning") {
+          rect(m.x - 34, y - 6, 68, 6, "#ffe39a");
+          text("! PRESS !", m.x, y - 46, 11, color, "monospace", "center");
+        } else
+          text(
+            phase === "off" ? "LOCKED SAFE" : "PRESS",
+            m.x,
+            y - 120,
+            9,
+            color,
+            "monospace",
+            "center",
+          );
+      }
+      function renderJadeSky(t) {
+        const theme = THEMES[game.theme];
+        rect(0, 0, viewWidth, H, theme.sky);
+        glow(viewWidth * 0.8, 95, 125, "#e4d6a325");
+        for (let i = 0; i < 9; i++) {
+          const x = (i * 173) % Math.max(350, viewWidth),
+            y = 300 + (i % 3) * 30;
+          if (["canal", "pagoda", "castle"].includes(game.theme)) {
+            for (let j = 0; j < 3; j++) {
+              rect(x - 35 + j * 9, y - j * 44, 70 - j * 18, 50, "#244c52");
+              ctx.fillStyle = "#152e3c";
+              ctx.beginPath();
+              ctx.moveTo(x - 55 + j * 10, y - j * 44);
+              ctx.lineTo(x, y - j * 44 - 22);
+              ctx.lineTo(x + 55 - j * 10, y - j * 44);
+              ctx.closePath();
+              ctx.fill();
+            }
+          } else {
+            rect(x, y - 70, 67, 200, "#213d4a");
+            rect(x + 20, y - 140, 18, 75, "#314d59");
+          }
+        }
+        if (["canal", "dockyard"].includes(game.theme)) {
+          rect(0, 420, viewWidth, 180, "#164352");
+          for (let i = 0; i < 20; i++)
+            line(
+              (i * 83) % viewWidth,
+              450 + i * 6,
+              ((i * 83) % viewWidth) + 50,
+              450 + i * 6,
+              "#6bb9bd35",
+              2,
+            );
+        }
+      }
+      function renderJadeFloor(f) {
+        const y = floorY(f);
+        if (y - camera < -20 || y - camera > H + 130) return;
+        const east = ["canal", "castle", "pagoda"].includes(game.theme);
+        for (const x of [175, 565, 995]) {
+          if (east) {
+            rect(
+              x - 54,
+              y - 105,
+              108,
+              94,
+              game.theme === "castle" ? "#a99b7a" : "#76564d",
+            );
+            rect(
+              x - 47,
+              y - 97,
+              94,
+              80,
+              game.theme === "castle" ? "#d1c8a1" : "#243f47",
+            );
+            for (let j = 0; j < 6; j++)
+              line(
+                x - 47 + j * 19,
+                y - 97,
+                x - 47 + j * 19,
+                y - 17,
+                "#5c5450",
+                3,
+              );
+            for (let j = 0; j < 5; j++)
+              line(
+                x - 47,
+                y - 97 + j * 20,
+                x + 47,
+                y - 97 + j * 20,
+                "#5c5450",
+                3,
+              );
+            rect(x - 65, y - 110, 130, 7, "#263e44");
+            if (game.theme !== "castle") {
+              line(x + 64, y - 110, x + 64, y - 73, "#d5b27d", 2);
+              rect(x + 55, y - 75, 18, 24, "#cf7b57");
+              rect(x + 59, y - 71, 10, 17, "#f1c57d");
+            }
+          } else {
+            rect(x - 50, y - 102, 100, 82, "#233e4b");
+            rect(x - 43, y - 94, 86, 35, "#365b65");
+            for (let j = 0; j < 5; j++)
+              rect(
+                x - 35 + j * 16,
+                y - 86,
+                7,
+                17,
+                ["#8fcdb6", "#d0b77e", "#80b2c8"][j % 3],
+              );
+            line(x - 55, y - 14, x + 55, y - 14, "#e0b673", 4);
+            rect(x - 40, y - 53, 80, 25, "#4e6870");
+          }
+        }
+      }
+      function renderJade(t) {
+        if (!jade()) return;
+        for (const m of game.machines) renderMachine(m);
+        const f = game.files[3];
+        if (!game.interior.cleared)
+          text(
+            "E · ENTER INTERIOR",
+            f.x,
+            floorY(f.floor) - 114,
+            11,
+            "#9ee2c7",
+            "monospace",
+            "center",
+          );
+        for (const g of game.guards) renderMartial(g);
+      }
+      function renderInterior(t) {
+        const room = game.interior,
+          p = game.player,
+          theme = THEMES[game.theme],
+          small = stage.clientWidth < 600;
+        rect(0, 0, viewWidth, H, "#0d222d");
+        ctx.save();
+        cameraX = clamp(p.x - viewWidth * 0.45, 0, Math.max(0, W - viewWidth));
+        ctx.translate(-cameraX, 55);
+        rect(75, 15, 1050, 405, theme.wall[0]);
+        for (let x = 100; x < 1120; x += 80) {
+          line(x, 25, x, 407, theme.accent + "25", 3);
+          rect(x + 12, 36, 45, 58, "#172e39");
+        }
+        for (let x = 205; x < 1100; x += 235) {
+          if (["canal", "castle", "pagoda"].includes(game.theme)) {
+            rect(
+              x - 50,
+              184,
+              100,
+              73,
+              game.theme === "castle" ? "#c1b594" : "#304f53",
+            );
+            for (let i = 0; i < 6; i++)
+              line(x - 50 + i * 20, 184, x - 50 + i * 20, 257, "#5e554c", 3);
+            for (let i = 0; i < 4; i++)
+              line(x - 50, 184 + i * 24, x + 50, 184 + i * 24, "#5e554c", 3);
+            line(x + 67, 164, x + 67, 193, theme.accent, 2);
+            rect(x + 57, 193, 20, 25, "#c8865e");
+            rect(x + 62, 199, 10, 13, "#edd092");
+          } else {
+            rect(x - 40, 189, 80, 63, "#243d48");
+            rect(x - 32, 197, 64, 25, "#4d6b72");
+            for (let i = 0; i < 4; i++)
+              rect(x - 25 + i * 15, 204, 8, 10, ["#9bd8ba", "#e6b67e"][i % 2]);
+            line(x - 48, 270, x + 65, 270, "#be9f67", 7);
+            line(x + 65, 270, x + 65, 318, "#be9f67", 7);
+            ctx.strokeStyle = "#83a5aa";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(x + 17, 238, 12, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
+        for (const [f, l, r] of [
+          [0, 660, 1120],
+          [1, 340, 740],
+          [2, 80, 1120],
+        ]) {
+          rect(l, floorY(f), r - l, 12, theme.accent);
+          rect(l, floorY(f) + 4, r - l, 9, "#28434a");
+        }
+        for (const l of [
+          { x: 400, from: 2 },
+          { x: 710, from: 1 },
+        ]) {
+          const y = floorY(l.from);
+          line(l.x - 12, y, l.x - 12, y - 126, "#d0b779", 3);
+          line(l.x + 12, y, l.x + 12, y - 126, "#d0b779", 3);
+          for (let k = 0; k < 9; k++)
+            line(l.x - 12, y - k * 14, l.x + 12, y - k * 14, "#d0b779", 2);
+        }
+        door(150, floorY(2), false, false, 0);
+        text(
+          "E · RETURN",
+          150,
+          floorY(2) - 110,
+          12,
+          "#a6e4c9",
+          "monospace",
+          "center",
+        );
+        for (const m of room.machines) renderMachine(m, true);
+        for (const f of room.stations) {
+          door(f.x, floorY(f.floor), true, f.collected, 0);
+          text(
+            f.id === 100 ? "SAFETY PANEL" : "EVIDENCE SEAL",
+            f.x,
+            floorY(f.floor) - 115,
+            small ? 19 : 11,
+            theme.accent,
+            "monospace",
+            "center",
+          );
+        }
+        if (room.scan > 0) {
+          const target = room.stations.find((f) => !f.collected);
+          if (target) {
+            line(
+              p.x,
+              p.y - 25,
+              target.x,
+              floorY(target.floor) - 30,
+              "#d4e79a70",
+              2,
+            );
+            glow(target.x, floorY(target.floor) - 35, 85, "#cee49850");
+          }
+        }
+        if (game.ally?.ready) {
+          const a = ALLIES[game.ally.id],
+            friend = {
+              x: p.x - p.facing * 47,
+              y: p.y,
+              dir: p.facing,
+              step: p.step,
+              civilian: true,
+            };
+          drawPerson(friend, false, t);
+          text(
+            a.name.toUpperCase(),
+            friend.x,
+            friend.y - 70,
+            10,
+            a.color,
+            "monospace",
+            "center",
+          );
+        }
+        for (const g of game.guards) {
+          drawPerson(g, false, t);
+          renderMartial(g);
+        }
+        drawPerson(p, true, t);
+        renderAbilities(t);
+        for (const b of game.bullets)
+          rect(b.x - 6, b.y - 2, 12, 4, b.color || "#c1e5c7");
+        ctx.restore();
+        rect(0, 0, viewWidth, small ? 72 : 49, "#102933");
+        text(
+          operation().interior.toUpperCase(),
+          16,
+          small ? 32 : 22,
+          small ? 32 : 17,
+          theme.accent,
+        );
+        text(
+          `${room.stations.filter((f) => f.collected).length}/2 PANELS · ↑ interacts / ladders`,
+          16,
+          small ? 62 : 42,
+          small ? 22 : 12,
+          "#bdd9d0",
+        );
+        rect(0, 515, viewWidth, 85, "#102933");
+        text(
+          room.cleared
+            ? "ROOM SECURED · RETURN TO LEFT DOOR"
+            : "↑ + JUMP rises · C strikes · B ally",
+          16,
+          542,
+          small ? 25 : 13,
+          "#cfe5c6",
+        );
+        text(
+          "No time limit · Maths pauses hazards",
+          16,
+          578,
+          small ? 23 : 12,
+          "#94b4bc",
+        );
+        $("statusRight").textContent =
+          `INTERIOR / ${room.cleared ? "SECURED" : "ACTIVE"}`;
+      }
+
       const ALLIES = {
         nova: {
           name: "Nova",
@@ -8950,8 +11346,11 @@
         } else if (a.id === "ibis") {
           game.cloak = Math.max(game.cloak, 6);
           game.labyrinth.scan = 6;
+          if (game.interior) game.interior.scan = 6;
           toast(
-            "Ibis: Six seconds unseen. Follow the highlighted route below ground.",
+            jade()
+              ? "Ibis: Six seconds unseen. Inside a room, scan highlights the next panel."
+              : "Ibis: Six seconds unseen. Follow the highlighted route below ground.",
             3,
           );
         } else {
@@ -9526,7 +11925,7 @@
         const a = game.ally,
           p = game.player,
           door = game.files[3];
-        if (!game.labyrinth.cleared) {
+        if (!jade() && !game.labyrinth.cleared) {
           text(
             "↓ LOWER LABYRINTH",
             door.x,
@@ -10062,6 +12461,10 @@
 
       function shadowSky(t) {
         if (!expedition()) return;
+        if (jade()) {
+          renderJadeSky(t);
+          return;
+        }
         if (eclipse()) {
           renderEclipseSky(t);
           return;
@@ -10147,6 +12550,10 @@
       }
       function renderShadowFloor(f) {
         if (!expedition()) return;
+        if (jade()) {
+          renderJadeFloor(f);
+          return;
+        }
         if (eclipse()) {
           renderEclipseFloor(f);
           return;
@@ -10432,6 +12839,7 @@
         game.rings = [];
         setupShadow();
         setupEclipse();
+        setupJade();
       }
       function restoreAdvanced(c) {
         const eq = c.equipment;
@@ -10480,6 +12888,10 @@
           floating(g.x, g.y - 65, "ARMOR OFF", "#aed4ea");
           return;
         }
+        if (MARTIAL[g.kind]) {
+          g.phase = "recover";
+          g.phaseTime = 1.2;
+        }
         g.stun = GAME_CONTENT.guardStunTime;
         g.alert = 0;
         g.spottedPlayer = false;
@@ -10505,6 +12917,10 @@
       function fireAdvanced() {
         const p = game.player,
           w = WEAPONS[game.weapon];
+        if (w.melee) {
+          jadeMelee(true);
+          return;
+        }
         if (!game.ownedWeapons.includes(game.weapon)) {
           performMelee();
           return;
@@ -10588,7 +13004,24 @@
             toast("EMP deployed. Nearby patrols disabled.");
           } else {
             const floor = floorAt(p.y);
-            if (floor < 1 || isGap(p.x) || !p.grounded || p.traversal)
+            const roomTarget =
+              game.interior?.active &&
+              (floor === 2
+                ? p.x >= 340 && p.x <= 740
+                : floor === 1
+                  ? p.x >= 660 && p.x <= 1120
+                  : false);
+            if (game.interior?.active && !roomTarget)
+              toast(
+                "Stand below an upper platform to grapple, or use its ladder.",
+                3,
+              );
+            else if (
+              floor < 1 ||
+              (!game.interior?.active && isGap(p.x)) ||
+              !p.grounded ||
+              p.traversal
+            )
               toast("Grapple needs solid ground and a floor above.", 2);
             else {
               game.energy -= gadget.cost;
@@ -10620,7 +13053,9 @@
           $("weaponTray").textContent = weaponText;
         if ($("gadgetTray").textContent !== gadgetText)
           $("gadgetTray").textContent = gadgetText;
-        const energyText = `Energy ${Math.floor(game.energy)}%`;
+        const energyText = jade()
+          ? `Energy ${Math.floor(game.energy)}% · ${practice.techniques.length}/3 moves`
+          : `Energy ${Math.floor(game.energy)}%`;
         if ($("energyTray").textContent !== energyText)
           $("energyTray").textContent = energyText;
       }
@@ -10816,11 +13251,56 @@
       }
       function renderAbilities(t) {
         const p = game.player;
+        if (
+          jade() &&
+          game.ownedWeapons.includes(game.weapon) &&
+          WEAPONS[game.weapon].melee
+        ) {
+          const w = WEAPONS[game.weapon],
+            swing = game.melee > 0 && game.meleeStyle === w.name.toUpperCase();
+          const length = swing ? w.melee - 20 : game.weapon === 5 ? 24 : 44;
+          line(
+            p.x + p.facing * 20,
+            p.y - 34,
+            p.x + p.facing * (20 + length),
+            p.y - (swing ? 39 : 60),
+            w.color,
+            game.weapon === 7 ? 7 : 3,
+          );
+          line(
+            p.x + p.facing * 21,
+            p.y - 41,
+            p.x + p.facing * 21,
+            p.y - 26,
+            "#f1c879",
+            3,
+          );
+        }
         if (game.cloak > 0) {
           ctx.strokeStyle = "#8ff2e4";
           ctx.lineWidth = 2;
           ctx.strokeRect(p.x - 18, p.y - 64, 36, 66);
           text("CLOAK", p.x, p.y - 72, 9, "#9df4e8", "monospace", "center");
+        }
+        if (jade() && game.melee > 0.32) {
+          const aerial = game.meleeStyle === "AERIAL STRIKE";
+          line(
+            p.x,
+            p.y - 24,
+            p.x + p.facing * (aerial ? 62 : 47),
+            p.y - (aerial ? 2 : 33),
+            "#eed4a2",
+            8,
+          );
+          text(
+            game.meleeStyle || "STRIKE",
+            p.x,
+            p.y - 85,
+            10,
+            "#edcf96",
+            "monospace",
+            "center",
+          );
         }
         if (game.melee > 0.32) {
           ctx.strokeStyle = "#f3d49b";
@@ -11195,6 +13675,8 @@
           );
           return;
         }
+        if (WEAPONS[game.weapon].melee)
+          game.weapon = game.ownedWeapons.find((i) => !WEAPONS[i].melee) ?? 0;
         game.escape = createEscape();
         clearInput();
         game.player.traversal = null;
@@ -11236,6 +13718,12 @@
           0.1,
           0.9,
         );
+        if (jade() && ["boat", "plane", "helicopter"].includes(e.kind)) {
+          e.drift =
+            Math.sin(e.distance / 230 + game.mission) *
+            (e.kind === "boat" ? 0.038 : 0.022);
+          e.x = clamp(e.x + e.drift * dt, 0.1, 0.9);
+        }
         e.y = clamp(
           e.y + ((down("down") ? 1 : 0) - (down("up") ? 1 : 0)) * dt * 0.33,
           0.47,
@@ -11342,6 +13830,23 @@
             rect(-6, -10, 12, 24, "#a4cfbd");
             rect(-8, -20, 16, 13, "#eee0b3");
           }
+        } else if (kind === "boat") {
+          ctx.fillStyle = c;
+          ctx.beginPath();
+          ctx.moveTo(0, -43);
+          ctx.lineTo(23, -13);
+          ctx.lineTo(20, 36);
+          ctx.lineTo(-20, 36);
+          ctx.lineTo(-23, -13);
+          ctx.closePath();
+          ctx.fill();
+          rect(-14, -11, 28, 29, dark);
+          rect(-10, -6, 20, 12, "#87c7ce");
+          rect(-18, 22, 36, 7, "#eee4bc");
+          line(-18, 40, -31, 63, "#a6dfe280", 4);
+          line(18, 40, 31, 63, "#a6dfe280", 4);
+          line(-9, 42, -12, 68, "#a6dfe250", 5);
+          line(9, 42, 12, 68, "#a6dfe250", 5);
         } else if (kind === "plane") {
           ctx.fillStyle = c;
           ctx.beginPath();
@@ -11391,6 +13896,7 @@
       function renderEscape(t) {
         const e = game.escape,
           road = e.kind === "car" || e.kind === "motorcycle",
+          water = e.kind === "boat",
           vw = viewWidth;
         const left = vw * 0.06,
           width = vw * 0.88,
@@ -11404,7 +13910,27 @@
           H,
           road ? "#13242c" : game.theme === "harbor" ? "#13394c" : "#152c49",
         );
-        if (road) {
+        if (water) {
+          rect(0, top, vw, hh, "#164d60");
+          rect(0, top, left, hh, "#364d49");
+          rect(left + width, top, left, hh, "#364d49");
+          for (let i = 0; i < 30; i++) {
+            const y = top + ((i * 35 + e.distance * 0.8) % (hh + 35));
+            const x = left + (hash(i * 13) * 0.86 + 0.05) * width;
+            line(x, y, x + width * 0.08, y - 3, "#8dc9cf45", 2);
+          }
+          for (let i = 0; i < 7; i++) {
+            const y = top + ((i * 90 + e.distance * 0.6) % (hh + 90));
+            rect(0, y, left + width * 0.035, 14, "#bea77c");
+            rect(
+              left + width * 0.965,
+              y + 40,
+              left + width * 0.035,
+              14,
+              "#bea77c",
+            );
+          }
+        } else if (road) {
           rect(left, top, width, hh, "#2b3740");
           line(left, top, left, bottom, "#bf9f65", 4);
           line(left + width, top, left + width, bottom, "#bf9f65", 4);
@@ -11444,6 +13970,12 @@
           if (o.kind === "beacon") {
             glow(x, y, 30, "#a9e7b535");
             text("◆", x, y + 8, 27, "#a5e6be", "monospace", "center");
+          } else if (water && o.kind === "drone") {
+            vehicle(x, y, "boat", true, t);
+          } else if (water) {
+            rect(x - 14, y - 17, 28, 34, "#d9a65f");
+            rect(x - 20, y + 13, 40, 7, "#93c7c8");
+            text("!", x, y + 4, 18, "#242f37", "monospace", "center");
           } else if (o.kind === "drone") {
             rect(x - 22, y - 9, 44, 18, "#be6e5d");
             line(x - 28, y - 16, x + 28, y + 16, "#deae7c", 3);
@@ -11532,6 +14064,20 @@
           "monospace",
           "center",
         );
+        if (
+          jade() &&
+          ["boat", "plane", "helicopter"].includes(e.kind) &&
+          e.ready
+        )
+          text(
+            `${water ? "CURRENT" : "CROSSWIND"} ${(e.drift || 0) < 0 ? "←" : "→"} · STEER TO COMPENSATE`,
+            vw / 2,
+            91,
+            vw < 500 ? 10 : 12,
+            "#c7e6db",
+            "monospace",
+            "center",
+          );
         if (!e.ready) {
           rect(vw * 0.06, 145, vw * 0.88, 285, "#0b1d2df0");
           text(
@@ -11605,6 +14151,7 @@
         history: [],
         recent: {},
         checkpoint: null,
+        techniques: [],
       });
       let practice = emptyPractice();
       try {
@@ -11616,6 +14163,9 @@
             raw.selected <= MathEngine.campaign.length
               ? raw.selected
               : 1;
+          practice.techniques = Array.isArray(raw.techniques)
+            ? TECHNIQUES.filter((x) => raw.techniques.includes(x))
+            : [];
           practice.serial =
             Number.isSafeInteger(raw.serial) && raw.serial >= 0
               ? raw.serial
@@ -11833,6 +14383,7 @@
                 },
               }
             : {}),
+          ...(jade() ? { interior: saveInterior() } : {}),
           point: { ...game.player.checkpoint },
           equipment: {
             weapon: game.weapon,
@@ -11993,6 +14544,7 @@
           game.items.forEach(
             (item, i) => (item.collected = c.items?.[i] === true),
           );
+          restoreInterior(c);
           camera = clamp(
             game.player.y - 240,
             0,
@@ -12032,7 +14584,7 @@
         $("levelSelect").disabled = !campaign || state !== "lobby";
         $("modeSelect").disabled = state !== "lobby";
         $("lessonBrief").textContent = campaign
-          ? `${s.floors} floors · ${s.count} items · Security ${s.security}/5 · ${s.locks.length ? MathEngine.tiers[s.tier - 1] : "Action only · no maths"}. ${s.brief}`
+          ? `${s.floors} floors · ${s.count} items${s.interiorLocks ? " + 2 room panels" : ""} · Security ${s.security}/5 · ${s.locks.length ? MathEngine.tiers[s.tier - 1] : "Action only · no maths"}. ${s.brief}`
           : "Classic arcade: three files, eight floors, endlessly repeating operations. No maths locks.";
         document.querySelector(".classified").textContent =
           `OPERATION ${String(campaign ? selectedLevel : 1).padStart(2, "0")} / ${campaign ? s.name : "NIGHT SHIFT"}`;
@@ -12654,7 +15206,15 @@
             g.stun = Math.max(g.stun, 3);
           }
         }
-        camera = clamp(p.y - 240, 0, floorY(game.floors - 1) - H + 76);
+        if (game.interior?.active) {
+          p.x = 150;
+          p.y = floorY(2);
+          p.fallStart = p.y;
+          game.interior.guards.forEach((g) => (g.stun = Math.max(6, g.stun)));
+        }
+        camera = game.interior?.active
+          ? 0
+          : clamp(p.y - 240, 0, floorY(game.floors - 1) - H + 76);
         state = "playing";
         ui.result.hidden = true;
         $("pauseBtn").disabled = false;
@@ -12863,6 +15423,11 @@
           );
       }
       function collectFile(door) {
+        if (door.interiorStation) {
+          collectInterior(door);
+          return;
+        }
+        if (jade() && door.id === 3 && !game.interior.cleared) return;
         if (!caseReady(door)) return;
         if (door.collected || (door.challenge && !lockReady(door))) return;
         if (eclipse() && door.id === 3 && !game.labyrinth.cleared) return;
@@ -12893,7 +15458,11 @@
       }
       function attemptFile(door) {
         if (door.collected || !caseReady(door, true)) return;
-        if (eclipse() && door.id === 3 && !game.labyrinth.cleared) {
+        if (jade() && door.id === 3 && !game.interior.cleared) {
+          enterInterior();
+          return;
+        }
+        if (eclipse() && !jade() && door.id === 3 && !game.labyrinth.cleared) {
           enterLabyrinth();
           return;
         }
@@ -12963,7 +15532,53 @@
               ? "Route grid. Coordinates and blocked point are also given in the question."
               : "Rectangle diagram, not to scale.",
           );
-          if (["compass", "triangle"].includes(q.diagram.type)) {
+          if (["right-route", "trapezoid"].includes(q.diagram.type)) {
+            const d = q.diagram,
+              right = d.type === "right-route";
+            svg.querySelector("title").textContent = right
+              ? "Right triangle route; not to scale. All lengths also appear in the question."
+              : "Trapezoid with parallel bases and perpendicular height; not to scale.";
+            el("path", {
+              d: right
+                ? "M45 145 L235 145 L45 35 Z"
+                : "M45 145 L235 145 L195 45 L85 45 Z",
+              fill: "none",
+              stroke: "#b5dcca",
+              "stroke-width": 3,
+            });
+            el("path", {
+              d: right
+                ? "M45 132 L58 132 L58 145"
+                : "M85 45 L85 145 M85 132 L98 132 L98 145",
+              fill: "none",
+              stroke: "#cdbd8f",
+              "stroke-width": 2,
+              "stroke-dasharray": right ? "0" : "4 3",
+            });
+            const labels = right
+              ? [
+                  [140, 170, d.a],
+                  [25, 92, d.b],
+                  [157, 81, d.c],
+                ]
+              : [
+                  [140, 32, d.a],
+                  [140, 171, d.b],
+                  [107, 100, d.h],
+                ];
+            for (const [x, y, label] of labels)
+              el(
+                "text",
+                {
+                  x,
+                  y,
+                  fill: "#e7dab4",
+                  "font-size": 13,
+                  "text-anchor": "middle",
+                },
+                label,
+              );
+          } else if (["compass", "triangle"].includes(q.diagram.type)) {
             const points = [
                 [80, 145],
                 [200, 145],
@@ -13453,7 +16068,7 @@
         );
         if ((pressed.has("up") || pressed.has("interact")) && nearDoor) {
           attemptFile(nearDoor);
-          if (state !== "playing") return;
+          if (state !== "playing" || game.interior?.active) return;
         }
         if (
           (down("up") ||
@@ -13495,7 +16110,7 @@
             : intendedSpeed;
         if (dir) p.facing = dir;
         if (pressed.has("jump") && p.grounded) {
-          p.vy = -510;
+          p.vy = jadeJumpPower();
           p.grounded = false;
           p.lift = null;
           p.fallStart = p.y;
@@ -13569,6 +16184,10 @@
           }
           if (g.isBoss) {
             updateVillain(g, dt);
+            continue;
+          }
+          if (MARTIAL[g.kind]) {
+            updateMartial(g, dt);
             continue;
           }
           if (g.kind === "brawler") {
@@ -13737,6 +16356,11 @@
         game.shake = Math.max(0, game.shake - dt * 22);
         game.hint = Math.max(0, game.hint - dt);
         updateEquipment(dt);
+        if (game.interior?.active) {
+          updateInterior(dt);
+          pressed.clear();
+          return;
+        }
         if (game.labyrinth?.active) {
           updateLabyrinth(dt);
           pressed.clear();
@@ -13750,7 +16374,7 @@
         }
         updateLifts(dt);
         updatePlayer(dt);
-        if (state !== "playing") {
+        if (state !== "playing" || game.interior?.active) {
           pressed.clear();
           return;
         }
@@ -14255,9 +16879,11 @@
         const stunned = !isPlayer && p.stun > 0,
           crouch = isPlayer && p.crouch,
           unarmed = isPlayer
-            ? !game.ownedWeapons.includes(game.weapon)
+            ? !game.ownedWeapons.includes(game.weapon) ||
+              !!WEAPONS[game.weapon].melee
             : p.civilian ||
               p.kind === "brawler" ||
+              !!MARTIAL[p.kind] ||
               (p.isBoss && p.style === "duelist");
         const walk = Math.sin(p.step || 0);
         const moving = isPlayer ? Math.abs(p.vx) > 0 : !p.alert && !stunned;
@@ -14343,6 +16969,7 @@
         renderAdvancedScenery(t);
         renderShadow(t);
         renderEclipse(t);
+        renderJade(t);
         for (const item of game.items) {
           if (item.collected || item.kind === "weapon") continue;
           const y =
@@ -14495,6 +17122,10 @@
         ctx.clearRect(0, 0, viewWidth, H);
         city(t);
         shadowSky(t);
+        if (game.interior?.active && state !== "lobby") {
+          renderInterior(t);
+          return;
+        }
         if (game.labyrinth?.active && state !== "lobby") {
           renderLabyrinth(t);
           return;
@@ -14733,7 +17364,7 @@
       });
       // Read-only diagnostics also make browser smoke tests possible without bypassing gameplay.
       window.SpyAcademyAdvanced = window.ElevatorAction = Object.freeze({
-        version: "4.0.0",
+        version: "5.0.0",
         snapshot: () => ({
           state,
           mode: game.mode,

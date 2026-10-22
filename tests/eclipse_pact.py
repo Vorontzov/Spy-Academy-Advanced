@@ -54,7 +54,7 @@ def run():
                 for i in range(3):
                     place(**page.evaluate('(i)=>({x:game.files[i].x,f:game.files[i].floor})',i));key('e');finish()
 
-            assert page.locator('#levelSelect optgroup').count()==4
+            assert page.locator('#levelSelect optgroup').count()==5
             assert page.locator('#levelSelect optgroup[label="ECLIPSE PACT"] option').count()==18
             layouts=set()
             for level in range(61,79):
@@ -89,9 +89,9 @@ def run():
                 key('ArrowUp');page.evaluate('game.escape.drive.completed=2;game.escape.distance=game.escape.target-2');tick(4)
                 assert page.evaluate('state')=='won'
             assert len(layouts)>=12, len(layouts)
-            assert 'Campaign complete!' in page.locator('#resultText').inner_text()
-            page.click('#nextBtn');assert page.evaluate('state')=='lobby'
-            print('PASS: 18 missions / 90 maths gates, 18 actual maze routes, gifts, support, all villains, escapes and 78-operation finale',flush=True)
+            assert 'Campaign complete!' not in page.locator('#resultText').inner_text()
+            page.click('#nextBtn');assert page.evaluate('game.mission')==79
+            print('PASS: 18 missions / 90 maths gates, 18 actual maze routes, gifts, support, all villains, escapes and transition to operation 79',flush=True)
 
             # Every ally has a distinct usable effect and a real cooldown.
             for level,ally in [(61,'nova'),(62,'ibis'),(63,'rook')]:

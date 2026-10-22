@@ -310,5 +310,77 @@
     "file": "2026-01-23_SSolving_Quadratic_Inequalities1_2026.pdf",
     "pages": 2,
     "sha256": "411771e51026403b329f4d1047af461f3dc225416492ec6702afbe0c55bf1e86"
+  },
+  {
+    "id": "S53",
+    "file": "2026-01-28_s_Coin_problems_2025.pdf",
+    "pages": 2,
+    "sha256": "aba27008de5fa2a3e73f8dd484e1a4f3dd711a23e169f572945a890044b8a078"
+  },
+  {
+    "id": "S54",
+    "file": "2026-01-27_CH12.pdf",
+    "pages": 18,
+    "sha256": "c0b8b953668b274aaaf90d73fa5f8d9334db109bee345b0dd97f8f104221d366"
+  },
+  {
+    "id": "S55",
+    "file": "2026-02-23_CH13.pdf",
+    "pages": 26,
+    "sha256": "7ab6b1b5488ba78df23423f8aa2479b1020c1104589e9c89cd59f359bf5a8b11"
+  },
+  {
+    "id": "S56",
+    "file": "2026-01-30_FRACTION_PROBLEMS_2.pdf",
+    "pages": 1,
+    "sha256": "0a9ab871ac69c1461238e075440fdc869b4a249c334f9651f8b09c874f26fdef"
+  },
+  {
+    "id": "S57",
+    "file": "2026-01-30_FRACTION_PROBLEMS_1.pdf",
+    "pages": 1,
+    "sha256": "3cd8be78b5be7fe4f3bf2f0634b00bec38b9e87ea838faec9fc30597b0d0d886"
+  },
+  {
+    "id": "S58",
+    "file": "2026-01-30_sSimple-Interest-Worksheet-with-Key_(2).pdf",
+    "pages": 2,
+    "sha256": "193c9c4a89fb724003bf9deeaeb1a8f476ff93e4781a0bbeb358c0eb5f7b6ff2"
+  },
+  {
+    "id": "S59",
+    "file": "2026-01-30_Fractions_Book.pdf",
+    "pages": 32,
+    "sha256": "21472171d69fcc1515fd0e2e9922c69ef1d7c5620fe6a61bd7d047ac66310a98"
+  },
+  {
+    "id": "S60",
+    "file": "2026-02-03_Mixture_28.pdf",
+    "pages": 2,
+    "sha256": "759928476bc0d73c56148e8b037a3dc627ac5304ae2ac8339c3fa53043381cc9"
+  },
+  {
+    "id": "S61",
+    "file": "2026-02-06_Consecutive__Numbers_Part1_2024.pdf",
+    "pages": 5,
+    "sha256": "4358322752d57126c6b0cd40dbd480cd983b023b8807fa1e199fb621ccea82d9"
+  },
+  {
+    "id": "S62",
+    "file": "2026-02-06_Time_Machine_and_Age_Problems_2024a.pdf",
+    "pages": 1,
+    "sha256": "1092de7d14a373f94c6556c009e0185d32223d24c3395827e112d73290b48725"
+  },
+  {
+    "id": "S63",
+    "file": "2026-02-10_sMotionProblemsWorksheet2.pdf",
+    "pages": 2,
+    "sha256": "543b46ece168822965552fd643424d7801bd5b85004496bdabf9bb80bcbf90b8"
+  },
+  {
+    "id": "S64",
+    "file": "2026-02-13_Math_Practice_Test_1__7gr.pdf",
+    "pages": 12,
+    "sha256": "18b712a32084c7f40a7e128192969bd3f27683ce639a7c03b4eb8d13b87e5920"
   }
 ]

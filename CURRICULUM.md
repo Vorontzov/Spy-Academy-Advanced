@@ -16,11 +16,11 @@ The sequence groups related topics and builds prerequisites. A new topic starts 
 | 21–22      | Factoring         | Common coefficient and variable → higher common powers                                    | S01, S23, S12      |
 | 23–24      | Literal equations | Undo addition and multiplication → collect/factor the subject                             | S15                |
 
-This release has 80 generators (17 original, 15 for Shadow Atlas objectives, 6 for vehicle engineering, 24 for Phantom Circuit, and 18 for Eclipse Pact). Each supports the common three-tier interface; not every generator changes its mathematical structure at every tier. Levels select an explicit generator and tier rather than a random topic-wide question. Replay produces new numbers. The same seed regenerates the same question and answer order when resuming a save.
+This release has 98 generators (17 original, 15 for Shadow Atlas objectives, 6 for vehicle engineering, 24 for Phantom Circuit, 18 for Eclipse Pact, and 18 for Jade Current). Each supports the common three-tier interface; not every generator changes its mathematical structure at every tier. Levels select an explicit generator and tier rather than a random topic-wide question. Replay produces new numbers. The same seed regenerates the same question and answer order when resuming a save.
 
 ## Shadow Atlas: applications and advanced extensions
 
-Operations 25–36 revisit the topic groups in order, adding applications before advanced algebra. Difficulty is grouped by prerequisite, not guaranteed to increase after every individual question. The first 24 operation definitions and their seeded questions are unchanged, preserving existing saves. All 78 operations can be selected from the lobby.
+Operations 25–36 revisit the topic groups in order, adding applications before advanced algebra. Difficulty is grouped by prerequisite, not guaranteed to increase after every individual question. The first 24 operation definitions and their seeded questions are unchanged, preserving existing saves. All 96 operations can be selected from the lobby.
 
 | Operation | Adventure / location                      | New maths                                                                              | Sources                            |
 | --------- | ----------------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------- |
@@ -107,6 +107,37 @@ Inequality guides require numerical boundaries, the correct relation after divis
 
 The generator tiers vary numerical size, signs, root types or problem structure as appropriate; not every tier is a new algebraic method. New topic groups intentionally start with introductory cases. The game is not a validated placement test or a complete entrance-exam syllabus.
 
+## Jade Current: models, motion and mission interiors
+
+Operations 79–96 add 18 families and 126 required gates. Each mission introduces its family at tier 1, reviews the previous mission's family, applies the new family at tier 2, repeats review at the artifact lock, and finishes at tier 3. Its interior adds two independently seeded panels at tiers 1 and 2. Operation 79 reviews its own prerequisite skill. These are new variants inspired by selected worksheet methods, not verbatim reproductions of every exercise.
+
+| Operation | Adventure / location                                          | New maths                               | Primary reference                                              |
+| --------- | ------------------------------------------------------------- | --------------------------------------- | -------------------------------------------------------------- |
+| 79        | The Lantern Courier / Suzhou · Lantern Canal                  | Mixed-number supply calculations        | S59, pp. 27–30, especially p. 29 (Remixes)                     |
+| 80        | The Five-Seal Vault / Suzhou · Lantern Canal                  | Consecutive integer models              | S61, pp. 2–5; S54 p. 4                                         |
+| 81        | Coins Under The Bridge / Suzhou · Lantern Canal               | Coin-count systems                      | S53, p. 1, problems 3–5; S54 p. 3                              |
+| 82        | The Paper Crane Ledger / Kyoto · Kestrel Castle               | Ticket and revenue systems              | S53, p. 2, problem 15                                          |
+| 83        | Interest At Midnight / Kyoto · Kestrel Castle                 | Simple interest and equal repayments    | S58, p. 1, problems 4, 9–10; p. 2 key                          |
+| 84        | The Borrowed Hour / Kyoto · Kestrel Castle                    | Finding interest rates and time         | S58, p. 1, problems 1–3, 5–8                                   |
+| 85        | The Fractured Formula / Kaohsiung · Meridian Steelworks       | Reconstructing fractions algebraically  | S57, p. 1, problem 2                                           |
+| 86        | The Timekeeper File / Kaohsiung · Meridian Steelworks         | Age problems and time offsets           | S62, p. 1, problems 1–10; S54 p. 5                             |
+| 87        | Pure Water Protocol / Kaohsiung · Meridian Steelworks         | Dilution and conserved solute           | S60, p. 1, problems 1, 5, 7; p. 2, problem 22                  |
+| 88        | The Two-Tank Deception / Singapore · Stormbreak Harbor        | Two-stock mixture equations             | S60, p. 1, problems 8–11; p. 2, problem 20                     |
+| 89        | Partners Against The Flood / Singapore · Stormbreak Harbor    | Combined work and pump rates            | S54, pp. 15–16, examples and exercise 8 problems 2–3           |
+| 90        | Rendezvous Above The Strait / Singapore · Stormbreak Harbor   | Closing speeds and time units           | S63, pp. 1–2, problems 1, 8, 10–11                             |
+| 91        | The Vanishing Courier / Guilin · Cloud Lantern Observatory    | Pursuit and head starts                 | S63, p. 1, problem 4; p. 2, problem 7                          |
+| 92        | Against The Jade Current / Guilin · Cloud Lantern Observatory | Round trips and river currents          | S54, pp. 12–14, motion problems; S63 p. 1, problem 3           |
+| 93        | The Rooftop Rescue / Guilin · Cloud Lantern Observatory       | Pythagorean routes and lengths          | S55, pp. 9–11, Pythagorean theorem and triples                 |
+| 94        | Wings Of The Storm / Okinawa · Typhoon Skyport                | Trapezoid area and material cost        | S55, p. 4, formula G; pp. 5–6                                  |
+| 95        | The Last Reservoir / Okinawa · Typhoon Skyport                | Volume, fractions and pumping           | S55, pp. 22–23, rectangular solids and exercise 9 problems 4–5 |
+| 96        | Jade Current Finale / Okinawa · Typhoon Skyport               | Conditional probability and replacement | S64, pp. 11–12, problems 44–50, especially problem 50          |
+
+The first training lock unlocks rising jumps in mission 79, spinning kicks in 80 and aerial strikes in 81. Entering a later Jade mission directly awards its prerequisite techniques after its first solved lock. Those techniques persist locally and apply within this chapter. Completing the interior safety panel stops its machinery; its second panel secures the room and restores a heart. Both panels use the same checked-step solution flow, Practice Record, scratchpad and seeded question contract as tower cases.
+
+Fractions distinguish a fraction's value from the original numerator and denominator; reconstruction checks both before reduction. Coin and ticket models use consistent currency units and unique nonnegative counts. Interest uses I = Prt with decimal annual rates, explicitly simple interest; equal-payment questions divide the entire principal-plus-interest amount by the stated number of months, rather than modeling amortizing loans. Mixtures conserve solute and assume additive volumes. Work problems add rates or subtract a drain rate. Motion states constant ground speeds, common routes, clock origins and time units. River currents are a new application of the unequal-speed round-trip method, and upstream speed is always positive. Pythagorean problems use integer triples; trapezoids specify perpendicular heights. Probability distinguishes ordered draws, replacement and conditional second-draw counts.
+
+Maths freezes all enemies, presses, conveyor motion, skill cooldowns and escape movement. There are no timed answers. Interior saves regenerate questions from the mission seed, validate every saved guide input in sequence, and resume the character at the safe entrance while retaining solved panels and scratch work. Final answers appear only after all guided inputs are accepted. Multiple-choice independent solving remains available until a guide is opened.
+
 ## Vehicle engineering
 
 Car and motorcycle escapes each have two maths checkpoints, reached at one-third and two-thirds of the route. Traffic and health are frozen until the task is completed. Correct results earn a temporary boost and protection. The learner operates a mixing valve or chooses a road by steering; these tasks use the same seeded generator and checked-guide contract as the cases.
@@ -115,7 +146,7 @@ Car and motorcycle escapes each have two maths checkpoints, reached at one-third
 | --------------- | --------------------------------------------------- | ------------------------------------------- | ------------------------------------------------ |
 | 1–6             | Fraction of a route, then add the starting marker   | Allocate fuel using a fraction of the total | S06, pp. 21–22                                   |
 | 7–16            | Percentage of a route, then add the starting marker | Allocate fuel using a percentage            | S14, pp. 6–7                                     |
-| 17–78           | Closing speed, meeting time and meeting position    | Divide a total in a part-to-part ratio      | S09, pp. 1–2; S21, p. 1, problem 1; S17, pp. 1–2 |
+| 17–96           | Closing speed, meeting time and meeting position    | Divide a total in a part-to-part ratio      | S09, pp. 1–2; S21, p. 1, problem 1; S17, pp. 1–2 |
 
 These are newly authored applications of the listed methods, not copied vehicle questions from the worksheets. Moving-courier problems specify constant speeds, a common start time and a common direction. Fuel allocations use integer litres; percent products are stored exactly to avoid displaying floating-point artifacts. Every unfinished vehicle guide resumes at the validated prefix of checked answers. Completing a guide reveals its solution but still requires the learner to operate the valve or select the exit.
 
@@ -151,4 +182,4 @@ Questions are stored in the HTML, so this is a learning interface rather than a 
 
 ## Next material to add
 
-S02 contains a broader 57-question SHSAT mathematics paper with geometry, statistics, probability and other applications. S07 adds sample spaces and probability. Further work can add these families, polynomial identities, broader quadratic-formula forms, general radical equations, irrational-boundary inequalities, equal-angle triangle ordering, and further literal-equation structures. They are not claimed as covered by the current 78 operations.
+S02 contains a broader 57-question SHSAT mathematics paper with geometry, statistics, probability and other applications. S07 adds sample spaces and probability. Further work can add these families, polynomial identities, broader quadratic-formula forms, general radical equations, irrational-boundary inequalities, equal-angle triangle ordering, and further literal-equation structures. They are not claimed as covered by the current 96 operations.
